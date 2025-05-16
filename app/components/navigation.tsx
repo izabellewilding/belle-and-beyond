@@ -9,9 +9,9 @@ export const Navigation = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center">
-            <div className="relative w-[175px]">
+            <div className="relative w-[175px] h-[40px]">
               <Image
-                src="/images/logo.svg"
+                src="/logo.svg"
                 alt="Belle and Beyond Logo"
                 fill
                 priority
