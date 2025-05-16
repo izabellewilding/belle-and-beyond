@@ -1,8 +1,15 @@
 import { Hero } from "./components/hero";
 import { Navigation } from "./components/navigation";
 import { RecentPosts } from "./components/recent-posts";
-import { Destinations } from "./components/destinations";
 import { Footer } from "./components/footer";
+import { Suspense } from "react";
+
+// Create a container for the async Destinations component
+const DestinationsContainer = async () => {
+  // Dynamic import to use the async component
+  const { Destinations } = await import("./components/destinations");
+  return <Destinations />;
+};
 
 export default function Home() {
   return (
@@ -10,7 +17,13 @@ export default function Home() {
       <Navigation />
       <Hero />
       <RecentPosts />
-      <Destinations />
+      <Suspense
+        fallback={
+          <div className="py-16 text-center">Loading destinations...</div>
+        }
+      >
+        <DestinationsContainer />
+      </Suspense>
       <Footer />
     </div>
   );

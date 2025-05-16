@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { getAllDestinations } from "@/sanity/lib/api";
 
 interface DestinationCardProps {
   title: string;
@@ -30,44 +31,35 @@ const DestinationCard = ({ title, imageSrc, href }: DestinationCardProps) => {
   );
 };
 
-export const Destinations = () => {
-  const destinations = [
-    {
-      title: "COSTA RICA",
-      imageSrc: "/images/destinations/albania.jpg",
-      href: "/destinations/costarica",
-    },
-    {
-      title: "THAILAND",
-      imageSrc: "/images/destinations/vietnam.jpg",
-      href: "/destinations/thailand",
-    },
-    {
-      title: "MEXICO",
-      imageSrc: "/images/destinations/cambodia.jpg",
-      href: "/destinations/mexico",
-    },
-    {
-      title: "GEORGIA",
-      imageSrc: "/images/destinations/armenia.jpg",
-      href: "/destinations/georgia",
-    },
-  ];
+interface Destination {
+  _id: string;
+  title: string;
+  slug: string;
+  coverImage?: string;
+  featured?: boolean;
+}
+
+export const Destinations = async () => {
+  const destinations = await getAllDestinations();
 
   return (
     <section className="py-16 px-4 max-w-7xl mx-auto">
-      <h2 className="text-3xl font-serif mb-4 text-center">Top Destinations</h2>
+      <h2 className="text-5xl font-serif mb-4 text-center">
+        More amazing countries
+      </h2>
       <p className="text-xl mb-12 text-center">
         Use my travel blog to plan your next trip
       </p>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        {destinations.map((destination) => (
+      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4">
+        {destinations.map((destination: Destination) => (
           <DestinationCard
-            key={destination.title}
+            key={destination._id}
             title={destination.title}
-            imageSrc={destination.imageSrc}
-            href={destination.href}
+            imageSrc={
+              destination.coverImage || "/images/destinations/placeholder.jpg"
+            }
+            href={`/destinations/${destination.slug}`}
           />
         ))}
       </div>
