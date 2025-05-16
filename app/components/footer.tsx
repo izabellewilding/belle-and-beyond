@@ -1,5 +1,5 @@
 // components/Footer.tsx
-import { FaInstagram, FaTwitter, FaGithub, FaEnvelope } from "react-icons/fa";
+import { Icons } from "./icons";
 
 export const Footer = () => {
   return (
@@ -66,32 +66,7 @@ export const Footer = () => {
         {/* Social */}
         <div>
           <h3 className="text-lg font-semibold mb-3">Follow Me</h3>
-          <div className="flex space-x-4">
-            <a
-              href="https://instagram.com"
-              target="_blank"
-              className="hover:text-pink-400"
-            >
-              <FaInstagram size={20} />
-            </a>
-            <a
-              href="https://twitter.com"
-              target="_blank"
-              className="hover:text-blue-400"
-            >
-              <FaTwitter size={20} />
-            </a>
-            <a
-              href="https://github.com"
-              target="_blank"
-              className="hover:text-gray-300"
-            >
-              <FaGithub size={20} />
-            </a>
-            <a href="mailto:hello@example.com" className="hover:text-green-400">
-              <FaEnvelope size={20} />
-            </a>
-          </div>
+          <Icons />
         </div>
       </div>
 

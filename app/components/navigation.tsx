@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Button } from "./button";
+import { Icons } from "./icons";
 
 export const Navigation = () => {
   return (
@@ -49,8 +49,8 @@ export const Navigation = () => {
           </div>
 
           {/* Button */}
-          <Button text="Contact" href="/contact" className="hidden md:block" />
-
+          {/* <Button text="Contact" href="/contact" className="hidden md:block" /> */}
+          <Icons />
           {/* Mobile Menu Button */}
           <button className="md:hidden p-2 text-navy" aria-label="Toggle menu">
             <svg

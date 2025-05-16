@@ -23,7 +23,7 @@ export const Hero = () => {
               Elevate your travel with inspirational guides & smart tips
             </h1>
             <p className="text-md mb-8">
-              I&apos;m Izabelle Wilding, a photographer, web developer and
+              Hey! I&apos;m Izabelle, a photographer, web developer and
               traveller based in Tbilisi, Georgia. I explore the world with
               curiosity and intention—and share practical advice, detailed
               guides, and curated recommendations to help you plan
