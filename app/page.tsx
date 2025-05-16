@@ -1,6 +1,7 @@
 import { Hero } from "./components/hero";
 import { Navigation } from "./components/navigation";
 import { RecentPosts } from "./components/recent-posts";
+import { Destinations } from "./components/destinations";
 
 export default function Home() {
   return (
@@ -8,6 +9,7 @@ export default function Home() {
       <Navigation />
       <Hero />
       <RecentPosts />
+      <Destinations />
     </div>
   );
 }

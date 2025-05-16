@@ -8,7 +8,7 @@ export const Hero = () => {
         {/* Image Section */}
         <div className="relative h-[60vh] lg:h-[85vh]">
           <Image
-            src="/images/costa-rica/sunset-puerto-viejo.png"
+            src="/images/sunset-puerto-viejo.png"
             alt="Scenic sunset view in Georgia with mountains and water - Travel blog photography from Tbilisi"
             fill
             className="object-cover"
