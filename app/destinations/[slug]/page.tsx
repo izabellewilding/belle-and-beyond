@@ -48,30 +48,52 @@ export default async function DestinationPage({
   return (
     <>
       <Navigation />
-      <div className="max-w-7xl mx-auto px-4 py-12">
-        <div className="mb-12">
-          <h1 className="text-4xl font-serif font-bold mb-4">
-            {destination.title}
-          </h1>
-          <p className="text-lg text-gray-600">{destination.description}</p>
-        </div>
 
-        {destination.mainImage && (
-          <div className="relative h-[60vh] w-full mb-12">
-            <Image
-              src={destination.mainImage}
-              alt={destination.title}
-              fill
-              className="object-cover"
-              priority
-            />
+      <div className="relative max-w-6xl mx-auto px-4 mt-16 mb-24">
+        {/* Container for text and image with artistic overlap */}
+        <div className="relative">
+          {/* Text positioned to overlap with the image */}
+          <div className="relative z-10 bg-cream py-4 md:py-0 md:bg-transparent">
+            <h1 className="text-5xl md:text-6xl font-serif text-gray-800 tracking-wide px-4 md:px-0">
+              {destination.title.toUpperCase()}
+            </h1>
+            <h2 className="text-4xl md:text-5xl font-serif text-gray-800 tracking-wide mt-1 px-4 md:px-0">
+              TRAVEL ADVICE
+            </h2>
+          </div>
+
+          {/* Image that the text partially overlaps */}
+          <div className="relative md:mt-[-80px] w-full aspect-[1.77/1] overflow-hidden">
+            {destination.mainImage ? (
+              <Image
+                src={destination.mainImage}
+                alt={destination.title}
+                fill
+                className="object-cover"
+                priority
+              />
+            ) : (
+              <div className="w-full h-full bg-gray-200"></div>
+            )}
+          </div>
+        </div>
+      </div>
+
+      {/* Main content */}
+      <div className="max-w-3xl mx-auto px-4 pb-20">
+        {destination.description && (
+          <div className="mb-12">
+            <p className="text-xl text-gray-700 leading-relaxed">
+              {destination.description}
+            </p>
           </div>
         )}
 
-        <div className="prose max-w-none">
+        <div className="prose prose-lg max-w-none">
           {destination.content && <PortableText value={destination.content} />}
         </div>
       </div>
+
       <Footer />
     </>
   );

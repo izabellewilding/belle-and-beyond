@@ -9,7 +9,7 @@
 }
 
 :root {
-  --background: #ffffff;
+  --background: #f2ebe1;
   --foreground: #1a202c;
 
   /* Fonts */
@@ -20,7 +20,7 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #1a202c;
-    --foreground: #f5efe6;
+    --foreground: #f2ebe1;
   }
 }
 

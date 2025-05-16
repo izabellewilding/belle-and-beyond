@@ -52,7 +52,7 @@ const posts = [
 ];
 
 export const RecentPosts = () => (
-  <section className="bg-white py-16 px-4">
+  <section className="py-16 px-4">
     <div className="max-w-7xl mx-auto text-center">
       <h2 className="text-3xl font-serif mb-10">Latest from the Blog</h2>
       <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
@@ -60,7 +60,7 @@ export const RecentPosts = () => (
           <Link
             key={post.slug}
             href={post.slug}
-            className="bg-white overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300 text-left"
+            className=" overflow-hidden bg-white hover:shadow-lg transition-shadow duration-300 text-left"
           >
             <div className="relative h-56">
               <Image

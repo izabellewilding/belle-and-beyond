@@ -17,8 +17,8 @@ export const Hero = () => {
         </div>
 
         {/* Content Section */}
-        <div className="bg-cream p-8 lg:p-12 flex items-center justify-center">
-          <div className="max-w-xl w-full bg-white py-24 px-12 text-center">
+        <div className="bg-cream p-8 lg:p-12 flex items-center justify-center border-b-1 border-black ">
+          <div className="max-w-xl w-full bg-white  py-24 px-12 text-center">
             <h1 className="text-2xl md:text-3xl font-bold mb-8 font-serif">
               Elevate your travel with inspirational guides & smart tips
             </h1>
