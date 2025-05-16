@@ -56,14 +56,12 @@ export const Destinations = () => {
 
   return (
     <section className="py-16 px-4 max-w-7xl mx-auto">
-      <h2 className="text-5xl font-serif mb-4 text-center">
-        More amazing countries
-      </h2>
+      <h2 className="text-3xl font-serif mb-4 text-center">Top Destinations</h2>
       <p className="text-xl mb-12 text-center">
         Use my travel blog to plan your next trip
       </p>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {destinations.map((destination) => (
           <DestinationCard
             key={destination.title}
