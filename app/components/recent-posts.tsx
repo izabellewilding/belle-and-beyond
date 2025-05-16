@@ -60,7 +60,7 @@ export const RecentPosts = () => (
           <Link
             key={post.slug}
             href={post.slug}
-            className="bg-cream overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300 text-left"
+            className="bg-white overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300 text-left"
           >
             <div className="relative h-56">
               <Image
