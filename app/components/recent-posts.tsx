@@ -53,27 +53,33 @@ const posts = [
 
 export const RecentPosts = () => (
   <section className="py-16 px-4">
-    <div className="max-w-7xl mx-auto text-center">
-      <h2 className="text-3xl mb-10">Latest from the Blog</h2>
-      <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+    <div className="max-w-7xl text-center mx-auto rounded-4xl p-8">
+      <h2 className="text-2xl font-semibold text-gray-700 mb-10">
+        Latest from the Blog
+      </h2>
+      <div className="grid gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 justify-center">
         {posts.map((post) => (
           <Link
             key={post.slug}
             href={post.slug}
-            className=" overflow-hidden bg-white hover:shadow-lg transition-shadow duration-300 text-left"
+            className="group block rounded-2xl overflow-hidden bg-white shadow-sm hover:shadow-md transition-shadow duration-200 text-left"
           >
-            <div className="relative h-56">
+            <div className="relative aspect-[4/3] w-full">
               <Image
                 src={post.image}
                 alt={post.title}
                 fill
-                className="object-cover"
+                className="object-cover rounded-t-2xl group-hover:scale-105 transition-transform duration-300"
               />
             </div>
-            <div className="p-6">
+            <div className="p-5">
               <p className="text-sm text-gray-500 mb-1">{post.date}</p>
-              <h3 className="text-xl font-semibold mb-2">{post.title}</h3>
-              <p className="text-sm text-gray-700">{post.excerpt}</p>
+              <h3 className="text-lg font-semibold text-gray-900 leading-snug mb-1">
+                {post.title}
+              </h3>
+              <p className="text-sm text-gray-600 leading-relaxed">
+                {post.excerpt}
+              </p>
             </div>
           </Link>
         ))}
