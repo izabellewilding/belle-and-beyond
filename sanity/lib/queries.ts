@@ -42,3 +42,17 @@ export const getRecentPostsQuery = groq`*[_type == "post"] | order(publishedAt d
   "author": author->name,
   body
 }`;
+
+// Get a specific post by slug
+export const getPostBySlugQuery = groq`*[_type == "post" && slug.current == $slug][0] {
+  _id,
+  title,
+  "slug": slug.current,
+  mainImage {
+    asset->{_ref, url},
+    alt
+  },
+  publishedAt,
+  "author": author->name,
+  body,
+}`;
