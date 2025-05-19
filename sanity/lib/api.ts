@@ -3,6 +3,7 @@ import {
   getAllDestinationsQuery,
   getDestinationBySlugQuery,
   getFeaturedDestinationsQuery,
+  getRecentPostsQuery,
 } from "./queries";
 
 export async function getAllDestinations() {
@@ -15,4 +16,8 @@ export async function getDestinationBySlug(slug: string) {
 
 export async function getFeaturedDestinations() {
   return await client.fetch(getFeaturedDestinationsQuery);
+}
+
+export async function getRecentPosts() {
+  return await client.fetch(getRecentPostsQuery);
 }

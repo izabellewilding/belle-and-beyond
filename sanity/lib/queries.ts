@@ -31,3 +31,14 @@ export const getFeaturedDestinationsQuery = groq`*[_type == "destination" && fea
   description,
   "coverImage": coverImage.asset->url
 }`;
+
+// Get recent posts
+export const getRecentPostsQuery = groq`*[_type == "post"] | order(publishedAt desc)[0...6] {
+  _id,
+  title,
+  "slug": slug.current,
+  "mainImage": mainImage.asset->url,
+  publishedAt,
+  "author": author->name,
+  body
+}`;
