@@ -136,15 +136,22 @@ export default async function PostPage({
     <>
       <Navigation />
       <article className="container mx-auto px-4 py-8 max-w-3xl">
-        <h1 className="text-4xl font-bold mb-2">{post.title}</h1>
-        <p className="text-gray-600 text-sm mb-4">
-          By {post.author} •{" "}
-          {post.publishedAt ? formatDate(post.publishedAt) : ""}
-        </p>
-        {/* Add Social Icons Here */}
-        <div className="mb-8">
-          <Icons />
+        {/* Centered Header Section */}
+        <div className="text-center mb-8">
+          <h1 className="text-4xl font-bold mb-2">{post.title}</h1>
+          <p className="text-gray-600 text-sm mb-4">
+            By {post.author} •{" "}
+            {post.publishedAt ? formatDate(post.publishedAt) : ""}
+          </p>
+          {/* Social Icons */}
+          <div className="mb-4">
+            <Icons />
+          </div>
         </div>
+
+        {/* Horizontal Rule */}
+        <hr className="border-gray-300 my-8" />
+
         {/* Main image rendered as part of Portable Text */}
         <div className="prose max-w-none">
           <PortableText value={post.body} components={components} />
