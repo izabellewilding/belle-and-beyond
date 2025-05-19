@@ -7,7 +7,7 @@ export const Footer = () => {
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
         {/* Logo & About */}
         <div>
-          <h2 className="text-2xl font-bold mb-4">WanderLens</h2>
+          <h2 className="text-2xl font-bold mb-4">Belle & Beyond</h2>
           <p className="text-sm text-gray-400">
             Sharing stories and snapshots from around the world. Travel through
             the lens with me.
@@ -71,7 +71,7 @@ export const Footer = () => {
       </div>
 
       <div className="mt-10 border-t border-gray-700 pt-4 text-center text-sm text-gray-500">
-        © {new Date().getFullYear()} WanderLens. All rights reserved.
+        © {new Date().getFullYear()} Belle&Beyond. All rights reserved.
       </div>
     </footer>
   );
