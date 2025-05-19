@@ -10,6 +10,7 @@ import { getRecentPostsQuery } from "@/sanity/lib/queries";
 import { SanityDocument } from "next-sanity";
 import { SanityImageObject } from "@sanity/image-url/lib/types/types";
 import { urlFor } from "@/sanity/lib/image";
+import { Icons } from "@/app/components/icons";
 
 // Define a basic type for Portable Text blocks
 interface PortableTextBlock {
@@ -136,10 +137,14 @@ export default async function PostPage({
       <Navigation />
       <article className="container mx-auto px-4 py-8 max-w-3xl">
         <h1 className="text-4xl font-bold mb-2">{post.title}</h1>
-        <p className="text-gray-600 text-sm mb-6">
+        <p className="text-gray-600 text-sm mb-4">
           By {post.author} •{" "}
           {post.publishedAt ? formatDate(post.publishedAt) : ""}
         </p>
+        {/* Add Social Icons Here */}
+        <div className="mb-8">
+          <Icons />
+        </div>
         {/* Main image rendered as part of Portable Text */}
         <div className="prose max-w-none">
           <PortableText value={post.body} components={components} />
