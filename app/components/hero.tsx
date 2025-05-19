@@ -1,43 +1,42 @@
+// pages/index.tsx
 import Image from "next/image";
-import { Button } from "./button";
 
 export const Hero = () => {
   return (
-    <section className="">
-      <div className="grid grid-cols-1 lg:grid-cols-2">
-        {/* Image Section */}
-        <div className="relative h-[60vh] lg:h-[85vh]">
+    <main className=" bg-gray-50 text-neutral-800 min-h-full">
+      <section className="grid grid-cols-1 md:grid-cols-2 min-h-[calc(100vh-64px)]">
+        <div className="relative h-[50vh] md:h-full">
           <Image
             src="/images/sunset-puerto-viejo.png"
-            alt="Scenic sunset view in Georgia with mountains and water - Travel blog photography from Tbilisi"
-            fill
-            className="object-cover"
-            priority
+            alt="Scenic beach"
+            layout="fill"
+            objectFit="cover"
+            className="rounded-none md:rounded-r-3xl"
           />
         </div>
 
-        {/* Content Section */}
-        <div className="bg-cream p-8 lg:p-12 flex items-center justify-center border-b-1 border-black ">
-          <div className="max-w-xl w-full bg-white  py-24 px-12 text-center">
-            <h1 className="text-2xl md:text-3xl font-bold mb-8 font-serif">
-              Elevate your travel with inspirational guides & smart tips
-            </h1>
-            <p className="text-md mb-8">
-              Hey! I&apos;m Izabelle, a photographer, web developer and
-              traveller based in Tbilisi, Georgia. I explore the world with
-              curiosity and intention—and share practical advice, detailed
-              guides, and curated recommendations to help you plan
-              unforgettable, stress-free trips.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button text="Travel Blog" href="/blog" />
-              <Button text="Travel Blog" href="/blog" outline />
-            </div>
+        <div className="p-10 flex flex-col justify-center bg-gray-50 rounded-none">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 leading-tight text-gray-900">
+            Elevate your travel with
+            <br />
+            inspirational guides & smart tips
+          </h2>
+          <p className="text-gray-600 mb-6 text-base leading-relaxed">
+            Hey! I'm Izabelle, a photographer, web developer and traveller based
+            in Tbilisi, Georgia. I explore the world with curiosity and
+            intention—and share practical advice, detailed guides, and curated
+            recommendations to help you plan unforgettable, stress-free trips.
+          </p>
+          <div className="flex gap-4">
+            <button className="bg-black text-white px-5 py-2 rounded-full hover:bg-gray-800 transition">
+              Explore Blog
+            </button>
+            <button className="border border-gray-300 text-gray-700 px-5 py-2 rounded-full hover:border-gray-500 transition">
+              See Destinations
+            </button>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </main>
   );
 };
-
-export default Hero;

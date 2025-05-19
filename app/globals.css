@@ -5,11 +5,11 @@
   --color-olive: #3d4b3d;
   --color-tan: #c9b991;
   --color-cream: #f5efe6;
-  --color-white: #f8f8f8;
+  --color-white: white;
 }
 
 :root {
-  --background: #f2ebe1;
+  --background: white;
   --foreground: #1a202c;
 
   /* Fonts */
@@ -17,12 +17,11 @@
   --font-sans: Arial, Helvetica, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
     --background: #1a202c;
     --foreground: #f2ebe1;
-  }
-}
+  } */
 
 body {
   background: var(--background);

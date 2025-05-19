@@ -80,7 +80,7 @@ export default async function DestinationPage({
       </div>
 
       {/* Main content */}
-      <div className="max-w-3xl mx-auto px-4 pb-20">
+      <div className="max-w-3xl mx-auto px-4 pb-20 -mt-32 bg-white">
         {destination.description && (
           <div className="mb-12">
             <p className="text-xl text-gray-700 leading-relaxed">
