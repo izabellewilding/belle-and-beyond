@@ -22,9 +22,9 @@ export const Hero = () => {
             Discover the extraordinary and find beauty in your travels
             <br />
           </h2>
-          <div className="mb-6">
+          {/* <div className="mb-6">
             <ProfileCard />
-          </div>
+          </div> */}
           <p className="text-gray-600 mb-6 text-base leading-relaxed">
             Hey! I'm Izabelle, a photographer, web developer and traveller based
             in Tbilisi, Georgia. I'm drawn to the quiet beauty of nature, little
