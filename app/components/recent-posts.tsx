@@ -54,8 +54,10 @@ export const RecentPosts = () => {
 
   const getPreviewText = (body: Post["body"]) => {
     // Get the first block that has text
-    const firstBlock = body.find((block) =>
-      block.children.some((child) => child.text.trim().length > 0)
+    const firstBlock = body.find(
+      (block) =>
+        Array.isArray(block.children) &&
+        block.children.some((child) => child.text.trim().length > 0)
     );
     if (!firstBlock) return "";
 

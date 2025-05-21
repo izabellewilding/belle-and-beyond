@@ -64,7 +64,11 @@ export default async function PostPage({
   // Custom Portable Text components for rendering
   const components: PortableTextComponents = {
     types: {
-      image: ({ value }: { value: SanityImageObject & { alt?: string } }) => {
+      image: ({
+        value,
+      }: {
+        value: SanityImageObject & { alt?: string; description?: string };
+      }) => {
         if (!value?.asset?._ref) {
           return null;
         }
@@ -80,6 +84,12 @@ export default async function PostPage({
               layout="responsive"
               objectFit="contain"
             />
+            {/* Display the image description if it exists */}
+            {value.description && (
+              <p className="text-center text-gray-600 text-sm mt-2">
+                {value.description}
+              </p>
+            )}
           </div>
         );
       },
@@ -139,7 +149,7 @@ export default async function PostPage({
       <Navigation />
       <article className="container mx-auto px-4 py-8 max-w-3xl">
         {/* Centered Header Section */}
-        <div className="text-center mb-8">
+        <div className="text-center mb-8 md:mt-12">
           <h1 className="text-4xl font-bold mb-2">{post.title}</h1>
           <p className="text-gray-600 text-sm mb-4">
             By {post.author} •{" "}
