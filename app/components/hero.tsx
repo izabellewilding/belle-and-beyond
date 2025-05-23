@@ -27,17 +27,20 @@ export const Hero = () => {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="z-10 p-10 flex flex-col justify-center bg-gray-50/80 backdrop-blur-lg md:backdrop-blur-0"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 leading-tight text-gray-900">
-            Adventure into the Wild
+          <p className="text-3xl text-base mb-6 leading-tight text-gray-700">
+            Travel guides & inspiring ideas
+          </p>
+          <h2 className="text-3xl md:text-6xl font-bold mb-4 leading-tight text-gray-900">
+            Helping you find your next adventure
           </h2>
 
-          <p className="text-gray-600 mb-6 text-base leading-relaxed">
-            Hi there, I'm Izabelle Wilding, a photographer, web developer and
-            traveller. Currently a digital nomad, I've been living in Tbilisi,
-            Georgia for a month and loving it here! I&apos;m drawn to the quiet
-            beauty of nature, little surprises, and the raw, authentic feel of
-            old, rustic places. I believe travel isn&apos;t just about ticking
-            off destinations—it&apos;s about finding those unexpected, peaceful
+          <p className="text-gray-500 mb-12 text-lg leading-relaxed">
+            Hey! I'm <strong>Izzy Wilding</strong>, a photographer, web
+            developer and traveller. Currently a digital nomad, I've been living
+            in Tbilisi, Georgia for a month. I&apos;m drawn to the quiet beauty
+            of nature, little surprises, and the raw, authentic feel of old,
+            rustic places. I believe travel isn&apos;t just about ticking off
+            destinations—it&apos;s about finding those unexpected, peaceful
             moments that stay with you. I love exploring popular places
             differently: <strong>finding stillness in the noise</strong>, charm
             in the old and rustic, and magic in the unplanned. Here, you&apos;ll
