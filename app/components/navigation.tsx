@@ -5,7 +5,7 @@ import { Icons } from "./icons";
 export const Navigation = () => {
   return (
     <nav className="sticky top-0 z-50 bg-white shadow-sm">
-      <div className="container mx-auto px-4">
+      <div className="pl-10 pr-10">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center">

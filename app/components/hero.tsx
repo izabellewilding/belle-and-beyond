@@ -19,7 +19,7 @@ export const Hero = () => {
 
   return (
     <main className="bg-gray-50 text-neutral-800">
-      <section className="grid grid-cols-1 md:grid-cols-2 min-h-[calc(100vh-64px)] relative">
+      <section className="grid grid-cols-1 md:grid-cols-2 min-h-[calc(100vh-64px)] relative ">
         {/* TEXT ON LEFT */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
