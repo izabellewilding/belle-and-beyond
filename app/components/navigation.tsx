@@ -4,8 +4,8 @@ import { Icons } from "./icons";
 
 export const Navigation = () => {
   return (
-    <nav className="sticky top-0 z-50 bg-white shadow-sm">
-      <div className="pl-10 pr-10">
+    <nav className="sticky top-0 z-50 bg-white shadow-sm ">
+      <div className="pl-10 pr-10 max-w-7xl mx-auto">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center">

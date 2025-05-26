@@ -9,7 +9,7 @@ import { Button } from "./button";
 export const Hero = () => {
   const imageRef = useRef(null);
   const { scrollY } = useScroll();
-  const y = useTransform(scrollY, [0, 300], [0, -100]);
+  const y = useTransform(scrollY, [0, 300], [0, 50]);
 
   const controls = useAnimation();
 
@@ -18,7 +18,7 @@ export const Hero = () => {
   }, [controls]);
 
   return (
-    <main className="bg-gray-50 text-neutral-800">
+    <main className="bg-gray-50 text-neutral-800 max-w-7xl mx-auto">
       <section className="grid grid-cols-1 md:grid-cols-2 min-h-[calc(100vh-64px)] relative ">
         {/* TEXT ON LEFT */}
         <motion.div
@@ -27,10 +27,10 @@ export const Hero = () => {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="z-10 p-10 flex flex-col justify-center bg-gray-50/80 backdrop-blur-lg md:backdrop-blur-0"
         >
-          <p className="text-3xl text-base mb-6 leading-tight text-gray-700">
+          <p className="text-base mb-6 leading-tight text-gray-700">
             Travel guides & inspiring ideas
           </p>
-          <h2 className="text-3xl md:text-6xl font-bold mb-4 leading-tight text-gray-900">
+          <h2 className="text-3xl md:text-5xl font-bold mb-4 leading-tight text-gray-900">
             Helping you find your next adventure
           </h2>
 
@@ -41,10 +41,7 @@ export const Hero = () => {
             of nature, little surprises, and the raw, authentic feel of old,
             rustic places. I believe travel isn&apos;t just about ticking off
             destinations—it&apos;s about finding those unexpected, peaceful
-            moments that stay with you. I love exploring popular places
-            differently: <strong>finding stillness in the noise</strong>, charm
-            in the old and rustic, and magic in the unplanned. Here, you&apos;ll
-            find practical travel tips and guides to help you do the same.
+            moments that stay with you.
           </p>
 
           <div className="flex gap-4">
@@ -56,7 +53,7 @@ export const Hero = () => {
         </motion.div>
 
         {/* PARALLAX IMAGE ON RIGHT */}
-        <div className="relative h-[50vh] md:h-full overflow-hidden">
+        <div className="relative h-[50vh] md:h-full">
           <motion.div
             ref={imageRef}
             style={{ y }}
