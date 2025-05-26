@@ -105,6 +105,9 @@ export default async function PostPage({
       h3: ({ children }) => (
         <h3 className="text-2xl font-bold mt-8 mb-2">{children}</h3>
       ),
+      h4: ({ children }) => (
+        <h4 className="text-xl font-bold mt-6 mb-2">{children}</h4>
+      ),
       blockquote: ({ children }) => (
         <blockquote className="border-l-4 border-gray-300 pl-4 italic my-4">
           {children}
