@@ -18,8 +18,8 @@ export const Hero = () => {
   }, [controls]);
 
   return (
-    <main className="bg-gray-50 text-neutral-800 max-w-7xl mx-auto">
-      <section className="grid grid-cols-1 md:grid-cols-2 min-h-[calc(100vh-64px)] relative ">
+    <main className="bg-gray-50 text-neutral-800 max-w-[1600px] mx-auto ">
+      <section className="grid grid-cols-1 md:grid-cols-2 min-h-[calc(100vh-64px)] relative justify-center items-center ">
         {/* TEXT ON LEFT */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -30,7 +30,7 @@ export const Hero = () => {
           <p className="text-base mb-6 leading-tight text-gray-700">
             Travel guides & inspiring ideas
           </p>
-          <h2 className="text-3xl md:text-5xl font-bold mb-4 leading-tight text-gray-900">
+          <h2 className="text-3xl md:text-6xl font-bold mb-4 leading-tight text-gray-900">
             Helping you find your next adventure
           </h2>
 
@@ -46,14 +46,12 @@ export const Hero = () => {
 
           <div className="flex gap-4">
             <Button text="Visit Blog" href="/blog" />
-            <button className="border border-gray-300 text-gray-700 px-5 py-2 rounded-full hover:border-gray-500 transition">
-              See Destinations
-            </button>
+            <Button text=" See Destinations" href="/destinations" outline />
           </div>
         </motion.div>
 
         {/* PARALLAX IMAGE ON RIGHT */}
-        <div className="relative h-[50vh] md:h-full">
+        <div className="relative h-[50vh] md:h-[85vh]">
           <motion.div
             ref={imageRef}
             style={{ y }}

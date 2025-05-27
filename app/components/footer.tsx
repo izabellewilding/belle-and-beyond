@@ -4,7 +4,7 @@ import { Icons } from "./icons";
 export const Footer = () => {
   return (
     <footer className="bg-gray-900 text-white pt-12 pb-6 px-4 md:px-12">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div className="max-w-[1600px] mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
         {/* Logo & About */}
         <div>
           <h2 className="text-2xl font-bold mb-4">Belle & Beyond</h2>

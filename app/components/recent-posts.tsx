@@ -70,7 +70,7 @@ export const RecentPosts = () => {
   if (loading) {
     return (
       <section className="py-16 px-4">
-        <div className="max-w-7xl text-center mx-auto rounded-4xl p-8">
+        <div className="max-w-[1600px] text-center mx-auto rounded-4xl p-8">
           {/* <h2 className="text-2xl font-semibold text-gray-700 mb-10">
             Latest from the Blog
           </h2> */}
@@ -83,7 +83,7 @@ export const RecentPosts = () => {
   if (error) {
     return (
       <section className="py-16 px-4">
-        <div className="max-w-7xl text-center mx-auto rounded-4xl p-8">
+        <div className="mmax-w-[1600px] text-center mx-auto rounded-4xl p-8">
           <h2 className="text-2xl font-semibold text-gray-700 mb-10">
             Latest from the Blog
           </h2>
@@ -96,7 +96,7 @@ export const RecentPosts = () => {
   if (!posts || posts.length === 0) {
     return (
       <section className="py-16 px-4">
-        <div className="max-w-7xl text-center mx-auto rounded-4xl p-8">
+        <div className="max-w-[1600px] text-center mx-auto rounded-4xl p-8">
           <h2 className="text-2xl font-semibold text-gray-700 mb-10">
             Latest from the Blog
           </h2>
@@ -107,11 +107,11 @@ export const RecentPosts = () => {
   }
 
   return (
-    <section className="py-16 px-4">
-      <div className=" text-center mx-auto rounded-4xl p-8 max-w-7xl ">
-        {/* <h2 className="text-2xl font-semibold text-gray-700 mb-10">
-          Latest from the Blog
-        </h2> */}
+    <section className="py-16 px-4 ">
+      <div className=" mx-auto rounded-4xl p-8  bg-white rounded-xl py-32 max-w-[1600px]">
+         <h2 className="text-5xl text-center font-semibold text-gray-900 mb-32">
+         Most recent blog posts
+        </h2> 
         <div className="grid gap-x-6 gap-y-10 sm:grid-cols-1 lg:grid-cols-3 justify-center">
           {posts.map((post: Post) => (
             <Link
@@ -126,14 +126,14 @@ export const RecentPosts = () => {
               {/* FEATURED IMAGE WITH TEXT OVERLAY */}
               {post.title.includes("San Gerardo") ? (
                 <>
-                  <div className="relative w-full h-full">
+                  <div className="relative w-full h-full shadow-lg">
                     <Image
                       src={post.mainImage}
                       alt={post.title}
                       fill
                       className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105"
                     />
-                    <div className="absolute inset-0 bg-black/20"></div>
+                    {/* <div className="absolute inset-0 bg-black/20"></div> */}
                     <div className="absolute bottom-6 left-6 text-white z-10 max-w-[80%]">
                       <h2 className="text-2xl md:text-3xl font-extrabold tracking-tight drop-shadow-md">
                         San Gerardo de Rivas

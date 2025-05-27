@@ -25,7 +25,7 @@ export default async function DestinationsPage() {
   return (
     <>
       <Navigation />
-      <div className="max-w-7xl mx-auto px-4 py-12">
+      <div className="max-w-[1600px] mx-auto px-4 py-12">
         <h1 className="text-5xl font-serif mb-4 text-center">Destinations</h1>
         <p className="text-xl mb-12 text-center">
           Explore amazing destinations around the world
