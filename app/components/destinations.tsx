@@ -43,7 +43,7 @@ export const Destinations = async () => {
   const destinations = await getAllDestinations();
 
   return (
-    <section className="py-16 px-4 max-w-7xl mx-auto text-center">
+    <section id="destinations" className="py-16 px-4 max-w-7xl mx-auto text-center">
       <h2 className="text-2xl font-semibold text-gray-700 mb-10">
         More destinations
       </h2>

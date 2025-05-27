@@ -45,8 +45,8 @@ export const Hero = () => {
           </p>
 
           <div className="flex gap-4">
-            <Button text="Visit Blog" href="/blog" />
-            <Button text=" See Destinations" href="/destinations" outline />
+            <Button text="Visit Blog" href="#blog" />
+            <Button text=" See Destinations" href="#destinations" outline />
           </div>
         </motion.div>
 

@@ -107,7 +107,7 @@ export const RecentPosts = () => {
   }
 
   return (
-    <section className="py-16 px-4 ">
+    <section id="blog" className="py-16 px-4 ">
       <div className=" mx-auto rounded-4xl p-8  bg-white rounded-xl py-32 max-w-[1600px]">
          <h2 className="text-5xl text-center font-semibold text-gray-900 mb-32">
          Most recent blog posts
