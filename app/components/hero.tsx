@@ -37,10 +37,10 @@ export const Hero = () => {
           <p className="text-gray-500 mb-12 text-lg leading-relaxed">
             Hey! I'm <strong>Izzy Wilding</strong>, a photographer, web
             developer and traveller. Currently a digital nomad, I've been living
-            in Tbilisi, Georgia for a month. I&apos;m drawn to the quiet beauty
+            in Tbilisi, Georgia for a month. I'm drawn to the quiet beauty
             of nature, little surprises, and the raw, authentic feel of old,
-            rustic places. I believe travel isn&apos;t just about ticking off
-            destinations—it&apos;s about finding those unexpected, peaceful
+            rustic places. I believe travel isn't just about ticking off
+            destinations—it's about finding those unexpected, peaceful
             moments that stay with you.
           </p>
 
