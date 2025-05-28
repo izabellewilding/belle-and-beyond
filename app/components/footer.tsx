@@ -1,5 +1,6 @@
 // components/Footer.tsx
 import { Icons } from "./icons";
+import  Link  from 'next/link'
 
 export const Footer = () => {
   return (
@@ -19,24 +20,24 @@ export const Footer = () => {
           <h3 className="text-lg font-semibold mb-3">Explore</h3>
           <ul className="space-y-2 text-sm text-gray-300">
             <li>
-              <a href="/blog" className="hover:text-white">
+              <Link href="/blog" className="hover:text-white">
                 Blog
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="/destinations" className="hover:text-white">
+              <Link href="/destinations" className="hover:text-white">
                 Destinations
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="/tips" className="hover:text-white">
+              <Link href="/tips" className="hover:text-white">
                 Travel Tips
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="/photography" className="hover:text-white">
+              <Link href="/photography" className="hover:text-white">
                 Photography
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
