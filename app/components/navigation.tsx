@@ -23,23 +23,23 @@ export const Navigation = () => {
           {/* Navigation Links - Hidden on Mobile */}
           <div className="hidden md:flex space-x-8">
             <Link
-              href="/destinations"
+              href="#destinations"
               className="text-navy hover:text-tan transition-colors"
             >
               Destinations
             </Link>
             <Link
-              href="/guides"
+              href="#blog"
               className="text-navy hover:text-tan transition-colors"
             >
               Guides
             </Link>
-            <Link
+            {/* <Link
               href="/photography"
               className="text-navy hover:text-tan transition-colors"
             >
               Photography
-            </Link>
+            </Link> */}
             <Link
               href="/about"
               className="text-navy hover:text-tan transition-colors"

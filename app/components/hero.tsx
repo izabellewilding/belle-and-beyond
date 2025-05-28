@@ -30,7 +30,7 @@ export const Hero = () => {
           <p className="text-base mb-6 leading-tight text-gray-700">
             Travel guides & inspiring ideas
           </p>
-          <h2 className="text-3xl md:text-6xl font-bold mb-4 leading-tight text-gray-900">
+          <h2 className="text-5xl text-center md:text-start md:text-6xl font-bold mb-4 leading-tight text-gray-900">
             Helping you find your next adventure
           </h2>
 
@@ -44,7 +44,7 @@ export const Hero = () => {
             moments that stay with you.
           </p>
 
-          <div className="flex gap-4">
+          <div className="flex flex-col md:flex-row gap-4">
             <Button text="Visit Blog" href="#blog" />
             <Button text=" See Destinations" href="#destinations" outline />
           </div>
