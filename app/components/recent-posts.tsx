@@ -112,61 +112,31 @@ export const RecentPosts = () => {
          <h2 className="text-5xl text-center font-semibold text-gray-900 mb-32">
          Most recent blog posts
         </h2> 
-        <div className="grid gap-x-6 gap-y-10 sm:grid-cols-1 lg:grid-cols-3 justify-center">
-          {posts.map((post: Post) => (
-            <Link
-              key={post._id}
-              href={`/blog/${post.slug}`}
-              className={`group relative rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-200 ${
-                post.title.includes("San Gerardo")
-                  ? "col-span-5 h-[300px]"
-                  : "grid grid-cols-5"
-              }`}
-            >
-              {/* FEATURED IMAGE WITH TEXT OVERLAY */}
-              {post.title.includes("San Gerardo") ? (
-                <>
-                  <div className="relative w-full h-full shadow-lg">
-                    <Image
-                      src={post.mainImage}
-                      alt={post.title}
-                      fill
-                      className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105"
-                    />
-                    {/* <div className="absolute inset-0 bg-black/20"></div> */}
-                    <div className="absolute bottom-6 left-6 text-white z-10 max-w-[80%]">
-                      <h2 className="text-2xl md:text-3xl font-extrabold tracking-tight drop-shadow-md">
-                        San Gerardo de Rivas
-                      </h2>
-                      <p className="text-sm md:text-base mt-1 opacity-90 drop-shadow-sm">
-                        Costa Rica’s Most Magical Hidden Gem
-                      </p>
-                    </div>
-                  </div>
-                </>
-              ) : (
-                // DEFAULT CARD LAYOUT
-                <>
-                  <div className="relative aspect-[4/3] w-full col-span-3">
-                    <Image
-                      src={post.mainImage}
-                      alt={post.title}
-                      fill
-                      className="object-cover rounded-t-2xl group-hover:scale-105 transition-transform duration-300"
-                    />
-                  </div>
-                  <div className="p-5 col-span-2">
-                    <p className="text-sm text-gray-500 mb-1">{post.author}</p>
-                    <h3 className="text-lg font-semibold text-gray-900 leading-snug mb-1">
-                      {post.title}
-                    </h3>
-                    <p className="text-sm text-gray-600 leading-relaxed">
-                      {getPreviewText(post.body)}
-                    </p>
-                  </div>
-                </>
-              )}
-            </Link>
+        <div className="grid gap-x-6 gap-y-10 sm:grid-cols-1 md:grid-cols-4 justify-center">
+          {posts.map((post: Post) =>  (
+          <Link
+          key={post._id}
+          href={`/blog/${post.slug}`}
+          className="group relative rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-200"
+        >
+          <div className="relative w-full h-full shadow-lg aspect-[4/3]">
+            <Image
+              src={post.mainImage} // or post.mainImage if it's a full URL
+              alt={post.title}
+              fill
+              className="absolute object-cover w-full h-full transition-transform duration-300 group-hover:scale-105"
+            />
+            <div className="absolute bottom-6 left-6 text-white z-10 max-w-[80%]">
+              <h2 className="text-2xl md:text-3xl font-extrabold tracking-tight drop-shadow-md">
+                {post.title}
+              </h2>
+              <p className="text-sm md:text-base mt-1 opacity-90 drop-shadow-sm">
+                {getPreviewText(post.body)}
+              </p>
+            </div>
+          </div>
+        </Link>
+        
           ))}
         </div>
       </div>
