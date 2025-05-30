@@ -28,8 +28,8 @@ export const NewsSidebar = () => {
 
   return (
     <div className="space-y-6 md:pt-24 md:pb-24">
-        <h2 className="font-semibold">Recent articles</h2>
-      {posts.map((post) => (
+            <h3 className="text-gray-300 text-sm pb-2">RECENT ARTICLES</h3>
+            {posts.map((post) => (
         <div key={post._id} className="flex gap-4">
           <div className="w-16 h-16 relative flex-shrink-0 rounded-lg overflow-hidden ">
             <Image
