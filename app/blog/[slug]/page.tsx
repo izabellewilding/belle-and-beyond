@@ -11,6 +11,7 @@ import { SanityDocument } from "next-sanity";
 import { SanityImageObject } from "@sanity/image-url/lib/types/types";
 import { urlFor } from "@/sanity/lib/image";
 import { Icons } from "@/app/components/icons";
+import { NewsSidebar } from "../../components/news-sidebar"
 
 // Define a basic type for Portable Text blocks
 interface PortableTextBlock {
@@ -150,9 +151,9 @@ export default async function PostPage({
   return (
     <>
       <Navigation />
-      <article className="container mx-auto px-4 py-8 max-w-3xl">
-        {/* Centered Header Section */}
-        <div className="text-center mb-8 md:mt-12">
+      <section className="flex flex-col md:flex-row  px-4 py-8 max-w-8xl justify-center">
+      <article className="container max-w-4xl">
+        <div className="text-center mb-8 md:mt-12 md:pr-24 text-start">
           <h1 className="text-4xl font-bold mb-2">{post.title}</h1>
           <p className="text-gray-600 text-sm mb-4">
             By {post.author} •{" "}
@@ -172,6 +173,8 @@ export default async function PostPage({
           <PortableText value={post.body} components={components} />
         </div>
       </article>
+      <NewsSidebar />
+      </section>
       <Footer />
     </>
   );
