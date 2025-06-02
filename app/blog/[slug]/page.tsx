@@ -152,7 +152,7 @@ export default async function PostPage({
   return (
     <>
       <Navigation />
-      <section className="flex flex-col md:flex-row px-4 py-8 max-w-7xl mx-auto">
+      <section className="flex flex-col md:flex-row px-4 py-8 max-w-xl mx-auto">
   {/* Main Content Area */}
   <article className="w-full md:w-2/3 md:pr-8">
     <div className="text-center md:text-left mb-8 md:mt-12">

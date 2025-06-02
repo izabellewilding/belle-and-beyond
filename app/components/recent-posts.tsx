@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect } from "react";
 import { usePostsStore } from "../stores/usePostsStore";
+import PostCarousel from "../components/carousel";
 
 export const RecentPosts = () => {
   const { posts, loading, error, fetchPosts } = usePostsStore();
@@ -12,7 +13,7 @@ export const RecentPosts = () => {
     fetchPosts();
   }, [fetchPosts]);
 
-  const getPreviewText = (body: any[]) => {
+  const getPreviewText = (body) => {
     const firstBlock = body.find(
       (block) =>
         Array.isArray(block.children) &&
@@ -39,35 +40,9 @@ export const RecentPosts = () => {
         )}
 
         {!loading && !error && posts.length > 0 && (
-          <div className="grid gap-x-6 gap-y-10 sm:grid-cols-1 md:grid-cols-4 justify-center mt-10">
-            {posts.map((post: any) => (
-              <Link
-              key={post._id}
-              href={`/blog/${post.slug}`}
-              className="group relative rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-200 w-full"
-            >
-              {/* Card container with fixed height */}
-              <div className="relative w-full h-[500px]"> {/* Adjust height as needed */}
-                {/* Image fills the container */}
-                <Image
-                  src={post.mainImage}
-                  alt={post.title}
-                  fill
-                  className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105"
-                />
-                {/* Text in the top-left corner */}
-                <div className="absolute top-12 left-4 z-10 max-w-[80%] text-left text-gray-700">
-                  <h2 className="text-xl md:text-2xl font-extrabold tracking-tight drop-shadow-md mb-2">
-                    {post.title}
-                  </h2>
-                  <p className="text-sm md:text-base opacity-90 drop-shadow-sm">
-                    {getPreviewText(post.body)}
-                  </p>
-                </div>
-              </div>
-            </Link>
-            ))}
-          </div>
+          // Instead of grid, show nothing here
+          // We'll replace with carousel below
+          <PostCarousel posts={posts} />
         )}
       </div>
     </section>
