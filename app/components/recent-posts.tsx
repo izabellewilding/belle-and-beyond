@@ -25,7 +25,7 @@ export const RecentPosts = () => {
   };
 
   return (
-    <section id="blog" className="py-16 px-4">
+    <section id="blog" className="py-42 px-4 flex justify-center min-h-screen">
       <div className="mx-auto max-w-[1400px]">
         {/* <h2 className="text-4xl font-bold text-center mb-12">
           Recent Articles
@@ -38,12 +38,12 @@ export const RecentPosts = () => {
         )}
 
         {!loading && !error && posts.length > 0 && (
-          <div className="grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-16  sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
             {posts.map((post: any) => (
               <Link
                 key={post._id}
                 href={`/blog/${post.slug}`}
-                className="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden border border-gray-100"
+                className="bg-white rounded-sm shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden border border-gray-100 max-w-[375px]"
               >
                 <div className="relative w-full h-60">
                   <Image

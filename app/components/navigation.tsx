@@ -1,12 +1,12 @@
 import Link from "next/link";
 import Image from "next/image";
-// import { Icons } from "./icons";
+import { Icons } from "./icons";
 
 export const Navigation = () => {
   return (
     <nav className="sticky top-0 z-50 bg-white shadow-sm ">
       <div className="pl-10 pr-10 max-w-[1600px] mx-auto">
-        <div className="flex items-center justify-center h-16">
+        <div className="flex items-center justify-between h-16">
           {/* Navigation Links - Hidden on Mobile */}
           {/* <div className="hidden md:flex space-x-8">
             <Link
@@ -32,7 +32,7 @@ export const Navigation = () => {
 
           {/* Logo */}
           <Link href="/" className="flex items-center">
-            <div className="relative w-[225px] h-[40px]">
+            <div className="relative w-[175px] h-[40px]">
               <Image
                 src="/logo.svg"
                 alt="Belle and Beyond Logo"
@@ -43,9 +43,8 @@ export const Navigation = () => {
             </div>
           </Link>
 
-          {/* Button */}
           {/* <Button text="Contact" href="/contact" className="hidden md:block" /> */}
-          {/* <Icons /> */}
+          <Icons />
           {/* Mobile Menu Button */}
           {/* <button className="md:hidden p-2 text-navy" aria-label="Toggle menu">
             <svg

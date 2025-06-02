@@ -30,18 +30,18 @@ export const Hero = () => {
           <p className="text-base mb-6 leading-tight text-gray-700">
             Travel guides & inspiring ideas
           </p>
-          <h2 className="text-5xl text-center md:text-start md:text-6xl font-bold mb-4 leading-tight text-gray-900">
-            Helping you find your next adventure
+          <h2 className="text-4xl text-center md:text-start md:text-5xl font-bold mb-4 leading-tight text-gray-900 font-serif">
+            Find your next adventure!
           </h2>
 
           <p className="text-gray-500 mb-12 text-lg leading-relaxed">
             Hey! I'm <strong>Izabelle Wilding</strong>, a photographer, web
             developer and traveller. Currently a digital nomad, I've been living
-            in Tbilisi, Georgia for a month. I'm drawn to the quiet beauty
-            of nature, little surprises, and the raw, authentic feel of old,
-            rustic places. I believe travel isn't just about ticking off
-            destinations—it's about finding those unexpected, peaceful
-            moments that stay with you.
+            in Tbilisi, Georgia for a month. I'm drawn to the quiet beauty of
+            nature, little surprises, and the raw, authentic feel of old, rustic
+            places. I believe travel isn't just about ticking off
+            destinations—it's about finding those unexpected, peaceful moments
+            that stay with you.
           </p>
 
           <div className="flex flex-col md:flex-row gap-4">
