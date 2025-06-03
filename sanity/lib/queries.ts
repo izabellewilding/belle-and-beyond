@@ -33,14 +33,15 @@ export const getFeaturedDestinationsQuery = groq`*[_type == "destination" && fea
 }`;
 
 // Get recent posts
-export const getRecentPostsQuery = groq`*[_type == "post"] | order(publishedAt desc)[0...6] {
+export const getRecentPostsQuery = groq`*[_type == "post"] | order(publishedAt desc)[0...3] {
   _id,
   title,
   "slug": slug.current,
   "mainImage": mainImage.asset->url,
   publishedAt,
   "author": author->name,
-  body
+  "description": pt::text(body[0..2]),
+  "categories": categories[]->title
 }`;
 
 // Get a specific post by slug

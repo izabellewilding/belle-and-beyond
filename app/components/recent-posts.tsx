@@ -13,7 +13,7 @@ export const RecentPosts = () => {
 
   return (
     <section id="blog" className="py-42 px-4 flex justify-center min-h-screen">
-      <div className="mx-auto max-w-[1400px]">
+      <div className="mx-auto max-w-[1400px] w-full">
         {/* <h2 className="text-4xl font-bold text-center mb-12">
           Recent Articles
         </h2> */}
@@ -27,7 +27,7 @@ export const RecentPosts = () => {
           Recent articles from the blog
         </h2>
         {!loading && !error && posts.length > 0 && (
-          <div className="grid gap-16 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-8 sm:grid-cols-1 md:grid-cols-3">
             {posts.map((post) => (
               <ArticleCard
                 key={post._id}
@@ -36,12 +36,11 @@ export const RecentPosts = () => {
                   title: post.title,
                   slug: post.slug,
                   mainImage: post.mainImage,
-                  description:
-                    post.body?.[0]?.children?.[0]?.text?.substring(0, 100) +
-                    "...",
+                  description: post.description,
+                  categories: post.categories,
                 }}
                 showButton={true}
-                className="max-w-[375px]"
+                className="max-w-none"
               />
             ))}
           </div>

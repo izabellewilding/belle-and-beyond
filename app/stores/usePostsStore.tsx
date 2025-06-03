@@ -1,5 +1,5 @@
 // stores/usePostsStore.ts
-import {create} from "zustand";
+import { create } from "zustand";
 import { getRecentPosts } from "../../sanity/lib/api";
 
 export interface Post {
@@ -9,7 +9,8 @@ export interface Post {
   mainImage: string;
   publishedAt: string | null;
   author: string;
-  body: any[];
+  description: string;
+  categories: string[];
 }
 
 interface PostsState {
