@@ -34,7 +34,9 @@ export const ArticleCard = ({
         />
       </div>
       <div className="p-4 space-y-2 flex flex-col flex-grow">
-        <h3 className="text-lg font-serif line-clamp-2">{post.title}</h3>
+        <h3 className="text-lg font-serif line-clamp-2 font-bold">
+          {post.title}
+        </h3>
         {post.description && (
           <p className="text-sm text-gray-600 line-clamp-2 text-xs">
             {post.description}

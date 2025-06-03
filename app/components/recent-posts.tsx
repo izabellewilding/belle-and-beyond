@@ -23,7 +23,7 @@ export const RecentPosts = () => {
         {!loading && !error && posts.length === 0 && (
           <p className="text-center text-gray-500">No posts found.</p>
         )}
-        <h2 className="text-xl md:text-2xl font-bold mb-16 text-center leading-tight text-gray-900 font-serif">
+        <h2 className="text-xl md:text-2xl  mb-16 text-center leading-tight font-serif text-[#757679] ">
           Recent articles from the blog
         </h2>
         {!loading && !error && posts.length > 0 && (
