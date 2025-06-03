@@ -11,8 +11,8 @@ import { SanityDocument } from "next-sanity";
 import { SanityImageObject } from "@sanity/image-url/lib/types/types";
 import { urlFor } from "@/sanity/lib/image";
 import { Icons } from "@/app/components/icons";
-import { NewsSidebar } from "../../components/news-sidebar"
-import { AuthorWidget } from "../../components/author-widget"
+import { NewsSidebar } from "../../components/news-sidebar";
+import { AuthorWidget } from "../../components/author-widget";
 
 // Define a basic type for Portable Text blocks
 interface PortableTextBlock {
@@ -152,35 +152,36 @@ export default async function PostPage({
   return (
     <>
       <Navigation />
-      <section className="flex flex-col md:flex-row px-4 py-8 max-w-xl mx-auto">
-  {/* Main Content Area */}
-  <article className="w-full md:w-2/3 md:pr-8">
-    <div className="text-center md:text-left mb-8 md:mt-12">
-      <h1 className="text-4xl font-bold mb-2">{post.title}</h1>
-      <p className="text-gray-600 text-sm mb-4">
-        By {post.author} • {post.publishedAt ? formatDate(post.publishedAt) : ""}
-      </p>
-      {/* Social Icons */}
-      <div className="mb-4 flex justify-center md:justify-start">
-        <Icons />
-      </div>
-    </div>
+      <section className="flex flex-col md:flex-row px-4 py-8 max-w-7xl mx-auto">
+        {/* Main Content Area */}
+        <article className="w-full md:w-2/3 md:pr-8">
+          <div className="text-center md:text-left mb-8 md:mt-12">
+            <h1 className="text-4xl font-bold mb-2">{post.title}</h1>
+            <p className="text-gray-600 text-sm mb-4">
+              By {post.author} •{" "}
+              {post.publishedAt ? formatDate(post.publishedAt) : ""}
+            </p>
+            {/* Social Icons */}
+            <div className="mb-4 flex justify-center md:justify-start">
+              <Icons />
+            </div>
+          </div>
 
-    {/* Horizontal Rule */}
-    <hr className="border-gray-300 my-8" />
+          {/* Horizontal Rule */}
+          <hr className="border-gray-300 my-8" />
 
-    {/* Post Body */}
-    <div className="prose max-w-none">
-      <PortableText value={post.body} components={components} />
-    </div>
-  </article>
+          {/* Post Body */}
+          <div className="prose max-w-none">
+            <PortableText value={post.body} components={components} />
+          </div>
+        </article>
 
-  {/* Sidebar */}
-  <aside className="w-full md:w-1/3 md:pl-8 mt-8 md:mt-0 flex flex-col space-y-8">
-    <NewsSidebar />
-    <AuthorWidget />
-  </aside>
-</section>
+        {/* Sidebar */}
+        <aside className="w-full md:w-1/3 md:pl-8 mt-8 md:mt-0 flex flex-col space-y-8">
+          <NewsSidebar />
+          <AuthorWidget />
+        </aside>
+      </section>
       <Footer />
     </>
   );

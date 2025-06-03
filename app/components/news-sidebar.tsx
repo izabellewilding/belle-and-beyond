@@ -1,10 +1,9 @@
 "use client";
 
-
 import Image from "next/image";
 import Link from "next/link";
 import { usePostsStore } from "../stores/usePostsStore";
-import { useEffect } from "react"
+import { useEffect } from "react";
 
 interface Post {
   _id: string;
@@ -19,17 +18,16 @@ interface Props {
 }
 
 export const NewsSidebar = () => {
-    const { posts, loading, error, fetchPosts } = usePostsStore();
+  const { posts, loading, error, fetchPosts } = usePostsStore();
 
   useEffect(() => {
     fetchPosts();
   }, [fetchPosts]);
 
-
   return (
     <div className="space-y-6 md:pt-24 md:pb-24">
-            <h3 className="text-gray-300 text-sm pb-2">RECENT ARTICLES</h3>
-            {posts.map((post) => (
+      <h3 className="text-gray-300 text-sm pb-2">RECENT ARTICLES</h3>
+      {posts.map((post) => (
         <div key={post._id} className="flex gap-4">
           <div className="w-16 h-16 relative flex-shrink-0 rounded-lg overflow-hidden ">
             <Image
@@ -57,4 +55,4 @@ export const NewsSidebar = () => {
       ))}
     </div>
   );
-}
+};

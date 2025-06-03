@@ -38,13 +38,13 @@ export default async function DestinationsPage() {
                 key={destination._id}
                 className="group"
               >
-                <div className="relative h-[300px] overflow-hidden rounded-lg mb-4">
+                <div className="relative h-[100px] overflow-hidden rounded-lg mb-4">
                   {destination.coverImage ? (
                     <Image
                       src={destination.coverImage}
                       alt={destination.title}
                       fill
-                      className="object-cover transition-transform duration-500 group-hover:scale-110"
+                      className="object-contain transition-transform duration-500 group-hover:scale-110"
                     />
                   ) : (
                     <div className="w-full h-full bg-gray-200 flex items-center justify-center">

@@ -63,7 +63,7 @@ export default async function DestinationPage({
           </div>
 
           {/* Image that the text partially overlaps */}
-          <div className="relative md:mt-[-80px] w-full aspect-[1.77/1] overflow-hidden">
+          <div className="relative max-h-[375px] md:mt-[-80px] w-full aspect-[1.77/1] overflow-hidden">
             {destination.mainImage ? (
               <Image
                 src={destination.mainImage}
