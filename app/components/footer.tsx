@@ -1,14 +1,26 @@
 // components/Footer.tsx
 import { Icons } from "./icons";
-import  Link  from 'next/link'
+import Link from "next/link";
+import Image from "next/image";
 
 export const Footer = () => {
   return (
-    <footer className="bg-gray-900 text-white pt-12 pb-6 px-4 md:px-12">
+    <footer className="bg-[#2b281b] text-white pt-12 pb-6 px-4 md:px-12">
       <div className="max-w-[1600px] mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
         {/* Logo & About */}
         <div>
-          <h2 className="text-2xl font-bold mb-4">Belle & Beyond</h2>
+          {/* Logo */}
+          <Link href="/" className="">
+            <div className="relative w-[175px] h-[40px]">
+              <Image
+                src="/logo.svg"
+                alt="Belle and Beyond Logo"
+                fill
+                priority
+                className="object-contain"
+              />
+            </div>
+          </Link>{" "}
           <p className="text-sm text-gray-400">
             Sharing stories and snapshots from around the world. Travel through
             the lens with me.

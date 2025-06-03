@@ -48,7 +48,7 @@ export const Hero = () => {
 
           <div className="flex flex-col md:flex-row gap-4">
             <Button text="Visit Blog" href="#blog" />
-            <Button text="See Destinations" href="#destinations" outline />
+            <Button text="Discover" href="#destinations" outline />
           </div>
 
           <motion.div
