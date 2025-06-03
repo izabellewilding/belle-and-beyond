@@ -51,7 +51,7 @@ export const ArticleCard = ({
         )}
         {showButton && (
           <div className="mt-auto pt-4">
-            <Button text="Read article" href="#destinations" outline />
+            <Button text="Read article" href={`/blog/${post.slug}`} outline />
           </div>
         )}
       </div>
