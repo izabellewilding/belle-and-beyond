@@ -3,6 +3,7 @@ import { Navigation } from "./components/navigation";
 import { RecentPosts } from "./components/recent-posts";
 import { Footer } from "./components/footer";
 import { Suspense } from "react";
+import { About } from "./components/about";
 
 // Create a container for the async Destinations component
 const DestinationsContainer = async () => {
@@ -17,6 +18,7 @@ export default function Home() {
       <Navigation />
       <Hero />
       <RecentPosts />
+      <About />
       <Suspense
         fallback={
           <div className="py-16 text-center">Loading destinations...</div>

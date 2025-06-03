@@ -20,7 +20,6 @@ interface Destination {
 
 export default async function DestinationsPage() {
   const destinations = await getAllDestinations();
-  console.log("Destinations data:", destinations);
 
   return (
     <>
