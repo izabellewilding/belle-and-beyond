@@ -13,7 +13,7 @@ const DestinationsContainer = async () => {
 
 export default function Home() {
   return (
-    <div className="bg-gray-50">
+    <div className="">
       <Navigation />
       <Hero />
       <RecentPosts />

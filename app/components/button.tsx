@@ -15,10 +15,10 @@ export const Button = ({
   className = "",
 }: ButtonProps) => {
   const baseStyles =
-    "relative inline-block text-center px-4 py-4  text-md font-medium transition-colors duration-200 overflow-hidden group";
+    "relative inline-block text-center px-6 py-2 text-md font-medium transition-colors duration-200 overflow-hidden group";
   const filledStyle = "bg-navy text-white hover:bg-[#282d60]";
   const outlineStyle =
-    "border border-slate-400 text-slate-500 hover:text-slate-600 bg-transparent hover:border-slate-600";
+    "border border-navy text-navy hover:text-slate-600 bg-transparent hover:border-slate-600";
 
   const buttonClass = clsx(
     baseStyles,

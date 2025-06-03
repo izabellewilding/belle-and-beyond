@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
-import { Libre_Bodoni } from "next/font/google";
+import { Julius_Sans_One } from "next/font/google"; // ← ✅ use Julius Sans One
 import "./globals.css";
-// pages/_app.js
 
-const libreBodoni = Libre_Bodoni({
-  variable: "--font-libre-bodoni",
+// Load the font
+const juliusSansOne = Julius_Sans_One({
+  variable: "--font-julius-sans-one",
   subsets: ["latin"],
+  weight: "400", // Only 400 is available for this font
 });
 
 export const metadata: Metadata = {
@@ -19,7 +20,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={libreBodoni.variable}>
+    <html lang="en" className={juliusSansOne.variable}>
       <body>{children}</body>
     </html>
   );

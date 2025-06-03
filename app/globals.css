@@ -13,7 +13,7 @@
   --foreground: #1a202c;
 
   /* Fonts */
-  --font-serif: "Libre Bodoni", serif;
+  --font-serif: var(--font-julius-sans-one), sans-serif;
   --font-sans: Arial, Helvetica, sans-serif;
 }
 

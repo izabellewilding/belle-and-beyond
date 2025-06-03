@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect } from "react";
 import { usePostsStore } from "../stores/usePostsStore";
-import { FaHeart } from "react-icons/fa"; // heart icon from react-icons
+import { Button } from "../components/button";
 
 export const RecentPosts = () => {
   const { posts, loading, error, fetchPosts } = usePostsStore();
@@ -36,7 +36,9 @@ export const RecentPosts = () => {
         {!loading && !error && posts.length === 0 && (
           <p className="text-center text-gray-500">No posts found.</p>
         )}
-
+        <h2 className="text-xl md:text-2xl font-bold mb-16 text-center leading-tight text-gray-900 font-serif">
+          Recent articles from the blog
+        </h2>
         {!loading && !error && posts.length > 0 && (
           <div className="grid gap-16  sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
             {posts.map((post: any) => (
@@ -59,10 +61,7 @@ export const RecentPosts = () => {
                   <p className="text-sm text-gray-600">
                     {getPreviewText(post.body)}
                   </p>
-                  <div className="flex items-center justify-between text-xs text-gray-400 pt-4">
-                    <span>5 views</span>
-                    <FaHeart className="text-pink-500" />
-                  </div>
+                  <Button text="Read article" href="#destinations" outline />
                 </div>
               </Link>
             ))}

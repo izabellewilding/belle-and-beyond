@@ -6,9 +6,23 @@ export const Navigation = () => {
   return (
     <nav className="sticky top-0 z-50 bg-white shadow-sm ">
       <div className="pl-10 pr-10 max-w-[1600px] mx-auto">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex justify-between items-center  h-16">
+          {/* Logo */}
+          <Link href="/" className="">
+            <div className="relative w-[175px] h-[40px]">
+              <Image
+                src="/logo.svg"
+                alt="Belle and Beyond Logo"
+                fill
+                priority
+                className="object-contain"
+              />
+            </div>
+          </Link>
+
           {/* Navigation Links - Hidden on Mobile */}
-          {/* <div className="hidden md:flex space-x-8">
+
+          <div className="hidden md:flex space-x-8">
             <Link
               href="#destinations"
               className="text-navy hover:text-tan transition-colors"
@@ -28,23 +42,12 @@ export const Navigation = () => {
             >
               About
             </Link>
-          </div> */}
-
-          {/* Logo */}
-          <Link href="/" className="flex items-center">
-            <div className="relative w-[175px] h-[40px]">
-              <Image
-                src="/logo.svg"
-                alt="Belle and Beyond Logo"
-                fill
-                priority
-                className="object-contain"
-              />
-            </div>
-          </Link>
+          </div>
 
           {/* <Button text="Contact" href="/contact" className="hidden md:block" /> */}
+
           <Icons />
+
           {/* Mobile Menu Button */}
           {/* <button className="md:hidden p-2 text-navy" aria-label="Toggle menu">
             <svg
