@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
+import { Button } from "../components/button";
 import { getAllDestinations } from "@/sanity/lib/api";
 
 interface DestinationCardProps {
@@ -10,7 +10,7 @@ interface DestinationCardProps {
 
 const DestinationCard = ({ title, imageSrc, href }: DestinationCardProps) => {
   return (
-    <div className="relative h-[400px] group overflow-hidden rounded-2xl max-w-7xl py-16 px-4">
+    <div className="relative h-[400px] group overflow-hidden max-w-8xl px-4">
       <div className="absolute inset-0 bg-black/30 z-10" />
       <Image
         src={imageSrc}
@@ -20,12 +20,7 @@ const DestinationCard = ({ title, imageSrc, href }: DestinationCardProps) => {
       />
       <div className="absolute inset-0 flex flex-col items-center justify-center z-20 text-white">
         <h3 className="text-2xl font-bold mb-4">{title}</h3>
-        <Link
-          href={href}
-          className="border border-white text-white px-6 py-2 transition-colors hover:bg-white hover:text-black"
-        >
-          Explore
-        </Link>
+        <Button href={href} text="explore" white />
       </div>
     </div>
   );
@@ -43,8 +38,11 @@ export const Destinations = async () => {
   const destinations = await getAllDestinations();
 
   return (
-    <section id="destinations" className="py-16 px-4 max-w-7xl mx-auto text-center">
-      <h2 className="text-2xl font-semibold text-gray-700 mb-10">
+    <section
+      id="destinations"
+      className="py-16 px-4 max-w-7xl mx-auto text-center"
+    >
+      <h2 className="text-2xl font-serif text-center font-semibold text-gray-700 mb-10">
         More destinations
       </h2>
 
