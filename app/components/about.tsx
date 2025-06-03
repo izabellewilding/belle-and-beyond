@@ -60,30 +60,7 @@ export const About = () => {
   ];
 
   return (
-    <section className="relative min-h-screen w-full text-neutral-800 overflow-hidden py-24">
-      {/* Background with Parallax */}
-      <motion.div
-        className="absolute inset-0 -z-10"
-        initial={{ scale: 1.1 }}
-        animate={{ scale: 1 }}
-        transition={{
-          duration: 20,
-          repeat: Infinity,
-          repeatType: "reverse",
-          ease: "linear",
-        }}
-      >
-        <Image
-          src="/about.jpg"
-          alt="Nature background"
-          fill
-          className="object-cover"
-          priority
-          quality={100}
-        />
-        <div className="absolute inset-0 bg-black/20" />
-      </motion.div>
-
+    <section className="relative min-h-screen w-full text-neutral-800 overflow-hidden py-24 bg-[#DFDBD8]">
       {/* Content Grid */}
       <div className="max-w-7xl mx-auto px-4 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
