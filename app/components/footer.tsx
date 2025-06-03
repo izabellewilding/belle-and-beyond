@@ -13,7 +13,7 @@ export const Footer = () => {
           <Link href="/" className="">
             <div className="relative w-[175px] h-[40px]">
               <Image
-                src="/logo.svg"
+                src="/logo-white.png"
                 alt="Belle and Beyond Logo"
                 fill
                 priority
