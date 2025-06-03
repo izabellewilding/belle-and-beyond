@@ -60,7 +60,10 @@ export const About = () => {
   ];
 
   return (
-    <section className="relative min-h-screen w-full text-neutral-800 overflow-hidden py-24 bg-[#DFDBD8]">
+    <section
+      id="about"
+      className="relative min-h-screen w-full text-neutral-800 overflow-hidden py-24 bg-[#DFDBD8]"
+    >
       {/* Content Grid */}
       <div className="max-w-7xl mx-auto px-4 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">

@@ -29,7 +29,7 @@ export const Navigation = () => {
   const navLinks = [
     { href: "#destinations", label: "Destinations" },
     { href: "#blog", label: "Guides" },
-    { href: "/about", label: "About" },
+    { href: "#about", label: "About" },
   ];
 
   return (
