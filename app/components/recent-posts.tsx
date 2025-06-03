@@ -1,10 +1,8 @@
 "use client";
 
-import Image from "next/image";
-import Link from "next/link";
 import { useEffect } from "react";
 import { usePostsStore } from "../stores/usePostsStore";
-import { Button } from "../components/button";
+import { ArticleCard } from "./article-card";
 
 export const RecentPosts = () => {
   const { posts, loading, error, fetchPosts } = usePostsStore();
@@ -12,17 +10,6 @@ export const RecentPosts = () => {
   useEffect(() => {
     fetchPosts();
   }, [fetchPosts]);
-
-  const getPreviewText = (body) => {
-    const firstBlock = body.find(
-      (block) =>
-        Array.isArray(block.children) &&
-        block.children.some((child) => child.text.trim().length > 0)
-    );
-    if (!firstBlock) return "";
-    const text = firstBlock.children[0].text;
-    return text.length > 100 ? text.substring(0, 100) + "..." : text;
-  };
 
   return (
     <section id="blog" className="py-42 px-4 flex justify-center min-h-screen">
@@ -40,30 +27,22 @@ export const RecentPosts = () => {
           Recent articles from the blog
         </h2>
         {!loading && !error && posts.length > 0 && (
-          <div className="grid gap-16  sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-            {posts.map((post: any) => (
-              <Link
+          <div className="grid gap-16 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+            {posts.map((post) => (
+              <ArticleCard
                 key={post._id}
-                href={`/blog/${post.slug}`}
-                className="bg-white rounded-sm shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden border border-gray-100 max-w-[375px]"
-              >
-                <div className="relative w-full h-60">
-                  <Image
-                    src={post.mainImage}
-                    alt={post.title}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-                <div className="p-4 space-y-2">
-                  <div className="text-sm text-gray-500">Belle & Beyond</div>
-                  <h3 className="text-lg font-semibold">{post.title}</h3>
-                  <p className="text-sm text-gray-600">
-                    {getPreviewText(post.body)}
-                  </p>
-                  <Button text="Read article" href="#destinations" outline />
-                </div>
-              </Link>
+                post={{
+                  _id: post._id,
+                  title: post.title,
+                  slug: post.slug,
+                  mainImage: post.mainImage,
+                  description:
+                    post.body?.[0]?.children?.[0]?.text?.substring(0, 100) +
+                    "...",
+                }}
+                showButton={true}
+                className="max-w-[375px]"
+              />
             ))}
           </div>
         )}

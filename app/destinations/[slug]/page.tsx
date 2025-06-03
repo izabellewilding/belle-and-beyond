@@ -8,7 +8,7 @@ import { PortableText } from "@portabletext/react";
 import { notFound } from "next/navigation";
 import { Navigation } from "@/app/components/navigation";
 import { Footer } from "@/app/components/footer";
-import Link from "next/link";
+import { ArticleCard } from "@/app/components/article-card";
 import { PortableTextBlock } from "@portabletext/types";
 
 interface Post {
@@ -136,41 +136,8 @@ export default async function DestinationPage({
               Recent Articles
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {recentPosts.map((post: Post) => (
-                <div key={post._id} className="group">
-                  <Link href={`/blog/${post.slug}`} className="block">
-                    <div className="relative aspect-[4/3] mb-4 overflow-hidden">
-                      {post.mainImage ? (
-                        <Image
-                          src={post.mainImage}
-                          alt={post.title}
-                          fill
-                          className="object-cover transition-transform duration-300 group-hover:scale-105"
-                        />
-                      ) : (
-                        <div className="w-full h-full bg-gray-200"></div>
-                      )}
-                    </div>
-                    <h3 className="text-xl font-serif text-gray-800 group-hover:text-gray-600 transition-colors">
-                      {post.title}
-                    </h3>
-                    <p className="text-gray-600 mt-2 line-clamp-2">
-                      {post.description}
-                    </p>
-                    {post.categories && post.categories.length > 0 && (
-                      <div className="mt-2 flex flex-wrap gap-2">
-                        {post.categories.map((category) => (
-                          <span
-                            key={category}
-                            className="text-sm text-gray-500"
-                          >
-                            {category}
-                          </span>
-                        ))}
-                      </div>
-                    )}
-                  </Link>
-                </div>
+              {recentPosts.map((post) => (
+                <ArticleCard key={post._id} post={post} showButton={false} />
               ))}
             </div>
           </div>
