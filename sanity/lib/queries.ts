@@ -56,3 +56,16 @@ export const getPostBySlugQuery = groq`*[_type == "post" && slug.current == $slu
   "author": author->name,
   body,
 }`;
+
+// Get posts by country
+export const getPostsByCountryQuery = groq`*[_type == "post" && country._ref == $countryId] | order(publishedAt desc)[0...6] {
+  _id,
+  title,
+  "slug": slug.current,
+  "mainImage": mainImage.asset->url,
+  publishedAt,
+  "author": author->name,
+  "country": country->title,
+  "description": pt::text(body[0..2]),
+  "categories": categories[]->title
+}`;

@@ -29,7 +29,7 @@ export const About = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={controls}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="bg-[#ffffffaf] backdrop-blur-lg rounded-xl p-10 max-w-2xl text-center shadow-xl"
+          className="bg-[#ffffffaf] backdrop-blur-lg rounded-sm p-10 max-w-xl text-center shadow-xl"
         >
           <h2 className="text-xl md:text-2xl font-serif font-bold mb-6 text-gray-900">
             About Me
