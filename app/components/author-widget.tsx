@@ -17,11 +17,15 @@ export const AuthorWidget = () => {
         </div>
       </Link>
       {/* Round Image */}
-      <img
-        src="/images/selfie.jpg" // Replace with your image path or URL
-        alt="Author Face"
-        className="w-42 h-42 rounded-full object-cover border-2 border-gray-300"
-      />
+      <div className="relative w-42 h-42">
+        <Image
+          src="/images/selfie.jpg" // Replace with your image path or URL
+          alt="Author Face"
+          width={168}
+          height={168}
+          className="rounded-full object-cover border-2 border-gray-300"
+        />
+      </div>
 
       {/* Bullet Point Description */}
       <div className="text-gray-700 space-y-2 text-md">
