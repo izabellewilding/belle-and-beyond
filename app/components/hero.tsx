@@ -16,7 +16,7 @@ export const Hero = () => {
   }, [controls]);
 
   return (
-    <main className="bg-[#DFDBD8] text-center text-neutral-800 max-w-[1600px] mx-auto pt-[64px]">
+    <main className="bg-[#DFDBD8] text-center text-neutral-800 mx-auto pt-[64px]">
       <section
         style={{ backgroundImage: "url('/images/sunset-puerto-viejo.png')" }}
         className="grid grid-cols-1 md:grid-cols-1 min-h-screen items-center bg-cover bg-center relative"
