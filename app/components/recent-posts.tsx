@@ -11,7 +11,7 @@ const PostSkeleton = () => {
       <div className="relative w-full aspect-[4/3] bg-gray-200"></div>
       
       {/* Content skeleton */}
-      <div className="p-6 space-y-3">
+      <div className="p-6 space-y-3 flex-1">
         {/* Category pills skeleton */}
         <div className="flex gap-2 -mt-8 relative z-10">
           <div className="h-6 w-16 bg-gray-200 rounded-full"></div>
@@ -29,7 +29,7 @@ const PostSkeleton = () => {
         </div>
         
         {/* Button skeleton */}
-        <div className="mt-4">
+        <div className="mt-auto pt-4">
           <div className="h-10 bg-gray-200 rounded-full w-32"></div>
         </div>
       </div>
@@ -60,51 +60,53 @@ export const RecentPosts = () => {
           </p>
         </div>
 
-        {loading && (
-          <div className="grid gap-8 sm:grid-cols-1 md:grid-cols-3">
-            {[1, 2, 3].map((index) => (
-              <div
-                key={index}
-                className={`transform transition-all duration-500 ${
-                  index === 1 ? "md:translate-y-[-16px]" : ""
-                }`}
-              >
-                <PostSkeleton />
-              </div>
-            ))}
-          </div>
-        )}
+        <div className="min-h-[600px]"> {/* Container with minimum height */}
+          {loading && (
+            <div className="grid gap-8 sm:grid-cols-1 md:grid-cols-3 h-full">
+              {[1, 2, 3].map((index) => (
+                <div
+                  key={index}
+                  className={`transform transition-all duration-500 ${
+                    index === 1 ? "md:translate-y-[-16px]" : ""
+                  }`}
+                >
+                  <PostSkeleton />
+                </div>
+              ))}
+            </div>
+          )}
 
-        {error && <p className="text-center text-red-500">{error}</p>}
-        {!loading && !error && posts.length === 0 && (
-          <p className="text-center text-gray-500">No posts found.</p>
-        )}
+          {error && <p className="text-center text-red-500">{error}</p>}
+          {!loading && !error && posts.length === 0 && (
+            <p className="text-center text-gray-500">No posts found.</p>
+          )}
 
-        {!loading && !error && posts.length > 0 && (
-          <div className="grid gap-8 sm:grid-cols-1 md:grid-cols-3 transform hover:scale-[0.99] transition-transform duration-300">
-            {posts.map((post, index) => (
-              <div
-                key={post._id}
-                className={`transform transition-all duration-500 hover:translate-y-[-8px] ${
-                  index === 1 ? "md:translate-y-[-16px]" : ""
-                }`}
-              >
-                <ArticleCard
-                  post={{
-                    _id: post._id,
-                    title: post.title,
-                    slug: post.slug,
-                    mainImage: post.mainImage,
-                    description: post.description,
-                    categories: post.categories,
-                  }}
-                  showButton={true}
-                  className="max-w-none h-full"
-                />
-              </div>
-            ))}
-          </div>
-        )}
+          {!loading && !error && posts.length > 0 && (
+            <div className="grid gap-8 sm:grid-cols-1 md:grid-cols-3 transform hover:scale-[0.99] transition-transform duration-300">
+              {posts.map((post, index) => (
+                <div
+                  key={post._id}
+                  className={`transform transition-all duration-500 hover:translate-y-[-8px] ${
+                    index === 1 ? "md:translate-y-[-16px]" : ""
+                  }`}
+                >
+                  <ArticleCard
+                    post={{
+                      _id: post._id,
+                      title: post.title,
+                      slug: post.slug,
+                      mainImage: post.mainImage,
+                      description: post.description,
+                      categories: post.categories,
+                    }}
+                    showButton={true}
+                    className="max-w-none h-full"
+                  />
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
       </div>
     </section>
   );

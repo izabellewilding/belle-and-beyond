@@ -20,12 +20,11 @@ export const ArticleCard = ({
   showButton = false,
   className = "",
 }: ArticleCardProps) => {
+  const href = `/blog/${post.slug}`;
+  
   return (
-    <Link
-      href={`/blog/${post.slug}`}
-      className={`bg-white rounded-lg shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 flex flex-col h-full ${className}`}
-    >
-      <div className="relative w-full aspect-[4/3] overflow-hidden">
+    <div className={`bg-white rounded-lg shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 flex flex-col h-full ${className}`}>
+      <Link href={href} className="block relative w-full aspect-[4/3] overflow-hidden">
         <Image
           src={post.mainImage}
           alt={post.title}
@@ -44,11 +43,13 @@ export const ArticleCard = ({
             ))}
           </div>
         )}
-      </div>
+      </Link>
       <div className="p-6 space-y-3 flex flex-col flex-grow">
-        <h3 className="text-xl font-serif line-clamp-2 group-hover:text-gray-700 transition-colors">
-          {post.title}
-        </h3>
+        <Link href={href}>
+          <h3 className="text-xl font-serif line-clamp-2 group-hover:text-gray-700 transition-colors">
+            {post.title}
+          </h3>
+        </Link>
         {post.description && (
           <p className="text-sm text-gray-600 line-clamp-2">
             {post.description}
@@ -56,10 +57,10 @@ export const ArticleCard = ({
         )}
         {showButton && (
           <div className="mt-auto pt-4">
-            <Button text="Read article" href={`/blog/${post.slug}`} outline />
+            <Button text="Read article" href={href} outline />
           </div>
         )}
       </div>
-    </Link>
+    </div>
   );
 };
