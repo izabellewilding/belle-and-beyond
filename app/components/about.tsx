@@ -62,7 +62,7 @@ export const About = () => {
   return (
     <section
       id="about"
-      className="relative min-h-screen w-full text-neutral-800 overflow-hidden py-24 bg-[#fff9ef]"
+      className="relative min-h-screen w-full text-neutral-800 overflow-hidden py-24 bg-[#fdfbff]"
     >
       {/* Content Grid */}
       <div className="max-w-7xl mx-auto px-4 relative z-10">

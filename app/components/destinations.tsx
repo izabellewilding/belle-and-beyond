@@ -42,7 +42,7 @@ export const Destinations = async () => {
       id="destinations"
       className="py-16 px-4 max-w-7xl mx-auto text-center"
     >
-      <h2 className="text-2xl font-serif text-center font-semibold text-gray-700 mb-10">
+      <h2 className="text-3xl font-serif text-center font-semibold text-gray-700 mb-10 text-black text-bold">
         More destinations
       </h2>
 
