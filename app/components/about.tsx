@@ -96,7 +96,7 @@ export const About = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
-              className="text-3xl md:text-4xl font-serif mb-6"
+              className="text-3xl md:text-4xl font-serif mb-6 text-black font-bold"
             >
               About Me
             </motion.h2>

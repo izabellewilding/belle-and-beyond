@@ -52,7 +52,7 @@ export const RecentPosts = () => {
         </h2> */}
 
         <div className="max-w-2xl mx-auto text-center mb-16">
-          <h2 className="text-3xl md:text-4xl mb-4 font-serif text-[#757679]">
+          <h2 className="text-3xl md:text-4xl mb-4 font-serif text-[#757679] font-bold text-black">
             Recent articles from the blog
           </h2>
           <p className="text-lg text-gray-600">

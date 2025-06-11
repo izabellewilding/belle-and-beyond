@@ -17,13 +17,13 @@ export const AuthorWidget = () => {
         </div>
       </Link>
       {/* Round Image */}
-      <div className="relative w-42 h-42">
+      <div className="relative w-[168px] h-[168px] rounded-full overflow-hidden">
         <Image
-          src="/images/selfie.jpg" // Replace with your image path or URL
+          src="/images/selfie.jpg"
           alt="Author Face"
           width={168}
           height={168}
-          className="rounded-full object-cover border-2 border-gray-300"
+          className="object-cover w-full h-full"
         />
       </div>
 
@@ -31,7 +31,7 @@ export const AuthorWidget = () => {
       <div className="text-gray-700 space-y-2 text-md">
         {/* <h3 className="text-gray-300 text-sm pb-2">ABOUT ME</h3> */}
         Hi, I'm Izabelle! A passionate travel writer with a love for
-        photography, art and culture. I work as a Fontend Developer and
+        photography, art and culture. I work as a Frontend Developer and
         currently live in Tbilisi, Georgia. I have a degree in Linguistics from
         University College London and spent most of my childhood living in rural
         Wales.
