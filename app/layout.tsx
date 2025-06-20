@@ -15,6 +15,9 @@ export const metadata: Metadata = {
   description: "Travel blog and photography",
 };
 
+// Google Analytics ID
+const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_ID || 'G-2DZ5GVQ2FF';
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -25,21 +28,20 @@ export default function RootLayout({
       <head>
         {/* Google Analytics */}
         <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
           strategy="afterInteractive"
-          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
         />
-        <Script
-          id="google-analytics"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}');
-            `,
-          }}
-        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GA_MEASUREMENT_ID}', {
+              page_title: document.title,
+              page_location: window.location.href,
+            });
+          `}
+        </Script>
       </head>
       <body>{children}</body>
     </html>
