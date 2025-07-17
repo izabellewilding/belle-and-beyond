@@ -46,7 +46,7 @@ export const ArticleCard = ({
       </Link>
       <div className="p-6 space-y-3 flex flex-col flex-grow">
         <Link href={href}>
-          <h3 className="text-xl font-serif line-clamp-2 group-hover:text-gray-700 transition-colors">
+          <h3 className="text-xl font-semibold line-clamp-2 group-hover:text-gray-700 transition-colors">
             {post.title}
           </h3>
         </Link>
@@ -56,8 +56,8 @@ export const ArticleCard = ({
           </p>
         )}
         {showButton && (
-          <div className="mt-auto pt-4">
-            <Button text="Read article" href={href} outline />
+          <div className="mt-auto pt-4 font-semibold">
+            <Link href={href}>Read more</Link>
           </div>
         )}
       </div>

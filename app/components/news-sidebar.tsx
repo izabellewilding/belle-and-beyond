@@ -101,15 +101,15 @@ export const NewsSidebar = ({
   if (displayPosts.length === 0) {
     return (
       <div className={`space-y-6 md:pt-24 md:pb-24 ${className}`}>
-        <h3 className="text-gray-300 text-sm pb-2">RECENT ARTICLES</h3>
-        <div className="text-gray-500 text-sm">No recent articles found.</div>
+      <h3 className="text-gray-400 text-sm pb-5 font-serif">LATEST ARTICLES</h3>
+      <div className="text-gray-500 text-sm">No recent articles found.</div>
       </div>
     );
   }
 
   return (
-    <div className={`space-y-6 md:pt-24 md:pb-24 ${className}`}>
-      <h3 className="text-gray-300 text-sm pb-2">RECENT ARTICLES</h3>
+    <div className={`space-y-6 md:pt-12 md:pb-24 ${className}`}>
+      <h3 className="text-gray-400 text-sm pb-5 font-serif">LATEST ARTICLES</h3>
       <div className="space-y-4">
         {displayPosts.map((post: Post) => (
           <NewsItem key={post._id} post={post} />

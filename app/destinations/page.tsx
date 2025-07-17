@@ -72,7 +72,7 @@ export default async function DestinationsPage() {
             </p>
             <Link
               href="/studio"
-              className="inline-block bg-navy text-white px-6 py-2 rounded-sm hover:bg-opacity-90"
+              className="inline-block bg-purple text-white px-6 py-2 rounded-sm hover:bg-opacity-90"
             >
               Go to Sanity Studio
             </Link>

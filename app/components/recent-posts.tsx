@@ -51,11 +51,11 @@ export const RecentPosts = () => {
           Recent Articles
         </h2> */}
 
-        <div className="max-w-2xl mx-auto text-center mb-16">
-          <h2 className="text-3xl md:text-4xl mb-4 font-serif text-[#757679] font-bold text-black">
+        <div className="max-w-2xl mb-14 md:mb-24 md:mt-24">
+          <h2 className="text-4xl md:text-5xl mb-2 md:mb-8 text-[#757679] font-bold text-black">
             Recent articles from the blog
           </h2>
-          <p className="text-lg text-gray-600">
+          <p className="text-md md:text-xl text-gray-600">
             Discover our latest stories, travel guides, and local insights
           </p>
         </div>
@@ -83,7 +83,7 @@ export const RecentPosts = () => {
 
           {!loading && !error && posts.length > 0 && (
             <div className="grid gap-8 sm:grid-cols-1 md:grid-cols-3 transform hover:scale-[0.99] transition-transform duration-300">
-              {posts.map((post, index) => (
+              {posts.map((post, index) => {return console.log(post.title), (
                 <div
                   key={post._id}
                   className={`transform transition-all duration-500 hover:translate-y-[-8px] ${
@@ -103,7 +103,7 @@ export const RecentPosts = () => {
                     className="max-w-none h-full"
                   />
                 </div>
-              ))}
+              )})}
             </div>
           )}
         </div>

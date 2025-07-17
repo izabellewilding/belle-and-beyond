@@ -153,7 +153,7 @@ export default async function PostPage({
   return (
     <>
       <Navigation />
-      <section className="flex flex-col md:flex-row px-4 py-8 max-w-7xl mx-auto">
+      <section className="flex flex-col md:flex-row px-4 py-24 px-8 md:py-32 max-w-7xl mx-auto">
         {/* Main Content Area */}
         <article className="w-full md:w-2/3 md:pr-8">
           <div className="text-center md:text-left mb-8 md:mt-12">
@@ -179,8 +179,9 @@ export default async function PostPage({
 
         {/* Sidebar */}
         <aside className="w-full md:w-1/3 md:pl-8 mt-8 md:mt-0 flex flex-col space-y-8">
-          <NewsSidebar />
+      
           <AuthorWidget />
+          <NewsSidebar />
         </aside>
       </section>
       <Footer />
