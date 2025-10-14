@@ -1,13 +1,22 @@
 import type { Metadata } from "next";
-import { Julius_Sans_One } from "next/font/google"; // ← ✅ use Julius Sans One
+import localFont from "next/font/local";
 import "./globals.css";
 import Script from "next/script";
 
-// Load the font
-const juliusSansOne = Julius_Sans_One({
-  variable: "--font-julius-sans-one",
-  subsets: ["latin"],
-  weight: "400", // Only 400 is available for this font
+// ✅ Load local fonts
+const cabinetGrotesk = localFont({
+  src: [
+   { path: "./fonts/CabinetGrotesk_Complete/CabinetGrotesk-Black.woff2", weight: "900", style: "normal" },
+  { path: "./fonts/CabinetGrotesk_Complete/CabinetGrotesk-Bold.woff2", weight: "700", style: "normal" },
+  { path: "./fonts/CabinetGrotesk_Complete/CabinetGrotesk-Extrabold.woff2", weight: "800", style: "normal" },
+  { path: "./fonts/CabinetGrotesk_Complete/CabinetGrotesk-Extralight.woff2", weight: "200", style: "normal" },
+  { path: "./fonts/CabinetGrotesk_Complete/CabinetGrotesk-Light.woff2", weight: "300", style: "normal" },
+  { path: "./fonts/CabinetGrotesk_Complete/CabinetGrotesk-Medium.woff2", weight: "500", style: "normal" },
+  { path: "./fonts/CabinetGrotesk_Complete/CabinetGrotesk-Regular.woff2", weight: "400", style: "normal" },
+  { path: "./fonts/CabinetGrotesk_Complete/CabinetGrotesk-Thin.woff2", weight: "100", style: "normal" },
+ ],
+  variable: "--font-cabinet-grotesk",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -15,8 +24,10 @@ export const metadata: Metadata = {
   description: "Travel blog and photography",
 };
 
+
+
 // Google Analytics ID
-const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_ID || 'G-2DZ5GVQ2FF';
+const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_ID || "G-2DZ5GVQ2FF";
 
 export default function RootLayout({
   children,
@@ -24,7 +35,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={juliusSansOne.variable}>
+    <html lang="en" className={cabinetGrotesk.variable}>
       <head>
         {/* Google Analytics */}
         <Script
@@ -43,7 +54,9 @@ export default function RootLayout({
           `}
         </Script>
       </head>
-      <body>{children}</body>
+      <body className="font-sans text-neutral-800 bg-[#DFDBD8]">
+        {children}
+      </body>
     </html>
   );
 }

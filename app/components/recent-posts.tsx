@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import { usePostsStore } from "../stores/usePostsStore";
 import { ArticleCard } from "./article-card";
+import { Button } from "./button";
 
 const PostSkeleton = () => {
   return (
@@ -51,15 +52,19 @@ export const RecentPosts = () => {
           Recent Articles
         </h2> */}
 
-        <div className="max-w-2xl mb-14 md:mb-24 md:mt-24">
-          <h2 className="text-4xl md:text-5xl mb-2 md:mb-8 text-[#757679] font-bold text-black">
-            Recent articles from the blog
+        <div className="flex flex-row justify-between  mb-14 md:mb-24 md:mt-24">
+        <div className="">
+          <h2 className="text-4xl md:text-4xl mb-2 md:mb-8 text-[#757679] font-medium text-black">
+            Featured Articles
           </h2>
           <p className="text-md md:text-xl text-gray-600">
             Discover our latest stories, travel guides, and local insights
           </p>
         </div>
+          <Button text="View all articles" href="/blog" />
 
+        </div>
+      
         <div className="min-h-[600px]"> {/* Container with minimum height */}
           {loading && (
             <div className="grid gap-8 sm:grid-cols-1 md:grid-cols-3 h-full">

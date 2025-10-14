@@ -3,6 +3,7 @@
 import { motion, useScroll, useTransform, useAnimation } from "framer-motion";
 import { useEffect, useState } from "react";
 import { Button } from "./button";
+import Image from "next/image";
 
 export const Hero = () => {
   const { scrollY } = useScroll();
@@ -16,88 +17,55 @@ export const Hero = () => {
   }, [controls]);
 
   return (
-    <main className="bg-[#DFDBD8] text-center text-neutral-800 mx-auto pt-[64px]">
-      <section
-        style={{ backgroundImage: "url('/images/sunset-puerto-viejo.png')" }}
-        className="grid grid-cols-1 md:grid-cols-1 min-h-screen items-center bg-cover bg-center relative"
-      >
-        {/* Subtle overlay */}
-        <div className="absolute inset-0 bg-black/10" />
+    <main className="bg-[#DFDBD8] text-neutral-800">
+      <section className="grid grid-cols-1 md:grid-cols-2 min-h-screen">
+        {/* LEFT SIDE: Image */}
+        <div className="relative w-full h-[50vh] md:h-auto">
+          <Image
+            src="/images/algarve_sunset_zia_portrait.JPG"
+            alt="Sunset in Puerto Viejo"
+            fill
+            className="object-cover"
+            priority
+          />
+          {/* Optional overlay for aesthetic */}
+          <div className="absolute inset-0 bg-black/20" />
+        </div>
 
+        {/* RIGHT SIDE: Text + CTA */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={controls}
           style={{ opacity }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="z-10 p-10 flex flex-col justify-center items-center max-w-4xl mx-auto"
+          className="flex flex-col justify-center items-start px-10 md:px-16 lg:px-24 py-12 bg-[#DFDBD8]"
         >
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 20 }}
+            transition={{ delay: 0.3, duration: 0.6 }}
+            className="text-4xl md:text-6xl font-sans text-neutral-900 mb-6 leading-tight"
+          >
+            Beyond Borders Travel
+          </motion.h1>
+
           <motion.p
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 10 }}
-            transition={{ delay: 0.2, duration: 0.6 }}
-            className="text-base mb-6 leading-tight text-gray-100 tracking-wide uppercase"
+            transition={{ delay: 0.5, duration: 0.6 }}
+            className="text-lg md:text-xl text-neutral-700 mb-8 max-w-md"
           >
-            Travel guides & inspiring ideas
+            Discover calm in the chaos and the stories behind every sunset.
+            Explore destinations that inspire creativity and connection.
           </motion.p>
 
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 20 }}
-            transition={{ delay: 0.4, duration: 0.6 }}
-            className="text-4xl font-serif md:text-6xl mb-8 leading-tight text-white"
-          >
-            Discover your next adventure
-          </motion.h2>
-
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 20 }}
-            transition={{ delay: 0.6, duration: 0.6 }}
-            className="flex flex-col md:flex-row gap-4"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 10 }}
+            transition={{ delay: 0.7, duration: 0.6 }}
           >
-            <Button text="Visit Blog" href="#blog" />
-            <Button text="Discover" href="#destinations" outline />
+            <Button text="Discover More" href="#destinations" />
           </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{
-              opacity: isLoaded ? 1 : 0,
-              y: isLoaded ? [0, 10, 0] : 0,
-            }}
-            transition={{
-              opacity: { delay: 1.2, duration: 0.6 },
-              y: { duration: 2, repeat: Infinity, ease: "easeInOut" },
-            }}
-            className="mt-16"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="w-10 h-10 text-white/80"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth={2}
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M19 9l-7 7-7-7"
-              />
-            </svg>
-          </motion.div>
-        </motion.div>
-
-        {/* Glassmorphism Panel for Small Screens */}
-        <motion.div
-          initial={{ y: 100 }}
-          animate={{ y: isLoaded ? 0 : 100 }}
-          transition={{ delay: 0.8, duration: 0.6 }}
-          className="md:hidden fixed bottom-0 w-full p-6 bg-white/10 backdrop-blur-lg rounded-t-3xl shadow-lg text-center"
-        >
-          <p className="text-base font-medium text-white">
-            Discover calm in the chaos, and stories behind every sunset.
-          </p>
         </motion.div>
       </section>
     </main>

@@ -14,6 +14,11 @@ const config: Config = {
         tan: '#c9b991',
         cream: '#f5efe6',
       },
+    fontFamily: {
+      sans: ["var(--font-cabinet-grotesk)", "sans-serif"],
+      heading: ["var(--font-cabinet-grotesk)", "sans-serif"],
+    },
+    
     },
   },
   plugins: [],
