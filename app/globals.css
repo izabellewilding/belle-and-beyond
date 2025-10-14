@@ -6,6 +6,7 @@
   --color-tan: #c9b991;
   --color-cream: #f5efe6;
   --color-white: white;
+  --font-sans: var(--font-cabinet-grotesk), ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
 }
 
 :root {
@@ -14,7 +15,6 @@
 
   /* Fonts */
   --font-serif: var(--font-julius-sans-one), sans-serif;
-  --font-sans: Arial, Helvetica, sans-serif;
 }
 
 /* @media (prefers-color-scheme: dark) {
@@ -26,5 +26,4 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
 }
