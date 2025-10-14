@@ -2,8 +2,8 @@
 
 import { motion, useScroll, useTransform, useAnimation } from "framer-motion";
 import { useEffect, useState } from "react";
-import { Button } from "./button";
 import Image from "next/image";
+import Link from "next/link";
 
 export const Hero = () => {
   const { scrollY } = useScroll();
@@ -15,6 +15,24 @@ export const Hero = () => {
     controls.start({ opacity: 1, y: 0 });
     setIsLoaded(true);
   }, [controls]);
+
+  const cards = [
+    {
+      title: "Hidden Beaches",
+      href: "#beaches",
+      src: "/images/algarve_sunset_zia_portrait.JPG",
+    },
+    {
+      title: "Mountain Trails",
+      href: "#mountains",
+      src: "/images/algarve_sunset_zia_portrait.JPG",
+    },
+    {
+      title: "City Escapes",
+      href: "#cities",
+      src: "/images/algarve_sunset_zia_portrait.JPG",
+    },
+  ] as const;
 
   return (
     <main className="bg-[#DFDBD8] text-neutral-800">
@@ -32,42 +50,44 @@ export const Hero = () => {
           <div className="absolute inset-0 bg-black/20" />
         </div>
 
-        {/* RIGHT SIDE: Text + CTA */}
+        {/* RIGHT SIDE: 3 stacked rectangular cards filling column */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={controls}
           style={{ opacity }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="flex flex-col justify-center items-start px-10 md:px-16 lg:px-24 py-12 bg-[#DFDBD8]"
+          className="flex flex-col items-stretch justify-stretch px-0 md:px-0 lg:px-0 py-0 bg-[#DFDBD8] h-full"
         >
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 20 }}
-            transition={{ delay: 0.3, duration: 0.6 }}
-            className="text-4xl md:text-6xl font-sans text-neutral-900 mb-6 leading-tight"
-          >
-            Beyond Borders Travel
-          </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 10 }}
-            transition={{ delay: 0.5, duration: 0.6 }}
-            className="text-lg md:text-xl text-neutral-700 mb-8 max-w-md"
-          >
-            Discover calm in the chaos and the stories behind every sunset.
-            Explore destinations that inspire creativity and connection.
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 10 }}
-            transition={{ delay: 0.7, duration: 0.6 }}
-          >
-            <Button text="Discover More" href="#destinations" />
-          </motion.div>
+          {cards.map((card, index) => (
+            <motion.div
+              key={card.title}
+              className="flex-1"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 20 }}
+              transition={{ delay: 0.1 + index * 0.1, duration: 0.5 }}
+            >
+              <Link href={card.href} className="group block h-full">
+                <div className="relative w-full h-full">
+                  <Image
+                    src={card.src}
+                    alt={card.title}
+                    fill
+                    className="object-cover"
+                    sizes="(min-width: 1024px) 50vw, 100vw"
+                    priority={index === 0}
+                  />
+                  <div className="absolute inset-0 bg-black/10 group-hover:bg-black/5 transition-colors" />
+                  <div className="absolute bottom-3 left-4 right-auto">
+                    <div className="inline-block rounded-full bg-white/85 px-4 py-2 text-sm md:text-base font-medium text-neutral-900">
+                      {card.title}
+                    </div>
+                  </div>
+                </div>
+              </Link>
+            </motion.div>
+          ))}
         </motion.div>
       </section>
     </main>
   );
-};
+}
