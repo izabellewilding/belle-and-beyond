@@ -1,8 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
-import { Icons } from "./icons";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { usePathname } from "next/navigation";
@@ -27,38 +25,30 @@ export const Navigation = () => {
   }, [pathname]);
 
   const navLinks = [
-    { href: "#destinations", label: "Destinations" },
-    { href: "#blog", label: "Guides" },
+    { href: "#news", label: "News" },
+    { href: "#our-story", label: "Our Story" },
+    { href: "#services", label: "Services" },
     { href: "#about", label: "About" },
+    { href: "#social", label: "Social" },
   ];
 
   return (
-    <nav
-      className={`fixed w-full top-0 z-50 transition-all duration-300 ${
-        isScrolled ? "bg-white/80 backdrop-blur-md shadow-md" : "bg-white"
-      }`}
-    >
-      <div className="px-4 md:px-10 max-w-[1600px] mx-auto">
-        <div className="flex justify-between items-center h-16">
-          {/* Logo */}
+    <nav className={`fixed w-full top-0 z-50 transition-all duration-300 ${isScrolled ? "bg-white/80 backdrop-blur-md shadow-md" : "bg-white"}`}>
+      <div className="px-6 md:px-10 lg:px-14 max-w-[1600px] mx-auto">
+        <div className="flex justify-between items-center h-20">
+          {/* Brand */}
           <Link href="/" className="relative z-50">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
+            <motion.span
+              initial={{ opacity: 0, x: -12 }}
               animate={{ opacity: 1, x: 0 }}
-              className="relative w-[175px] h-[40px]"
+              className="text-2xl md:text-3xl text-neutral-900 font-serif"
             >
-              <Image
-                src="/logo.svg"
-                alt="Belle and Beyond Logo"
-                fill
-                priority
-                className="object-contain"
-              />
-            </motion.div>
+              Verge
+            </motion.span>
           </Link>
 
           {/* Desktop Navigation Links */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link, index) => (
               <motion.div
                 key={link.href}
@@ -68,19 +58,19 @@ export const Navigation = () => {
               >
                 <Link
                   href={link.href}
-                  className="text-gray-800 hover:text-gray-600 transition-colors relative group py-2"
+                  className="text-neutral-800 hover:text-neutral-600 transition-colors py-2"
                 >
                   {link.label}
-                  <span className="absolute bottom-0 left-0 w-full h-0.5 bg-gray-800 transform scale-x-0 transition-transform duration-300 group-hover:scale-x-100" />
                 </Link>
               </motion.div>
             ))}
-            <motion.div
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
-            >
-              <Icons />
+            <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}>
+              <Link
+                href="#contact"
+                className="inline-flex items-center rounded-full bg-neutral-900 text-white px-5 py-2 text-sm hover:bg-neutral-800 transition-colors"
+              >
+                Get In Touch
+              </Link>
             </motion.div>
           </div>
 
@@ -130,13 +120,14 @@ export const Navigation = () => {
                       </Link>
                     </motion.div>
                   ))}
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.3 }}
-                    className="pt-4"
-                  >
-                    <Icons />
+                  <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }} className="pt-4">
+                    <Link
+                      href="#contact"
+                      className="inline-flex items-center rounded-full bg-neutral-900 text-white px-6 py-2 text-base"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      Get In Touch
+                    </Link>
                   </motion.div>
                 </div>
               </motion.div>
