@@ -19,10 +19,11 @@ export default function Home() {
       <Navigation />
       <Hero />
       {/* Gallery below hero, aligned to the right side */}
+    
+      <RecentPosts />
       <div className="w-full flex justify-end">
         <GalleryDirectory />
       </div>
-      <RecentPosts />
     
       {/* <Suspense
         fallback={

@@ -34,8 +34,8 @@ export const Navigation = () => {
 
   return (
     <nav className={`fixed w-full top-0 z-50 transition-all duration-300 ${isScrolled ? "bg-white/80 backdrop-blur-md shadow-md" : "bg-white"}`}>
-      <div className="px-6 md:px-10 lg:px-14 max-w-[1600px] mx-auto">
-        <div className="flex justify-between items-center h-20">
+      <div className="w-full px-3 md:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-20 pt-1 md:pt-2">
           {/* Brand */}
           <Link href="/" className="relative z-50">
             <motion.span
