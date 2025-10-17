@@ -45,7 +45,7 @@ export default function RootLayout({
         <Script id="google-analytics" strategy="afterInteractive">
           {`
             window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
+            function gtag(){dataLayer.push(arguments);} 
             gtag('js', new Date());
             gtag('config', '${GA_MEASUREMENT_ID}', {
               page_title: document.title,
@@ -54,7 +54,7 @@ export default function RootLayout({
           `}
         </Script>
       </head>
-      <body className="font-sans text-neutral-800 bg-[#DFDBD8]">
+      <body className="font-sans text-neutral-800 bg-[#e4e2e3]">
         {children}
       </body>
     </html>

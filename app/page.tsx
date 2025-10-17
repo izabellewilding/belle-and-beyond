@@ -23,14 +23,14 @@ export default function Home() {
         <GalleryDirectory />
       </div>
       <RecentPosts />
-      <About />
-      <Suspense
+    
+      {/* <Suspense
         fallback={
           <div className="py-16 text-center">Loading destinations...</div>
         }
       >
         <DestinationsContainer />
-      </Suspense>
+      </Suspense> */}
       <Footer />
     </div>
   );

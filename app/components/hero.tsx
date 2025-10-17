@@ -12,7 +12,7 @@ export const Hero = () => {
   }, [controls]);
 
   return (
-    <section className="relative bg-[#DFDBD8] text-neutral-800 h-[90vh] md:h-screen">
+    <section className="relative bg-[#e4e2e3] text-neutral-800 h-[90vh] md:h-screen">
       <div className="mx-auto max-w-6xl px-6 md:px-10 lg:px-14 pt-16 md:pt-24">
         <motion.h1
           initial={{ opacity: 0, y: 10 }}

@@ -21,7 +21,7 @@ export const HeroCards = () => {
   ] as const;
 
   return (
-    <section className="bg-[#DFDBD8] text-neutral-800">
+    <section className="bg-[#e4e2e3] text-neutral-800">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={controls}
@@ -43,7 +43,7 @@ export const HeroCards = () => {
                   alt={card.title}
                   fill
                   className="object-cover"
-                  sizes="100vw"
+                  sizes="(min-width: 1024px) 50vw, 100vw"
                   priority={index === 0}
                 />
                 <div className="absolute inset-0 bg-black/10 transition-colors" />
