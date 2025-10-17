@@ -15,10 +15,10 @@ export const GalleryDirectory = () => {
   }, [controls]);
 
   const cards = [
-    { title: "Remote places", href: "#beaches", src: "/images/car.JPG", description: "Quiet, far-flung corners where stillness meets landscape and story." },
-    { title: "History", href: "#history", src: "/images/mirror.JPG", description: "Echoes of the past captured in textures, artifacts, and timeless spaces." },
-    { title: "West Wales", href: "#wales", src: "/images/flower.JPG", description: "Clifftops, coves, and windswept meadows along a rugged coastline." },
-    { title: "Lisbon", href: "#lisbon", src: "/images/lisbon-shopfront.JPG", description: "Sunlit streets, tiled façades, and small discoveries in the city’s rhythm." },
+    { title: "Remote places", href: "#beaches", src: "/images/algarve-clifs.JPG", description: "Quiet, far-flung corners where stillness meets landscape and story." },
+    { title: "History", href: "#history", src: "/images/brazil-flower.JPG", description: "Echoes of the past captured in textures, artifacts, and timeless spaces." },
+    { title: "West Wales", href: "#wales", src: "/images/zia-sunset.JPG", description: "Clifftops, coves, and windswept meadows along a rugged coastline." },
+    { title: "Jungle", href: "#lisbon", src: "/images/ferns.JPG", description: "Sunlit streets, tiled façades, and small discoveries in the city’s rhythm." },
   ] as const;
 
   return (
