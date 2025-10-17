@@ -15,10 +15,10 @@ export const GalleryDirectory = () => {
   }, [controls]);
 
   const cards = [
-    { title: "Remote places", href: "#beaches", src: "/images/car.JPG" },
-    { title: "History", href: "#history", src: "/images/mirror.JPG" },
-    { title: "West Wales", href: "#wales", src: "/images/flower.JPG" },
-    { title: "Lisbon", href: "#lisbon", src: "/images/lisbon-shopfront.JPG" },
+    { title: "Remote places", href: "#beaches", src: "/images/car.JPG", description: "Quiet, far-flung corners where stillness meets landscape and story." },
+    { title: "History", href: "#history", src: "/images/mirror.JPG", description: "Echoes of the past captured in textures, artifacts, and timeless spaces." },
+    { title: "West Wales", href: "#wales", src: "/images/flower.JPG", description: "Clifftops, coves, and windswept meadows along a rugged coastline." },
+    { title: "Lisbon", href: "#lisbon", src: "/images/lisbon-shopfront.JPG", description: "Sunlit streets, tiled façades, and small discoveries in the city’s rhythm." },
   ] as const;
 
   return (
@@ -44,13 +44,19 @@ export const GalleryDirectory = () => {
           >
             <Link href={card.href} className="block group">
               <div className="rounded-3xl bg-[#e4e2e3] p-8 md:p-12">
-                <h3 className="font-serif text-4xl md:text-5xl text-neutral-900 mb-8 md:mb-12">{card.title}</h3>
-                <div className="relative w-full aspect-[16/10] rounded-2xl overflow-hidden">
+                <h3 className="font-serif text-4xl md:text-5xl text-neutral-900 mb-6 md:mb-8">{card.title}</h3>
+                {card.description && (
+                  <p className="text-neutral-700 md:text-lg max-w-[46ch] mb-8 md:mb-12">
+                    {card.description}
+                  </p>
+                )}
+                {/* Portrait container with square corners; object-cover crops landscape images */}
+                <div className="relative w-full aspect-[3/4] overflow-hidden">
                   <Image
                     src={card.src}
                     alt={card.title}
                     fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+                    className="object-cover object-center transition-transform duration-500 group-hover:scale-[1.02]"
                     sizes="(min-width: 1024px) 50vw, 100vw"
                     priority={index === 0}
                   />
