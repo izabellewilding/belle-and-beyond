@@ -4,6 +4,7 @@ import { RecentPosts } from "./components/recent-posts";
 import { Footer } from "./components/footer";
 import { Suspense } from "react";
 import { About } from "./components/about";
+import { GalleryDirectory } from "./components/GalleryDirectory";
 
 // Create a container for the async Destinations component
 const DestinationsContainer = async () => {
@@ -17,6 +18,10 @@ export default function Home() {
     <div className="">
       <Navigation />
       <Hero />
+      {/* Gallery below hero, aligned to the right side */}
+      <div className="w-full flex justify-end">
+        <GalleryDirectory />
+      </div>
       <RecentPosts />
       <About />
       <Suspense
