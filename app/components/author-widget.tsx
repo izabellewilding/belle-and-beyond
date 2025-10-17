@@ -19,7 +19,7 @@ export const AuthorWidget = () => {
       {/* Round Image */}
       <div className="relative w-[168px] h-[168px] rounded-full overflow-hidden">
         <Image
-          src="/images/selfie.jpg"
+          src="/images/izzy_zia.jpg"
           alt="Author Face"
           width={168}
           height={168}

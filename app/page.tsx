@@ -2,7 +2,6 @@ import { Hero } from "./components/hero";
 import { Navigation } from "./components/navigation";
 import { RecentPosts } from "./components/recent-posts";
 import { Footer } from "./components/footer";
-import { Suspense } from "react";
 import { About } from "./components/about";
 import { GalleryDirectory } from "./components/GalleryDirectory";
 
@@ -25,13 +24,7 @@ export default function Home() {
         <GalleryDirectory />
       </div>
       <About />
-      {/* <Suspense
-        fallback={
-          <div className="py-16 text-center">Loading destinations...</div>
-        }
-      >
-        <DestinationsContainer />
-      </Suspense> */}
+
       <Footer />
     </div>
   );

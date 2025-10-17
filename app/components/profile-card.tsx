@@ -6,9 +6,9 @@ export const ProfileCard = () => {
       {/* Round image on the left */}
       <div className="w-20 h-20 rounded-full overflow-hidden mr-4 relative">
         <Image
-          src="/images/selfie.jpg" // Replace with your image path or URL
+          src="/images/izzy_zia.jpg" // Replace with your image path or URL
           alt="Your photo"
-         fill
+          fill
           objectFit="cover"
           priority={true}
         />
