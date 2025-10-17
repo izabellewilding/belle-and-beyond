@@ -47,8 +47,8 @@ export const Navigation = () => {
             </motion.span>
           </Link>
 
-          {/* Desktop Navigation Links */}
-          <div className="hidden md:flex items-center gap-8">
+          {/* Desktop Navigation Links (separate from button) */}
+          <div className="hidden md:flex items-center gap-8 ml-8 mr-auto">
             {navLinks.map((link, index) => (
               <motion.div
                 key={link.href}
@@ -64,6 +64,10 @@ export const Navigation = () => {
                 </Link>
               </motion.div>
             ))}
+          </div>
+
+          {/* Desktop CTA Button on far right */}
+          <div className="hidden md:block">
             <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}>
               <Link
                 href="#contact"

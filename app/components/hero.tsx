@@ -12,33 +12,34 @@ export const Hero = () => {
   }, [controls]);
 
   return (
-    <section className="relative bg-[#e4e2e3] text-neutral-800 h-[90vh] md:h-screen">
-      <div className="mx-auto max-w-6xl px-6 md:px-10 lg:px-14 pt-16 md:pt-24">
+    <section className="relative text-neutral-800 h-screen">
+      {/* Right-anchored content block so title aligns with image left edge */}
+      <div className="absolute right-0 bottom-0 w-[96vw] md:w-[88vw] lg:w-[82vw] px-6 md:px-10 lg:px-14 pb-6 md:pb-8">
         <motion.h1
           initial={{ opacity: 0, y: 10 }}
           animate={controls}
           transition={{ duration: 0.6, ease: "easeOut" }}
-          className="font-sans text-5xl md:text-7xl leading-[1.1] tracking-tight text-neutral-900"
+          className="font-sans text-5xl md:text-8xl leading-[1.1] tracking-tight text-neutral-900 mb-4 md:mb-6"
         >
           Moments In Focus
         </motion.h1>
-      </div>
 
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.15, duration: 0.6 }}
-        className="absolute bottom-0 right-0 w-[92vw] md:w-[72vw] lg:w-[68vw] aspect-[16/9] md:aspect-[21/9] rounded-2xl overflow-hidden"
-      >
-        <Image
-          src="/images/algarve_sunset_zia_portrait.JPG"
-          alt="Hero image"
-          fill
-          priority
-          className="object-cover"
-          sizes="(min-width: 1024px) 68vw, (min-width: 768px) 72vw, 92vw"
-        />
-      </motion.div>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.15, duration: 0.6 }}
+          className="relative w-full aspect-[[16/9]] md:aspect-[18/9] rounded-2xl overflow-hidden"
+        >
+          <Image
+            src="/images/algarve_sunset_zia_portrait.JPG"
+            alt="Hero image"
+            fill
+            priority
+            className="object-cover"
+            sizes="(min-width: 1024px) 82vw, (min-width: 768px) 88vw, 96vw"
+          />
+        </motion.div>
+      </div>
     </section>
   );
 }
