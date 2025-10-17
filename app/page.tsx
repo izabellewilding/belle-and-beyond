@@ -5,13 +5,6 @@ import { Footer } from "./components/footer";
 import { About } from "./components/about";
 import { GalleryDirectory } from "./components/GalleryDirectory";
 
-// Create a container for the async Destinations component
-const DestinationsContainer = async () => {
-  // Dynamic import to use the async component
-  const { Destinations } = await import("./components/destinations");
-  return <Destinations />;
-};
-
 export default function Home() {
   return (
     <div className="">
