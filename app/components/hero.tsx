@@ -45,4 +45,4 @@ export const Hero = () => {
       </p>
     </section>
   );
-}
+};
