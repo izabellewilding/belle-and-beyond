@@ -44,7 +44,7 @@ export const GalleryDirectory = () => {
           >
             <Link href={card.href} className="block group">
               <div className="rounded-3xl bg-[#e4e2e3] p-8 md:p-12">
-                <h3 className="font-serif text-4xl md:text-5xl text-neutral-900 mb-6 md:mb-8">{card.title}</h3>
+                <h3 className="font-serif text-4xl md:text-5xl text-neutral-900 mb-10 md:mb-16">{card.title}</h3>
                 {card.description && (
                   <p className="text-neutral-700 md:text-lg max-w-[46ch] mb-8 md:mb-12">
                     {card.description}

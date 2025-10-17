@@ -43,7 +43,7 @@ export const Navigation = () => {
               animate={{ opacity: 1, x: 0 }}
               className="text-2xl md:text-3xl text-neutral-900 font-serif"
             >
-              Verge
+              nomadé
             </motion.span>
           </Link>
 
@@ -71,7 +71,7 @@ export const Navigation = () => {
             <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}>
               <Link
                 href="#contact"
-                className="inline-flex items-center rounded-full bg-neutral-900 text-white px-5 py-2 text-sm hover:bg-neutral-800 transition-colors"
+                className="inline-flex items-center rounded-full bg-neutral-900 text-white px-12 py-3 text-base  hover:bg-neutral-800 transition-colors"
               >
                 Get In Touch
               </Link>
@@ -127,7 +127,7 @@ export const Navigation = () => {
                   <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }} className="pt-4">
                     <Link
                       href="#contact"
-                      className="inline-flex items-center rounded-full bg-neutral-900 text-white px-6 py-2 text-base"
+                      className="inline-flex items-center rounded-full bg-neutral-900 text-white px-8 py-4 text-base"
                       onClick={() => setIsOpen(false)}
                     >
                       Get In Touch
