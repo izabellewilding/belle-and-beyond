@@ -40,6 +40,9 @@ export const Hero = () => {
           />
         </motion.div>
       </div>
+      <p className="text-neutral-700 md:text-lg max-w-[46ch] mb-8 md:mb-12">
+        This is my description
+      </p>
     </section>
   );
 }
