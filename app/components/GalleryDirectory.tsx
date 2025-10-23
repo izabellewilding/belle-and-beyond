@@ -15,10 +15,34 @@ export const GalleryDirectory = () => {
   }, [controls]);
 
   const cards = [
-    { title: "Landscapes", href: "#landscapes", src: "/images/algarve-clifs.JPG", description: "Quiet, far-flung corners where stillness meets landscape and story." },
-    { title: "Flora", href: "#flora", src: "/images/brazil-flower.JPG", description: "Echoes of the past captured in textures, artifacts, and timeless spaces." },
-    { title: "People", href: "#people", src: "/images/zia-sunset.JPG", description: "Clifftops, coves, and windswept meadows along a rugged coastline." },
-    { title: "foliage", href: "#foliage", src: "/images/ferns.JPG", description: "Sunlit streets, tiled façades, and small discoveries in the city’s rhythm." },
+    {
+      title: "Landscapes",
+      href: "#landscapes",
+      src: "/images/algarve-clifs.JPG",
+      description:
+        "Quiet, far-flung corners where stillness meets landscape and story.",
+    },
+    {
+      title: "Flora",
+      href: "#flora",
+      src: "/images/brazil-flower.JPG",
+      description:
+        "Echoes of the past captured in textures, artifacts, and timeless spaces.",
+    },
+    {
+      title: "People",
+      href: "#people",
+      src: "/images/zia-sunset.JPG",
+      description:
+        "Clifftops, coves, and windswept meadows along a rugged coastline.",
+    },
+    {
+      title: "foliage",
+      href: "#foliage",
+      src: "/images/ferns.JPG",
+      description:
+        "Sunlit streets, tiled façades, and small discoveries in the city’s rhythm.",
+    },
   ] as const;
 
   return (
@@ -26,7 +50,9 @@ export const GalleryDirectory = () => {
       {/* Header to match blog section */}
       <div className="mb-12 md:mb-16">
         <div className="border-t border-neutral-400/70" />
-        <h2 className="mt-8 text-5xl md:text-6xl font-serif text-neutral-900">Gallery</h2>
+        <h2 className="mt-8 text-5xl md:text-6xl font-serif text-neutral-900">
+          Gallery
+        </h2>
       </div>
 
       <motion.div
@@ -44,7 +70,9 @@ export const GalleryDirectory = () => {
           >
             <Link href={card.href} className="block group">
               <div className="rounded-3xl bg-[#e4e2e3] p-8 md:p-12">
-                <h3 className="font-serif text-4xl md:text-5xl text-neutral-900 mb-10 md:mb-16">{card.title}</h3>
+                <h3 className="font-serif text-4xl md:text-5xl text-neutral-900 mb-10 md:mb-16">
+                  {card.title}
+                </h3>
                 {card.description && (
                   <p className="text-neutral-700 md:text-lg max-w-[46ch] mb-8 md:mb-12">
                     {card.description}
@@ -69,4 +97,3 @@ export const GalleryDirectory = () => {
     </section>
   );
 };
-
