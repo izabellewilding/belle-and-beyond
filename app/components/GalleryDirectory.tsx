@@ -59,7 +59,7 @@ export const GalleryDirectory = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={controls}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className="grid gap-6 md:gap-8 grid-cols-1 md:grid-cols-2"
+        className="grid grid-cols-2 gap-2"
       >
         {cards.map((card, index) => (
           <motion.div
@@ -67,27 +67,23 @@ export const GalleryDirectory = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: isLoaded ? 1 : 0, y: isLoaded ? 0 : 20 }}
             transition={{ delay: 0.1 + index * 0.1, duration: 0.5 }}
+            className="relative group"
           >
-            <Link href={card.href} className="block group">
-              <div className="rounded-3xl bg-[#e4e2e3] p-8 md:p-12">
-                <h3 className="font-serif text-4xl md:text-5xl text-neutral-900 mb-10 md:mb-16">
-                  {card.title}
-                </h3>
-                {card.description && (
-                  <p className="text-neutral-700 md:text-lg max-w-[46ch] mb-8 md:mb-12">
-                    {card.description}
-                  </p>
-                )}
-                {/* Portrait container with square corners; object-cover crops landscape images */}
-                <div className="relative w-full aspect-[3/4] overflow-hidden">
-                  <Image
-                    src={card.src}
-                    alt={card.title}
-                    fill
-                    className="object-cover object-center transition-transform duration-500 group-hover:scale-[1.02]"
-                    sizes="(min-width: 1024px) 50vw, 100vw"
-                    priority={index === 0}
-                  />
+            <Link href={card.href} className="block">
+              <div className="relative w-full aspect-square overflow-hidden rounded-lg">
+                <Image
+                  src={card.src}
+                  alt={card.title}
+                  fill
+                  className="object-cover object-center transition-transform duration-500 group-hover:scale-[1.02]"
+                  sizes="(min-width: 1024px) 50vw, 50vw"
+                  priority={index === 0}
+                />
+                {/* Overlay with title */}
+                <div className="absolute inset-0 bg-black/20 flex items-end p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <h3 className="font-serif text-2xl md:text-3xl text-white">
+                    {card.title}
+                  </h3>
                 </div>
               </div>
             </Link>
