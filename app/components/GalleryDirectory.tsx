@@ -17,31 +17,31 @@ export const GalleryDirectory = () => {
   const cards = [
     {
       title: "Landscapes",
-      href: "#landscapes",
+      href: "/gallery/landscapes",
       src: "/images/algarve-clifs.JPG",
       description:
         "Quiet, far-flung corners where stillness meets landscape and story.",
     },
     {
       title: "Flora",
-      href: "#flora",
+      href: "/gallery/flora",
       src: "/images/brazil-flower.JPG",
       description:
         "Echoes of the past captured in textures, artifacts, and timeless spaces.",
     },
     {
       title: "People",
-      href: "#people",
+      href: "/gallery/people",
       src: "/images/zia-sunset.JPG",
       description:
         "Clifftops, coves, and windswept meadows along a rugged coastline.",
     },
     {
       title: "foliage",
-      href: "#foliage",
+      href: "/gallery/foliage",
       src: "/images/ferns.JPG",
       description:
-        "Sunlit streets, tiled façades, and small discoveries in the city’s rhythm.",
+        "Sunlit streets, tiled façades, and small discoveries in the city's rhythm.",
     },
   ] as const;
 
