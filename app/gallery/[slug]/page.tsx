@@ -21,6 +21,10 @@ const galleryData = {
     images: [
       "/images/brazil-flower.JPG",
       "/images/ferns.JPG",
+      "/images/hibiscus.JPG",
+      "/images/brazil-flower.JPG",
+      "/images/ferns.JPG",
+      "/images/hibiscus.JPG",
       // Add more flora images here
     ],
   },
@@ -61,12 +65,12 @@ export default function GalleryPage({ params }: GalleryPageProps) {
   }
 
   return (
-    <div className="min-h-screen bg-[#e4e2e3]">
+    <div className="min-h-screen ">
       <Navigation />
 
-      <main className="pt-24 md:pt-32">
+      <main className="pt-24 md:pt-16">
         {/* Header */}
-        <section className="bg-white py-24 md:py-32 px-4 md:px-10 lg:px-14 w-full">
+        <section className="bg-white py-24 md:py-0 md:pt-32 md:pb-8 px-4 md:px-10 lg:px-14 w-full">
           <div className="mb-12 md:mb-16">
             <div className="border-t border-neutral-400/70" />
             <h1 className="mt-8 text-5xl md:text-6xl font-serif text-neutral-900">
@@ -79,18 +83,21 @@ export default function GalleryPage({ params }: GalleryPageProps) {
         </section>
 
         {/* Gallery Grid */}
-        <section className="py-24 md:py-32 px-4 md:px-10 lg:px-14 w-full">
-          <div className="grid gap-6 md:gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-            {gallery.images.map((image, index) => (
-              <div
-                key={index}
-                className="relative w-full aspect-[3/4] overflow-hidden rounded-2xl"
-              >
-                <img
-                  src={image}
-                  alt={`${gallery.title} ${index + 1}`}
-                  className="w-full h-full object-cover object-center"
-                />
+        <section className="py-24 md:pt-8 px-4 md:px-10 lg:px-14 w-full">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {Array.from({ length: 4 }, (_, columnIndex) => (
+              <div key={columnIndex} className="grid gap-4">
+                {gallery.images
+                  .filter((_, index) => index % 4 === columnIndex)
+                  .map((image, imageIndex) => (
+                    <div key={imageIndex}>
+                      <img
+                        className="h-auto max-w-full rounded-lg"
+                        src={image}
+                        alt={`${gallery.title} ${imageIndex + 1}`}
+                      />
+                    </div>
+                  ))}
               </div>
             ))}
           </div>

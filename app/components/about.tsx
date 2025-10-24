@@ -5,7 +5,10 @@ import Image from "next/image";
 
 export const About = () => {
   return (
-    <section className="bg-white py-24 md:py-32 px-4 md:px-10 lg:px-14 w-full">
+    <section
+      id="about"
+      className="bg-white py-24 md:py-32 px-4 md:px-10 lg:px-14 w-full"
+    >
       {/* Header with top rule */}
       <div className="mb-12 md:mb-16">
         <div className="border-t border-neutral-400/70" />
