@@ -28,12 +28,13 @@ export const Navigation = () => {
     { href: "#news", label: "News" },
     { href: "#our-story", label: "Our Story" },
     { href: "#services", label: "Services" },
-    { href: "#about", label: "About" },
     { href: "#social", label: "Social" },
   ];
 
   return (
-    <nav className={`fixed w-full top-0 z-50 transition-all duration-300 ${isScrolled ? "bg-white/80 backdrop-blur-md shadow-md" : "bg-white"}`}>
+    <nav
+      className={`fixed w-full top-0 z-50 transition-all duration-300 ${isScrolled ? "bg-white/80 backdrop-blur-md shadow-md" : "bg-white"}`}
+    >
       <div className="w-full px-3 md:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20 pt-1 md:pt-2">
           {/* Brand */}
@@ -68,7 +69,11 @@ export const Navigation = () => {
 
           {/* Desktop CTA Button on far right */}
           <div className="hidden md:block">
-            <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}>
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 }}
+            >
               <Link
                 href="#contact"
                 className="inline-flex items-center rounded-full bg-neutral-900 text-white px-12 py-3 text-base  hover:bg-neutral-800 transition-colors"
@@ -124,7 +129,12 @@ export const Navigation = () => {
                       </Link>
                     </motion.div>
                   ))}
-                  <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }} className="pt-4">
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.3 }}
+                    className="pt-4"
+                  >
                     <Link
                       href="#contact"
                       className="inline-flex items-center rounded-full bg-neutral-900 text-white px-8 py-4 text-base"

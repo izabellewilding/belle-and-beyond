@@ -30,11 +30,9 @@ export const AuthorWidget = () => {
       {/* Bullet Point Description */}
       <div className="text-gray-700 space-y-2 text-md">
         {/* <h3 className="text-gray-300 text-sm pb-2">ABOUT ME</h3> */}
-        Hi, I'm Izabelle! A passionate travel writer with a love for
-        photography, art and culture. I work as a Frontend Developer and
-        currently live in Tbilisi, Georgia. I have a degree in Linguistics from
-        University College London and spent most of my childhood living in rural
-        Wales.
+        Hey, we're Nomadé! We're a couple who both work as fully remote software
+        engineers. We love exploring new places and cultures, and we're always
+        looking for new adventures.
       </div>
     </div>
   );

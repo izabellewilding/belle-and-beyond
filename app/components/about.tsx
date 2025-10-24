@@ -6,7 +6,7 @@ import Image from "next/image";
 export const About = () => {
   return (
     <section
-      id="about"
+      id="our-story"
       className="bg-white py-24 md:py-32 px-4 md:px-10 lg:px-14 w-full"
     >
       {/* Header with top rule */}
@@ -22,12 +22,15 @@ export const About = () => {
         transition={{ duration: 0.6 }}
         className="relative"
       >
-        <p className="text-5xl md:text-6xl text-neutral-800 leading-tight font-serif max-w-4xl">
-          We are a boutique photography studio focused on crafting visual
-          stories that resonate. Blending candid authenticity with refined
-          composition, our mission is to highlight the beauty in everyday
-          moments while providing an effortless client experience from first
-          consultation to final delivery.
+        <p className="text-4xl md:text-5xl text-neutral-800 leading-tight font-serif max-w-4xl">
+          We’re fully remote software engineers who love exploring beyond the
+          usual paths. From coding on the road to finding peace in nature, we’re
+          always chasing new experiences in far-flung places. We spent a few
+          unforgettable months living in Costa Rica, where our love for wild
+          landscapes grew even stronger. I’m also an artist and photographer,
+          inspired by the people and places we encounter. Our goal is simple —
+          to share honest stories and real travel tips, without the fake gloss
+          you find all too often online.
         </p>
 
         {/* Portrait image in bottom right */}
