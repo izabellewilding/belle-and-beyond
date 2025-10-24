@@ -8,14 +8,48 @@ import { usePathname } from "next/navigation";
 export const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState("");
   const pathname = usePathname();
 
-  // Handle scroll effect
+  // Handle scroll effect and active section detection
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
+
+      // Detect active section based on scroll position
+      const sections = ["news", "our-story", "gallery", "contact", "social"];
+      const scrollPosition = window.scrollY + 200; // Increased offset for better detection
+
+      let currentSection = "";
+
+      for (let i = 0; i < sections.length; i++) {
+        const section = document.getElementById(sections[i]);
+        if (section) {
+          const sectionTop = section.offsetTop;
+          const sectionBottom = sectionTop + section.offsetHeight;
+
+          if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+            currentSection = sections[i];
+            break;
+          }
+        }
+      }
+
+      // If no section is found, check if we're at the top
+      if (!currentSection && window.scrollY < 100) {
+        currentSection = "";
+      } else if (!currentSection) {
+        // If we're past all sections, use the last one
+        currentSection = sections[sections.length - 1];
+      }
+
+      setActiveSection(currentSection);
     };
+
     window.addEventListener("scroll", handleScroll);
+    // Initial check
+    handleScroll();
+
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -31,6 +65,15 @@ export const Navigation = () => {
     { href: "#social", label: "Social" },
   ];
 
+  const handleNavClick = (href: string) => {
+    const sectionId = href.slice(1); // Remove the # to get the section ID
+    setActiveSection(sectionId);
+  };
+
+  const handleLogoClick = () => {
+    setActiveSection(""); // Clear active section when going to top
+  };
+
   return (
     <nav
       className={`fixed w-full top-0 z-50 transition-all duration-300 ${isScrolled ? "bg-white/80 backdrop-blur-md shadow-md" : "bg-white"}`}
@@ -38,7 +81,7 @@ export const Navigation = () => {
       <div className="w-full px-3 md:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20 pt-1 md:pt-2">
           {/* Brand */}
-          <Link href="/" className="relative z-50">
+          <Link href="/" className="relative z-50" onClick={handleLogoClick}>
             <motion.span
               initial={{ opacity: 0, x: -12 }}
               animate={{ opacity: 1, x: 0 }}
@@ -59,7 +102,12 @@ export const Navigation = () => {
               >
                 <Link
                   href={link.href}
-                  className="text-neutral-800 hover:text-neutral-600 transition-colors py-2"
+                  onClick={() => handleNavClick(link.href)}
+                  className={`transition-all duration-200 py-2 px-4 rounded-full ${
+                    activeSection === link.href.slice(1)
+                      ? "bg-neutral-200 text-neutral-900"
+                      : "text-neutral-800 hover:text-neutral-600 hover:bg-neutral-100"
+                  }`}
                 >
                   {link.label}
                 </Link>
@@ -122,8 +170,15 @@ export const Navigation = () => {
                     >
                       <Link
                         href={link.href}
-                        className="text-gray-800 hover:text-gray-600 transition-colors"
-                        onClick={() => setIsOpen(false)}
+                        className={`transition-all duration-200 py-2 px-4 rounded-full ${
+                          activeSection === link.href.slice(1)
+                            ? "bg-neutral-200 text-neutral-900"
+                            : "text-gray-800 hover:text-gray-600 hover:bg-neutral-100"
+                        }`}
+                        onClick={() => {
+                          handleNavClick(link.href);
+                          setIsOpen(false);
+                        }}
                       >
                         {link.label}
                       </Link>
