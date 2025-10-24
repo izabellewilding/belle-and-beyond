@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { Navigation } from "../../components/navigation";
 import { Footer } from "../../components/footer";
+import Image from "next/image";
 
 // Define the gallery data
 const galleryData = {
@@ -51,13 +52,13 @@ const galleryData = {
 };
 
 interface GalleryPageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
-export default function GalleryPage({ params }: GalleryPageProps) {
-  const { slug } = params;
+export default async function GalleryPage({ params }: GalleryPageProps) {
+  const { slug } = await params;
   const gallery = galleryData[slug as keyof typeof galleryData];
 
   if (!gallery) {
@@ -90,11 +91,14 @@ export default function GalleryPage({ params }: GalleryPageProps) {
                 {gallery.images
                   .filter((_, index) => index % 4 === columnIndex)
                   .map((image, imageIndex) => (
-                    <div key={imageIndex}>
-                      <img
+                    <div key={imageIndex} className="relative">
+                      <Image
                         className="h-auto max-w-full rounded-lg"
                         src={image}
                         alt={`${gallery.title} ${imageIndex + 1}`}
+                        width={400}
+                        height={600}
+                        sizes="(max-width: 768px) 50vw, 25vw"
                       />
                     </div>
                   ))}
