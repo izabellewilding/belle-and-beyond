@@ -27,7 +27,7 @@ export const Navigation = () => {
   const navLinks = [
     { href: "#news", label: "News" },
     { href: "#our-story", label: "Our Story" },
-    { href: "#services", label: "Services" },
+    { href: "#gallery", label: "Gallery" },
     { href: "#social", label: "Social" },
   ];
 

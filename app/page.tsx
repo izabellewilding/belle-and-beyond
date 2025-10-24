@@ -4,6 +4,7 @@ import { RecentPosts } from "./components/recent-posts";
 import { Footer } from "./components/footer";
 import { About } from "./components/about";
 import { GalleryDirectory } from "./components/GalleryDirectory";
+import { Contact } from "./components/contact";
 
 export default function Home() {
   return (
@@ -17,6 +18,7 @@ export default function Home() {
         <GalleryDirectory />
       </div>
       <About />
+      <Contact />
 
       <Footer />
     </div>
