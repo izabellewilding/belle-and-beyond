@@ -60,8 +60,8 @@ export const Navigation = () => {
 
   const navLinks = [
     { href: "#news", label: "News" },
-    { href: "#our-story", label: "Our Story" },
     { href: "#gallery", label: "Gallery" },
+    { href: "#our-story", label: "Our Story" },
     { href: "#social", label: "Social" },
   ];
 
