@@ -30,8 +30,16 @@ export const usePostsStore = create<PostsState>((set) => ({
       const posts = await getRecentPosts();
       set({ posts });
     } catch (err) {
-      console.error(err);
-      set({ error: "Failed to load posts" });
+      console.error("Error fetching posts:", err);
+      // If it's a Sanity connection error, show a more helpful message
+      if (err instanceof Error && err.message.includes("Request error")) {
+        set({
+          error:
+            "Unable to connect to content management system. Please check your configuration.",
+        });
+      } else {
+        set({ error: "Failed to load posts" });
+      }
     } finally {
       set({ loading: false });
     }

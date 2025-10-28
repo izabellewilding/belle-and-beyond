@@ -21,7 +21,13 @@ export async function getFeaturedDestinations() {
 }
 
 export async function getRecentPosts() {
-  return await client.fetch(getRecentPostsQuery);
+  try {
+    return await client.fetch(getRecentPostsQuery);
+  } catch (error) {
+    console.error("Sanity fetch error:", error);
+    // Return empty array if Sanity is not available
+    return [];
+  }
 }
 
 export async function getPostBySlug(slug: string) {
