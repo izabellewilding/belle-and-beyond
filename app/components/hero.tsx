@@ -42,9 +42,9 @@ export const Hero = () => {
                 transition={{ delay: 0.2, duration: 0.6, ease: "easeOut" }}
                 className="font-sans text-4xl md:text-6xl lg:text-7xl leading-[1.1] tracking-tight text-white mb-4 md:mb-6"
               >
-                Moment
+                Travel
                 <br />
-                In Focus
+                with us
               </motion.h1>
 
               <motion.p
@@ -53,8 +53,8 @@ export const Hero = () => {
                 transition={{ delay: 0.35, duration: 0.6, ease: "easeOut" }}
                 className="text-white/90 text-base md:text-lg lg:text-xl mb-8 md:mb-10 max-w-xl leading-relaxed"
               >
-                Colonia del Sacramento, Uruguay - a hidden gem on the edge of
-                the Atlantic.
+                Take a journey with us as we explore the world and share our
+                experiences.
               </motion.p>
 
               {/* Buttons */}
