@@ -35,7 +35,7 @@ export const RecentPosts = () => {
       {/* Header: top rule + large serif heading */}
       <div className="mb-12 md:mb-16">
         <div className="border-t border-neutral-400/70" />
-        <h2 className="mt-8 text-5xl md:text-6xl font-serif text-neutral-900">
+        <h2 className="mt-8 text-4xl md:text-5xl font-serif text-neutral-900">
           Latest News
         </h2>
       </div>

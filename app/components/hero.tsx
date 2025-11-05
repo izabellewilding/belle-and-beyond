@@ -12,14 +12,14 @@ export const Hero = () => {
   }, [controls]);
 
   return (
-    <section className="relative text-neutral-800 min-h-screen flex items-center justify-center px-4 md:px-8 py-12 md:py-20">
-      <div className="w-full max-w-7xl mx-auto">
+    <section className="relative text-neutral-800 flex items-center justify-center px-3 md:px-0 pt-16 md:pt-20 lg:pt-24 pb-8 md:pb-10 lg:pb-12">
+      <div className="w-full md:-mx-6 lg:-mx-8">
         {/* Centered rounded image container */}
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={controls}
           transition={{ duration: 0.6, ease: "easeOut" }}
-          className="relative w-full aspect-[16/10] md:aspect-[16/9] rounded-3xl overflow-hidden shadow-2xl"
+          className="relative w-full aspect-[3/4] md:aspect-[16/7] lg:aspect-[16/6] rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl"
         >
           <Image
             src="/images/algarve_sunset_zia_portrait.JPG"
@@ -35,12 +35,12 @@ export const Hero = () => {
 
           {/* Text overlay on the left */}
           <div className="absolute inset-0 flex items-center">
-            <div className="relative z-10 px-6 md:px-12 lg:px-16 max-w-2xl">
+            <div className="relative z-10 px-4 md:px-12 lg:px-20 xl:px-24 max-w-2xl">
               <motion.h1
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.2, duration: 0.6, ease: "easeOut" }}
-                className="font-sans text-4xl md:text-6xl lg:text-7xl leading-[1.1] tracking-tight text-white mb-4 md:mb-6"
+                className="font-sans text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.1] tracking-tight text-white mb-3 md:mb-6"
               >
                 Travel
                 <br />
@@ -51,7 +51,7 @@ export const Hero = () => {
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.35, duration: 0.6, ease: "easeOut" }}
-                className="text-white/90 text-base md:text-lg lg:text-xl mb-8 md:mb-10 max-w-xl leading-relaxed"
+                className="text-white/90 text-sm sm:text-base md:text-lg lg:text-xl mb-6 md:mb-10 max-w-xl leading-relaxed"
               >
                 Take a journey with us as we explore the world and share our
                 experiences.
@@ -62,15 +62,15 @@ export const Hero = () => {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5, duration: 0.6, ease: "easeOut" }}
-                className="flex flex-col sm:flex-row gap-4"
+                className="flex flex-col md:flex-row gap-3 md:gap-4"
               >
                 <a
                   href="/destinations"
-                  className="inline-flex items-center justify-center gap-2 bg-white text-neutral-900 px-8 py-4 rounded-full font-medium text-base md:text-lg hover:bg-neutral-100 transition-colors duration-200 shadow-lg"
+                  className="inline-flex items-center justify-center gap-1.5 md:gap-2 bg-white text-neutral-900 px-6 py-3 md:px-8 md:py-4 rounded-full font-medium text-base md:text-base lg:text-lg hover:bg-neutral-100 transition-colors duration-200 shadow-lg w-full md:w-auto"
                 >
                   Explore Destinations
                   <svg
-                    className="w-5 h-5"
+                    className="w-4 h-4 md:w-5 md:h-5"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -85,7 +85,7 @@ export const Hero = () => {
                 </a>
                 <a
                   href="/blog"
-                  className="inline-flex items-center justify-center gap-2 bg-transparent border-2 border-white text-white px-8 py-4 rounded-full font-medium text-base md:text-lg hover:bg-white hover:text-neutral-900 transition-colors duration-200"
+                  className="hidden md:inline-flex items-center justify-center gap-2 bg-transparent border-2 border-white text-white px-8 py-4 rounded-full font-medium text-base lg:text-lg hover:bg-white hover:text-neutral-900 transition-colors duration-200"
                 >
                   Read Stories
                   <svg
