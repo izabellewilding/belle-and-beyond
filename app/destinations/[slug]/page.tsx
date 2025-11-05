@@ -10,6 +10,7 @@ import { Navigation } from "@/app/components/navigation";
 import { Footer } from "@/app/components/footer";
 import { ArticleCard } from "@/app/components/article-card";
 import { PortableTextBlock } from "@portabletext/types";
+import { DestinationTracker } from "@/app/components/DestinationTracker";
 
 interface Post {
   _id: string;
@@ -86,6 +87,7 @@ export default async function DestinationPage({
   return (
     <>
       <Navigation />
+      <DestinationTracker destination={destination.title} />
 
       <div className="relative max-w-6xl mx-auto px-4 mt-16 mb-24">
         {/* Container for text and image with artistic overlap */}

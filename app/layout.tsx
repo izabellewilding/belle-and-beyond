@@ -50,6 +50,10 @@ export default function RootLayout({
             gtag('config', '${GA_MEASUREMENT_ID}', {
               page_title: document.title,
               page_location: window.location.href,
+              send_page_view: true,
+              anonymize_ip: true,
+              allow_google_signals: false,
+              allow_ad_personalization_signals: false
             });
           `}
         </Script>

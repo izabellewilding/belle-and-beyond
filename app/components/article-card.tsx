@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { trackBlogPostClick } from "@/lib/gtag";
 
 interface ArticleCardProps {
   post: {
@@ -23,7 +24,11 @@ export const ArticleCard = ({
 
   return (
     <div className={`flex flex-col h-full ${className}`}>
-      <Link href={href} className="block relative w-full aspect-[4/5] overflow-hidden rounded-3xl">
+      <Link
+        href={href}
+        className="block relative w-full aspect-[4/5] overflow-hidden rounded-3xl"
+        onClick={() => trackBlogPostClick(post.title, post.slug)}
+      >
         <Image
           src={post.mainImage}
           alt={post.title}
@@ -34,19 +39,25 @@ export const ArticleCard = ({
         />
       </Link>
       <div className="mt-6 space-y-3">
-        <Link href={href}>
+        <Link
+          href={href}
+          onClick={() => trackBlogPostClick(post.title, post.slug)}
+        >
           <h3 className="text-2xl md:text-2xl leading-snug font-serif text-neutral-900">
             {post.title}
           </h3>
         </Link>
         {post.description && (
-          <p className="text-base text-neutral-600">
-            {post.description}
-          </p>
+          <p className="text-base text-neutral-600">{post.description}</p>
         )}
         {showButton && (
           <div className="pt-2 font-semibold">
-            <Link href={href}>Read more</Link>
+            <Link
+              href={href}
+              onClick={() => trackBlogPostClick(post.title, post.slug)}
+            >
+              Read more
+            </Link>
           </div>
         )}
       </div>

@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useState } from "react";
+import { trackContactForm, trackNewsletterSignup } from "@/lib/gtag";
 
 export const Contact = () => {
   const [formData, setFormData] = useState({
@@ -52,6 +53,15 @@ export const Contact = () => {
           result.message ||
             "Thank you for your message! We'll get back to you soon."
         );
+        
+        // Track form submission
+        trackContactForm('contact_form');
+        
+        // Track newsletter signup if checked
+        if (formData.newsletter) {
+          trackNewsletterSignup('contact_form');
+        }
+        
         // Reset form
         setFormData({
           firstName: "",
