@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -22,6 +22,8 @@ export const DestinationsCarousel = ({
 }: DestinationsCarouselProps) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [visibleCards, setVisibleCards] = useState(2);
+  const carouselRef = useRef<HTMLDivElement>(null);
+  const cardRef = useRef<HTMLDivElement>(null);
 
   // Update visible cards based on screen size
   useEffect(() => {
@@ -42,6 +44,13 @@ export const DestinationsCarousel = ({
 
   const maxIndex = Math.max(0, destinations.length - visibleCards);
 
+  // Ensure currentIndex doesn't exceed maxIndex when visibleCards changes
+  useEffect(() => {
+    if (currentIndex > maxIndex) {
+      setCurrentIndex(maxIndex);
+    }
+  }, [maxIndex, currentIndex]);
+
   const goToPrevious = () => {
     setCurrentIndex((prev) => (prev > 0 ? prev - 1 : maxIndex));
   };
@@ -50,10 +59,23 @@ export const DestinationsCarousel = ({
     setCurrentIndex((prev) => (prev < maxIndex ? prev + 1 : 0));
   };
 
-  const visibleDestinations = destinations.slice(
-    currentIndex,
-    currentIndex + visibleCards
-  );
+  // Calculate transform based on current index
+  useEffect(() => {
+    const updateTransform = () => {
+      if (carouselRef.current && cardRef.current) {
+        const cardWidth = cardRef.current.offsetWidth;
+        const gap = 24; // 1.5rem = 24px
+        const translateX = -(currentIndex * (cardWidth + gap));
+        carouselRef.current.style.transform = `translateX(${translateX}px)`;
+      }
+    };
+
+    updateTransform();
+
+    // Recalculate on resize
+    window.addEventListener("resize", updateTransform);
+    return () => window.removeEventListener("resize", updateTransform);
+  }, [currentIndex, visibleCards]);
 
   if (!destinations || destinations.length === 0) {
     return null;
@@ -81,11 +103,20 @@ export const DestinationsCarousel = ({
             <div className="flex gap-3">
               <button
                 onClick={goToPrevious}
-                className="w-12 h-12 rounded-full border border-neutral-300 flex items-center justify-center hover:border-neutral-900 transition-colors duration-200"
+                disabled={currentIndex === 0}
+                className={`w-12 h-12 rounded-full flex items-center justify-center transition-colors duration-200 ${
+                  currentIndex === 0
+                    ? "border border-neutral-300 cursor-not-allowed"
+                    : "border border-neutral-900 hover:bg-neutral-900 group"
+                }`}
                 aria-label="Previous destinations"
               >
                 <svg
-                  className="w-5 h-5 text-neutral-400"
+                  className={`w-5 h-5 transition-colors duration-200 ${
+                    currentIndex === 0
+                      ? "text-neutral-300"
+                      : "text-neutral-900 group-hover:text-white"
+                  }`}
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -100,11 +131,20 @@ export const DestinationsCarousel = ({
               </button>
               <button
                 onClick={goToNext}
-                className="w-12 h-12 rounded-full border border-neutral-900 flex items-center justify-center hover:bg-neutral-900 transition-colors duration-200 group"
+                disabled={currentIndex >= maxIndex}
+                className={`w-12 h-12 rounded-full flex items-center justify-center transition-colors duration-200 ${
+                  currentIndex >= maxIndex
+                    ? "border border-neutral-300 cursor-not-allowed"
+                    : "border border-neutral-900 hover:bg-neutral-900 group"
+                }`}
                 aria-label="Next destinations"
               >
                 <svg
-                  className="w-5 h-5 text-neutral-900 group-hover:text-white transition-colors duration-200"
+                  className={`w-5 h-5 transition-colors duration-200 ${
+                    currentIndex >= maxIndex
+                      ? "text-neutral-300"
+                      : "text-neutral-900 group-hover:text-white"
+                  }`}
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -122,10 +162,14 @@ export const DestinationsCarousel = ({
 
           {/* Right Section - Cards Carousel */}
           <div className="lg:col-span-8 overflow-hidden">
-            <div className="flex gap-6 transition-transform duration-300 ease-in-out">
-              {visibleDestinations.map((destination) => (
+            <div
+              ref={carouselRef}
+              className="flex gap-6 transition-transform duration-500 ease-in-out"
+            >
+              {destinations.map((destination, index) => (
                 <div
                   key={destination._id}
+                  ref={index === 0 ? cardRef : null}
                   className="flex-shrink-0 w-full md:w-[calc(50%-12px)] lg:w-[calc(50%-24px)]"
                 >
                   <div className="bg-white rounded-2xl shadow-lg overflow-hidden h-full flex flex-col">
