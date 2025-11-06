@@ -172,41 +172,56 @@ export const DestinationsCarousel = ({
                   ref={index === 0 ? cardRef : null}
                   className="flex-shrink-0 w-full md:w-[calc(50%-12px)] lg:w-[calc(50%-24px)]"
                 >
-                  <div className="bg-white rounded-2xl shadow-lg overflow-hidden h-full flex flex-col">
-                    {/* Image */}
-                    <div className="relative h-48 md:h-64 overflow-hidden">
-                      {destination.coverImage ? (
-                        <Image
-                          src={destination.coverImage}
-                          alt={destination.title}
-                          fill
-                          className="object-cover"
-                          sizes="(min-width: 1024px) 50vw, (min-width: 768px) 50vw, 100vw"
-                        />
-                      ) : (
-                        <div className="w-full h-full bg-neutral-200 flex items-center justify-center">
-                          <span className="text-neutral-400">No image</span>
-                        </div>
-                      )}
-                    </div>
+                  <Link
+                    href={`/destinations/${destination.slug}`}
+                    className="block h-full group"
+                  >
+                    <div className="bg-white rounded-2xl shadow-lg overflow-hidden h-full flex flex-col transition-transform duration-200 group-hover:shadow-xl group-hover:scale-[1.02]">
+                      {/* Image */}
+                      <div className="relative h-48 md:h-64 overflow-hidden">
+                        {destination.coverImage ? (
+                          <Image
+                            src={destination.coverImage}
+                            alt={destination.title}
+                            fill
+                            className="object-cover transition-transform duration-200 group-hover:scale-105"
+                            sizes="(min-width: 1024px) 50vw, (min-width: 768px) 50vw, 100vw"
+                          />
+                        ) : (
+                          <div className="w-full h-full bg-neutral-200 flex items-center justify-center">
+                            <span className="text-neutral-400">No image</span>
+                          </div>
+                        )}
+                      </div>
 
-                    {/* Content */}
-                    <div className="p-6 md:p-8 flex flex-col flex-grow">
-                      <h3 className="text-xl md:text-2xl font-sans font-bold text-neutral-900 mb-3">
-                        {destination.title}
-                      </h3>
-                      <p className="text-neutral-600 text-sm md:text-base mb-6 flex-grow line-clamp-3">
-                        {destination.description ||
-                          "Discover this amazing destination and explore its unique culture and beauty."}
-                      </p>
-                      <Link
-                        href={`/destinations/${destination.slug}`}
-                        className="inline-flex items-center justify-center border-2 border-neutral-900 text-neutral-900 px-6 py-3 rounded-full font-medium text-sm md:text-base hover:bg-neutral-900 hover:text-white transition-colors duration-200 w-fit"
-                      >
-                        Read More
-                      </Link>
+                      {/* Content */}
+                      <div className="p-6 md:p-8 flex flex-col flex-grow">
+                        <h3 className="text-xl md:text-2xl font-sans font-bold text-neutral-900 mb-3 group-hover:text-neutral-700 transition-colors">
+                          {destination.title}
+                        </h3>
+                        <p className="text-neutral-600 text-sm md:text-base mb-6 flex-grow line-clamp-3">
+                          {destination.description ||
+                            "Discover this amazing destination and explore its unique culture and beauty."}
+                        </p>
+                        <div className="inline-flex items-center justify-center border-2 border-neutral-900 text-neutral-900 px-6 py-3 rounded-full font-medium text-sm md:text-base group-hover:bg-neutral-900 group-hover:text-white transition-colors duration-200 w-fit">
+                          Read More
+                          <svg
+                            className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M9 5l7 7-7 7"
+                            />
+                          </svg>
+                        </div>
+                      </div>
                     </div>
-                  </div>
+                  </Link>
                 </div>
               ))}
             </div>
