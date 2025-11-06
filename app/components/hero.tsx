@@ -12,7 +12,7 @@ export const Hero = () => {
   }, [controls]);
 
   return (
-    <section className="relative text-neutral-800 flex items-center justify-center px-3 md:px-0 pt-16 md:pt-20 lg:pt-24 pb-8 md:pb-10 lg:pb-12">
+    <section className="relative text-neutral-800 flex items-center justify-center px-3 md:px-0 pt-16 md:pt-20 lg:pt-24">
       <div className="w-full md:-mx-6 lg:-mx-8">
         {/* Centered rounded image container */}
         <motion.div

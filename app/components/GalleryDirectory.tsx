@@ -51,7 +51,7 @@ export const GalleryDirectory = () => {
       className="bg-white text-neutral-800 py-24 md:py-32 px-4 md:px-10 lg:px-14 w-full"
     >
       {/* Header to match blog section */}
-      <div className="mb-12 md:mb-16">
+      <div className="mb-8 md:mb-12">
         <div className="border-t border-neutral-400/70" />
         <h2 className="mt-8 text-5xl md:text-6xl font-serif text-neutral-900">
           Photo Gallery

@@ -30,7 +30,7 @@ export const RecentPosts = () => {
   return (
     <section
       id="news"
-      className="bg-white py-24 md:py-32 px-4 md:px-10 lg:px-14 w-full"
+      className="bg-white py-24 md:py-20 px-4 md:px-10 lg:px-14 w-full"
     >
       {/* Header: top rule + large serif heading */}
       <div className="mb-12 md:mb-16">
