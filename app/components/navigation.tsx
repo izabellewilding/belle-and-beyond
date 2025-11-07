@@ -60,6 +60,7 @@ export const Navigation = () => {
 
   const navLinks = [
     { href: "#news", label: "News" },
+    { href: "/destinations", label: "Destinations", isPage: true },
     { href: "#gallery", label: "Gallery" },
     { href: "#our-story", label: "Our Story" },
     { href: "#social", label: "Social" },
@@ -102,9 +103,14 @@ export const Navigation = () => {
               >
                 <Link
                   href={link.href}
-                  onClick={() => handleNavClick(link.href)}
+                  onClick={() => {
+                    if (!link.isPage) {
+                      handleNavClick(link.href);
+                    }
+                  }}
                   className={`transition-all duration-200 py-2 px-4 rounded-full ${
-                    activeSection === link.href.slice(1)
+                    (link.isPage && pathname === link.href) ||
+                    (!link.isPage && activeSection === link.href.slice(1))
                       ? "bg-neutral-200 text-neutral-900"
                       : "text-neutral-800 hover:text-neutral-600 hover:bg-neutral-100"
                   }`}
@@ -171,12 +177,15 @@ export const Navigation = () => {
                       <Link
                         href={link.href}
                         className={`transition-all duration-200 py-2 px-4 rounded-full ${
-                          activeSection === link.href.slice(1)
+                          (link.isPage && pathname === link.href) ||
+                          (!link.isPage && activeSection === link.href.slice(1))
                             ? "bg-neutral-200 text-neutral-900"
                             : "text-gray-800 hover:text-gray-600 hover:bg-neutral-100"
                         }`}
                         onClick={() => {
-                          handleNavClick(link.href);
+                          if (!link.isPage) {
+                            handleNavClick(link.href);
+                          }
                           setIsOpen(false);
                         }}
                       >
