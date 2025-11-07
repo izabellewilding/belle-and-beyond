@@ -7,6 +7,7 @@ export const getAllDestinationsQuery = groq`*[_type == "destination"] | order(ti
   "slug": slug.current,
   description,
   "coverImage": coverImage.asset->url,
+  "mainImage": mainImage.asset->url,
   featured
 }`;
 
