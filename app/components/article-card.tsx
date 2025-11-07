@@ -15,12 +15,14 @@ interface ArticleCardProps {
   };
   showButton?: boolean;
   className?: string;
+  smallDescription?: boolean;
 }
 
 export const ArticleCard = ({
   post,
   showButton = false,
   className = "",
+  smallDescription = false,
 }: ArticleCardProps) => {
   const href = `/blog/${post.slug}`;
 
@@ -50,7 +52,11 @@ export const ArticleCard = ({
           </h3>
         </Link>
         {post.description && (
-          <p className="text-base text-neutral-600">{post.description}</p>
+          <p
+            className={`text-base text-neutral-600 ${smallDescription ? "line-clamp-2" : ""}`}
+          >
+            {post.description}
+          </p>
         )}
         {showButton && (
           <div className="pt-2 font-semibold">

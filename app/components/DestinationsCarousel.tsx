@@ -82,7 +82,7 @@ export const DestinationsCarousel = ({
   }
 
   return (
-    <section className="relative bg-[#e4e2e3] rounded-b-3xl py-16 md:py-24 px-4 md:px-8 lg:px-12">
+    <section className="relative bg-transparent rounded-b-3xl py-16 md:py-24 px-4 md:px-8 lg:px-12 shadow-2xl mx-4 md:mx-6 lg:mx-8">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
           {/* Left Section - Heading and Description */}

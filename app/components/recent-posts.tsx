@@ -68,6 +68,7 @@ export const RecentPosts = () => {
                   categories: post.categories,
                 }}
                 showButton={false}
+                smallDescription={true}
               />
             ))}
           </div>
