@@ -89,57 +89,50 @@ export default async function DestinationPage({
       <Navigation />
       <DestinationTracker destination={destination.title} />
 
-      <div className="relative max-w-6xl mx-auto px-4 mt-16 mb-24">
-        {/* Container for text and image with artistic overlap */}
-        <div className="relative">
-          {/* Text positioned to overlap with the image */}
-          <div className="relative z-10 bg-cream py-4 md:py-0 md:bg-transparent">
-            <h1 className="text-5xl md:text-6xl font-serif text-gray-800 tracking-wide px-4 md:px-0">
-              {destination.title.toUpperCase()}
-            </h1>
-            <h2 className="text-4xl md:text-5xl font-serif text-gray-800 tracking-wide mt-1 px-4 md:px-0">
-              TRAVEL ADVICE
-            </h2>
-          </div>
-
-          {/* Image that the text partially overlaps */}
-          <div className="relative max-h-[375px] md:mt-[-80px] w-full aspect-[1.77/1] overflow-hidden">
-            {destination.mainImage ? (
-              <Image
-                src={destination.mainImage}
-                alt={destination.title}
-                fill
-                className="object-cover"
-                priority
-              />
-            ) : (
-              <div className="w-full h-full bg-gray-200"></div>
-            )}
-          </div>
+      {/* Banner with image and title */}
+      <div className="relative w-full h-[60vh] min-h-[500px] overflow-hidden">
+        {destination.mainImage ? (
+          <Image
+            src={destination.mainImage}
+            alt={destination.title}
+            fill
+            className="object-cover"
+            priority
+          />
+        ) : (
+          <div className="w-full h-full bg-gray-200"></div>
+        )}
+        {/* Overlay for better text readability */}
+        <div className="absolute inset-0 bg-black/30" />
+        {/* Country title centered on banner */}
+        <div className="absolute inset-0 flex items-center justify-center">
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif text-white text-center px-4">
+            {destination.title}
+          </h1>
         </div>
       </div>
 
       {/* Main content */}
-      <div className="max-w-3xl mx-auto px-4 pb-20 -mt-32 bg-white">
+      <div className="max-w-4xl mx-auto px-4 md:px-6 lg:px-8 py-16 md:py-20">
         {destination.description && (
           <div className="mb-12">
-            <p className="text-xl text-gray-700 leading-relaxed">
+            <p className="text-xl md:text-2xl text-gray-700 leading-relaxed">
               {destination.description}
             </p>
           </div>
         )}
 
-        <div className="prose prose-lg max-w-none">
+        {/* <div className="prose prose-lg max-w-none">
           {destination.content && <PortableText value={destination.content} />}
-        </div>
+        </div> */}
 
         {/* Recent Articles Section */}
         {recentPosts.length > 0 && (
           <div className="mt-20">
-            <h2 className="text-3xl font-serif text-gray-800 mb-8">
+            <h2 className="text-3xl md:text-4xl font-serif text-gray-800 mb-12">
               Recent Articles
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
               {recentPosts.map((post) => (
                 <ArticleCard key={post._id} post={post} showButton={false} />
               ))}
