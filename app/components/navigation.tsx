@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { usePathname } from "next/navigation";
@@ -83,13 +84,20 @@ export const Navigation = () => {
         <div className="flex justify-between items-center h-20 pt-1 md:pt-2">
           {/* Brand */}
           <Link href="/" className="relative z-50" onClick={handleLogoClick}>
-            <motion.span
+            <motion.div
               initial={{ opacity: 0, x: -12 }}
               animate={{ opacity: 1, x: 0 }}
-              className="text-2xl md:text-3xl text-neutral-900 font-serif"
+              className="relative"
             >
-              nomadé
-            </motion.span>
+              <Image
+                src="/logo.svg"
+                alt="Belle and Beyond"
+                width={120}
+                height={38}
+                className="h-8 md:h-9 w-auto"
+                priority
+              />
+            </motion.div>
           </Link>
 
           {/* Desktop Navigation Links (separate from button) */}
