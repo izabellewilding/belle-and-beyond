@@ -35,14 +35,14 @@ export const Hero = () => {
 
           {/* Text overlay on the left */}
           <div className="absolute inset-0 flex items-center">
-            <div className="relative z-10 px-4 md:px-12 lg:px-20 xl:px-24 max-w-2xl">
+            <div className="relative z-10 px-4 md:px-12 lg:px-20 xl:px-24 max-w-3xl">
               <motion.h1
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.2, duration: 0.6, ease: "easeOut" }}
                 className="font-sans text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.1] tracking-tight text-white mb-3 md:mb-6"
               >
-                Travel
+                Explore the world
                 <br />
                 with us
               </motion.h1>
@@ -53,8 +53,8 @@ export const Hero = () => {
                 transition={{ delay: 0.35, duration: 0.6, ease: "easeOut" }}
                 className="text-white/90 text-sm sm:text-base md:text-lg lg:text-xl mb-6 md:mb-10 max-w-xl leading-relaxed"
               >
-                Take a journey with us as we explore the world and share our
-                experiences.
+                We want to share our experiences and trips so that you can find
+                inspiration for your own adventures.
               </motion.p>
 
               {/* Buttons */}
