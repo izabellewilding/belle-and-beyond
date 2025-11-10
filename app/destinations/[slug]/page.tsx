@@ -112,34 +112,35 @@ export default async function DestinationPage({
         </div>
       </div>
 
-      {/* Main content */}
-      <div className="max-w-4xl mx-auto px-4 md:px-6 lg:px-8 py-16 md:py-20">
-        {destination.description && (
-          <div className="mb-12">
-            <p className="text-xl md:text-2xl text-gray-700 leading-relaxed">
-              {destination.description}
-            </p>
-          </div>
-        )}
+      {/* Description - wider container */}
+      {destination.description && (
+        <div className="max-w-6xl mx-auto px-4 md:px-6 lg:px-8 pt-16 md:pt-20">
+          <p className="text-xl md:text-2xl text-gray-700 leading-relaxed">
+            {destination.description}
+          </p>
+        </div>
+      )}
 
+      {/* Main content */}
+      <div className="max-w-4xl mx-auto px-4 md:px-6 lg:px-8 pb-16 md:pb-20">
         {/* <div className="prose prose-lg max-w-none">
           {destination.content && <PortableText value={destination.content} />}
         </div> */}
-
-        {/* Recent Articles Section */}
-        {recentPosts.length > 0 && (
-          <div className="mt-20">
-            <h2 className="text-3xl md:text-4xl font-serif text-gray-800 mb-12">
-              Recent Articles
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
-              {recentPosts.map((post) => (
-                <ArticleCard key={post._id} post={post} showButton={false} />
-              ))}
-            </div>
-          </div>
-        )}
       </div>
+
+      {/* Recent Articles Section - wider container */}
+      {recentPosts.length > 0 && (
+        <div className="max-w-6xl mx-auto px-4 md:px-6 lg:px-8 pb-16 md:pb-20">
+          <h2 className="text-3xl md:text-4xl font-serif text-gray-800 mb-12">
+            Recent Articles
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
+            {recentPosts.map((post) => (
+              <ArticleCard key={post._id} post={post} showButton={false} />
+            ))}
+          </div>
+        </div>
+      )}
 
       <Footer />
     </>
