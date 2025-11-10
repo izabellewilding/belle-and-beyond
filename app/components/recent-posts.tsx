@@ -39,6 +39,11 @@ export const RecentPosts = () => {
         <h2 className="mt-8 text-4xl md:text-5xl font-serif text-neutral-900">
           Latest News
         </h2>
+        <p className="mt-8 text-md md:text-xl font-serif text-neutral-900">
+          Here are our latest stories and experiences from around the world.
+          Currently we are living and working from Costa Rica, high up in the
+          mountains.
+        </p>
       </div>
 
       <div>
