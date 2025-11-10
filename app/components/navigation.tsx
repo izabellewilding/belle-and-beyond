@@ -4,13 +4,14 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 export const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("");
   const pathname = usePathname();
+  const router = useRouter();
 
   // Handle scroll effect and active section detection
   useEffect(() => {
@@ -59,6 +60,20 @@ export const Navigation = () => {
     setIsOpen(false);
   }, [pathname]);
 
+  // Handle hash navigation after route change
+  useEffect(() => {
+    if (pathname === "/" && window.location.hash) {
+      const hash = window.location.hash.slice(1);
+      setTimeout(() => {
+        const element = document.getElementById(hash);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+          setActiveSection(hash);
+        }
+      }, 100);
+    }
+  }, [pathname]);
+
   const navLinks = [
     { href: "#news", label: "News" },
     { href: "/destinations", label: "Destinations", isPage: true },
@@ -67,9 +82,24 @@ export const Navigation = () => {
     { href: "#social", label: "Social" },
   ];
 
-  const handleNavClick = (href: string) => {
-    const sectionId = href.slice(1); // Remove the # to get the section ID
-    setActiveSection(sectionId);
+  const handleNavClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    href: string
+  ) => {
+    // If it's a hash link and we're not on the homepage, navigate to homepage first
+    if (href.startsWith("#") && pathname !== "/") {
+      e.preventDefault();
+      router.push(`/${href}`);
+    } else if (href.startsWith("#")) {
+      // If we're already on homepage, prevent default and scroll manually
+      e.preventDefault();
+      const sectionId = href.slice(1);
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+        setActiveSection(sectionId);
+      }
+    }
   };
 
   const handleLogoClick = () => {
@@ -111,14 +141,16 @@ export const Navigation = () => {
               >
                 <Link
                   href={link.href}
-                  onClick={() => {
+                  onClick={(e) => {
                     if (!link.isPage) {
-                      handleNavClick(link.href);
+                      handleNavClick(e, link.href);
                     }
                   }}
                   className={`transition-all duration-200 py-2 px-4 rounded-full ${
                     (link.isPage && pathname === link.href) ||
-                    (!link.isPage && activeSection === link.href.slice(1))
+                    (!link.isPage &&
+                      pathname === "/" &&
+                      activeSection === link.href.slice(1))
                       ? "bg-neutral-200 text-neutral-900"
                       : "text-neutral-800 hover:text-neutral-600 hover:bg-neutral-100"
                   }`}
@@ -186,13 +218,15 @@ export const Navigation = () => {
                         href={link.href}
                         className={`transition-all duration-200 py-2 px-4 rounded-full ${
                           (link.isPage && pathname === link.href) ||
-                          (!link.isPage && activeSection === link.href.slice(1))
+                          (!link.isPage &&
+                            pathname === "/" &&
+                            activeSection === link.href.slice(1))
                             ? "bg-neutral-200 text-neutral-900"
                             : "text-gray-800 hover:text-gray-600 hover:bg-neutral-100"
                         }`}
-                        onClick={() => {
+                        onClick={(e) => {
                           if (!link.isPage) {
-                            handleNavClick(link.href);
+                            handleNavClick(e, link.href);
                           }
                           setIsOpen(false);
                         }}
