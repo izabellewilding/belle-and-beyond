@@ -1,13 +1,14 @@
 "use client";
 
 import { useEffect } from "react";
+import Link from "next/link";
 import { usePostsStore } from "../stores/usePostsStore";
 import { ArticleCard } from "./article-card";
 
 const PostSkeleton = () => {
   return (
     <div className="flex flex-col h-full">
-      <div className="relative w-full aspect-[4/5] bg-gray-200 rounded-3xl" />
+      <div className="relative w-full aspect-[3/2] bg-gray-200 rounded-3xl" />
       <div className="mt-6 space-y-3">
         <div className="h-7 bg-gray-200 rounded w-3/4" />
         <div className="h-7 bg-gray-200 rounded w-1/2" />
@@ -30,7 +31,7 @@ export const RecentPosts = () => {
   return (
     <section
       id="news"
-      className="bg-white py-24 md:py-20 px-4 md:px-10 lg:px-14 w-full"
+      className="bg-white pt-24 md:pt-20 pb-0 px-4 md:px-10 lg:px-14 w-full"
     >
       {/* Header: top rule + large serif heading */}
       <div className="mb-12 md:mb-16">
@@ -40,7 +41,7 @@ export const RecentPosts = () => {
         </h2>
       </div>
 
-      <div className="min-h-[600px]">
+      <div>
         {loading && (
           <div className="grid gap-8 md:gap-10 sm:grid-cols-1 md:grid-cols-3">
             {[1, 2, 3].map((index) => (
@@ -55,23 +56,33 @@ export const RecentPosts = () => {
         )}
 
         {!loading && !error && posts.length > 0 && (
-          <div className="grid gap-8 md:gap-10 sm:grid-cols-1 md:grid-cols-3">
-            {posts.map((post) => (
-              <ArticleCard
-                key={post._id}
-                post={{
-                  _id: post._id,
-                  title: post.title,
-                  slug: post.slug,
-                  mainImage: post.mainImage,
-                  description: post.description,
-                  categories: post.categories,
-                }}
-                showButton={false}
-                smallDescription={true}
-              />
-            ))}
-          </div>
+          <>
+            <div className="grid gap-8 md:gap-10 sm:grid-cols-1 md:grid-cols-3">
+              {posts.map((post) => (
+                <ArticleCard
+                  key={post._id}
+                  post={{
+                    _id: post._id,
+                    title: post.title,
+                    slug: post.slug,
+                    mainImage: post.mainImage,
+                    description: post.description,
+                    categories: post.categories,
+                  }}
+                  showButton={false}
+                  smallDescription={true}
+                />
+              ))}
+            </div>
+            <div className="mt-12 md:mt-16 text-center">
+              <Link
+                href="#news"
+                className="inline-flex items-center rounded-full bg-neutral-900 text-white px-10 md:px-16 py-4 md:py-5 text-lg md:text-xl font-medium hover:bg-neutral-800 transition-colors"
+              >
+                See the blog
+              </Link>
+            </div>
+          </>
         )}
       </div>
     </section>
