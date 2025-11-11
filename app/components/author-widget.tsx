@@ -6,7 +6,7 @@ export const AuthorWidget = () => {
   return (
     <div className="bg-white text-center shadow-md rounded-lg p-6 flex flex-col items-center space-y-6">
       <Link href="/" className="">
-        <div className="relative w-[175px] h-[40px]">
+        <div className="relative w-[200px] h-[50px]">
           <Image
             src="/logo.svg"
             alt="Belle and Beyond Logo"

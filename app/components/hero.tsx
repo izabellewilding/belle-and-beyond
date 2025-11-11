@@ -12,14 +12,14 @@ export const Hero = () => {
   }, [controls]);
 
   return (
-    <section className="relative text-neutral-800 flex items-center justify-center px-3 md:px-0 pt-16 md:pt-20 lg:pt-24">
-      <div className="w-full md:-mx-6 lg:-mx-8">
-        {/* Centered rounded image container */}
+    <section className="relative text-neutral-800 flex items-center justify-center pt-16 md:pt-20 lg:pt-24">
+      <div className="w-full">
+        {/* Full width image container */}
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={controls}
           transition={{ duration: 0.6, ease: "easeOut" }}
-          className="relative w-full aspect-[3/4] md:aspect-[16/7] lg:aspect-[16/6] rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl"
+          className="relative w-full aspect-[3/4] md:aspect-[16/7] lg:aspect-[16/6] overflow-hidden"
         >
           <Image
             src="/images/algarve_sunset_zia_portrait.JPG"
@@ -31,14 +31,14 @@ export const Hero = () => {
           />
 
           {/* Overlay gradient for text readability */}
-          <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60" />
 
-          {/* Text overlay on the left */}
-          <div className="absolute inset-0 flex items-center">
-            <div className="relative z-10 px-4 md:px-12 lg:px-20 xl:px-24 max-w-3xl">
+          {/* Text overlay centered */}
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="relative z-10 px-4 md:px-12 lg:px-20 xl:px-24 max-w-3xl text-center">
               <motion.h1
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2, duration: 0.6, ease: "easeOut" }}
                 className="font-sans text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.1] tracking-tight text-white mb-3 md:mb-6"
               >
@@ -48,10 +48,10 @@ export const Hero = () => {
               </motion.h1>
 
               <motion.p
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.35, duration: 0.6, ease: "easeOut" }}
-                className="text-white/90 text-sm sm:text-base md:text-lg lg:text-xl mb-6 md:mb-10 max-w-xl leading-relaxed"
+                className="text-white/90 text-sm sm:text-base md:text-lg lg:text-xl mb-6 md:mb-10 max-w-xl mx-auto leading-relaxed"
               >
                 We want to share our experiences and trips so that you can find
                 inspiration for your own adventures.
@@ -62,7 +62,7 @@ export const Hero = () => {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5, duration: 0.6, ease: "easeOut" }}
-                className="flex flex-col md:flex-row gap-3 md:gap-4"
+                className="flex flex-col md:flex-row gap-3 md:gap-4 justify-center"
               >
                 <a
                   href="/destinations"

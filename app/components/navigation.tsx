@@ -124,7 +124,7 @@ export const Navigation = () => {
                 alt="Belle and Beyond"
                 width={120}
                 height={38}
-                className="h-8 md:h-9 w-auto"
+                className="h-10 md:h-12 w-auto"
                 priority
               />
             </motion.div>
