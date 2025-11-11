@@ -12,14 +12,14 @@ export const Hero = () => {
   }, [controls]);
 
   return (
-    <section className="relative text-neutral-800 flex items-center justify-center pt-16 md:pt-20 lg:pt-24">
+    <section className="relative text-neutral-800 flex items-center justify-center pt-8 md:pt-12 lg:pt-16">
       <div className="w-full">
         {/* Full width image container */}
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={controls}
           transition={{ duration: 0.6, ease: "easeOut" }}
-          className="relative w-full aspect-[3/4] md:aspect-[16/7] lg:aspect-[16/6] overflow-hidden"
+          className="relative w-full aspect-[3/4] md:aspect-[16/9] lg:aspect-[16/8] overflow-hidden"
         >
           <Image
             src="/images/algarve_sunset_zia_portrait.JPG"
@@ -31,7 +31,7 @@ export const Hero = () => {
           />
 
           {/* Overlay gradient for text readability */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/30" />
 
           {/* Text overlay centered */}
           <div className="absolute inset-0 flex items-center justify-center">
