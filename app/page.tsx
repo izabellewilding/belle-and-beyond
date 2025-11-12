@@ -5,7 +5,6 @@ import { Footer } from "./components/footer";
 import { About } from "./components/about";
 import { GalleryDirectory } from "./components/GalleryDirectory";
 import { Contact } from "./components/contact";
-import { DestinationsCarouselWrapper } from "./components/DestinationsCarouselWrapper";
 
 export default function Home() {
   return (

@@ -3,6 +3,15 @@ import { Footer } from "@/app/components/footer";
 import { getPostsByCategories } from "@/sanity/lib/api";
 import { ArticleCard } from "@/app/components/article-card";
 
+interface Post {
+  _id: string;
+  title: string;
+  slug: string;
+  mainImage: string;
+  description?: string;
+  categories?: string[];
+}
+
 export const metadata = {
   title: "Tips | Belle and Beyond",
   description: "Travel tips and advice for your adventures.",
@@ -31,7 +40,7 @@ export default async function TipsPage() {
           <p className="text-center text-gray-500">No tips found.</p>
         ) : (
           <div className="grid gap-8 md:gap-10 sm:grid-cols-1 md:grid-cols-3">
-            {posts.map((post: any) => (
+            {posts.map((post: Post) => (
               <ArticleCard
                 key={post._id}
                 post={{

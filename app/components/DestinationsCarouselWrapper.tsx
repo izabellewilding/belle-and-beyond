@@ -1,9 +1,18 @@
 import { getAllDestinations } from "@/sanity/lib/api";
 import { DestinationsCarousel } from "./DestinationsCarousel";
 
+interface Destination {
+  _id: string;
+  title: string;
+  slug: string;
+  description?: string;
+  coverImage?: string;
+  mainImage?: string;
+}
+
 // Helper function to filter out Travel Advice and Travel Tips
-const filterTravelAdviceAndTips = (destinations: any[]) => {
-  return destinations.filter((destination: any) => {
+const filterTravelAdviceAndTips = (destinations: Destination[]) => {
+  return destinations.filter((destination: Destination) => {
     const titleLower = destination.title?.toLowerCase() || "";
     const slugLower = destination.slug?.toLowerCase() || "";
     return (

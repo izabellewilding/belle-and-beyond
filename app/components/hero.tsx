@@ -3,6 +3,7 @@
 import { motion, useAnimation } from "framer-motion";
 import { useEffect } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 export const Hero = () => {
   const controls = useAnimation();
@@ -64,7 +65,7 @@ export const Hero = () => {
                 transition={{ delay: 0.5, duration: 0.6, ease: "easeOut" }}
                 className="flex flex-col md:flex-row gap-3 md:gap-4 justify-center"
               >
-                <a
+                <Link
                   href="/destinations"
                   className="inline-flex items-center justify-center gap-1.5 md:gap-2 bg-white text-neutral-900 px-6 py-3 md:px-8 md:py-4 rounded-full font-medium text-base md:text-base lg:text-lg hover:bg-neutral-100 transition-colors duration-200 shadow-lg w-full md:w-auto"
                 >
@@ -82,8 +83,8 @@ export const Hero = () => {
                       d="M17 8l4 4m0 0l-4 4m4-4H3"
                     />
                   </svg>
-                </a>
-                <a
+                </Link>
+                <Link
                   href="/blog"
                   className="hidden md:inline-flex items-center justify-center gap-2 bg-transparent border-2 border-white text-white px-8 py-4 rounded-full font-medium text-base lg:text-lg hover:bg-white hover:text-neutral-900 transition-colors duration-200"
                 >
@@ -101,7 +102,7 @@ export const Hero = () => {
                       d="M17 8l4 4m0 0l-4 4m4-4H3"
                     />
                   </svg>
-                </a>
+                </Link>
               </motion.div>
             </div>
           </div>

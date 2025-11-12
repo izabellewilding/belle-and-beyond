@@ -4,7 +4,6 @@ import {
   getPostsByCountry,
 } from "@/sanity/lib/api";
 import Image from "next/image";
-import { PortableText } from "@portabletext/react";
 import { notFound } from "next/navigation";
 import { Navigation } from "@/app/components/navigation";
 import { Footer } from "@/app/components/footer";

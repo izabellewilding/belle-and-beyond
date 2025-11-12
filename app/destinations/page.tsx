@@ -3,6 +3,15 @@ import { Footer } from "@/app/components/footer";
 import { getAllDestinations } from "@/sanity/lib/api";
 import { DestinationCard } from "@/app/components/destination-card";
 
+interface Destination {
+  _id: string;
+  title: string;
+  slug: string;
+  description?: string;
+  coverImage?: string;
+  mainImage?: string;
+}
+
 export const metadata = {
   title: "Destinations | Belle and Beyond",
   description: "Explore travel destinations around the world.",
@@ -11,7 +20,7 @@ export const metadata = {
 export default async function DestinationsPage() {
   const allDestinations = await getAllDestinations();
   // Filter out "Travel Advice" and "Travel Tips" destinations (case-insensitive, check both title and slug)
-  const destinations = allDestinations.filter((destination: any) => {
+  const destinations = allDestinations.filter((destination: Destination) => {
     const titleLower = destination.title?.toLowerCase() || "";
     const slugLower = destination.slug?.toLowerCase() || "";
     return (
@@ -37,7 +46,7 @@ export default async function DestinationsPage() {
         </div>
 
         <div className="grid gap-8 md:gap-10 sm:grid-cols-1 md:grid-cols-3">
-          {destinations.map((destination: any) => (
+          {destinations.map((destination: Destination) => (
             <DestinationCard
               key={destination._id}
               destination={{
