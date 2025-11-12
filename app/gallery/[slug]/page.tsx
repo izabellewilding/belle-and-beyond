@@ -3,51 +3,119 @@ import { Navigation } from "../../components/navigation";
 import { Footer } from "../../components/footer";
 import Image from "next/image";
 
-// Define the gallery data
+// Image metadata interface
+interface ImageMetadata {
+  src: string;
+  alt: string;
+  title?: string;
+  photographer?: string;
+}
+
+// Define the gallery data with image metadata
 const galleryData = {
   landscapes: {
     title: "Landscapes",
     description:
       "Quiet, far-flung corners where stillness meets landscape and story.",
     images: [
-      "/images/algarve-clifs.JPG",
-      "/images/algarve_sunset_zia_portrait.JPG",
+      {
+        src: "/images/algarve-clifs.JPG",
+        alt: "Dramatic cliffs along the Algarve coastline with ocean views",
+        title: "Algarve Cliffs",
+        photographer: "Izzy Wilding",
+      },
+      {
+        src: "/images/algarve_sunset_zia_portrait.JPG",
+        alt: "Sunset over the Algarve with portrait silhouette against colorful sky",
+        title: "Algarve Sunset",
+        photographer: "Izzy Wilding",
+      },
       // Add more landscape images here
-    ],
+    ] as ImageMetadata[],
   },
   flora: {
     title: "Flora",
     description:
       "Echoes of the past captured in textures, artifacts, and timeless spaces.",
     images: [
-      "/images/brazil-flower.JPG",
-      "/images/ferns.JPG",
-      "/images/hibiscus.JPG",
-      "/images/brazil-flower.JPG",
-      "/images/ferns.JPG",
-      "/images/hibiscus.JPG",
+      {
+        src: "/images/brazil-flower.JPG",
+        alt: "Vibrant Iris from Brazil with rich colors",
+        title: "Brazilian Flower",
+        photographer: "Izzy Wilding",
+      },
+      {
+        src: "/images/ferns.JPG",
+        alt: "Lush green ferns in natural forest setting",
+        title: "Forest Ferns",
+        photographer: "Izzy Wilding",
+      },
+      {
+        src: "/images/hibiscus.JPG",
+        alt: "Beautiful hibiscus flower in full bloom",
+        title: "Hibiscus Bloom",
+        photographer: "Izzy Wilding",
+      },
+      {
+        src: "/images/brazil-flower.JPG",
+        alt: "Vibrant tropical flower from Brazil with rich colors",
+        title: "Brazilian Flower",
+        photographer: "Izzy Wilding",
+      },
+      {
+        src: "/images/ferns.JPG",
+        alt: "Lush green ferns in natural forest setting",
+        title: "Forest Ferns",
+        photographer: "Izzy Wilding",
+      },
+      {
+        src: "/images/hibiscus.JPG",
+        alt: "Beautiful hibiscus flower in full bloom",
+        title: "Hibiscus Bloom",
+        photographer: "Izzy Wilding",
+      },
       // Add more flora images here
-    ],
+    ] as ImageMetadata[],
   },
   people: {
     title: "People",
     description:
       "Clifftops, coves, and windswept meadows along a rugged coastline.",
     images: [
-      "/images/zia-sunset.JPG",
-      "/images/izzy_zia.JPG",
+      {
+        src: "/images/zia-sunset.JPG",
+        alt: "Portrait of Zia during sunset with warm golden light",
+        title: "Sunset Portrait",
+        photographer: "Izzy Wilding",
+      },
+      {
+        src: "/images/izzy_zia.JPG",
+        alt: "Portrait of Izzy and Zia together",
+        title: "Izzy and Zia",
+        photographer: "Izzy Wilding",
+      },
       // Add more people images here
-    ],
+    ] as ImageMetadata[],
   },
   foliage: {
     title: "Foliage",
     description:
       "Sunlit streets, tiled façades, and small discoveries in the city's rhythm.",
     images: [
-      "/images/ferns.JPG",
-      "/images/brazil-flower.JPG",
+      {
+        src: "/images/ferns.JPG",
+        alt: "Close-up of green ferns with natural lighting",
+        title: "Green Ferns",
+        photographer: "Izzy Wilding",
+      },
+      {
+        src: "/images/brazil-flower.JPG",
+        alt: "Exotic flower from Brazil with detailed petals",
+        title: "Brazilian Flower Detail",
+        photographer: "Izzy Wilding",
+      },
       // Add more foliage images here
-    ],
+    ] as ImageMetadata[],
   },
 };
 
@@ -55,6 +123,28 @@ interface GalleryPageProps {
   params: Promise<{
     slug: string;
   }>;
+}
+
+// Generate metadata for SEO
+export async function generateMetadata({ params }: GalleryPageProps) {
+  const { slug } = await params;
+  const gallery = galleryData[slug as keyof typeof galleryData];
+
+  if (!gallery) {
+    return {
+      title: "Gallery | Belle and Beyond",
+    };
+  }
+
+  return {
+    title: `${gallery.title} Gallery | Belle and Beyond`,
+    description: gallery.description,
+    openGraph: {
+      title: `${gallery.title} Gallery | Belle and Beyond`,
+      description: gallery.description,
+      type: "website",
+    },
+  };
 }
 
 export default async function GalleryPage({ params }: GalleryPageProps) {
@@ -89,17 +179,27 @@ export default async function GalleryPage({ params }: GalleryPageProps) {
             {Array.from({ length: 4 }, (_, columnIndex) => (
               <div key={columnIndex} className="grid gap-4">
                 {gallery.images
-                  .filter((_, index) => index % 4 === columnIndex)
-                  .map((image, imageIndex) => (
-                    <div key={imageIndex} className="relative">
+                  .map((image, index) => ({ image, index }))
+                  .filter(({ index }) => index % 4 === columnIndex)
+                  .map(({ image, index: globalIndex }) => (
+                    <div key={globalIndex} className="relative group">
                       <Image
                         className="h-auto max-w-full rounded-lg"
-                        src={image}
-                        alt={`${gallery.title} ${imageIndex + 1}`}
+                        src={image.src}
+                        alt={image.alt}
+                        title={image.title || image.alt}
                         width={400}
                         height={600}
                         sizes="(max-width: 768px) 50vw, 25vw"
+                        loading={globalIndex < 4 ? "eager" : "lazy"}
                       />
+                      {image.photographer && (
+                        <div className="absolute bottom-0 left-0 right-0 bg-black/60 text-white text-xs px-3 py-2 rounded-b-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                          <span className="font-medium">
+                            Photo by {image.photographer}
+                          </span>
+                        </div>
+                      )}
                     </div>
                   ))}
               </div>
