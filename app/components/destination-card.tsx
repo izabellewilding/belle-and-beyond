@@ -41,10 +41,8 @@ export const DestinationCard = ({
           sizes="(min-width: 1024px) 33vw, 100vw"
           priority={false}
         />
-        {/* Overlay for better text readability */}
-        <div className="absolute inset-0 bg-black/30 z-10" />
         {/* Title centered on image */}
-        <div className="absolute inset-0 flex items-center justify-center z-20">
+        <div className="absolute inset-0 flex items-center justify-center z-10">
           <h3 className="text-2xl md:text-3xl leading-snug font-serif text-white text-center px-4">
             {destination.title}
           </h3>

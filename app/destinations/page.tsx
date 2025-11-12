@@ -9,7 +9,20 @@ export const metadata = {
 };
 
 export default async function DestinationsPage() {
-  const destinations = await getAllDestinations();
+  const allDestinations = await getAllDestinations();
+  // Filter out "Travel Advice" and "Travel Tips" destinations (case-insensitive, check both title and slug)
+  const destinations = allDestinations.filter((destination: any) => {
+    const titleLower = destination.title?.toLowerCase() || "";
+    const slugLower = destination.slug?.toLowerCase() || "";
+    return (
+      !titleLower.includes("travel advice") &&
+      !slugLower.includes("travel-advice") &&
+      !slugLower.includes("travel_advice") &&
+      !titleLower.includes("travel tips") &&
+      !slugLower.includes("travel-tips") &&
+      !slugLower.includes("travel_tips")
+    );
+  });
 
   return (
     <>

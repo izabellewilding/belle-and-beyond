@@ -71,3 +71,29 @@ export const getPostsByCountryQuery = groq`*[_type == "post" && country._ref == 
   "description": pt::text(body[0..2]),
   "categories": categories[]->title
 }`;
+
+// Get posts by category
+export const getPostsByCategoryQuery = groq`*[_type == "post" && $categoryTitle in categories[]->title] | order(publishedAt desc) {
+  _id,
+  title,
+  "slug": slug.current,
+  "mainImage": mainImage.asset->url,
+  publishedAt,
+  "author": author->name,
+  "country": country->title,
+  "description": pt::text(body[0..2]),
+  "categories": categories[]->title
+}`;
+
+// Get posts by multiple categories
+export const getPostsByCategoriesQuery = groq`*[_type == "post" && count((categories[]->title)[@ in $categoryTitles]) > 0] | order(publishedAt desc) {
+  _id,
+  title,
+  "slug": slug.current,
+  "mainImage": mainImage.asset->url,
+  publishedAt,
+  "author": author->name,
+  "country": country->title,
+  "description": pt::text(body[0..2]),
+  "categories": categories[]->title
+}`;

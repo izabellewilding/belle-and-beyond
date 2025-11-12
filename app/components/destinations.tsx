@@ -35,7 +35,20 @@ interface Destination {
 }
 
 export const Destinations = async () => {
-  const destinations = await getAllDestinations();
+  const allDestinations = await getAllDestinations();
+  // Filter out Travel Advice and Travel Tips
+  const destinations = allDestinations.filter((destination: Destination) => {
+    const titleLower = destination.title?.toLowerCase() || "";
+    const slugLower = destination.slug?.toLowerCase() || "";
+    return (
+      !titleLower.includes("travel advice") &&
+      !slugLower.includes("travel-advice") &&
+      !slugLower.includes("travel_advice") &&
+      !titleLower.includes("travel tips") &&
+      !slugLower.includes("travel-tips") &&
+      !slugLower.includes("travel_tips")
+    );
+  });
 
   return (
     <section
