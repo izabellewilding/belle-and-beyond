@@ -26,14 +26,13 @@ export const About = () => {
           {/* Text content */}
           <div className="flex-1 lg:max-w-4xl">
             <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl text-neutral-800 leading-tight font-serif">
-              We're fully remote software engineers who love exploring beyond
-              the usual paths. From coding on the road to finding peace in
-              nature, we're always chasing new experiences in far-flung places.
-              We spent a few unforgettable months living in Costa Rica, where
-              our love for wild landscapes grew even stronger. I'm also an
-              artist and photographer, inspired by the people and places we
-              encounter. Our goal is simple — to share honest stories and real
-              travel tips, without the fake gloss you find all too often online.
+              Hi! We're Izzie and Zia, a couple from the UK who love exploring
+              and changing our work setting. We both work remotely as mobile and
+              web app developers. I love writing and want to use this blog as a
+              chance to share our experiences working remotely. I'm also a keen
+              photographer and take all of the pictures for the blog. Our goal
+              is simple — to share honest stories and real travel tips, without
+              the fake gloss you find all too often online.
             </p>
           </div>
 
