@@ -43,7 +43,7 @@ export async function POST(request: Request) {
         const resend = new Resend(process.env.RESEND_API_KEY);
 
         await resend.emails.send({
-          from: "contact@belleandbeyond.com", // You'll need to verify this domain
+          from: "contact@izziatravel.com", // You'll need to verify this domain
           to: ["izabellewilding@gmail.com"], // Your email address
           replyTo: email, // This allows you to reply directly to the user
           subject: `Contact Form: ${subject}`,

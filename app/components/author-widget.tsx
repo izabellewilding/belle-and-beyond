@@ -9,7 +9,7 @@ export const AuthorWidget = () => {
         <div className="relative w-[200px] h-[50px]">
           <Image
             src="/logo.svg"
-            alt="Belle and Beyond Logo"
+            alt="Izzia Travel Logo"
             fill
             priority
             className="object-contain"
@@ -30,13 +30,9 @@ export const AuthorWidget = () => {
       {/* Bullet Point Description */}
       <div className="text-gray-700 space-y-2 text-md">
         {/* <h3 className="text-gray-300 text-sm pb-2">ABOUT ME</h3> */}
-        Hi! We're Izzie and Zia, a couple from the UK who love exploring and
-        changing our work setting. We both work remotely as mobile and web app
-        developers. I'm love writing and want to use this blog as a chance to
-        share our experiences working remotely. I'm also a keen photographer and
-        take all of the pictures for the blog. Our goal is simple — to share
-        honest stories and real travel tips, without the fake gloss you find all
-        too often online.
+        Hey, Izzie and Zia, or Izzia! We're a couple who both work as fully
+        remote software engineers. We love exploring new places and cultures,
+        and we're always looking for new adventures.
       </div>
     </div>
   );

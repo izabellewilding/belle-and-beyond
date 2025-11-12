@@ -57,7 +57,7 @@ export async function generateMetadata({
   }
 
   return {
-    title: `${destination.title} | Belle and Beyond`,
+    title: `${destination.title} | Izzia Travel`,
     description: destination.description,
   };
 }

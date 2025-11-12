@@ -13,7 +13,7 @@ interface Destination {
 }
 
 export const metadata = {
-  title: "Destinations | Belle and Beyond",
+  title: "Destinations | Izzia Travel",
   description: "Explore travel destinations around the world.",
 };
 

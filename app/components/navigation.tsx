@@ -122,7 +122,7 @@ export const Navigation = () => {
             >
               <Image
                 src="/logo.svg"
-                alt="Belle and Beyond"
+                alt="Izzia Travel"
                 width={120}
                 height={38}
                 className="h-10 md:h-12 w-auto"

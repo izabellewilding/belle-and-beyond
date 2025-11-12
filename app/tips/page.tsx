@@ -13,7 +13,7 @@ interface Post {
 }
 
 export const metadata = {
-  title: "Tips | Belle and Beyond",
+  title: "Tips | Izzia Travel",
   description: "Travel tips and advice for your adventures.",
 };
 

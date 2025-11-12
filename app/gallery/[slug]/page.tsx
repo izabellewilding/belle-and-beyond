@@ -132,28 +132,27 @@ export async function generateMetadata({ params }: GalleryPageProps) {
 
   if (!gallery) {
     return {
-      title: "Gallery | Belle and Beyond",
+      title: "Gallery | Izzia Travel",
     };
   }
 
-  const baseUrl =
-    process.env.NEXT_PUBLIC_SITE_URL || "https://belleandbeyond.com";
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://izziatravel.com";
   const pageUrl = `${baseUrl}/gallery/${slug}`;
   const firstImage = gallery.images[0]?.src;
   const ogImage = firstImage ? `${baseUrl}${firstImage}` : undefined;
 
   return {
-    title: `${gallery.title} Gallery | Belle and Beyond`,
+    title: `${gallery.title} Gallery | Izzia Travel`,
     description: gallery.description,
     alternates: {
       canonical: pageUrl,
     },
     openGraph: {
-      title: `${gallery.title} Gallery | Belle and Beyond`,
+      title: `${gallery.title} Gallery | Izzia Travel`,
       description: gallery.description,
       type: "website",
       url: pageUrl,
-      siteName: "Belle and Beyond",
+      siteName: "Izzia Travel",
       images: ogImage
         ? [
             {
@@ -167,7 +166,7 @@ export async function generateMetadata({ params }: GalleryPageProps) {
     },
     twitter: {
       card: "summary_large_image",
-      title: `${gallery.title} Gallery | Belle and Beyond`,
+      title: `${gallery.title} Gallery | Izzia Travel`,
       description: gallery.description,
       images: ogImage ? [ogImage] : [],
     },
@@ -190,7 +189,7 @@ export default async function GalleryPage({ params }: GalleryPageProps) {
     description: gallery.description,
     image: gallery.images.map((img) => ({
       "@type": "ImageObject",
-      contentUrl: `${process.env.NEXT_PUBLIC_SITE_URL || "https://belleandbeyond.com"}${img.src}`,
+      contentUrl: `${process.env.NEXT_PUBLIC_SITE_URL || "https://izziatravel.com"}${img.src}`,
       description: img.alt,
       name: img.title || img.alt,
       creator: img.photographer
