@@ -136,13 +136,40 @@ export async function generateMetadata({ params }: GalleryPageProps) {
     };
   }
 
+  const baseUrl =
+    process.env.NEXT_PUBLIC_SITE_URL || "https://belleandbeyond.com";
+  const pageUrl = `${baseUrl}/gallery/${slug}`;
+  const firstImage = gallery.images[0]?.src;
+  const ogImage = firstImage ? `${baseUrl}${firstImage}` : undefined;
+
   return {
     title: `${gallery.title} Gallery | Belle and Beyond`,
     description: gallery.description,
+    alternates: {
+      canonical: pageUrl,
+    },
     openGraph: {
       title: `${gallery.title} Gallery | Belle and Beyond`,
       description: gallery.description,
       type: "website",
+      url: pageUrl,
+      siteName: "Belle and Beyond",
+      images: ogImage
+        ? [
+            {
+              url: ogImage,
+              alt: gallery.images[0]?.alt || gallery.title,
+              width: 1200,
+              height: 630,
+            },
+          ]
+        : [],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${gallery.title} Gallery | Belle and Beyond`,
+      description: gallery.description,
+      images: ogImage ? [ogImage] : [],
     },
   };
 }
@@ -155,9 +182,33 @@ export default async function GalleryPage({ params }: GalleryPageProps) {
     notFound();
   }
 
+  // Generate structured data for SEO (JSON-LD)
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "ImageGallery",
+    name: `${gallery.title} Gallery`,
+    description: gallery.description,
+    image: gallery.images.map((img) => ({
+      "@type": "ImageObject",
+      contentUrl: `${process.env.NEXT_PUBLIC_SITE_URL || "https://belleandbeyond.com"}${img.src}`,
+      description: img.alt,
+      name: img.title || img.alt,
+      creator: img.photographer
+        ? {
+            "@type": "Person",
+            name: img.photographer,
+          }
+        : undefined,
+    })),
+  };
+
   return (
     <div className="min-h-screen ">
       <Navigation />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
 
       <main className="pt-24 md:pt-16">
         {/* Header */}
