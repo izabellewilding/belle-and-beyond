@@ -50,13 +50,6 @@ export const DestinationCard = ({
           </h3>
         </div>
       </Link>
-      {destination.description && (
-        <div className="mt-6">
-          <p className="text-base text-neutral-600 line-clamp-2">
-            {destination.description}
-          </p>
-        </div>
-      )}
     </div>
   );
 };

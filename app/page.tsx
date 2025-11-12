@@ -18,7 +18,7 @@ export default function Home() {
       <div className="w-full flex justify-end">
         <GalleryDirectory />
       </div>
-      <DestinationsCarouselWrapper />
+      {/* <DestinationsCarouselWrapper /> */}
       <About />
       <Contact />
 
