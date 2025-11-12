@@ -19,10 +19,10 @@ export const Hero = () => {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={controls}
           transition={{ duration: 0.6, ease: "easeOut" }}
-          className="relative w-full aspect-[3/4] md:aspect-[16/9] lg:aspect-[16/8] overflow-hidden"
+          className="relative w-full aspect-[3/4] lg:aspect-[16/8] overflow-hidden"
         >
           <Image
-            src="/images/algarve_sunset_zia_portrait.JPG"
+            src="/images/la-de-rivas-view.JPG"
             alt="Hero image"
             fill
             priority

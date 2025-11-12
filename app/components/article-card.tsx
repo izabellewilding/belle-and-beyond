@@ -30,7 +30,7 @@ export const ArticleCard = ({
     <div className={`flex flex-col h-full ${className}`}>
       <Link
         href={href}
-        className="block relative w-full aspect-[4/3] overflow-hidden rounded-3xl"
+        className="block relative w-full aspect-[3/4] overflow-hidden rounded-3xl"
         onClick={() => trackBlogPostClick(post.title, post.slug)}
       >
         <Image

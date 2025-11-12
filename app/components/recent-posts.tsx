@@ -8,7 +8,7 @@ import { ArticleCard } from "./article-card";
 const PostSkeleton = () => {
   return (
     <div className="flex flex-col h-full">
-      <div className="relative w-full aspect-[3/2] bg-gray-200 rounded-3xl" />
+      <div className="relative w-full aspect-[3/4] bg-gray-200 rounded-3xl" />
       <div className="mt-6 space-y-3">
         <div className="h-7 bg-gray-200 rounded w-3/4" />
         <div className="h-7 bg-gray-200 rounded w-1/2" />
