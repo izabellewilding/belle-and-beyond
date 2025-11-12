@@ -4,7 +4,6 @@ import { useEffect } from "react";
 import Link from "next/link";
 import { usePostsStore } from "../stores/usePostsStore";
 import { trackBlogPostClick } from "@/lib/gtag";
-import { formatDate } from "@/lib/utils";
 
 const PostSkeleton = () => {
   return (
