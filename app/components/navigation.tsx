@@ -125,7 +125,7 @@ export const Navigation = () => {
                 alt="Izzia Travel"
                 width={120}
                 height={38}
-                className="h-8 md:h-10 w-auto"
+                className="h-7 md:h-9 w-auto"
                 priority
               />
             </motion.div>
