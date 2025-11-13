@@ -4,6 +4,10 @@ import { Footer } from "../../components/footer";
 import Image from "next/image";
 import { getGalleryBySlug, getAllGalleries } from "@/sanity/lib/api";
 
+// Enable dynamic rendering - pages will be generated on-demand
+export const dynamicParams = true; // Allow dynamic params not returned by generateStaticParams
+export const revalidate = 0; // Always fetch fresh data
+
 // Image metadata interface
 interface ImageMetadata {
   src: string;
@@ -79,7 +83,7 @@ export default async function GalleryPage({ params }: GalleryPageProps) {
   const { slug } = await params;
   const gallery = (await getGalleryBySlug(slug)) as Gallery | null;
 
-  if (!gallery || !gallery.images || gallery.images.length === 0) {
+  if (!gallery) {
     notFound();
   }
 
@@ -89,7 +93,7 @@ export default async function GalleryPage({ params }: GalleryPageProps) {
     "@type": "ImageGallery",
     name: `${gallery.title} Gallery`,
     description: gallery.description,
-    image: gallery.images.map((img) => ({
+    image: (gallery.images || []).map((img) => ({
       "@type": "ImageObject",
       contentUrl: `${process.env.NEXT_PUBLIC_SITE_URL || "https://izziatravel.com"}${img.src}`,
       description: img.alt,
@@ -129,36 +133,44 @@ export default async function GalleryPage({ params }: GalleryPageProps) {
 
         {/* Gallery Grid */}
         <section className="py-24 md:pt-8 lg:pt-0 px-4 md:px-10 lg:px-14 w-full">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {Array.from({ length: 4 }, (_, columnIndex) => (
-              <div key={columnIndex} className="grid gap-4">
-                {gallery.images
-                  .map((image, index) => ({ image, index }))
-                  .filter(({ index }) => index % 4 === columnIndex)
-                  .map(({ image, index: globalIndex }) => (
-                    <div key={globalIndex} className="relative group">
-                      <Image
-                        className="h-auto max-w-full rounded-lg"
-                        src={image.src}
-                        alt={image.alt}
-                        title={image.title || image.alt}
-                        width={400}
-                        height={600}
-                        sizes="(max-width: 768px) 50vw, 25vw"
-                        loading={globalIndex < 4 ? "eager" : "lazy"}
-                      />
-                      {image.photographer && (
-                        <div className="absolute bottom-0 left-0 right-0 bg-black/60 text-white text-xs px-3 py-2 rounded-b-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                          <span className="font-medium">
-                            Photo by {image.photographer}
-                          </span>
-                        </div>
-                      )}
-                    </div>
-                  ))}
-              </div>
-            ))}
-          </div>
+          {gallery.images && gallery.images.length > 0 ? (
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              {Array.from({ length: 4 }, (_, columnIndex) => (
+                <div key={columnIndex} className="grid gap-4">
+                  {gallery.images
+                    .map((image, index) => ({ image, index }))
+                    .filter(({ index }) => index % 4 === columnIndex)
+                    .map(({ image, index: globalIndex }) => (
+                      <div key={globalIndex} className="relative group">
+                        <Image
+                          className="h-auto max-w-full rounded-lg"
+                          src={image.src}
+                          alt={image.alt}
+                          title={image.title || image.alt}
+                          width={400}
+                          height={600}
+                          sizes="(max-width: 768px) 50vw, 25vw"
+                          loading={globalIndex < 4 ? "eager" : "lazy"}
+                        />
+                        {image.photographer && (
+                          <div className="absolute bottom-0 left-0 right-0 bg-black/60 text-white text-xs px-3 py-2 rounded-b-lg opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                            <span className="font-medium">
+                              Photo by {image.photographer}
+                            </span>
+                          </div>
+                        )}
+                      </div>
+                    ))}
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="text-center py-12">
+              <p className="text-neutral-600">
+                No images available for this gallery yet.
+              </p>
+            </div>
+          )}
         </section>
       </main>
 
@@ -167,7 +179,6 @@ export default async function GalleryPage({ params }: GalleryPageProps) {
   );
 }
 
-// Generate static params for all gallery slugs
 export async function generateStaticParams() {
   const galleries = await getAllGalleries();
   return galleries.map((gallery: { slug: string }) => ({
