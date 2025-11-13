@@ -31,19 +31,21 @@ export const RecentPosts = () => {
   return (
     <section
       id="news"
-      className="bg-white pt-0 md:pt-20 pb-0 px-4 md:px-10 lg:px-14 w-full"
+      className="bg-white pb-16 md:pb-24 px-4 md:px-10 lg:px-14 w-full"
     >
-      {/* Header: top rule + large serif heading */}
-      <div className="mb-12 md:mb-16">
-        <div className="border-t border-neutral-400/70" />
-        <h2 className="mt-8 text-3xl md:text-4xl font-serif text-neutral-900">
-          Latest News
-        </h2>
-        <p className="mt-8 text-md md:text-xl font-serif text-neutral-900">
-          Here are our latest stories and experiences from around the world.
-          Currently we are living and working from Costa Rica, high up in the
-          mountains.
-        </p>
+      {/* Border line at top */}
+      <div className="border-t border-neutral-400/70 pt-16 md:pt-24 mb-8 md:mb-12">
+        {/* Header: large serif heading */}
+        <div>
+          <h2 className="text-3xl md:text-4xl font-serif text-neutral-900">
+            Latest News
+          </h2>
+          <p className="mt-8 text-md md:text-xl font-serif text-neutral-900">
+            Here are our latest stories and experiences from around the world.
+            Currently we are living and working from Costa Rica, high up in the
+            mountains.
+          </p>
+        </div>
       </div>
 
       <div>
@@ -79,7 +81,7 @@ export const RecentPosts = () => {
                 />
               ))}
             </div>
-            <div className="mt-12 md:mt-16 text-center">
+            <div className="mt-8 md:mt-12 text-center">
               <Link
                 href="#news"
                 className="inline-flex items-center rounded-full bg-neutral-900 text-white px-10 md:px-16 py-4 md:py-5 text-lg md:text-xl font-medium hover:bg-neutral-800 transition-colors"
