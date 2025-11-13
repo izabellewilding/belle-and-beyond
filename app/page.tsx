@@ -4,7 +4,7 @@ import { RecentPosts } from "./components/recent-posts";
 import { RecentPostsAlternative } from "./components/recent-posts-alternative";
 import { Footer } from "./components/footer";
 import { About } from "./components/about";
-import { GalleryDirectory } from "./components/GalleryDirectory";
+import { GalleryDirectoryWrapper } from "./components/GalleryDirectoryWrapper";
 import { Contact } from "./components/contact";
 
 export default function Home() {
@@ -19,7 +19,7 @@ export default function Home() {
 
       {useAlternativeLayout ? <RecentPostsAlternative /> : <RecentPosts />}
       <div className="w-full flex justify-end">
-        <GalleryDirectory />
+        <GalleryDirectoryWrapper />
       </div>
       {/* <DestinationsCarouselWrapper /> */}
       <About />

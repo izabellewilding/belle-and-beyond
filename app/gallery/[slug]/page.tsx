@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import { Navigation } from "../../components/navigation";
 import { Footer } from "../../components/footer";
 import Image from "next/image";
+import { getGalleryBySlug, getAllGalleries } from "@/sanity/lib/api";
 
 // Image metadata interface
 interface ImageMetadata {
@@ -11,113 +12,14 @@ interface ImageMetadata {
   photographer?: string;
 }
 
-// Define the gallery data with image metadata
-const galleryData = {
-  landscapes: {
-    title: "Landscapes",
-    description:
-      "Quiet, far-flung corners where stillness meets landscape and story.",
-    images: [
-      {
-        src: "/images/algarve-clifs.JPG",
-        alt: "Dramatic cliffs along the Algarve coastline with ocean views",
-        title: "Algarve Cliffs",
-        photographer: "Izabelle Wilding",
-      },
-      {
-        src: "/images/algarve_sunset_zia_portrait.JPG",
-        alt: "Sunset over the Algarve with portrait silhouette against colorful sky",
-        title: "Algarve Sunset",
-        photographer: "Izabelle Wilding",
-      },
-      // Add more landscape images here
-    ] as ImageMetadata[],
-  },
-  flora: {
-    title: "Flora",
-    description:
-      "Echoes of the past captured in textures, artifacts, and timeless spaces.",
-    images: [
-      {
-        src: "/images/brazil-flower.JPG",
-        alt: "Vibrant Iris from Brazil with rich colors",
-        title: "Brazilian Flower",
-        photographer: "Izabelle Wilding",
-      },
-      {
-        src: "/images/ferns.JPG",
-        alt: "Lush green ferns in natural forest setting",
-        title: "Forest Ferns",
-        photographer: "Izabelle Wilding",
-      },
-      {
-        src: "/images/hibiscus.JPG",
-        alt: "Beautiful hibiscus flower in full bloom",
-        title: "Hibiscus Bloom",
-        photographer: "Izabelle Wilding",
-      },
-      {
-        src: "/images/brazil-flower.JPG",
-        alt: "Vibrant tropical flower from Brazil with rich colors",
-        title: "Brazilian Flower",
-        photographer: "Izabelle Wilding",
-      },
-      {
-        src: "/images/ferns.JPG",
-        alt: "Lush green ferns in natural forest setting",
-        title: "Forest Ferns",
-        photographer: "Izabelle Wilding",
-      },
-      {
-        src: "/images/hibiscus.JPG",
-        alt: "Beautiful hibiscus flower in full bloom",
-        title: "Hibiscus Bloom",
-        photographer: "Izabelle Wilding",
-      },
-      // Add more flora images here
-    ] as ImageMetadata[],
-  },
-  people: {
-    title: "People",
-    description:
-      "Clifftops, coves, and windswept meadows along a rugged coastline.",
-    images: [
-      {
-        src: "/images/zia-sunset.JPG",
-        alt: "Portrait of Zia during sunset with warm golden light",
-        title: "Sunset Portrait",
-        photographer: "Izabelle Wilding",
-      },
-      {
-        src: "/images/izzy_zia.JPG",
-        alt: "Portrait of Izzy and Zia together",
-        title: "Izzy and Zia",
-        photographer: "Izabelle Wilding",
-      },
-      // Add more people images here
-    ] as ImageMetadata[],
-  },
-  foliage: {
-    title: "Foliage",
-    description:
-      "Sunlit streets, tiled façades, and small discoveries in the city's rhythm.",
-    images: [
-      {
-        src: "/images/ferns.JPG",
-        alt: "Close-up of green ferns with natural lighting",
-        title: "Green Ferns",
-        photographer: "Izabelle Wilding",
-      },
-      {
-        src: "/images/brazil-flower.JPG",
-        alt: "Exotic flower from Brazil with detailed petals",
-        title: "Brazilian Flower Detail",
-        photographer: "Izabelle Wilding",
-      },
-      // Add more foliage images here
-    ] as ImageMetadata[],
-  },
-};
+// Gallery interface
+interface Gallery {
+  _id: string;
+  title: string;
+  slug: string;
+  description?: string;
+  images: ImageMetadata[];
+}
 
 interface GalleryPageProps {
   params: Promise<{
@@ -128,7 +30,7 @@ interface GalleryPageProps {
 // Generate metadata for SEO
 export async function generateMetadata({ params }: GalleryPageProps) {
   const { slug } = await params;
-  const gallery = galleryData[slug as keyof typeof galleryData];
+  const gallery = (await getGalleryBySlug(slug)) as Gallery | null;
 
   if (!gallery) {
     return {
@@ -138,7 +40,7 @@ export async function generateMetadata({ params }: GalleryPageProps) {
 
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://izziatravel.com";
   const pageUrl = `${baseUrl}/gallery/${slug}`;
-  const firstImage = gallery.images[0]?.src;
+  const firstImage = gallery.images?.[0]?.src;
   const ogImage = firstImage ? `${baseUrl}${firstImage}` : undefined;
 
   return {
@@ -175,9 +77,9 @@ export async function generateMetadata({ params }: GalleryPageProps) {
 
 export default async function GalleryPage({ params }: GalleryPageProps) {
   const { slug } = await params;
-  const gallery = galleryData[slug as keyof typeof galleryData];
+  const gallery = (await getGalleryBySlug(slug)) as Gallery | null;
 
-  if (!gallery) {
+  if (!gallery || !gallery.images || gallery.images.length === 0) {
     notFound();
   }
 
@@ -217,9 +119,11 @@ export default async function GalleryPage({ params }: GalleryPageProps) {
             <h1 className="mt-8 text-4xl md:text-5xl font-serif text-neutral-900">
               {gallery.title}
             </h1>
-            <p className="mt-6 text-md md:text-lg text-neutral-700 max-w-3xl">
-              {gallery.description}
-            </p>
+            {gallery.description && (
+              <p className="mt-6 text-md md:text-lg text-neutral-700 max-w-3xl">
+                {gallery.description}
+              </p>
+            )}
           </div>
         </section>
 
@@ -265,7 +169,8 @@ export default async function GalleryPage({ params }: GalleryPageProps) {
 
 // Generate static params for all gallery slugs
 export async function generateStaticParams() {
-  return Object.keys(galleryData).map((slug) => ({
-    slug,
+  const galleries = await getAllGalleries();
+  return galleries.map((gallery: { slug: string }) => ({
+    slug: gallery.slug,
   }));
 }

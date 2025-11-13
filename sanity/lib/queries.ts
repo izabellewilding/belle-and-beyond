@@ -97,3 +97,26 @@ export const getPostsByCategoriesQuery = groq`*[_type == "post" && count((catego
   "description": pt::text(body[0..2]),
   "categories": categories[]->title
 }`;
+
+// Get all galleries
+export const getAllGalleriesQuery = groq`*[_type == "gallery"] | order(title asc) {
+  _id,
+  title,
+  "slug": slug.current,
+  description,
+  "coverImage": coverImage.asset->url
+}`;
+
+// Get a specific gallery by slug with images
+export const getGalleryBySlugQuery = groq`*[_type == "gallery" && slug.current == $slug][0] {
+  _id,
+  title,
+  "slug": slug.current,
+  description,
+  images[] {
+    "src": image.asset->url,
+    alt,
+    title,
+    photographer
+  }
+}`;

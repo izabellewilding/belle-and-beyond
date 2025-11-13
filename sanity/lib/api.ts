@@ -8,6 +8,8 @@ import {
   getPostsByCountryQuery,
   getPostsByCategoryQuery,
   getPostsByCategoriesQuery,
+  getAllGalleriesQuery,
+  getGalleryBySlugQuery,
 } from "./queries";
 
 export async function getAllDestinations() {
@@ -46,4 +48,12 @@ export async function getPostsByCategory(categoryTitle: string) {
 
 export async function getPostsByCategories(categoryTitles: string[]) {
   return await client.fetch(getPostsByCategoriesQuery, { categoryTitles });
+}
+
+export async function getAllGalleries() {
+  return await client.fetch(getAllGalleriesQuery);
+}
+
+export async function getGalleryBySlug(slug: string) {
+  return await client.fetch(getGalleryBySlugQuery, { slug });
 }

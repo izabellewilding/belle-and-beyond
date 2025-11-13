@@ -5,7 +5,18 @@ import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
-export const GalleryDirectory = () => {
+interface GalleryCard {
+  title: string;
+  href: string;
+  src: string;
+  description: string;
+}
+
+interface GalleryDirectoryProps {
+  cards: GalleryCard[];
+}
+
+export const GalleryDirectory = ({ cards }: GalleryDirectoryProps) => {
   const controls = useAnimation();
   const [isLoaded, setIsLoaded] = useState(false);
 
@@ -13,37 +24,6 @@ export const GalleryDirectory = () => {
     controls.start({ opacity: 1, y: 0 });
     setIsLoaded(true);
   }, [controls]);
-
-  const cards = [
-    {
-      title: "Landscapes",
-      href: "/gallery/landscapes",
-      src: "/images/algarve-clifs.JPG",
-      description:
-        "Quiet, far-flung corners where stillness meets landscape and story.",
-    },
-    {
-      title: "Flora",
-      href: "/gallery/flora",
-      src: "/images/brazil-flower.JPG",
-      description:
-        "Echoes of the past captured in textures, artifacts, and timeless spaces.",
-    },
-    {
-      title: "People",
-      href: "/gallery/people",
-      src: "/images/zia-sunset.JPG",
-      description:
-        "Clifftops, coves, and windswept meadows along a rugged coastline.",
-    },
-    {
-      title: "foliage",
-      href: "/gallery/foliage",
-      src: "/images/ferns.JPG",
-      description:
-        "Sunlit streets, tiled façades, and small discoveries in the city's rhythm.",
-    },
-  ] as const;
 
   return (
     <section
