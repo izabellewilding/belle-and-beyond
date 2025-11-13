@@ -65,7 +65,7 @@ export const RecentPostsAlternative = () => {
             {/* Left Column - Header and CTA */}
             <div className="md:col-span-1">
               <div className="border-t border-neutral-400/70" />
-              <h2 className="mt-8 text-4xl md:text-5xl lg:text-6xl font-serif text-neutral-900 leading-tight mb-6">
+              <h2 className="mt-8 text-3xl md:text-4xl lg:text-5xl font-serif text-neutral-900 leading-tight mb-6">
                 Latest
                 <br />
                 News

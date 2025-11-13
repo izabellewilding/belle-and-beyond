@@ -53,15 +53,15 @@ export const Contact = () => {
           result.message ||
             "Thank you for your message! We'll get back to you soon."
         );
-        
+
         // Track form submission
-        trackContactForm('contact_form');
-        
+        trackContactForm("contact_form");
+
         // Track newsletter signup if checked
         if (formData.newsletter) {
-          trackNewsletterSignup('contact_form');
+          trackNewsletterSignup("contact_form");
         }
-        
+
         // Reset form
         setFormData({
           firstName: "",
@@ -105,7 +105,7 @@ export const Contact = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-5xl md:text-6xl font-serif text-neutral-900 leading-tight">
+          <h2 className="text-3xl md:text-4xl font-serif text-neutral-900 leading-tight">
             Let's Keep In Touch
           </h2>
         </motion.div>

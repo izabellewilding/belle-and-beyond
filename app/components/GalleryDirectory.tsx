@@ -33,7 +33,7 @@ export const GalleryDirectory = ({ cards }: GalleryDirectoryProps) => {
       {/* Header to match blog section */}
       <div className="mb-8 md:mb-12">
         <div className="border-t border-neutral-400/70" />
-        <h2 className="mt-8 text-4xl md:text-5xl font-serif text-neutral-900">
+        <h2 className="mt-8 text-3xl md:text-4xl font-serif text-neutral-900">
           Photo Gallery
         </h2>
       </div>
