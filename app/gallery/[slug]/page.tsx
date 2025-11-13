@@ -115,16 +115,16 @@ export default async function GalleryPage({ params }: GalleryPageProps) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
 
-      <main className="pt-24 md:pt-16">
+      <main className="pt-16 md:pt-16">
         {/* Header */}
-        <section className="bg-white py-24 md:py-0 md:pt-8 md:pb-8 px-4 md:px-10 lg:px-14 w-full">
+        <section className="bg-white py-4 md:py-0 md:pt-8 md:pb-8 px-4 md:px-10 lg:px-14 w-full">
           <div className="mb-2 md:mb-8">
             <div className="border-t border-neutral-400/70" />
-            <h1 className="mt-8 text-4xl md:text-5xl font-serif text-neutral-900">
+            <h1 className="mt-4 md:mt-8 text-3xl md:text-5xl font-serif text-neutral-900">
               {gallery.title}
             </h1>
             {gallery.description && (
-              <p className="mt-6 text-md md:text-lg text-neutral-700 max-w-3xl">
+              <p className="mt-3 md:mt-6 text-sm md:text-lg text-neutral-700 max-w-3xl">
                 {gallery.description}
               </p>
             )}
@@ -132,9 +132,9 @@ export default async function GalleryPage({ params }: GalleryPageProps) {
         </section>
 
         {/* Gallery Grid */}
-        <section className="py-24 md:pt-8 lg:pt-0 px-4 md:px-10 lg:px-14 w-full">
+        <section className="py-4 md:pt-8 lg:pt-0 px-4 md:px-10 lg:px-14 w-full">
           {gallery.images && gallery.images.length > 0 ? (
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
               {Array.from({ length: 4 }, (_, columnIndex) => (
                 <div key={columnIndex} className="grid gap-4">
                   {gallery.images
@@ -149,7 +149,7 @@ export default async function GalleryPage({ params }: GalleryPageProps) {
                           title={image.title || image.alt}
                           width={400}
                           height={600}
-                          sizes="(max-width: 768px) 50vw, 25vw"
+                          sizes="(max-width: 768px) 100vw, 25vw"
                           loading={globalIndex < 4 ? "eager" : "lazy"}
                         />
                         {image.photographer && (
