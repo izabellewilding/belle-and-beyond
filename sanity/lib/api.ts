@@ -3,6 +3,7 @@ import {
   getAllDestinationsQuery,
   getDestinationBySlugQuery,
   getFeaturedDestinationsQuery,
+  getAllPostsQuery,
   getRecentPostsQuery,
   getPostBySlugQuery,
   getPostsByCountryQuery,
@@ -22,6 +23,15 @@ export async function getDestinationBySlug(slug: string) {
 
 export async function getFeaturedDestinations() {
   return await client.fetch(getFeaturedDestinationsQuery);
+}
+
+export async function getAllPosts() {
+  try {
+    return await client.fetch(getAllPostsQuery);
+  } catch (error) {
+    console.error("Sanity fetch error:", error);
+    return [];
+  }
 }
 
 export async function getRecentPosts() {

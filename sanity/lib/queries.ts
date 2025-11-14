@@ -8,7 +8,8 @@ export const getAllDestinationsQuery = groq`*[_type == "destination"] | order(ti
   description,
   "coverImage": coverImage.asset->url,
   "mainImage": mainImage.asset->url,
-  featured
+  featured,
+  _updatedAt
 }`;
 
 // Get a specific destination by slug
@@ -31,6 +32,13 @@ export const getFeaturedDestinationsQuery = groq`*[_type == "destination" && fea
   "slug": slug.current,
   description,
   "coverImage": coverImage.asset->url
+}`;
+
+// Get all posts (for sitemap)
+export const getAllPostsQuery = groq`*[_type == "post"] | order(publishedAt desc) {
+  _id,
+  "slug": slug.current,
+  _updatedAt
 }`;
 
 // Get recent posts
@@ -104,7 +112,8 @@ export const getAllGalleriesQuery = groq`*[_type == "gallery"] | order(title asc
   title,
   "slug": slug.current,
   description,
-  "coverImage": coverImage.asset->url
+  "coverImage": coverImage.asset->url,
+  _updatedAt
 }`;
 
 // Get a specific gallery by slug with images
