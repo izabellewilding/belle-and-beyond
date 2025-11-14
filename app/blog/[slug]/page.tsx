@@ -122,13 +122,43 @@ export async function generateMetadata({
     "travel guides",
     post.author,
   ];
-  const cmsKeywords = post.seo?.keywords || [];
-  const focusKeyword = post.seo?.focusKeyword;
-  const keywords = [
-    ...(focusKeyword ? [focusKeyword] : []),
-    ...cmsKeywords,
-    ...defaultKeywords.filter((kw) => !cmsKeywords.includes(kw)),
-  ];
+
+  // Get keywords from Sanity - ensure it's an array and filter out empty values
+  const cmsKeywords = Array.isArray(post.seo?.keywords)
+    ? post.seo.keywords
+        .map((kw: string) => kw?.trim())
+        .filter((kw: string) => kw && kw.length > 0)
+    : [];
+
+  const focusKeyword = post.seo?.focusKeyword?.trim();
+
+  // Combine all keywords: focus keyword first, then CMS keywords, then defaults (avoiding duplicates)
+  const keywordsSet = new Set<string>();
+
+  // Add focus keyword first if it exists
+  if (focusKeyword) {
+    keywordsSet.add(focusKeyword);
+  }
+
+  // Add all CMS keywords
+  cmsKeywords.forEach((kw: string) => {
+    if (kw) keywordsSet.add(kw);
+  });
+
+  // Add default keywords that aren't already in the set (case-insensitive check)
+  defaultKeywords.forEach((kw) => {
+    if (!kw) return;
+    const kwLower = kw.toLowerCase();
+    const alreadyExists = Array.from(keywordsSet).some(
+      (existing) => existing.toLowerCase() === kwLower
+    );
+    if (!alreadyExists) {
+      keywordsSet.add(kw);
+    }
+  });
+
+  // Convert Set back to array
+  const keywords = Array.from(keywordsSet);
 
   // Use OG image from SEO settings if available, otherwise use main image
   const ogImageUrl = post.seo?.ogImage
@@ -140,7 +170,7 @@ export async function generateMetadata({
   return {
     title: pageTitle,
     description: metaDescription,
-    keywords: keywords,
+    keywords: keywords, // Comma-separated string of all keywords
     authors: [{ name: post.author }],
     robots: post.seo?.noindex
       ? {
