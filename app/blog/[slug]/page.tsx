@@ -77,9 +77,11 @@ export async function generateMetadata({
 
   // Extract description from body if available (first 160 characters)
   const bodyText = post.body
-    ?.map((block: any) => {
+    ?.map((block: PortableTextBlock) => {
       if (block._type === "block" && block.children) {
-        return block.children.map((child: any) => child.text || "").join(" ");
+        return block.children
+          .map((child) => (typeof child === "object" && "text" in child ? child.text : ""))
+          .join(" ");
       }
       return "";
     })
@@ -242,9 +244,11 @@ export default async function PostPage({
     "@type": "BlogPosting",
     headline: post.title,
     description: post.body
-      ?.map((block: any) => {
+      ?.map((block: PortableTextBlock) => {
         if (block._type === "block" && block.children) {
-          return block.children.map((child: any) => child.text || "").join(" ");
+          return block.children
+            .map((child) => (typeof child === "object" && "text" in child ? child.text : ""))
+            .join(" ");
         }
         return "";
       })

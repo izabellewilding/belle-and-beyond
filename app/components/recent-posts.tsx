@@ -89,7 +89,7 @@ export const RecentPosts = () => {
               }}
               className="grid gap-8 md:gap-10 sm:grid-cols-1 md:grid-cols-3"
             >
-              {posts.map((post, index) => (
+              {posts.map((post) => (
                 <motion.div
                   key={post._id}
                   variants={{

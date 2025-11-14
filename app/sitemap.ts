@@ -5,6 +5,21 @@ import {
   getAllGalleries,
 } from "@/sanity/lib/api";
 
+interface SitemapPost {
+  slug: string;
+  _updatedAt?: string;
+}
+
+interface SitemapDestination {
+  slug: string;
+  _updatedAt?: string;
+}
+
+interface SitemapGallery {
+  slug: string;
+  _updatedAt?: string;
+}
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://izziatravel.com";
 
@@ -38,16 +53,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   ];
 
   // Dynamic blog post routes
-  const blogRoutes: MetadataRoute.Sitemap = (posts || []).map((post: any) => ({
-    url: `${baseUrl}/blog/${post.slug}`,
-    lastModified: post._updatedAt ? new Date(post._updatedAt) : new Date(),
-    changeFrequency: "weekly" as const,
-    priority: 0.7,
-  }));
+  const blogRoutes: MetadataRoute.Sitemap = (posts || []).map(
+    (post: SitemapPost) => ({
+      url: `${baseUrl}/blog/${post.slug}`,
+      lastModified: post._updatedAt ? new Date(post._updatedAt) : new Date(),
+      changeFrequency: "weekly" as const,
+      priority: 0.7,
+    })
+  );
 
   // Dynamic destination routes
   const destinationRoutes: MetadataRoute.Sitemap = (destinations || []).map(
-    (dest: any) => ({
+    (dest: SitemapDestination) => ({
       url: `${baseUrl}/destinations/${dest.slug}`,
       lastModified: dest._updatedAt ? new Date(dest._updatedAt) : new Date(),
       changeFrequency: "monthly" as const,
@@ -57,7 +74,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   // Dynamic gallery routes
   const galleryRoutes: MetadataRoute.Sitemap = (galleries || []).map(
-    (gallery: any) => ({
+    (gallery: SitemapGallery) => ({
       url: `${baseUrl}/gallery/${gallery.slug}`,
       lastModified: gallery._updatedAt
         ? new Date(gallery._updatedAt)
