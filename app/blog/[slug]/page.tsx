@@ -242,12 +242,14 @@ export default async function PostPage({
         <h4 className="text-xl font-bold mt-6 mb-2">{children}</h4>
       ),
       blockquote: ({ children }) => (
-        <blockquote className="border-l-4 border-gray-300 pl-4 italic my-4">
+        <blockquote className="border-l-4 border-gray-300 pl-4 italic my-4 text-lg md:text-xl leading-relaxed">
           {children}
         </blockquote>
       ),
       // Add custom component for normal text (paragraphs)
-      normal: ({ children }) => <p className="mb-4">{children}</p>,
+      normal: ({ children }) => (
+        <p className="mb-4 text-lg md:text-xl leading-relaxed">{children}</p>
+      ),
     },
     list: {
       bullet: ({ children }) => (
@@ -258,8 +260,12 @@ export default async function PostPage({
       ),
     },
     listItem: {
-      bullet: ({ children }) => <li className="mb-2">{children}</li>,
-      number: ({ children }) => <li className="mb-2">{children}</li>,
+      bullet: ({ children }) => (
+        <li className="mb-2 text-lg md:text-xl leading-relaxed">{children}</li>
+      ),
+      number: ({ children }) => (
+        <li className="mb-2 text-lg md:text-xl leading-relaxed">{children}</li>
+      ),
     },
     marks: {
       // Customize marks (bold, italic, etc.)
@@ -340,7 +346,7 @@ export default async function PostPage({
         {/* Main Content Area */}
         <article className="w-full md:w-2/3 md:pr-8">
           <div className="text-center md:text-left mb-8 md:mt-12">
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-2">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-2">
               {post.title}
             </h1>
             <p className="text-gray-600 text-sm mb-4">
@@ -357,7 +363,7 @@ export default async function PostPage({
           <hr className="border-gray-300 my-8" />
 
           {/* Post Body */}
-          <div className="prose max-w-none">
+          <div className="prose prose-lg md:prose-xl max-w-none">
             <PortableText value={post.body} components={components} />
           </div>
         </article>
