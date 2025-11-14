@@ -79,9 +79,7 @@ export async function generateMetadata({
   const bodyText = post.body
     ?.map((block: any) => {
       if (block._type === "block" && block.children) {
-        return block.children
-          .map((child: any) => child.text || "")
-          .join(" ");
+        return block.children.map((child: any) => child.text || "").join(" ");
       }
       return "";
     })
@@ -89,7 +87,8 @@ export async function generateMetadata({
     .substring(0, 160);
 
   const description =
-    bodyText || `Read ${post.title} on Izzia Travel - your ultimate travel blog and travel guides resource.`;
+    bodyText ||
+    `Read ${post.title} on Izzia Travel - your ultimate travel blog and travel guides resource.`;
 
   return {
     title: `${post.title} | Travel Blog | Izzia Travel`,
@@ -309,7 +308,6 @@ export default async function PostPage({
 
         {/* Sidebar */}
         <aside className="w-full md:w-1/3 md:pl-8 mt-8 md:mt-0 flex flex-col space-y-8">
-      
           <AuthorWidget />
           <NewsSidebar />
         </aside>

@@ -78,7 +78,9 @@ export async function generateMetadata({
     },
     openGraph: {
       title: `${destination.title} Travel Guide | Izzia Travel`,
-      description: destination.description || `Complete travel guide for ${destination.title}`,
+      description:
+        destination.description ||
+        `Complete travel guide for ${destination.title}`,
       type: "article",
       url: pageUrl,
       siteName: "Izzia Travel",
@@ -86,7 +88,9 @@ export async function generateMetadata({
     twitter: {
       card: "summary_large_image",
       title: `${destination.title} Travel Guide | Izzia Travel`,
-      description: destination.description || `Complete travel guide for ${destination.title}`,
+      description:
+        destination.description ||
+        `Complete travel guide for ${destination.title}`,
     },
   };
 }
@@ -120,7 +124,9 @@ export default async function DestinationPage({
     "@context": "https://schema.org",
     "@type": "TravelGuide",
     name: `${destination.title} Travel Guide`,
-    description: destination.description || `Complete travel guide for ${destination.title}`,
+    description:
+      destination.description ||
+      `Complete travel guide for ${destination.title}`,
     url: pageUrl,
     publisher: {
       "@type": "Organization",

@@ -61,7 +61,8 @@ export default async function DestinationsPage() {
             Travel Guides
           </h1>
           <p className="mt-4 text-lg md:text-xl text-neutral-700">
-            Discover comprehensive travel guides for destinations around the world. Expert guides to help you plan your perfect adventure.
+            Discover comprehensive travel guides for destinations around the
+            world. Expert guides to help you plan your perfect adventure.
           </p>
         </div>
 

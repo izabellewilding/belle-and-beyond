@@ -50,7 +50,9 @@ export default async function TipsPage() {
             Travel Tips & Advice
           </h1>
           <p className="mt-8 text-md md:text-xl font-serif text-neutral-900">
-            Expert travel tips and advice from our travel blog to help you make the most of your adventures. Discover practical guides and insights from Izzia Travel.
+            Expert travel tips and advice from our travel blog to help you make
+            the most of your adventures. Discover practical guides and insights
+            from Izzia Travel.
           </p>
         </div>
 
