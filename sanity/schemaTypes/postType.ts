@@ -60,6 +60,93 @@ export const postType = defineType({
       name: "body",
       type: "blockContent",
     }),
+    // SEO Fields
+    defineField({
+      name: "seo",
+      type: "object",
+      title: "SEO Settings",
+      description: "Optimize this post for search engines",
+      options: {
+        collapsible: true,
+        collapsed: false,
+      },
+      fields: [
+        defineField({
+          name: "metaTitle",
+          type: "string",
+          title: "SEO Title",
+          description:
+            "Custom title for search engines (leave empty to use post title). Recommended: 50-60 characters",
+          validation: (Rule) =>
+            Rule.max(60).warning(
+              "SEO titles should be 60 characters or less for best results"
+            ),
+        }),
+        defineField({
+          name: "metaDescription",
+          type: "text",
+          title: "Meta Description",
+          description:
+            "Brief description for search engines and social sharing. Recommended: 150-160 characters",
+          rows: 3,
+          validation: (Rule) =>
+            Rule.max(160).warning(
+              "Meta descriptions should be 160 characters or less for best results"
+            ),
+        }),
+        defineField({
+          name: "keywords",
+          type: "array",
+          title: "Keywords",
+          description:
+            "Add relevant keywords for this post (e.g., 'travel blog', 'Costa Rica', 'adventure travel')",
+          of: [{ type: "string" }],
+          options: {
+            layout: "tags",
+          },
+        }),
+        defineField({
+          name: "focusKeyword",
+          type: "string",
+          title: "Focus Keyword",
+          description:
+            "The primary keyword you want this post to rank for (e.g., 'Costa Rica travel guide')",
+        }),
+        defineField({
+          name: "ogTitle",
+          type: "string",
+          title: "Open Graph Title",
+          description:
+            "Custom title for social media sharing (leave empty to use SEO title or post title)",
+        }),
+        defineField({
+          name: "ogDescription",
+          type: "text",
+          title: "Open Graph Description",
+          description:
+            "Custom description for social media sharing (leave empty to use meta description)",
+          rows: 2,
+        }),
+        defineField({
+          name: "ogImage",
+          type: "image",
+          title: "Open Graph Image",
+          description:
+            "Custom image for social media sharing (1200x630px recommended). Leave empty to use main image.",
+          options: {
+            hotspot: true,
+          },
+        }),
+        defineField({
+          name: "noindex",
+          type: "boolean",
+          title: "No Index",
+          description:
+            "Prevent search engines from indexing this post (use for drafts or private posts)",
+          initialValue: false,
+        }),
+      ],
+    }),
   ],
   preview: {
     select: {

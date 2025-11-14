@@ -35,6 +35,17 @@ interface PortableTextBlock {
   [key: string]: unknown; // Use unknown instead of any
 }
 
+interface PostSEO {
+  metaTitle?: string;
+  metaDescription?: string;
+  keywords?: string[];
+  focusKeyword?: string;
+  ogTitle?: string;
+  ogDescription?: string;
+  ogImage?: SanityImageObject & { alt?: string };
+  noindex?: boolean;
+}
+
 interface Post extends SanityDocument {
   _id: string;
   title: string;
@@ -43,6 +54,7 @@ interface Post extends SanityDocument {
   publishedAt: string | null;
   author: string;
   body: PortableTextBlock[]; // Use the defined Portable Text type
+  seo?: PostSEO;
 }
 
 // Generate static paths for all posts (optional but recommended for performance)
@@ -71,7 +83,7 @@ export async function generateMetadata({
 
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://izziatravel.com";
   const pageUrl = `${baseUrl}/blog/${slug}`;
-  const imageUrl = post.mainImage?.asset?.url
+  const imageUrl = post.mainImage
     ? urlFor(post.mainImage).width(1200).height(630).url()
     : undefined;
 
@@ -80,7 +92,9 @@ export async function generateMetadata({
     ?.map((block: PortableTextBlock) => {
       if (block._type === "block" && block.children) {
         return block.children
-          .map((child) => (typeof child === "object" && "text" in child ? child.text : ""))
+          .map((child) =>
+            typeof child === "object" && "text" in child ? child.text : ""
+          )
           .join(" ");
       }
       return "";
@@ -88,37 +102,71 @@ export async function generateMetadata({
     .join(" ")
     .substring(0, 160);
 
-  const description =
+  // Use SEO fields from CMS if available, otherwise use defaults
+  const seoTitle = post.seo?.metaTitle || post.title;
+  const metaDescription =
+    post.seo?.metaDescription ||
     bodyText ||
     `Read ${post.title} on Izzia Travel - your ultimate travel blog and travel guides resource.`;
+  const ogTitle =
+    post.seo?.ogTitle ||
+    seoTitle ||
+    `${post.title} | Travel Blog | Izzia Travel`;
+  const ogDescription = post.seo?.ogDescription || metaDescription;
+
+  // Build keywords array - combine CMS keywords with defaults
+  const defaultKeywords = [
+    post.title,
+    "travel blog",
+    "Izzia Travel",
+    "travel guides",
+    post.author,
+  ];
+  const cmsKeywords = post.seo?.keywords || [];
+  const focusKeyword = post.seo?.focusKeyword;
+  const keywords = [
+    ...(focusKeyword ? [focusKeyword] : []),
+    ...cmsKeywords,
+    ...defaultKeywords.filter((kw) => !cmsKeywords.includes(kw)),
+  ];
+
+  // Use OG image from SEO settings if available, otherwise use main image
+  const ogImageUrl = post.seo?.ogImage
+    ? urlFor(post.seo.ogImage).width(1200).height(630).url()
+    : imageUrl;
+
+  const pageTitle = `${seoTitle} | Travel Blog | Izzia Travel`;
 
   return {
-    title: `${post.title} | Travel Blog | Izzia Travel`,
-    description: `${description}...`,
-    keywords: [
-      post.title,
-      "travel blog",
-      "Izzia Travel",
-      "travel guides",
-      post.author,
-    ],
+    title: pageTitle,
+    description: metaDescription,
+    keywords: keywords,
     authors: [{ name: post.author }],
+    robots: post.seo?.noindex
+      ? {
+          index: false,
+          follow: false,
+        }
+      : {
+          index: true,
+          follow: true,
+        },
     alternates: {
       canonical: pageUrl,
     },
     openGraph: {
-      title: `${post.title} | Travel Blog | Izzia Travel`,
-      description: description,
+      title: ogTitle,
+      description: ogDescription,
       type: "article",
       url: pageUrl,
       siteName: "Izzia Travel",
       publishedTime: post.publishedAt || undefined,
       authors: [post.author],
-      images: imageUrl
+      images: ogImageUrl
         ? [
             {
-              url: imageUrl,
-              alt: post.mainImage?.alt || post.title,
+              url: ogImageUrl,
+              alt: post.seo?.ogImage?.alt || post.mainImage?.alt || post.title,
               width: 1200,
               height: 630,
             },
@@ -127,9 +175,9 @@ export async function generateMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: `${post.title} | Travel Blog | Izzia Travel`,
-      description: description,
-      images: imageUrl ? [imageUrl] : [],
+      title: ogTitle,
+      description: ogDescription,
+      images: ogImageUrl ? [ogImageUrl] : [],
     },
   };
 }
@@ -247,7 +295,9 @@ export default async function PostPage({
       ?.map((block: PortableTextBlock) => {
         if (block._type === "block" && block.children) {
           return block.children
-            .map((child) => (typeof child === "object" && "text" in child ? child.text : ""))
+            .map((child) =>
+              typeof child === "object" && "text" in child ? child.text : ""
+            )
             .join(" ");
         }
         return "";
@@ -290,7 +340,9 @@ export default async function PostPage({
         {/* Main Content Area */}
         <article className="w-full md:w-2/3 md:pr-8">
           <div className="text-center md:text-left mb-8 md:mt-12">
-            <h1 className="text-4xl font-bold mb-2">{post.title}</h1>
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-2">
+              {post.title}
+            </h1>
             <p className="text-gray-600 text-sm mb-4">
               By {post.author} •{" "}
               {post.publishedAt ? formatDate(post.publishedAt) : ""}

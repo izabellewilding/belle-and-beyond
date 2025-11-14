@@ -65,6 +65,19 @@ export const getPostBySlugQuery = groq`*[_type == "post" && slug.current == $slu
   publishedAt,
   "author": author->name,
   body,
+  seo {
+    metaTitle,
+    metaDescription,
+    keywords,
+    focusKeyword,
+    ogTitle,
+    ogDescription,
+    ogImage {
+      asset->{_ref, url},
+      alt
+    },
+    noindex
+  }
 }`;
 
 // Get posts by country
