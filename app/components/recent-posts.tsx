@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 import Link from "next/link";
+import { motion } from "framer-motion";
 import { usePostsStore } from "../stores/usePostsStore";
 import { ArticleCard } from "./article-card";
 
@@ -36,16 +37,27 @@ export const RecentPosts = () => {
       {/* Border line at top */}
       <div className="border-t border-neutral-400/70 pt-16 md:pt-24 mb-8 md:mb-12">
         {/* Header: large serif heading */}
-        <div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+        >
           <h2 className="text-3xl md:text-4xl font-serif text-neutral-900">
             Latest News
           </h2>
-          <p className="mt-8 text-md md:text-xl font-serif text-neutral-900">
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease: "easeOut", delay: 0.15 }}
+            className="mt-8 text-md md:text-xl font-serif text-neutral-900"
+          >
             Here are our latest stories and experiences from around the world.
             Currently we are living and working from Costa Rica, high up in the
             mountains.
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
       </div>
 
       <div>
@@ -64,31 +76,63 @@ export const RecentPosts = () => {
 
         {!loading && !error && posts.length > 0 && (
           <>
-            <div className="grid gap-8 md:gap-10 sm:grid-cols-1 md:grid-cols-3">
-              {posts.map((post) => (
-                <ArticleCard
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-50px" }}
+              variants={{
+                visible: {
+                  transition: {
+                    staggerChildren: 0.15,
+                  },
+                },
+              }}
+              className="grid gap-8 md:gap-10 sm:grid-cols-1 md:grid-cols-3"
+            >
+              {posts.map((post, index) => (
+                <motion.div
                   key={post._id}
-                  post={{
-                    _id: post._id,
-                    title: post.title,
-                    slug: post.slug,
-                    mainImage: post.mainImage,
-                    description: post.description,
-                    categories: post.categories,
+                  variants={{
+                    hidden: { opacity: 0, y: 30 },
+                    visible: {
+                      opacity: 1,
+                      y: 0,
+                      transition: {
+                        duration: 0.6,
+                        ease: "easeOut",
+                      },
+                    },
                   }}
-                  showButton={false}
-                  smallDescription={true}
-                />
+                >
+                  <ArticleCard
+                    post={{
+                      _id: post._id,
+                      title: post.title,
+                      slug: post.slug,
+                      mainImage: post.mainImage,
+                      description: post.description,
+                      categories: post.categories,
+                    }}
+                    showButton={false}
+                    smallDescription={true}
+                  />
+                </motion.div>
               ))}
-            </div>
-            <div className="mt-8 md:mt-12 text-center">
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, ease: "easeOut", delay: 0.3 }}
+              className="mt-8 md:mt-12 text-center"
+            >
               <Link
                 href="#news"
                 className="inline-flex items-center rounded-full bg-neutral-900 text-white px-10 md:px-16 py-4 md:py-5 text-lg md:text-xl font-medium hover:bg-neutral-800 transition-colors"
               >
                 See the blog
               </Link>
-            </div>
+            </motion.div>
           </>
         )}
       </div>
