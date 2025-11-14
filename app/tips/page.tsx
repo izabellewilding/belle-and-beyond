@@ -12,9 +12,27 @@ interface Post {
   categories?: string[];
 }
 
-export const metadata = {
-  title: "Tips | Izzia Travel",
-  description: "Travel tips and advice for your adventures.",
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Travel Tips & Advice | Travel Blog | Izzia Travel",
+  description:
+    "Expert travel tips and advice from Izzia Travel blog. Discover practical travel tips, advice, and guides to make the most of your adventures. Your ultimate travel blog resource.",
+  keywords: [
+    "travel tips",
+    "travel advice",
+    "travel blog",
+    "Izzia Travel",
+    "travel guides",
+    "travel planning",
+    "adventure tips",
+  ],
+  openGraph: {
+    title: "Travel Tips & Advice | Travel Blog | Izzia Travel",
+    description:
+      "Expert travel tips and advice from Izzia Travel blog. Discover practical travel tips and guides to make the most of your adventures.",
+    type: "website",
+  },
 };
 
 export default async function TipsPage() {
@@ -28,11 +46,11 @@ export default async function TipsPage() {
         {/* Header: top rule + large serif heading */}
         <div className="mb-12 md:mb-16">
           <div className="border-t border-neutral-400/70" />
-          <h2 className="mt-8 text-4xl md:text-5xl font-serif text-neutral-900">
-            Tips
-          </h2>
+          <h1 className="mt-8 text-4xl md:text-5xl font-serif text-neutral-900">
+            Travel Tips & Advice
+          </h1>
           <p className="mt-8 text-md md:text-xl font-serif text-neutral-900">
-            Travel tips and advice to help you make the most of your adventures.
+            Expert travel tips and advice from our travel blog to help you make the most of your adventures. Discover practical guides and insights from Izzia Travel.
           </p>
         </div>
 

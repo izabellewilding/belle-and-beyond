@@ -12,9 +12,26 @@ interface Destination {
   mainImage?: string;
 }
 
-export const metadata = {
-  title: "Destinations | Izzia Travel",
-  description: "Explore travel destinations around the world.",
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Travel Guides | Destinations | Izzia Travel",
+  description:
+    "Explore comprehensive travel guides for destinations around the world. Expert travel guides from Izzia Travel to help you plan your perfect trip. Discover the best places to visit, things to do, and travel tips.",
+  keywords: [
+    "travel guides",
+    "destination guides",
+    "travel destinations",
+    "Izzia Travel",
+    "travel blog",
+    "where to travel",
+  ],
+  openGraph: {
+    title: "Travel Guides | Destinations | Izzia Travel",
+    description:
+      "Explore comprehensive travel guides for destinations around the world. Expert travel guides to help you plan your perfect trip.",
+    type: "website",
+  },
 };
 
 export default async function DestinationsPage() {
@@ -40,9 +57,12 @@ export default async function DestinationsPage() {
         {/* Header: top rule + large serif heading */}
         <div className="mb-12 md:mb-16">
           <div className="border-t border-neutral-400/70" />
-          <h2 className="mt-8 text-4xl md:text-5xl font-serif text-neutral-900">
-            Destinations
-          </h2>
+          <h1 className="mt-8 text-4xl md:text-5xl font-serif text-neutral-900">
+            Travel Guides
+          </h1>
+          <p className="mt-4 text-lg md:text-xl text-neutral-700">
+            Discover comprehensive travel guides for destinations around the world. Expert guides to help you plan your perfect adventure.
+          </p>
         </div>
 
         <div className="grid gap-8 md:gap-10 sm:grid-cols-1 md:grid-cols-3">

@@ -52,8 +52,54 @@ const cabinetGrotesk = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Izzia Travel",
-  description: "Travel blog and photography",
+  title: {
+    default: "Izzia Travel | Travel Blog & Travel Guides",
+    template: "%s | Izzia Travel",
+  },
+  description:
+    "Izzia Travel - Your ultimate travel blog and travel guides. Discover inspiring destinations, travel tips, and photography from around the world. Expert travel guides to help you plan your next adventure.",
+  keywords: [
+    "travel blog",
+    "travel guides",
+    "Izzia Travel",
+    "travel photography",
+    "travel tips",
+    "destination guides",
+    "travel advice",
+    "adventure travel",
+  ],
+  authors: [{ name: "Izzia Travel" }],
+  creator: "Izzia Travel",
+  publisher: "Izzia Travel",
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL || "https://izziatravel.com"
+  ),
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: process.env.NEXT_PUBLIC_SITE_URL || "https://izziatravel.com",
+    siteName: "Izzia Travel",
+    title: "Izzia Travel | Travel Blog & Travel Guides",
+    description:
+      "Your ultimate travel blog and travel guides. Discover inspiring destinations, travel tips, and photography from around the world.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Izzia Travel | Travel Blog & Travel Guides",
+    description:
+      "Your ultimate travel blog and travel guides. Discover inspiring destinations, travel tips, and photography from around the world.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
 };
 
 // Google Analytics ID

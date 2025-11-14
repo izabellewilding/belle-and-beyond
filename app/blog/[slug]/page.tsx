@@ -13,6 +13,8 @@ import { urlFor } from "@/sanity/lib/image";
 import { Icons } from "@/app/components/icons";
 import { NewsSidebar } from "../../components/news-sidebar";
 import { AuthorWidget } from "../../components/author-widget";
+import { Metadata } from "next";
+import Script from "next/script";
 
 // Define a basic type for Portable Text blocks
 interface PortableTextBlock {
@@ -50,6 +52,85 @@ export async function generateStaticParams() {
   return posts.map((post: { slug: string }) => ({
     slug: post.slug,
   }));
+}
+
+// Generate metadata for SEO
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const post = await getPostBySlug(slug);
+
+  if (!post) {
+    return {
+      title: "Post Not Found | Izzia Travel",
+    };
+  }
+
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://izziatravel.com";
+  const pageUrl = `${baseUrl}/blog/${slug}`;
+  const imageUrl = post.mainImage?.asset?.url
+    ? urlFor(post.mainImage).width(1200).height(630).url()
+    : undefined;
+
+  // Extract description from body if available (first 160 characters)
+  const bodyText = post.body
+    ?.map((block: any) => {
+      if (block._type === "block" && block.children) {
+        return block.children
+          .map((child: any) => child.text || "")
+          .join(" ");
+      }
+      return "";
+    })
+    .join(" ")
+    .substring(0, 160);
+
+  const description =
+    bodyText || `Read ${post.title} on Izzia Travel - your ultimate travel blog and travel guides resource.`;
+
+  return {
+    title: `${post.title} | Travel Blog | Izzia Travel`,
+    description: `${description}...`,
+    keywords: [
+      post.title,
+      "travel blog",
+      "Izzia Travel",
+      "travel guides",
+      post.author,
+    ],
+    authors: [{ name: post.author }],
+    alternates: {
+      canonical: pageUrl,
+    },
+    openGraph: {
+      title: `${post.title} | Travel Blog | Izzia Travel`,
+      description: description,
+      type: "article",
+      url: pageUrl,
+      siteName: "Izzia Travel",
+      publishedTime: post.publishedAt || undefined,
+      authors: [post.author],
+      images: imageUrl
+        ? [
+            {
+              url: imageUrl,
+              alt: post.mainImage?.alt || post.title,
+              width: 1200,
+              height: 630,
+            },
+          ]
+        : [],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${post.title} | Travel Blog | Izzia Travel`,
+      description: description,
+      images: imageUrl ? [imageUrl] : [],
+    },
+  };
 }
 
 export default async function PostPage({
@@ -150,8 +231,57 @@ export default async function PostPage({
     },
   };
 
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://izziatravel.com";
+  const pageUrl = `${baseUrl}/blog/${slug}`;
+  const imageUrl = post.mainImage
+    ? urlFor(post.mainImage).width(1200).height(630).url()
+    : undefined;
+
+  // Structured data for BlogPosting
+  const blogPostStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.body
+      ?.map((block: any) => {
+        if (block._type === "block" && block.children) {
+          return block.children.map((child: any) => child.text || "").join(" ");
+        }
+        return "";
+      })
+      .join(" ")
+      .substring(0, 200),
+    image: imageUrl,
+    datePublished: post.publishedAt,
+    dateModified: post.publishedAt,
+    author: {
+      "@type": "Person",
+      name: post.author,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "Izzia Travel",
+      url: baseUrl,
+      logo: {
+        "@type": "ImageObject",
+        url: `${baseUrl}/logo.svg`,
+      },
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": pageUrl,
+    },
+  };
+
   return (
     <>
+      <Script
+        id="blog-post-structured-data"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(blogPostStructuredData),
+        }}
+      />
       <Navigation />
       <section className="flex flex-col md:flex-row px-4 py-24 px-8 md:py-32 max-w-7xl mx-auto">
         {/* Main Content Area */}

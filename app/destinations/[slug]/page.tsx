@@ -10,6 +10,7 @@ import { Footer } from "@/app/components/footer";
 import { ArticleCard } from "@/app/components/article-card";
 import { PortableTextBlock } from "@portabletext/types";
 import { DestinationTracker } from "@/app/components/DestinationTracker";
+import Script from "next/script";
 
 interface Post {
   _id: string;
@@ -56,9 +57,37 @@ export async function generateMetadata({
     };
   }
 
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://izziatravel.com";
+  const pageUrl = `${baseUrl}/destinations/${slug}`;
+
   return {
-    title: `${destination.title} | Izzia Travel`,
-    description: destination.description,
+    title: `${destination.title} Travel Guide | Izzia Travel`,
+    description: destination.description
+      ? `${destination.description} Read our comprehensive travel guide for ${destination.title} on Izzia Travel - your ultimate travel blog and travel guides resource.`
+      : `Complete travel guide for ${destination.title}. Discover the best places to visit, things to do, and travel tips. Expert travel guides from Izzia Travel.`,
+    keywords: [
+      `${destination.title} travel guide`,
+      `${destination.title} travel`,
+      "travel guides",
+      "travel blog",
+      "Izzia Travel",
+      `${destination.title} destination`,
+    ],
+    alternates: {
+      canonical: pageUrl,
+    },
+    openGraph: {
+      title: `${destination.title} Travel Guide | Izzia Travel`,
+      description: destination.description || `Complete travel guide for ${destination.title}`,
+      type: "article",
+      url: pageUrl,
+      siteName: "Izzia Travel",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${destination.title} Travel Guide | Izzia Travel`,
+      description: destination.description || `Complete travel guide for ${destination.title}`,
+    },
   };
 }
 
@@ -83,8 +112,37 @@ export default async function DestinationPage({
     console.error("Error fetching recent posts:", error);
   }
 
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://izziatravel.com";
+  const pageUrl = `${baseUrl}/destinations/${slug}`;
+
+  // Structured data for Travel Guide
+  const travelGuideStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "TravelGuide",
+    name: `${destination.title} Travel Guide`,
+    description: destination.description || `Complete travel guide for ${destination.title}`,
+    url: pageUrl,
+    publisher: {
+      "@type": "Organization",
+      name: "Izzia Travel",
+      url: baseUrl,
+    },
+    mainEntity: {
+      "@type": "Place",
+      name: destination.title,
+      description: destination.description,
+    },
+  };
+
   return (
     <>
+      <Script
+        id="travel-guide-structured-data"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(travelGuideStructuredData),
+        }}
+      />
       <Navigation />
       <DestinationTracker destination={destination.title} />
 
