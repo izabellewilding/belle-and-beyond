@@ -9,10 +9,10 @@ import { ArticleCard } from "./article-card";
 const PostSkeleton = () => {
   return (
     <div className="flex flex-col h-full">
-      <div className="relative w-full aspect-[3/4] bg-gray-200 rounded-3xl" />
-      <div className="mt-6 space-y-3">
-        <div className="h-7 bg-gray-200 rounded w-3/4" />
-        <div className="h-7 bg-gray-200 rounded w-1/2" />
+      <div className="relative w-full aspect-[4/3] bg-gray-200 rounded-2xl mb-4 shadow-md" />
+      <div className="space-y-3">
+        <div className="h-6 bg-gray-200 rounded w-3/4" />
+        <div className="h-6 bg-gray-200 rounded w-1/2" />
         <div className="space-y-2">
           <div className="h-4 bg-gray-200 rounded" />
           <div className="h-4 bg-gray-200 rounded w-5/6" />
@@ -87,7 +87,7 @@ export const RecentPosts = () => {
                   },
                 },
               }}
-              className="grid gap-8 md:gap-10 sm:grid-cols-1 md:grid-cols-3"
+              className="grid gap-6 md:gap-8 sm:grid-cols-1 md:grid-cols-3"
             >
               {posts.map((post) => (
                 <motion.div
