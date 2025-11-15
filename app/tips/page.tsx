@@ -71,7 +71,6 @@ export default async function TipsPage() {
                   description: post.description,
                   categories: post.categories,
                 }}
-                showButton={false}
                 smallDescription={true}
               />
             ))}

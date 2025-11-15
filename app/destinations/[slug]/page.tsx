@@ -199,7 +199,7 @@ export default async function DestinationPage({
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
             {recentPosts.map((post) => (
-              <ArticleCard key={post._id} post={post} showButton={false} />
+              <ArticleCard key={post._id} post={post} />
             ))}
           </div>
         </div>
