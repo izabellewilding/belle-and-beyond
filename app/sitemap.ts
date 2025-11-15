@@ -1,9 +1,34 @@
 import { MetadataRoute } from "next";
-import {
-  getAllPosts,
-  getAllDestinations,
-  getAllGalleries,
-} from "@/sanity/lib/api";
+
+// Lazy import to avoid build failures if Sanity env vars are missing
+async function getSanityData() {
+  try {
+    const { getAllPosts, getAllDestinations, getAllGalleries } = await import(
+      "@/sanity/lib/api"
+    );
+    const results = await Promise.allSettled([
+      getAllPosts().catch(() => []),
+      getAllDestinations().catch(() => []),
+      getAllGalleries().catch(() => []),
+    ]);
+
+    return {
+      posts: results[0].status === "fulfilled" ? results[0].value || [] : [],
+      destinations:
+        results[1].status === "fulfilled" ? results[1].value || [] : [],
+      galleries:
+        results[2].status === "fulfilled" ? results[2].value || [] : [],
+    };
+  } catch (error) {
+    // If Sanity isn't configured or fails, return empty arrays
+    console.error("Sitemap: Could not fetch Sanity data:", error);
+    return {
+      posts: [],
+      destinations: [],
+      galleries: [],
+    };
+  }
+}
 
 interface SitemapPost {
   slug: string;
@@ -23,12 +48,8 @@ interface SitemapGallery {
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://izziatravel.com";
 
-  // Get all dynamic routes
-  const [posts, destinations, galleries] = await Promise.all([
-    getAllPosts().catch(() => []),
-    getAllDestinations().catch(() => []),
-    getAllGalleries().catch(() => []),
-  ]);
+  // Get all dynamic routes with better error handling
+  const { posts, destinations, galleries } = await getSanityData();
 
   // Static routes
   const staticRoutes: MetadataRoute.Sitemap = [
