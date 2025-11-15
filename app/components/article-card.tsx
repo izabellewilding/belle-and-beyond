@@ -13,14 +13,12 @@ interface ArticleCardProps {
     description?: string;
     categories?: string[];
   };
-  showButton?: boolean;
   className?: string;
   smallDescription?: boolean;
 }
 
 export const ArticleCard = ({
   post,
-  showButton = false,
   className = "",
   smallDescription = false,
 }: ArticleCardProps) => {

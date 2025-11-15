@@ -113,7 +113,6 @@ export const RecentPosts = () => {
                       description: post.description,
                       categories: post.categories,
                     }}
-                    showButton={false}
                     smallDescription={true}
                   />
                 </motion.div>
