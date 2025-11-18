@@ -48,14 +48,14 @@ export const Footer = () => {
           </div>
 
           {/* Contact */}
-          <div>
+          {/* <div>
             <h3 className="font-serif text-2xl md:text-3xl mb-4">Contact Us</h3>
             <p className="text-white/85 leading-relaxed">
               email@example.com
               <br />
               (555) 555-5555
             </p>
-          </div>
+          </div> */}
 
           {/* Follow */}
           <div>

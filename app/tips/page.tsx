@@ -1,3 +1,11 @@
+// Tips page temporarily commented out
+import { notFound } from "next/navigation";
+
+export default async function TipsPage() {
+  notFound();
+}
+
+/* 
 import { Navigation } from "@/app/components/navigation";
 import { Footer } from "@/app/components/footer";
 import { getPostsByCategories } from "@/sanity/lib/api";
@@ -43,7 +51,6 @@ export default async function TipsPage() {
     <>
       <Navigation />
       <section className="bg-white py-24 md:py-20 px-4 md:px-10 lg:px-14 w-full">
-        {/* Header: top rule + large serif heading */}
         <div className="mb-12 md:mb-16">
           <div className="border-t border-neutral-400/70" />
           <h1 className="mt-8 text-4xl md:text-5xl font-serif text-neutral-900">
@@ -81,3 +88,4 @@ export default async function TipsPage() {
     </>
   );
 }
+*/

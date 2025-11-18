@@ -77,7 +77,7 @@ export const Navigation = () => {
   const navLinks = [
     { href: "#news", label: "News" },
     { href: "/destinations", label: "Destinations", isPage: true },
-    { href: "/tips", label: "Tips", isPage: true },
+    // { href: "/tips", label: "Tips", isPage: true }, // Temporarily commented out
     { href: "#gallery", label: "Gallery" },
     { href: "#our-story", label: "Our Story" },
     { href: "#social", label: "Social" },
