@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import { Navigation } from "../../components/navigation";
 import { Footer } from "../../components/footer";
-import Image from "next/image";
+import { BentoGallery } from "../../components/BentoGallery";
 import { getGalleryBySlug, getAllGalleries } from "@/sanity/lib/api";
 
 // Enable dynamic rendering - pages will be generated on-demand
@@ -131,41 +131,10 @@ export default async function GalleryPage({ params }: GalleryPageProps) {
           </div>
         </section>
 
-        {/* Gallery Grid */}
+        {/* Gallery Grid - Bento Style */}
         <section className="py-4 md:pt-8 lg:pt-0 px-4 md:px-10 lg:px-14 w-full">
           {gallery.images && gallery.images.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
-              {Array.from({ length: 3 }, (_, columnIndex) => (
-                <div key={columnIndex} className="grid gap-2">
-                  {gallery.images
-                    .map((image, index) => ({ image, index }))
-                    .filter(({ index }) => index % 3 === columnIndex)
-                    .map(({ image, index: globalIndex }) => (
-                      <div key={globalIndex} className="relative group">
-                        <div className="relative w-full rounded-lg overflow-hidden bg-neutral-100">
-                          <Image
-                            src={image.src}
-                            alt={image.alt}
-                            title={image.title || image.alt}
-                            width={800}
-                            height={1200}
-                            className="w-full h-auto object-contain"
-                            sizes="(max-width: 768px) 100vw, 33vw"
-                            loading={globalIndex < 3 ? "eager" : "lazy"}
-                          />
-                        </div>
-                        {image.photographer && (
-                          <div className="mt-2 bg-neutral-800 text-white text-xs px-3 py-2 rounded">
-                            <span className="font-medium">
-                              Photo by {image.photographer}
-                            </span>
-                          </div>
-                        )}
-                      </div>
-                    ))}
-                </div>
-              ))}
-            </div>
+            <BentoGallery images={gallery.images} />
           ) : (
             <div className="text-center py-12">
               <p className="text-neutral-600">

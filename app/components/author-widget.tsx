@@ -17,7 +17,7 @@ export const AuthorWidget = () => {
         </div>
       </Link>
       {/* Round Image */}
-      <div className="relative w-[168px] h-[168px] rounded-full overflow-hidden">
+      {/* <div className="relative w-[168px] h-[168px] rounded-full overflow-hidden">
         <Image
           src="/images/izzy_zia.jpg"
           alt="Author Face"
@@ -28,12 +28,10 @@ export const AuthorWidget = () => {
       </div>
 
       {/* Bullet Point Description */}
-      <div className="text-gray-700 space-y-2 text-md">
+      {/* <div className="text-gray-700 space-y-2 text-md">
         {/* <h3 className="text-gray-300 text-sm pb-2">ABOUT ME</h3> */}
-        Hey, Izzie and Zia, or Izzia! We're a couple who both work as fully
-        remote software engineers. We love exploring new places and cultures,
-        and we're always looking for new adventures.
-      </div>
+        We are Izzia. 
+      </div>  */}
     </div>
   );
 };
