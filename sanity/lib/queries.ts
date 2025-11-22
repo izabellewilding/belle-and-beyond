@@ -41,6 +41,18 @@ export const getAllPostsQuery = groq`*[_type == "post"] | order(publishedAt desc
   _updatedAt
 }`;
 
+// Get all posts with full data (for blog listing page)
+export const getAllPostsWithDataQuery = groq`*[_type == "post"] | order(publishedAt desc) {
+  _id,
+  title,
+  "slug": slug.current,
+  "mainImage": mainImage.asset->url,
+  publishedAt,
+  "author": author->name,
+  "description": pt::text(body[0..2]),
+  "categories": categories[]->title
+}`;
+
 // Get recent posts
 export const getRecentPostsQuery = groq`*[_type == "post"] | order(publishedAt desc)[0...3] {
   _id,

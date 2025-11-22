@@ -4,6 +4,7 @@ import {
   getDestinationBySlugQuery,
   getFeaturedDestinationsQuery,
   getAllPostsQuery,
+  getAllPostsWithDataQuery,
   getRecentPostsQuery,
   getPostBySlugQuery,
   getPostsByCountryQuery,
@@ -28,6 +29,15 @@ export async function getFeaturedDestinations() {
 export async function getAllPosts() {
   try {
     return await client.fetch(getAllPostsQuery);
+  } catch (error) {
+    console.error("Sanity fetch error:", error);
+    return [];
+  }
+}
+
+export async function getAllPostsWithData() {
+  try {
+    return await client.fetch(getAllPostsWithDataQuery);
   } catch (error) {
     console.error("Sanity fetch error:", error);
     return [];
