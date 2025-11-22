@@ -45,7 +45,7 @@ export const BentoGallery = ({ images }: BentoGalleryProps) => {
     // Load images and detect their dimensions
     const loadImageDimensions = async () => {
       const loadedImages: ImageWithDimensions[] = await Promise.all(
-        images.map(async (image, index) => {
+        images.map(async (image) => {
           return new Promise<ImageWithDimensions>((resolve) => {
             const img = new window.Image();
             img.onload = () => {

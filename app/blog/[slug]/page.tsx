@@ -12,7 +12,6 @@ import { SanityImageObject } from "@sanity/image-url/lib/types/types";
 import { urlFor } from "@/sanity/lib/image";
 import { Icons } from "@/app/components/icons";
 import { NewsSidebar } from "../../components/news-sidebar";
-import { AuthorWidget } from "../../components/author-widget";
 import { Metadata } from "next";
 import Script from "next/script";
 

@@ -27,11 +27,11 @@ export const AuthorWidget = () => {
         />
       </div>
 
-      {/* Bullet Point Description */}
-      {/* <div className="text-gray-700 space-y-2 text-md">
-        {/* <h3 className="text-gray-300 text-sm pb-2">ABOUT ME</h3> */}
+      Bullet Point Description
+      <div className="text-gray-700 space-y-2 text-md">
+        <h3 className="text-gray-300 text-sm pb-2">ABOUT ME</h3>
         We are Izzia. 
-      </div>  */}
+      </div> */}
     </div>
   );
 };
