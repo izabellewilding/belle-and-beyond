@@ -377,12 +377,17 @@ export default async function PostPage({
       {post.bannerImage ? (
         <section className="relative w-full h-[250px] md:h-[300px] lg:h-[350px] overflow-hidden">
           <Image
-            src={urlFor(post.bannerImage).width(1920).height(800).url()}
+            src={urlFor(post.bannerImage)
+              .width(1400)
+              .height(600)
+              .quality(85)
+              .url()}
             alt={post.bannerImage.alt || post.title}
             fill
             className="object-cover"
             priority
             sizes="100vw"
+            quality={85}
           />
         </section>
       ) : null}

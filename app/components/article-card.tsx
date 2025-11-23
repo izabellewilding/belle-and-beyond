@@ -38,6 +38,8 @@ export const ArticleCard = ({
           className="object-cover transition-transform duration-500 group-hover:scale-110"
           sizes="(min-width: 1024px) 33vw, 100vw"
           priority={false}
+          quality={85}
+          loading="lazy"
         />
         {/* Subtle overlay on hover */}
         <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-300" />
