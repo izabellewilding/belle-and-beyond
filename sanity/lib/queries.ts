@@ -74,6 +74,10 @@ export const getPostBySlugQuery = groq`*[_type == "post" && slug.current == $slu
     asset->{_ref, url},
     alt
   },
+  bannerImage {
+    asset->{_ref, url},
+    alt
+  },
   publishedAt,
   "author": author->name,
   body,

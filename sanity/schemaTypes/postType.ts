@@ -48,6 +48,22 @@ export const postType = defineType({
       ],
     }),
     defineField({
+      name: "bannerImage",
+      type: "image",
+      title: "Banner Image",
+      description: "Banner image displayed at the top of the blog post page",
+      options: {
+        hotspot: true,
+      },
+      fields: [
+        defineField({
+          name: "alt",
+          type: "string",
+          title: "Alternative text",
+        }),
+      ],
+    }),
+    defineField({
       name: "categories",
       type: "array",
       of: [defineArrayMember({ type: "reference", to: { type: "category" } })],

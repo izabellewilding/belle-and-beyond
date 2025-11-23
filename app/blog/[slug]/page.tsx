@@ -50,6 +50,7 @@ interface Post extends SanityDocument {
   title: string;
   slug: string;
   mainImage: SanityImageObject & { alt?: string }; // Add alt to the type definition
+  bannerImage?: SanityImageObject & { alt?: string };
   publishedAt: string | null;
   author: string;
   body: PortableTextBlock[]; // Use the defined Portable Text type
@@ -371,14 +372,34 @@ export default async function PostPage({
         }}
       />
       <Navigation />
+
+      {/* Banner Section */}
+      {post.bannerImage ? (
+        <section className="relative w-full h-[250px] md:h-[300px] lg:h-[350px] overflow-hidden">
+          <Image
+            src={urlFor(post.bannerImage).width(1920).height(800).url()}
+            alt={post.bannerImage.alt || post.title}
+            fill
+            className="object-cover"
+            priority
+            sizes="100vw"
+          />
+        </section>
+      ) : null}
+
       <section className="flex flex-col md:flex-row px-4 py-24 px-8 md:py-32 max-w-7xl mx-auto">
         {/* Main Content Area */}
         <article className="w-full md:w-2/3 md:pr-8">
-          <div className="text-center md:text-left mb-8 md:mt-12">
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-2">
+          {/* Title section - overlaps banner if banner exists */}
+          <div
+            className={`text-center md:text-left mb-8 ${post.bannerImage ? "-mt-[110px] md:-mt-[130px] lg:-mt-[150px] relative z-10" : "md:mt-12"}`}
+          >
+            <h1
+              className={`text-3xl md:text-4xl lg:text-5xl font-serif text-neutral-900 mb-2 ${post.bannerImage ? "bg-white px-6 md:px-10 py-4 md:py-6 shadow-lg inline-block" : "font-bold"}`}
+            >
               {post.title}
             </h1>
-            <p className="text-gray-600 text-sm mb-4">
+            <p className="text-gray-600 text-sm mb-4 mt-4">
               By {post.author} •{" "}
               {post.publishedAt ? formatDate(post.publishedAt) : ""}
             </p>
