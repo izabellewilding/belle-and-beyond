@@ -62,7 +62,12 @@ export const Footer = () => {
             <h3 className="font-serif text-2xl md:text-3xl mb-4">Follow Us</h3>
             <ul className="space-y-2">
               <li>
-                <Link href="#" className="underline underline-offset-4">
+                <Link
+                  href="https://www.instagram.com/izzia_travel"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline underline-offset-4"
+                >
                   Instagram
                 </Link>
               </li>

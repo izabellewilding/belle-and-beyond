@@ -5,8 +5,9 @@ export const Icons = () => {
     <div>
       <div className="flex space-x-4">
         <a
-          href="https://www.instagram.com/belleandbeyond.travel?igsh=MTVxZ3NtaGw3N2M2NA%3D%3D&utm_source=qr"
+          href="https://www.instagram.com/izzia_travel"
           target="_blank"
+          rel="noopener noreferrer"
           className="hover:text-pink-400"
         >
           <FaInstagram size={20} />
