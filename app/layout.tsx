@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import { Playfair_Display } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
 
@@ -48,6 +49,13 @@ const cabinetGrotesk = localFont({
     },
   ],
   variable: "--font-cabinet-grotesk",
+  display: "swap",
+});
+
+// ✅ Load Playfair Display font
+const playfairDisplay = Playfair_Display({
+  subsets: ["latin"],
+  variable: "--font-playfair",
   display: "swap",
 });
 
@@ -111,7 +119,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={cabinetGrotesk.variable}>
+    <html
+      lang="en"
+      className={`${cabinetGrotesk.variable} ${playfairDisplay.variable}`}
+    >
       <head>
         {/* Google Analytics */}
         <Script

@@ -1,0 +1,118 @@
+"use client";
+
+import { motion, useAnimation } from "framer-motion";
+import { useEffect } from "react";
+import Image from "next/image";
+import Link from "next/link";
+
+export const HeroOld = () => {
+  const controls = useAnimation();
+
+  useEffect(() => {
+    controls.start({ opacity: 1, y: 0 });
+  }, [controls]);
+
+  return (
+    <section className="relative text-neutral-800 min-h-screen w-full m-0 p-0 overflow-hidden block">
+      {/* Full width and height image container */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={controls}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        className="absolute inset-0 w-full h-full"
+      >
+        <Image
+          src="/images/la-de-rivas-view.JPG"
+          alt="Couple exploring ecotourism trails with sustainable travel equipment"
+          fill
+          priority
+          className="object-cover"
+          sizes="100vw"
+        />
+
+        {/* Overlay gradient for text readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/30" />
+      </motion.div>
+
+      {/* Text overlay centered */}
+      <div className="relative z-10 flex items-center justify-center min-h-screen w-full">
+        <div className="relative z-10 px-4 md:px-12 lg:px-20 xl:px-24 max-w-3xl text-center">
+          <motion.h1
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.6, ease: "easeOut" }}
+            className="font-sans text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.1] tracking-tight text-white mb-3 md:mb-6"
+          >
+            Ecotourism & Sustainable Travel <br />
+          </motion.h1>
+
+          <motion.h2
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 0.6, ease: "easeOut" }}
+            className="font-serif text-lg sm:text-xl text-white/90 mb-4"
+          >
+            Quick ecotourism guides and thoughtful travel inspiration.
+          </motion.h2>
+
+          <motion.p
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.35, duration: 0.6, ease: "easeOut" }}
+            className="text-white/70 text-sm sm:text-base md:text-lg mb-6 max-w-lg mx-auto leading-relaxed"
+          >
+            We document sustainable travel tips and remote-work friendly
+            adventures so you can plan ethical trips without any extra fluff.
+          </motion.p>
+
+          {/* Buttons */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5, duration: 0.6, ease: "easeOut" }}
+            className="flex flex-col md:flex-row gap-3 md:gap-4 justify-center"
+          >
+            <Link
+              href="/destinations"
+              className="inline-flex items-center justify-center gap-1.5 md:gap-2 bg-white text-neutral-900 px-6 py-3 md:px-8 md:py-4 rounded-full font-medium text-base md:text-base lg:text-lg hover:bg-neutral-100 transition-colors duration-200 shadow-lg w-full md:w-auto"
+            >
+              Explore Guides
+              <svg
+                className="w-4 h-4 md:w-5 md:h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M17 8l4 4m0 0l-4 4m4-4H3"
+                />
+              </svg>
+            </Link>
+            <Link
+              href="/blog"
+              className="hidden md:inline-flex items-center justify-center gap-2 bg-transparent border-2 border-white text-white px-8 py-4 rounded-full font-medium text-base lg:text-lg hover:bg-white hover:text-neutral-900 transition-colors duration-200"
+            >
+              Read Stories
+              <svg
+                className="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M17 8l4 4m0 0l-4 4m4-4H3"
+                />
+              </svg>
+            </Link>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+};

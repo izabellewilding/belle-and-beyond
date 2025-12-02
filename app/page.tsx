@@ -123,7 +123,8 @@ export default function Home() {
           __html: JSON.stringify(faqStructuredData),
         }}
       />
-      <Navigation />
+      {/* Navigation hidden on homepage - logo is in hero */}
+      {/* <Navigation /> */}
       <Hero />
       {/* Gallery below hero, aligned to the right side */}
 

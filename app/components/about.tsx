@@ -2,77 +2,93 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 
 export const About = () => {
   return (
     <section
       id="our-story"
-      className="bg-white pb-16 md:pb-24 px-4 sm:px-6 md:px-10 lg:px-14 w-full"
+      className="min-h-screen w-full flex flex-col lg:flex-row m-0 p-0 bg-[#f7e9e9]"
     >
-      {/* Border line at top */}
-      <div className="border-t border-neutral-400/70 pt-16 md:pt-24 mb-8 md:mb-12">
-        {/* About content with portrait image */}
+      {/* Left Section - Tilted Photo */}
+      <div className="relative w-full lg:w-[45%] h-[50vh] lg:h-screen flex items-center justify-center lg:justify-end pr-0 lg:pr-8 overflow-hidden">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, x: -50 }}
+          whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="relative"
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="relative w-full max-w-md lg:max-w-lg h-[80%] lg:h-[85%]"
         >
-          <div className="flex flex-col lg:flex-row lg:items-end gap-8 lg:gap-16 xl:gap-20">
-            {/* Text content */}
-            <div className="flex-1 lg:max-w-4xl">
-              <motion.h2
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif text-neutral-800 mb-6"
-              >
-                Our Ecotourism Story
-              </motion.h2>
-              <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl text-neutral-800 leading-tight font-serif">
-                Hi! We're Izzie and Zia, a couple from the UK who love exploring
-                and changing our work setting. We both work remotely as mobile
-                and web app developers. I love writing and want to use this blog
-                as a chance to share our experiences working remotely. I'm also
-                a keen photographer and take all of the pictures for the blog.
-                Our goal is simple — to share honest stories and real travel
-                tips, without the fake gloss you find all too often online.
-              </p>
-              {/* <p className="mt-6 text-base sm:text-lg text-neutral-700 leading-relaxed">
-                Every trip becomes a practical ecotourism guide—highlighting the
-                responsible tour operators we trust, the mindful travel tips we
-                practice, and the low-impact stays that keep communities at the
-                center. We document sustainable travel photography, remote-work
-                rituals, and hands-on insights so you can plan greener
-                adventures without sacrificing spontaneity.
-              </p> */}
-              {/* <ul className="mt-6 space-y-2 text-neutral-700 text-sm sm:text-base">
-                <li>
-                  • Eco travel tips for slow itineraries and mindful exploration
-                </li>
-                <li>
-                  • In-depth sustainable travel guides featuring everything from
-                  kitchen table planning to on-the-ground conservation partners
-                </li>
-                <li>
-                  • Advice on blending remote work with conservation-focused
-                  adventures
-                </li>
-              </ul> */}
-            </div>
+          {/* Dark background layer */}
+          <div className="absolute inset-0 bg-neutral-900 -rotate-2 lg:-rotate-3 transform origin-center" />
 
-            {/* Portrait image - stacked on mobile, separate on desktop */}
-            <div className="relative w-full sm:w-64 md:w-80 lg:w-96 xl:w-[28rem] lg:flex-shrink-0 aspect-[3/4] lg:aspect-[3/4]">
-              <Image
-                src="/images/algarve_sunset_zia_portrait.JPG"
-                alt="Izzie and Zia documenting sustainable ecotourism adventures at sunset in Portugal"
-                fill
-                className="object-cover rounded-2xl"
-                sizes="(min-width: 1280px) 28rem, (min-width: 1024px) 24rem, (min-width: 768px) 20rem, (min-width: 640px) 16rem, 100vw"
-              />
-            </div>
+          {/* Image */}
+          <div className="relative w-full h-full p-4">
+            <Image
+              src="/images/izzy_zia.JPG"
+              alt="Izabelle and Zia, digital nomads"
+              fill
+              className="object-cover"
+              sizes="(min-width: 1024px) 45vw, 100vw"
+            />
+          </div>
+        </motion.div>
+      </div>
+
+      {/* Right Section - Text Content */}
+      <div className="w-full lg:w-[55%] h-[50vh] lg:h-screen flex items-center justify-center bg-[#f7e9e9] px-6 md:px-10 lg:px-12 xl:px-16 py-12 lg:py-0">
+        <motion.div
+          initial={{ opacity: 0, x: 50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="max-w-2xl space-y-6 md:space-y-8"
+        >
+          {/* Main Heading */}
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-playfair font-bold text-neutral-900 leading-tight">
+            honest travel reviews, guides, and experiences as nomads
+          </h2>
+
+          {/* Welcome Message */}
+          <p className="text-lg md:text-xl text-neutral-800 font-sans">
+            Welcome, we are so pleased you found us!
+          </p>
+
+          {/* Introduction */}
+          <p className="text-base md:text-lg text-neutral-800 font-sans leading-relaxed">
+            We're Izabelle & Zia, digital nomads who spend our weekends
+            exploring and immersing ourselves in new cultures.
+          </p>
+
+          {/* Mission Statement */}
+          <p className="text-base md:text-lg text-neutral-800 font-sans leading-relaxed">
+            We want to share our experiences to help you. We write authentic
+            stories and aim to give you the full picture, not just the fluff.
+          </p>
+
+          {/* Blog Status */}
+          <p className="text-base md:text-lg text-neutral-800 font-sans leading-relaxed">
+            The blog is just starting out and we're hoping to keep growing!
+          </p>
+
+          {/* Blog Link */}
+          <div className="pt-4">
+            <Link
+              href="/blog"
+              className="text-neutral-600 hover:text-neutral-800 text-sm md:text-base font-sans transition-colors"
+            >
+              our blog
+            </Link>
+          </div>
+
+          {/* CTA Button */}
+          <div className="pt-2">
+            <Link
+              href="/blog"
+              className="inline-block bg-neutral-900 text-white px-8 py-4 rounded-lg text-base md:text-lg font-sans hover:bg-neutral-800 transition-colors"
+            >
+              See our stories
+            </Link>
           </div>
         </motion.div>
       </div>
