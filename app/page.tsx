@@ -123,17 +123,15 @@ export default function Home() {
           __html: JSON.stringify(faqStructuredData),
         }}
       />
-      {/* Navigation hidden on homepage - logo is in hero */}
-      {/* <Navigation /> */}
-      <Hero />
-      {/* Gallery below hero, aligned to the right side */}
 
+      <Hero />
+      <About />
       {useAlternativeLayout ? <RecentPostsAlternative /> : <RecentPosts />}
       <div className="w-full flex justify-end">
         <GalleryDirectoryWrapper />
       </div>
       {/* <DestinationsCarouselWrapper /> */}
-      <About />
+
       <Contact />
 
       <Footer />

@@ -22,7 +22,7 @@ export const Hero = () => {
         className="absolute inset-0 w-full h-full"
       >
         <Image
-          src="/images/la-de-rivas-view.JPG"
+          src="/images/dominical-surfer.JPG"
           alt="Tropical beach scene"
           fill
           priority

@@ -17,13 +17,13 @@ export const About = () => {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="relative w-full max-w-md lg:max-w-lg h-[80%] lg:h-[85%]"
+          className="relative w-full max-w-md lg:max-w-lg h-[calc(80%-100px)] lg:h-[calc(85%-100px)]"
         >
           {/* Dark background layer */}
-          <div className="absolute inset-0 bg-neutral-900 -rotate-2 lg:-rotate-3 transform origin-center" />
+          <div className="absolute inset-0 bg-neutral-900 rotate-2 lg:rotate-3 transform origin-center" />
 
           {/* Image */}
-          <div className="relative w-full h-full p-4">
+          <div className="relative w-full h-full p-4 -rotate-2 lg:-rotate-3 transform origin-center">
             <Image
               src="/images/izzy_zia.JPG"
               alt="Izabelle and Zia, digital nomads"
