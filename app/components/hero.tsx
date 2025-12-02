@@ -32,6 +32,9 @@ export const Hero = () => {
         />
       </motion.div>
 
+      {/* Gradient overlay from bottom to top */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent z-10" />
+
       {/* Logo in top left */}
       <div className="absolute top-6 left-6 md:top-8 md:left-8 z-20">
         <Link href="/" className="block">
@@ -143,9 +146,23 @@ export const Hero = () => {
         </motion.div>
       </div>
 
-      {/* Optional: Subtle text overlay if needed - can be removed or customized */}
-      <div className="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
-        {/* Add any centered content here if needed */}
+      {/* Centered Hero Text */}
+      <div className="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5, duration: 0.8, ease: "easeOut" }}
+          className="text-center px-6 md:px-8"
+        >
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-playfair font-extrabold text-white mb-4 md:mb-6 leading-tight">
+            Work Anywhere,
+            <br />
+            Belong Everywhere
+          </h1>
+          <p className="text-lg md:text-xl lg:text-2xl text-white/90 font-playfair font-extrabold">
+            Your Guide to Places, Practical Tips, and Worldly Events
+          </p>
+        </motion.div>
       </div>
     </section>
   );
