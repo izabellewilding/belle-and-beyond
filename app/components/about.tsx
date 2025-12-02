@@ -8,10 +8,10 @@ export const About = () => {
   return (
     <section
       id="our-story"
-      className="min-h-screen w-full flex flex-col lg:flex-row m-0 p-0 bg-[#f7e9e9]"
+      className="min-h-screen w-full flex flex-col lg:flex-row m-0 p-0 bg-[#EAC4C5]"
     >
       {/* Left Section - Tilted Photo */}
-      <div className="relative w-full lg:w-[45%] h-[50vh] lg:h-screen flex items-center justify-center lg:justify-end px-6 pb-6 lg:px-0 lg:pb-0 lg:pr-8 overflow-hidden">
+      <div className="relative w-full lg:w-[45%] h-[50vh] lg:h-screen flex items-center justify-center lg:justify-end px-6 pb-6 lg:px-0 lg:pb-0 lg:pr-4 overflow-visible">
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -20,7 +20,7 @@ export const About = () => {
           className="relative w-full max-w-md lg:max-w-lg h-[calc(80%-100px)] lg:h-[calc(85%-100px)]"
         >
           {/* Dark background layer */}
-          <div className="absolute inset-0 bg-neutral-900 rotate-2 lg:rotate-3 transform origin-center" />
+          <div className="absolute inset-0 bg-[#172531] rotate-2 lg:rotate-3 transform origin-center" />
 
           {/* Image */}
           <div className="relative w-full h-full p-4 -rotate-2 lg:-rotate-3 transform origin-center">
@@ -36,16 +36,16 @@ export const About = () => {
       </div>
 
       {/* Right Section - Text Content */}
-      <div className="w-full lg:w-[55%] h-[50vh] lg:h-screen flex items-center justify-center bg-[#f7e9e9] px-6 md:px-10 lg:px-12 xl:px-16 py-12 lg:py-0">
+      <div className="w-full lg:w-[55%] h-[50vh] lg:h-screen flex items-center justify-center bg-[#EAC4C5] px-6 md:px-10 lg:pl-4 lg:-ml-8 lg:pr-20 xl:pl-8 xl:-ml-12 xl:pr-24 py-12 lg:py-0">
         <motion.div
           initial={{ opacity: 0, x: 50 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="max-w-2xl space-y-6 md:space-y-8"
+          className="max-w-xl space-y-6 md:space-y-8"
         >
           {/* Main Heading */}
-          <h2 className="text-3xl md:text-3xl lg:text-5xl font-playfair font-bold text-neutral-900 leading-tight">
+          <h2 className="text-xl md:text-2xl lg:text-5xl font-playfair font-bold text-neutral-900 leading-tight">
             honest travel reviews, guides, and experiences as nomads
           </h2>
 
@@ -71,21 +71,11 @@ export const About = () => {
             The blog is just starting out and we're hoping to keep growing!
           </p>
 
-          {/* Blog Link */}
-          <div className="pt-4">
-            <Link
-              href="/blog"
-              className="text-neutral-600 hover:text-neutral-800 text-sm md:text-base font-sans transition-colors"
-            >
-              our blog
-            </Link>
-          </div>
-
           {/* CTA Button */}
           <div className="pt-2 w-full">
             <Link
               href="/blog"
-              className="inline-block w-full sm:w-auto bg-neutral-900 text-white px-8 py-4 rounded-lg text-base md:text-lg font-sans hover:bg-neutral-800 transition-colors text-center"
+              className="inline-block w-full sm:w-auto bg-[#423636] text-white px-8 py-4 rounded-none text-base md:text-lg font-sans hover:bg-[#352d2d] transition-colors text-center"
             >
               See our stories
             </Link>
