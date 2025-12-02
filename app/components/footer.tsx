@@ -106,7 +106,7 @@ export const Footer = () => {
 
         {/* Bottom bar */}
         <div className="mt-12 md:mt-16 border-t border-white/20 pt-6 text-sm text-white/70">
-          © {new Date().getFullYear()} Belle & Beyond. All rights reserved.
+          © {new Date().getFullYear()} Izzia Travel. All rights reserved.
         </div>
       </div>
     </footer>

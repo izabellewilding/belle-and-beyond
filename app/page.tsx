@@ -10,14 +10,29 @@ import { Metadata } from "next";
 import Script from "next/script";
 
 export const metadata: Metadata = {
-  title: "Izzia Travel | Travel Blog & Travel Guides",
+  title: "Izzia Travel | Ecotourism Guides & Sustainable Travel Blog",
   description:
-    "Izzia Travel - Your ultimate travel blog and travel guides. Discover inspiring destinations, travel tips, and photography from around the world. Expert travel guides to help you plan your next adventure.",
+    "Izzia Travel shares ecotourism guides, sustainable travel tips, and remote-work friendly adventures for people who want to travel ethically.",
+  keywords: [
+    "ecotourism",
+    "sustainable travel",
+    "ecotourism guides",
+    "eco travel tips",
+    "responsible travel",
+    "green itineraries",
+  ],
   openGraph: {
-    title: "Izzia Travel | Travel Blog & Travel Guides",
+    title: "Izzia Travel | Ecotourism Guides & Sustainable Travel Blog",
     description:
-      "Your ultimate travel blog and travel guides. Discover inspiring destinations, travel tips, and photography from around the world.",
+      "Practical ecotourism guides, slow travel inspiration, and sustainable travel stories documented by a remote-working duo.",
     type: "website",
+    siteName: "Izzia Travel",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Izzia Travel | Ecotourism Guides & Sustainable Travel Blog",
+    description:
+      "Ecotourism guides, sustainable travel tips, and responsible travel inspiration for your next mindful trip.",
   },
 };
 
@@ -32,7 +47,7 @@ export default function Home() {
     url: baseUrl,
     logo: `${baseUrl}/logo.svg`,
     description:
-      "Izzia Travel - Your ultimate travel blog and travel guides. Discover inspiring destinations, travel tips, and photography from around the world.",
+      "Izzia Travel shares ecotourism guides, sustainable travel tips, and remote-work adventures from across the globe.",
     sameAs: [],
   };
 
@@ -41,7 +56,7 @@ export default function Home() {
     "@type": "Blog",
     name: "Izzia Travel",
     description:
-      "Travel blog and travel guides featuring inspiring destinations, travel tips, and photography from around the world.",
+      "Ecotourism blog featuring sustainable travel guides, responsible tips, and stories from conservation-focused adventures.",
     url: baseUrl,
     publisher: {
       "@type": "Organization",
@@ -52,11 +67,41 @@ export default function Home() {
       },
     },
   };
+  const faqStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "What is ecotourism?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Ecotourism is travel that focuses on conservation, supports local communities, and minimizes environmental impact while immersing visitors in nature.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "How do I plan a sustainable travel itinerary?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Start with ethical accommodations, choose eco-conscious tour operators, pack light, and offset your emissions—our guides offer practical examples step by step.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Are there remote-work friendly ecotourism adventures?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes, we document remote-work friendly eco itineraries with stable Wi-Fi, intentional rest days, and immersive conservation experiences to keep you productive yet grounded.",
+        },
+      },
+    ],
+  };
   // Set to true to use the alternative layout, false for the original
   const useAlternativeLayout = false;
 
   return (
-    <div className="">
+    <div className="m-0 p-0 w-full">
       <Script
         id="organization-structured-data"
         type="application/ld+json"
@@ -69,6 +114,13 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(blogStructuredData),
+        }}
+      />
+      <Script
+        id="faq-structured-data"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(faqStructuredData),
         }}
       />
       <Navigation />

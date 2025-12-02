@@ -6,7 +6,9 @@
   --color-tan: #c9b991;
   --color-cream: #f5efe6;
   --color-white: white;
-  --font-sans: var(--font-cabinet-grotesk), ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  --font-sans:
+    var(--font-cabinet-grotesk), ui-sans-serif, system-ui, -apple-system,
+    Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
 }
 
 :root {
@@ -23,7 +25,25 @@
     --foreground: #f2ebe1;
   } */
 
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100%;
+  overflow-x: hidden;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
+}
+
+/* Ensure no gaps on sections */
+section {
+  margin: 0;
+  padding: 0;
 }

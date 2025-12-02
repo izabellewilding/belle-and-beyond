@@ -109,7 +109,9 @@ export const Navigation = () => {
 
   return (
     <nav
-      className={`fixed w-full top-0 z-50 transition-all duration-300 ${isScrolled ? "bg-white/80 backdrop-blur-md shadow-md" : "bg-white"}`}
+      className={`fixed w-full top-0 z-50 transition-all duration-300 ${
+        isScrolled ? "bg-white/80 backdrop-blur-md shadow-md" : "bg-transparent"
+      }`}
     >
       <div className="w-full px-3 md:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20 pt-1 md:pt-2">
@@ -118,7 +120,9 @@ export const Navigation = () => {
             <motion.div
               initial={{ opacity: 0, x: -12 }}
               animate={{ opacity: 1, x: 0 }}
-              className="relative"
+              className={`relative transition-all duration-300 ${
+                isScrolled ? "" : "brightness-0 invert"
+              }`}
             >
               <Image
                 src="/logo.svg"
@@ -152,8 +156,12 @@ export const Navigation = () => {
                     (!link.isPage &&
                       pathname === "/" &&
                       activeSection === link.href.slice(1))
-                      ? "bg-neutral-200 text-neutral-900"
-                      : "text-neutral-800 hover:text-neutral-600 hover:bg-neutral-100"
+                      ? isScrolled
+                        ? "bg-neutral-200 text-neutral-900"
+                        : "bg-white/20 text-white backdrop-blur-sm"
+                      : isScrolled
+                        ? "text-neutral-800 hover:text-neutral-600 hover:bg-neutral-100"
+                        : "text-white hover:text-white/80 hover:bg-white/10"
                   }`}
                 >
                   {link.label}
@@ -171,7 +179,11 @@ export const Navigation = () => {
             >
               <Link
                 href="#contact"
-                className="inline-flex items-center rounded-full bg-neutral-900 text-white px-12 py-3 text-base  hover:bg-neutral-800 transition-colors"
+                className={`inline-flex items-center rounded-full px-12 py-3 text-base transition-colors ${
+                  isScrolled
+                    ? "bg-neutral-900 text-white hover:bg-neutral-800"
+                    : "bg-white/20 text-white backdrop-blur-sm hover:bg-white/30 border border-white/30"
+                }`}
               >
                 Get In Touch
               </Link>
@@ -180,7 +192,9 @@ export const Navigation = () => {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden relative z-50 p-2 text-gray-800"
+            className={`md:hidden relative z-50 p-2 transition-colors ${
+              isScrolled ? "text-gray-800" : "text-white"
+            }`}
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle menu"
           >
