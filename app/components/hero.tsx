@@ -4,6 +4,7 @@ import { motion, useAnimation } from "framer-motion";
 import { useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { FaInstagram, FaPinterest, FaFacebook, FaLink } from "react-icons/fa";
 
 export const Hero = () => {
   const controls = useAnimation();
@@ -50,6 +51,96 @@ export const Hero = () => {
             />
           </motion.div>
         </Link>
+      </div>
+
+      {/* Navigation in top right */}
+      <div className="absolute top-6 right-6 md:top-8 md:right-8 z-20">
+        <motion.div
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.3, duration: 0.6, ease: "easeOut" }}
+          className="flex items-center gap-6 md:gap-8"
+        >
+          {/* Navigation Links */}
+          <nav className="hidden md:flex items-center gap-6 text-white">
+            <Link
+              href="/destinations"
+              className="text-sm md:text-base font-sans hover:opacity-80 transition-opacity"
+            >
+              Destinations
+            </Link>
+            <Link
+              href="/blog"
+              className="text-sm md:text-base font-sans hover:opacity-80 transition-opacity"
+            >
+              Blog
+            </Link>
+            <Link
+              href="#"
+              className="text-sm md:text-base font-sans hover:opacity-80 transition-opacity"
+            >
+              Responsible Travel
+            </Link>
+            <Link
+              href="#"
+              className="text-sm md:text-base font-sans hover:opacity-80 transition-opacity"
+            >
+              Shop
+            </Link>
+            <Link
+              href="#our-story"
+              className="text-sm md:text-base font-sans hover:opacity-80 transition-opacity"
+            >
+              About
+            </Link>
+            <Link
+              href="/"
+              className="text-sm md:text-base font-sans hover:opacity-80 transition-opacity underline underline-offset-4"
+            >
+              Home
+            </Link>
+          </nav>
+
+          {/* Social Media Icons */}
+          <div className="flex items-center gap-4 text-white">
+            <a
+              href="https://www.instagram.com/izzia_travel"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:opacity-80 transition-opacity"
+              aria-label="Instagram"
+            >
+              <FaInstagram size={20} />
+            </a>
+            <a
+              href="#"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:opacity-80 transition-opacity"
+              aria-label="Pinterest"
+            >
+              <FaPinterest size={20} />
+            </a>
+            <a
+              href="#"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:opacity-80 transition-opacity"
+              aria-label="Facebook"
+            >
+              <FaFacebook size={20} />
+            </a>
+            <a
+              href="#"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:opacity-80 transition-opacity"
+              aria-label="Share"
+            >
+              <FaLink size={20} />
+            </a>
+          </div>
+        </motion.div>
       </div>
 
       {/* Optional: Subtle text overlay if needed - can be removed or customized */}
