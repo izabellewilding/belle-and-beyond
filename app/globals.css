@@ -7,8 +7,8 @@
   --color-cream: #f5efe6;
   --color-white: white;
   --font-sans:
-    var(--font-cabinet-grotesk), ui-sans-serif, system-ui, -apple-system,
-    Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+    var(--font-hind-mysuru), ui-sans-serif, system-ui, -apple-system, Segoe UI,
+    Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
   --font-playfair: var(--font-playfair), serif;
 }
 

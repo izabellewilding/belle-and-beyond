@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import { Playfair_Display } from "next/font/google";
+import { Playfair_Display, Hind_Mysuru } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
 
@@ -56,6 +56,14 @@ const cabinetGrotesk = localFont({
 const playfairDisplay = Playfair_Display({
   subsets: ["latin"],
   variable: "--font-playfair",
+  display: "swap",
+});
+
+// ✅ Load Hind Mysuru font for body text (light weight)
+const hindMysuru = Hind_Mysuru({
+  weight: "300",
+  subsets: ["latin"],
+  variable: "--font-hind-mysuru",
   display: "swap",
 });
 
@@ -121,7 +129,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${cabinetGrotesk.variable} ${playfairDisplay.variable}`}
+      className={`${hindMysuru.variable} ${playfairDisplay.variable}`}
     >
       <head>
         {/* Google Analytics */}
@@ -145,7 +153,7 @@ export default function RootLayout({
           `}
         </Script>
       </head>
-      <body className="font-sans text-neutral-800 m-0 p-0 overflow-x-hidden">
+      <body className="font-sans font-light text-neutral-800 m-0 p-0 overflow-x-hidden">
         {children}
       </body>
     </html>

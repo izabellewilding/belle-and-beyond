@@ -15,7 +15,7 @@ const config: Config = {
         cream: "#f5efe6",
       },
       fontFamily: {
-        sans: ["var(--font-cabinet-grotesk)", "sans-serif"],
+        sans: ["var(--font-hind-mysuru)", "sans-serif"],
         heading: ["var(--font-cabinet-grotesk)", "sans-serif"],
         playfair: ["var(--font-playfair)", "serif"],
       },
