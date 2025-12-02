@@ -1,15 +1,28 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
 export const About = () => {
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
+
+  // Parallax effect - image moves slower than scroll
+  const imageY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+
   return (
     <section
+      ref={sectionRef}
       id="our-story"
-      className="min-h-screen w-full flex flex-col lg:flex-row m-0 p-0 bg-[#EAC4C5]"
+      className="relative min-h-screen w-full flex flex-col lg:flex-row m-0 p-0 bg-[#EAC4C5] overflow-hidden z-30"
     >
+      {/* Transparent fade at top */}
+      <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent to-[#EAC4C5] z-10 pointer-events-none" />
       {/* Left Section - Tilted Photo */}
       <div className="relative w-full lg:w-[45%] h-[50vh] lg:h-screen flex items-center justify-center lg:justify-end px-6 pb-6 lg:px-0 lg:pb-0 lg:pr-4 overflow-visible">
         <motion.div

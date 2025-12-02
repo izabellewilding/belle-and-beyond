@@ -1,25 +1,39 @@
 "use client";
 
-import { motion, useAnimation } from "framer-motion";
-import { useEffect } from "react";
+import { motion, useAnimation, useScroll, useTransform } from "framer-motion";
+import { useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { FaInstagram, FaPinterest, FaFacebook, FaLink } from "react-icons/fa";
 
 export const Hero = () => {
   const controls = useAnimation();
+  const heroRef = useRef<HTMLElement>(null);
+
+  // Parallax effect - hero moves slower than scroll
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"],
+  });
+
+  // Transform scroll to move hero slower (parallax effect)
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
 
   useEffect(() => {
     controls.start({ opacity: 1, y: 0 });
   }, [controls]);
 
   return (
-    <section className="relative min-h-screen w-full m-0 p-0 overflow-hidden block">
+    <section
+      ref={heroRef}
+      className="relative min-h-screen w-full m-0 p-0 overflow-hidden block"
+    >
       {/* Full width and height image container */}
       <motion.div
         initial={{ opacity: 0, scale: 1.05 }}
         animate={controls}
         transition={{ duration: 1, ease: "easeOut" }}
+        style={{ y }}
         className="absolute inset-0 w-full h-full"
       >
         <Image
