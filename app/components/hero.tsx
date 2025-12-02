@@ -43,9 +43,9 @@ export const Hero = () => {
             <Image
               src="/logo.svg"
               alt="Izzia Travel"
-              width={140}
-              height={44}
-              className="h-8 md:h-10 lg:h-12 w-auto"
+              width={240}
+              height={75}
+              className="h-12 md:h-16 lg:h-20 w-auto"
               priority
             />
           </motion.div>

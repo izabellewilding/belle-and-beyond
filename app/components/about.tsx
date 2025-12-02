@@ -11,7 +11,7 @@ export const About = () => {
       className="min-h-screen w-full flex flex-col lg:flex-row m-0 p-0 bg-[#f7e9e9]"
     >
       {/* Left Section - Tilted Photo */}
-      <div className="relative w-full lg:w-[45%] h-[50vh] lg:h-screen flex items-center justify-center lg:justify-end pr-0 lg:pr-8 overflow-hidden">
+      <div className="relative w-full lg:w-[45%] h-[50vh] lg:h-screen flex items-center justify-center lg:justify-end px-6 pb-6 lg:px-0 lg:pb-0 lg:pr-8 overflow-hidden">
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -45,7 +45,7 @@ export const About = () => {
           className="max-w-2xl space-y-6 md:space-y-8"
         >
           {/* Main Heading */}
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-playfair font-bold text-neutral-900 leading-tight">
+          <h2 className="text-3xl md:text-3xl lg:text-5xl font-playfair font-bold text-neutral-900 leading-tight">
             honest travel reviews, guides, and experiences as nomads
           </h2>
 
@@ -82,10 +82,10 @@ export const About = () => {
           </div>
 
           {/* CTA Button */}
-          <div className="pt-2">
+          <div className="pt-2 w-full">
             <Link
               href="/blog"
-              className="inline-block bg-neutral-900 text-white px-8 py-4 rounded-lg text-base md:text-lg font-sans hover:bg-neutral-800 transition-colors"
+              className="inline-block w-full sm:w-auto bg-neutral-900 text-white px-8 py-4 rounded-lg text-base md:text-lg font-sans hover:bg-neutral-800 transition-colors text-center"
             >
               See our stories
             </Link>
