@@ -2,22 +2,19 @@
 
 import { useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { usePostsStore } from "../stores/usePostsStore";
-import { ArticleCard } from "./article-card";
+import { trackBlogPostClick } from "@/lib/gtag";
 
 const PostSkeleton = () => {
   return (
-    <div className="flex flex-col h-full">
-      <div className="relative w-full aspect-[4/3] bg-gray-200 rounded-2xl mb-4 shadow-md" />
-      <div className="space-y-3">
-        <div className="h-6 bg-gray-200 rounded w-3/4" />
-        <div className="h-6 bg-gray-200 rounded w-1/2" />
-        <div className="space-y-2">
-          <div className="h-4 bg-gray-200 rounded" />
-          <div className="h-4 bg-gray-200 rounded w-5/6" />
-        </div>
-      </div>
+    <div className="flex flex-col h-full w-full max-w-[378px]">
+      <div
+        className="relative w-full bg-gray-200 rounded-none mb-4"
+        style={{ aspectRatio: "1/1" }}
+      />
+      <div className="h-4 bg-gray-200 rounded w-full" />
     </div>
   );
 };
@@ -30,39 +27,28 @@ export const RecentPosts = () => {
   }, [fetchPosts]);
 
   return (
-    <section
-      id="news"
-      className="bg-white pb-16 md:pb-24 px-4 md:px-10 lg:px-14 w-full"
-    >
-      {/* Border line at top */}
-      <div className="border-t border-neutral-400/70 pt-16 md:pt-24 mb-8 md:mb-12">
-        {/* Header: large serif heading */}
+    <section id="news" className="bg-[#FFFAF1] px-4 md:px-10 w-full">
+      {/* Header: centered title */}
+      <div className="pt-16 md:pt-24 pb-12 md:pb-16">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, ease: "easeOut" }}
+          className="text-center"
         >
-          <h2 className="text-3xl md:text-4xl font-serif text-neutral-900">
-            Latest News
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-playfair text-[#8B6263] leading-tight">
+            Latest Stories from our trips
+            <br />
+            and recent move to Costa Rica
           </h2>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, ease: "easeOut", delay: 0.15 }}
-            className="mt-8 text-md md:text-xl font-serif text-neutral-900"
-          >
-            Here are our latest stories and experiences from around the world.
-            Currently we are living and working from Costa Rica, high up in the
-            mountains.
-          </motion.p>
         </motion.div>
       </div>
 
-      <div>
+      {/* Cards container with centered layout and desktop padding */}
+      <div className="max-w-7xl mx-auto px-0 lg:px-[125px]">
         {loading && (
-          <div className="grid gap-8 md:gap-10 sm:grid-cols-1 md:grid-cols-3">
+          <div className="grid gap-6 md:gap-[27px] sm:grid-cols-1 md:grid-cols-3 justify-items-center">
             {[1, 2, 3].map((index) => (
               <PostSkeleton key={index} />
             ))}
@@ -87,7 +73,7 @@ export const RecentPosts = () => {
                   },
                 },
               }}
-              className="grid gap-6 md:gap-8 sm:grid-cols-1 md:grid-cols-3"
+              className="grid gap-6 md:gap-[27px] sm:grid-cols-1 md:grid-cols-3 justify-items-center"
             >
               {posts.map((post) => (
                 <motion.div
@@ -103,38 +89,41 @@ export const RecentPosts = () => {
                       },
                     },
                   }}
+                  className="flex flex-col w-full max-w-[378px]"
                 >
-                  <ArticleCard
-                    post={{
-                      _id: post._id,
-                      title: post.title,
-                      slug: post.slug,
-                      mainImage: post.mainImage,
-                      description: post.description,
-                      categories: post.categories,
-                    }}
-                    smallDescription={true}
-                  />
+                  <Link
+                    href={`/blog/${post.slug}`}
+                    onClick={() => trackBlogPostClick(post.title, post.slug)}
+                    className="group flex flex-col h-full"
+                  >
+                    {/* Image with square aspect ratio */}
+                    <div
+                      className="relative w-full overflow-hidden rounded-none mb-4"
+                      style={{ aspectRatio: "1/1" }}
+                    >
+                      <Image
+                        src={post.mainImage}
+                        alt={post.title}
+                        fill
+                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                        sizes="(min-width: 1024px) 378px, 100vw"
+                        priority={false}
+                        quality={85}
+                        loading="lazy"
+                      />
+                    </div>
+                    <p className="text-base md:text-lg text-neutral-700 font-sans leading-relaxed text-center">
+                      {post.title}
+                    </p>
+                  </Link>
                 </motion.div>
               ))}
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, ease: "easeOut", delay: 0.3 }}
-              className="mt-8 md:mt-12 text-center"
-            >
-              <Link
-                href="#news"
-                className="inline-flex items-center rounded-full bg-neutral-900 text-white px-10 md:px-16 py-4 md:py-5 text-lg md:text-xl font-medium hover:bg-neutral-800 transition-colors"
-              >
-                See the blog
-              </Link>
             </motion.div>
           </>
         )}
       </div>
+      {/* Bottom spacing */}
+      <div className="pb-16 md:pb-24" />
     </section>
   );
 };
