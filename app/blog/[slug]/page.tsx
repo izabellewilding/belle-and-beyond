@@ -77,7 +77,7 @@ export async function generateMetadata({
 
   if (!post) {
     return {
-      title: "Post Not Found | Izzia Travel",
+      title: "Post Not Found | The Portable Life",
     };
   }
 
@@ -107,18 +107,18 @@ export async function generateMetadata({
   const metaDescription =
     post.seo?.metaDescription ||
     bodyText ||
-    `Read ${post.title} on Izzia Travel - your ultimate travel blog and travel guides resource.`;
+    `Read ${post.title} on The Portable Life - your ultimate travel blog and travel guides resource.`;
   const ogTitle =
     post.seo?.ogTitle ||
     seoTitle ||
-    `${post.title} | Travel Blog | Izzia Travel`;
+    `${post.title} | Travel Blog | The Portable Life`;
   const ogDescription = post.seo?.ogDescription || metaDescription;
 
   // Build keywords array - combine CMS keywords with defaults
   const defaultKeywords = [
     post.title,
     "travel blog",
-    "Izzia Travel",
+    "The Portable Life",
     "travel guides",
     post.author,
   ];
@@ -165,7 +165,7 @@ export async function generateMetadata({
     ? urlFor(post.seo.ogImage).width(1200).height(630).url()
     : imageUrl;
 
-  const pageTitle = `${seoTitle} | Travel Blog | Izzia Travel`;
+  const pageTitle = `${seoTitle} | Travel Blog | The Portable Life`;
 
   return {
     title: pageTitle,
@@ -189,7 +189,7 @@ export async function generateMetadata({
       description: ogDescription,
       type: "article",
       url: pageUrl,
-      siteName: "Izzia Travel",
+      siteName: "The Portable Life",
       publishedTime: post.publishedAt || undefined,
       authors: [post.author],
       images: ogImageUrl
@@ -349,7 +349,7 @@ export default async function PostPage({
     },
     publisher: {
       "@type": "Organization",
-      name: "Izzia Travel",
+      name: "The Portable Life",
       url: baseUrl,
       logo: {
         "@type": "ImageObject",

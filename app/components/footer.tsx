@@ -66,7 +66,7 @@ export const Footer = () => {
               <ul className="space-y-3">
                 <li>
                   <a
-                    href="https://www.instagram.com/izzia_travel"
+                    href="https://www.instagram.com/theportablelife_"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-darkText font-sans hover:opacity-70 transition-opacity flex items-center gap-2"
@@ -121,7 +121,8 @@ export const Footer = () => {
           {/* Bottom bar */}
           <div className="mt-12 md:mt-16 pt-8 border-t border-neutral-200">
             <p className="text-sm text-darkText/70 font-sans text-center">
-              © {new Date().getFullYear()} Izzia Travel. All rights reserved.
+              © {new Date().getFullYear()} The Portable Life. All rights
+              reserved.
             </p>
           </div>
         </div>

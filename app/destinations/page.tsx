@@ -15,19 +15,19 @@ interface Destination {
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Travel Guides | Destinations | Izzia Travel",
+  title: "Travel Guides | Destinations | The Portable Life",
   description:
-    "Explore comprehensive travel guides for destinations around the world. Expert travel guides from Izzia Travel to help you plan your perfect trip. Discover the best places to visit, things to do, and travel tips.",
+    "Explore comprehensive travel guides for destinations around the world. Expert travel guides from The Portable Life to help you plan your perfect trip. Discover the best places to visit, things to do, and travel tips.",
   keywords: [
     "travel guides",
     "destination guides",
     "travel destinations",
-    "Izzia Travel",
+    "The Portable Life",
     "travel blog",
     "where to travel",
   ],
   openGraph: {
-    title: "Travel Guides | Destinations | Izzia Travel",
+    title: "Travel Guides | Destinations | The Portable Life",
     description:
       "Explore comprehensive travel guides for destinations around the world. Expert travel guides to help you plan your perfect trip.",
     type: "website",

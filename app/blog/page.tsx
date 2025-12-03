@@ -5,19 +5,19 @@ import { ArticleCard } from "@/app/components/article-card";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Travel Stories & Blog Posts | Izzia Travel",
+  title: "Travel Stories & Blog Posts | The Portable Life",
   description:
     "Read our travel stories, adventures, and experiences from around the world. Get inspired for your next journey with real travel stories and insights.",
   keywords: [
     "travel stories",
     "travel blog",
     "travel experiences",
-    "Izzia Travel",
+    "The Portable Life",
     "travel adventures",
     "travel inspiration",
   ],
   openGraph: {
-    title: "Travel Stories & Blog Posts | Izzia Travel",
+    title: "Travel Stories & Blog Posts | The Portable Life",
     description:
       "Read our travel stories, adventures, and experiences from around the world. Get inspired for your next journey.",
     type: "website",

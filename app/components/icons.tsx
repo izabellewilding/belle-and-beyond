@@ -5,7 +5,7 @@ export const Icons = () => {
     <div>
       <div className="flex space-x-4">
         <a
-          href="https://www.instagram.com/izzia_travel"
+          href="https://www.instagram.com/theportablelife_"
           target="_blank"
           rel="noopener noreferrer"
           className="hover:text-pink-400"

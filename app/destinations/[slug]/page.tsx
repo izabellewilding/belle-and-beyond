@@ -62,33 +62,33 @@ export async function generateMetadata({
   const pageUrl = `${baseUrl}/destinations/${slug}`;
 
   return {
-    title: `${destination.title} Travel Guide | Izzia Travel`,
+    title: `${destination.title} Travel Guide | The Portable Life`,
     description: destination.description
-      ? `${destination.description} Read our comprehensive travel guide for ${destination.title} on Izzia Travel - your ultimate travel blog and travel guides resource.`
-      : `Complete travel guide for ${destination.title}. Discover the best places to visit, things to do, and travel tips. Expert travel guides from Izzia Travel.`,
+      ? `${destination.description} Read our comprehensive travel guide for ${destination.title} on The Portable Life - your ultimate travel blog and travel guides resource.`
+      : `Complete travel guide for ${destination.title}. Discover the best places to visit, things to do, and travel tips. Expert travel guides from The Portable Life.`,
     keywords: [
       `${destination.title} travel guide`,
       `${destination.title} travel`,
       "travel guides",
       "travel blog",
-      "Izzia Travel",
+      "The Portable Life",
       `${destination.title} destination`,
     ],
     alternates: {
       canonical: pageUrl,
     },
     openGraph: {
-      title: `${destination.title} Travel Guide | Izzia Travel`,
+      title: `${destination.title} Travel Guide | The Portable Life`,
       description:
         destination.description ||
         `Complete travel guide for ${destination.title}`,
       type: "article",
       url: pageUrl,
-      siteName: "Izzia Travel",
+      siteName: "The Portable Life",
     },
     twitter: {
       card: "summary_large_image",
-      title: `${destination.title} Travel Guide | Izzia Travel`,
+      title: `${destination.title} Travel Guide | The Portable Life`,
       description:
         destination.description ||
         `Complete travel guide for ${destination.title}`,
@@ -131,7 +131,7 @@ export default async function DestinationPage({
     url: pageUrl,
     publisher: {
       "@type": "Organization",
-      name: "Izzia Travel",
+      name: "The Portable Life",
       url: baseUrl,
     },
     mainEntity: {

@@ -11,9 +11,9 @@ import { Metadata } from "next";
 import Script from "next/script";
 
 export const metadata: Metadata = {
-  title: "Izzia Travel | Ecotourism Guides & Sustainable Travel Blog",
+  title: "The Portable Life | Ecotourism Guides & Sustainable Travel Blog",
   description:
-    "Izzia Travel shares ecotourism guides, sustainable travel tips, and remote-work friendly adventures for people who want to travel ethically.",
+    "The Portable Life shares ecotourism guides, sustainable travel tips, and remote-work friendly adventures for people who want to travel ethically.",
   keywords: [
     "ecotourism",
     "sustainable travel",
@@ -23,15 +23,15 @@ export const metadata: Metadata = {
     "green itineraries",
   ],
   openGraph: {
-    title: "Izzia Travel | Ecotourism Guides & Sustainable Travel Blog",
+    title: "The Portable Life | Ecotourism Guides & Sustainable Travel Blog",
     description:
       "Practical ecotourism guides, slow travel inspiration, and sustainable travel stories documented by a remote-working duo.",
     type: "website",
-    siteName: "Izzia Travel",
+    siteName: "The Portable Life",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Izzia Travel | Ecotourism Guides & Sustainable Travel Blog",
+    title: "The Portable Life | Ecotourism Guides & Sustainable Travel Blog",
     description:
       "Ecotourism guides, sustainable travel tips, and responsible travel inspiration for your next mindful trip.",
   },
@@ -44,24 +44,24 @@ export default function Home() {
   const organizationStructuredData = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: "Izzia Travel",
+    name: "The Portable Life",
     url: baseUrl,
     logo: `${baseUrl}/logo.svg`,
     description:
-      "Izzia Travel shares ecotourism guides, sustainable travel tips, and remote-work adventures from across the globe.",
+      "The Portable Life shares ecotourism guides, sustainable travel tips, and remote-work adventures from across the globe.",
     sameAs: [],
   };
 
   const blogStructuredData = {
     "@context": "https://schema.org",
     "@type": "Blog",
-    name: "Izzia Travel",
+    name: "The Portable Life",
     description:
       "Ecotourism blog featuring sustainable travel guides, responsible tips, and stories from conservation-focused adventures.",
     url: baseUrl,
     publisher: {
       "@type": "Organization",
-      name: "Izzia Travel",
+      name: "The Portable Life",
       logo: {
         "@type": "ImageObject",
         url: `${baseUrl}/logo.svg`,
@@ -134,7 +134,7 @@ export default function Home() {
       </div>
       {/* <DestinationsCarouselWrapper /> */}
 
-      <Contact />
+      {/* <Contact /> */}
 
       <Footer />
     </div>

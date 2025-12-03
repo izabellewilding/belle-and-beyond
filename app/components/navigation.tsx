@@ -19,7 +19,7 @@ export const Navigation = () => {
       setIsScrolled(window.scrollY > 20);
 
       // Detect active section based on scroll position
-      const sections = ["news", "our-story", "gallery", "contact", "social"];
+      const sections = ["news", "our-story", "contact", "social"];
       const scrollPosition = window.scrollY + 200; // Increased offset for better detection
 
       let currentSection = "";
@@ -77,8 +77,6 @@ export const Navigation = () => {
   const navLinks = [
     { href: "#news", label: "News" },
     { href: "/destinations", label: "Destinations", isPage: true },
-    // { href: "/tips", label: "Tips", isPage: true }, // Temporarily commented out
-    { href: "#gallery", label: "Gallery" },
     { href: "#our-story", label: "Our Story" },
     { href: "#social", label: "Social" },
   ];
@@ -126,10 +124,10 @@ export const Navigation = () => {
             >
               <Image
                 src="/logo.svg"
-                alt="Izzia Travel"
+                alt="The Portable Life"
                 width={120}
                 height={38}
-                className="h-7 md:h-9 w-auto"
+                className="h-10 md:h-9 w-auto"
                 priority
               />
             </motion.div>

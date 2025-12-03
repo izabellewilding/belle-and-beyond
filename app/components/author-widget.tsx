@@ -9,7 +9,7 @@ export const AuthorWidget = () => {
         <div className="relative w-[160px] h-[40px]">
           <Image
             src="/logo.svg"
-            alt="Izzia Travel Logo"
+            alt="The Portable Life Logo"
             fill
             priority
             className="object-contain"

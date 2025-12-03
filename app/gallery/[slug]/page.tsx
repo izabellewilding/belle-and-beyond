@@ -38,7 +38,7 @@ export async function generateMetadata({ params }: GalleryPageProps) {
 
   if (!gallery) {
     return {
-      title: "Gallery | Izzia Travel",
+      title: "Gallery | The Portable Life",
     };
   }
 
@@ -48,17 +48,17 @@ export async function generateMetadata({ params }: GalleryPageProps) {
   const ogImage = firstImage ? `${baseUrl}${firstImage}` : undefined;
 
   return {
-    title: `${gallery.title} Gallery | Izzia Travel`,
+    title: `${gallery.title} Gallery | The Portable Life`,
     description: gallery.description,
     alternates: {
       canonical: pageUrl,
     },
     openGraph: {
-      title: `${gallery.title} Gallery | Izzia Travel`,
+      title: `${gallery.title} Gallery | The Portable Life`,
       description: gallery.description,
       type: "website",
       url: pageUrl,
-      siteName: "Izzia Travel",
+      siteName: "The Portable Life",
       images: ogImage
         ? [
             {
@@ -72,7 +72,7 @@ export async function generateMetadata({ params }: GalleryPageProps) {
     },
     twitter: {
       card: "summary_large_image",
-      title: `${gallery.title} Gallery | Izzia Travel`,
+      title: `${gallery.title} Gallery | The Portable Life`,
       description: gallery.description,
       images: ogImage ? [ogImage] : [],
     },

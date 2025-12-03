@@ -69,24 +69,24 @@ const hindMysuru = Hind_Mysuru({
 
 export const metadata: Metadata = {
   title: {
-    default: "Izzia Travel | Travel Blog & Travel Guides",
-    template: "%s | Izzia Travel",
+    default: "The Portable Life | Travel Blog & Travel Guides",
+    template: "%s | The Portable Life",
   },
   description:
-    "Izzia Travel - Your ultimate travel blog and travel guides. Discover inspiring destinations, travel tips, and photography from around the world. Expert travel guides to help you plan your next adventure.",
+    "The Portable Life - Your ultimate travel blog and travel guides. Discover inspiring destinations, travel tips, and photography from around the world. Expert travel guides to help you plan your next adventure.",
   keywords: [
     "travel blog",
     "travel guides",
-    "Izzia Travel",
+    "The Portable Life",
     "travel photography",
     "travel tips",
     "destination guides",
     "travel advice",
     "adventure travel",
   ],
-  authors: [{ name: "Izzia Travel" }],
-  creator: "Izzia Travel",
-  publisher: "Izzia Travel",
+  authors: [{ name: "The Portable Life" }],
+  creator: "The Portable Life",
+  publisher: "The Portable Life",
   metadataBase: new URL(
     process.env.NEXT_PUBLIC_SITE_URL || "https://izziatravel.com"
   ),
@@ -94,14 +94,14 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: process.env.NEXT_PUBLIC_SITE_URL || "https://izziatravel.com",
-    siteName: "Izzia Travel",
-    title: "Izzia Travel | Travel Blog & Travel Guides",
+    siteName: "The Portable Life",
+    title: "The Portable Life | Travel Blog & Travel Guides",
     description:
       "Your ultimate travel blog and travel guides. Discover inspiring destinations, travel tips, and photography from around the world.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Izzia Travel | Travel Blog & Travel Guides",
+    title: "The Portable Life | Travel Blog & Travel Guides",
     description:
       "Your ultimate travel blog and travel guides. Discover inspiring destinations, travel tips, and photography from around the world.",
   },

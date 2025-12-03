@@ -60,10 +60,10 @@ export const Hero = () => {
           >
             <Image
               src="/logo.svg"
-              alt="Izzia Travel"
+              alt="The Portable Life"
               width={240}
               height={75}
-              className="h-12 md:h-16 lg:h-20 w-auto"
+              className="h-16 md:h-16 lg:h-20 w-auto"
               priority
             />
           </motion.div>
@@ -93,18 +93,6 @@ export const Hero = () => {
               Blog
             </Link>
             <Link
-              href="#"
-              className="text-sm md:text-base font-sans hover:opacity-80 transition-opacity"
-            >
-              Responsible Travel
-            </Link>
-            <Link
-              href="#"
-              className="text-sm md:text-base font-sans hover:opacity-80 transition-opacity"
-            >
-              Shop
-            </Link>
-            <Link
               href="#our-story"
               className="text-sm md:text-base font-sans hover:opacity-80 transition-opacity"
             >
@@ -121,7 +109,7 @@ export const Hero = () => {
           {/* Social Media Icons */}
           <div className="flex items-center gap-4 text-white">
             <a
-              href="https://www.instagram.com/izzia_travel"
+              href="https://www.instagram.com/theportablelife_"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:opacity-80 transition-opacity"

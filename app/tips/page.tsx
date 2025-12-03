@@ -23,22 +23,22 @@ interface Post {
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Travel Tips & Advice | Travel Blog | Izzia Travel",
+  title: "Travel Tips & Advice | Travel Blog | The Portable Life",
   description:
-    "Expert travel tips and advice from Izzia Travel blog. Discover practical travel tips, advice, and guides to make the most of your adventures. Your ultimate travel blog resource.",
+    "Expert travel tips and advice from The Portable Life blog. Discover practical travel tips, advice, and guides to make the most of your adventures. Your ultimate travel blog resource.",
   keywords: [
     "travel tips",
     "travel advice",
     "travel blog",
-    "Izzia Travel",
+    "The Portable Life",
     "travel guides",
     "travel planning",
     "adventure tips",
   ],
   openGraph: {
-    title: "Travel Tips & Advice | Travel Blog | Izzia Travel",
+    title: "Travel Tips & Advice | Travel Blog | The Portable Life",
     description:
-      "Expert travel tips and advice from Izzia Travel blog. Discover practical travel tips and guides to make the most of your adventures.",
+      "Expert travel tips and advice from The Portable Life blog. Discover practical travel tips and guides to make the most of your adventures.",
     type: "website",
   },
 };
@@ -59,7 +59,7 @@ export default async function TipsPage() {
           <p className="mt-8 text-md md:text-xl font-serif text-neutral-900">
             Expert travel tips and advice from our travel blog to help you make
             the most of your adventures. Discover practical guides and insights
-            from Izzia Travel.
+            from The Portable Life.
           </p>
         </div>
 
