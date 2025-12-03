@@ -9,7 +9,7 @@ import { trackBlogPostClick } from "@/lib/gtag";
 
 const PostSkeleton = () => {
   return (
-    <div className="flex flex-col h-full w-full max-w-[378px]">
+    <div className="flex flex-col h-full w-full">
       <div
         className="relative w-full bg-gray-200 rounded-none mb-4"
         style={{ aspectRatio: "1/1" }}
@@ -39,17 +39,15 @@ export const RecentPosts = () => {
             className="text-center"
           >
             <h2 className="text-xl md:text-2xl lg:text-3xl font-playfair text-darkText leading-tight">
-              Latest Stories from our trips
-              <br />
-              and recent move to Costa Rica
+              Latest Stories
             </h2>
           </motion.div>
         </div>
 
         {/* Cards container with centered layout and desktop padding */}
-        <div className="max-w-7xl mx-auto px-0 lg:px-[125px]">
+        <div className="max-w-7xl mx-auto px-0 lg:px-8">
           {loading && (
-            <div className="grid gap-6 md:gap-[27px] sm:grid-cols-1 md:grid-cols-3 justify-items-center">
+            <div className="grid gap-8 md:gap-12 lg:gap-16 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center">
               {[1, 2, 3].map((index) => (
                 <PostSkeleton key={index} />
               ))}
@@ -74,7 +72,7 @@ export const RecentPosts = () => {
                     },
                   },
                 }}
-                className="grid gap-6 md:gap-[27px] sm:grid-cols-1 md:grid-cols-3 justify-items-center"
+                className="grid gap-8 md:gap-12 lg:gap-16 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center"
               >
                 {posts.map((post) => (
                   <motion.div
@@ -90,7 +88,7 @@ export const RecentPosts = () => {
                         },
                       },
                     }}
-                    className="flex flex-col w-full max-w-[378px]"
+                    className="flex flex-col w-full"
                   >
                     <Link
                       href={`/blog/${post.slug}`}
@@ -107,7 +105,7 @@ export const RecentPosts = () => {
                           alt={post.title}
                           fill
                           className="object-cover transition-transform duration-500 group-hover:scale-105"
-                          sizes="(min-width: 1024px) 378px, 100vw"
+                          sizes="(min-width: 768px) 50vw, (min-width: 1024px) 33vw, 100vw"
                           priority={false}
                           quality={85}
                           loading="lazy"

@@ -174,7 +174,7 @@ export const Hero = () => {
             Belong Everywhere
           </h1>
           <p className="text-lg md:text-xl lg:text-2xl text-[#F2E9F1] font-sans">
-            Your Guide to Places, Practical Tips, and Worldly Events
+            Your Guide to Places, Practical Tips, and Nomad Liftstyle
           </p>
         </motion.div>
       </div>

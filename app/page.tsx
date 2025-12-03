@@ -6,6 +6,7 @@ import { Footer } from "./components/footer";
 import { About } from "./components/about";
 import { GalleryDirectoryWrapper } from "./components/GalleryDirectoryWrapper";
 import { Contact } from "./components/contact";
+import { DominicalFeature } from "./components/dominical-feature";
 import { Metadata } from "next";
 import Script from "next/script";
 
@@ -127,6 +128,7 @@ export default function Home() {
       <Hero />
       <About />
       {useAlternativeLayout ? <RecentPostsAlternative /> : <RecentPosts />}
+      <DominicalFeature />
       <div className="w-full flex justify-end">
         <GalleryDirectoryWrapper />
       </div>

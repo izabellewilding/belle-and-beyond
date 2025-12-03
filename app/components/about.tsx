@@ -55,11 +55,12 @@ export const About = () => {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="max-w-xl space-y-6 md:space-y-8"
+          className="max-w-xl space-y-6 md:space-y-10"
         >
           {/* Main Heading */}
-          <h2 className="text-xl md:text-2xl lg:text-5xl font-playfair font-bold text-darkText leading-tight">
-            honest travel reviews, guides, and experiences as nomads
+          <h2 className="text-xl md:text-2xl lg:text-4xl font-playfair font-bold text-darkText leading-tight">
+            Exploring what it feels like to build a life in new places — from
+            practical experiences to everyday discoveries.
           </h2>
 
           {/* Welcome Message */}
