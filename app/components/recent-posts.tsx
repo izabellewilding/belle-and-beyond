@@ -27,7 +27,7 @@ export const RecentPosts = () => {
   }, [fetchPosts]);
 
   return (
-    <section id="news" className="bg-[#FFFAF1] w-full">
+    <section id="news" className="bg-[#faf7fa] w-full">
       <div className="container-content">
         {/* Header: centered title */}
         <div className="pt-16 md:pt-24 pb-12 md:pb-16">
@@ -38,7 +38,7 @@ export const RecentPosts = () => {
             transition={{ duration: 0.6, ease: "easeOut" }}
             className="text-center"
           >
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-playfair text-[#8B6263] leading-tight">
+            <h2 className="text-xl md:text-2xl lg:text-3xl font-playfair text-darkText leading-tight">
               Latest Stories from our trips
               <br />
               and recent move to Costa Rica
@@ -113,7 +113,7 @@ export const RecentPosts = () => {
                           loading="lazy"
                         />
                       </div>
-                      <p className="text-base md:text-lg text-neutral-700 font-sans leading-relaxed text-center">
+                      <p className="text-base md:text-lg text-darkText font-sans leading-relaxed text-center">
                         {post.title}
                       </p>
                     </Link>

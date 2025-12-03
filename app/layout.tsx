@@ -153,7 +153,7 @@ export default function RootLayout({
           `}
         </Script>
       </head>
-      <body className="font-sans font-light text-neutral-800 m-0 p-0 overflow-x-hidden">
+      <body className="font-sans font-light text-darkText m-0 p-0 overflow-x-hidden">
         {children}
       </body>
     </html>

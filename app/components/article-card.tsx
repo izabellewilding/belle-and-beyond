@@ -45,7 +45,7 @@ export const ArticleCard = ({
         <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-300" />
       </div>
       <div className="flex-1 flex flex-col">
-        <h3 className="text-xl md:text-2xl leading-tight font-serif text-neutral-900 mb-2 group-hover:text-neutral-700 transition-colors line-clamp-2">
+        <h3 className="text-xl md:text-2xl leading-tight font-serif text-darkText mb-2 group-hover:text-darkText/70 transition-colors line-clamp-2">
           {post.title}
         </h3>
         {post.description && (
@@ -55,7 +55,7 @@ export const ArticleCard = ({
             {post.description}
           </p>
         )}
-        <div className="mt-3 text-sm font-medium text-neutral-900 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center gap-1">
+        <div className="mt-3 text-sm font-medium text-darkText opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center gap-1">
           Read more
           <svg
             className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"

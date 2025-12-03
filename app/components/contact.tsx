@@ -102,7 +102,7 @@ export const Contact = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-3xl md:text-4xl font-serif text-neutral-900 leading-tight">
+            <h2 className="text-3xl md:text-4xl font-serif text-darkText leading-tight">
               Let's Keep In Touch
             </h2>
           </motion.div>
@@ -114,7 +114,7 @@ export const Contact = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <p className="text-lg md:text-xl text-neutral-700 mb-8 leading-relaxed">
+            <p className="text-lg md:text-xl text-darkText mb-8 leading-relaxed">
               Ready to see how compelling visuals can elevate your story? Reach
               out for a complimentary consultation, and let's discuss the
               moments you want to capture.

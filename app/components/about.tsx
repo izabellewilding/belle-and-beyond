@@ -58,29 +58,29 @@ export const About = () => {
           className="max-w-xl space-y-6 md:space-y-8"
         >
           {/* Main Heading */}
-          <h2 className="text-xl md:text-2xl lg:text-5xl font-playfair font-bold text-neutral-900 leading-tight">
+          <h2 className="text-xl md:text-2xl lg:text-5xl font-playfair font-bold text-darkText leading-tight">
             honest travel reviews, guides, and experiences as nomads
           </h2>
 
           {/* Welcome Message */}
-          <p className="text-lg md:text-xl text-neutral-800 font-sans">
+          <p className="text-lg md:text-xl text-darkText font-sans">
             Welcome, we are so pleased you found us!
           </p>
 
           {/* Introduction */}
-          <p className="text-base md:text-lg text-neutral-800 font-sans leading-relaxed">
+          <p className="text-base md:text-lg text-darkText font-sans leading-relaxed">
             We're Izabelle & Zia, digital nomads who spend our weekends
             exploring and immersing ourselves in new cultures.
           </p>
 
           {/* Mission Statement */}
-          <p className="text-base md:text-lg text-neutral-800 font-sans leading-relaxed">
+          <p className="text-base md:text-lg text-darkText font-sans leading-relaxed">
             We want to share our experiences to help you. We write authentic
             stories and aim to give you the full picture, not just the fluff.
           </p>
 
           {/* Blog Status */}
-          <p className="text-base md:text-lg text-neutral-800 font-sans leading-relaxed">
+          <p className="text-base md:text-lg text-darkText font-sans leading-relaxed">
             The blog is just starting out and we're hoping to keep growing!
           </p>
 

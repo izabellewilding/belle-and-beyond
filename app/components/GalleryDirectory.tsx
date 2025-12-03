@@ -28,13 +28,13 @@ export const GalleryDirectory = ({ cards }: GalleryDirectoryProps) => {
   return (
     <section
       id="gallery"
-      className="bg-white text-neutral-800 pb-16 md:pb-24 px-4 md:px-10 lg:px-14 w-full"
+      className="bg-white text-darkText pb-16 md:pb-24 px-4 md:px-10 lg:px-14 w-full"
     >
       {/* Border line at top */}
       <div className="border-t border-neutral-400/70 pt-16 md:pt-24 mb-8 md:mb-12">
         {/* Header */}
         <div>
-          <h2 className="text-3xl md:text-4xl font-serif text-neutral-900">
+          <h2 className="text-3xl md:text-4xl font-serif text-darkText">
             Photo Gallery
           </h2>
         </div>

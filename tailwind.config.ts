@@ -13,6 +13,7 @@ const config: Config = {
         olive: "#3d4b3d",
         tan: "#c9b991",
         cream: "#f5efe6",
+        darkText: "#171717",
       },
       fontFamily: {
         sans: ["var(--font-hind-mysuru)", "sans-serif"],
