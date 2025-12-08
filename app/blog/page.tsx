@@ -2,6 +2,7 @@ import { Navigation } from "@/app/components/navigation";
 import { Footer } from "@/app/components/footer";
 import { getAllPostsWithData } from "@/sanity/lib/api";
 import { PostsGrid } from "@/app/components/posts-grid";
+import { PageHeader } from "@/app/components/page-header";
 import { Metadata } from "next";
 import Image from "next/image";
 
@@ -50,21 +51,19 @@ export default async function BlogPage() {
         <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
       </section>
 
-      <section className="bg-white py-16 md:py-24 px-4 md:px-10 lg:px-14 w-full min-h-screen">
-        {/* Header */}
-        <div className="mb-12 md:mb-16">
-          <div className="border-t border-neutral-400/70" />
-          <h1 className="mt-8 text-4xl md:text-5xl font-serif text-neutral-900">
-            Travel Stories
-          </h1>
-          <p className="mt-4 text-lg md:text-xl text-neutral-700 max-w-3xl">
-            Read about our adventures, experiences, and insights from traveling
-            around the world. Get inspired for your next journey.
-          </p>
-        </div>
+      <section className="bg-[#faf7fa] w-full">
+        <div className="container-content">
+          {/* Header: centered title matching homepage style */}
+          <PageHeader
+            title="Travel Stories"
+            description="Read about our adventures, experiences, and insights from traveling around the world. Get inspired for your next journey."
+          />
 
-        {/* Posts Grid */}
-        <PostsGrid posts={posts} />
+          {/* Posts Grid */}
+          <div className="max-w-7xl mx-auto px-0 lg:px-8 pb-16 md:pb-24">
+            <PostsGrid posts={posts} />
+          </div>
+        </div>
       </section>
       <Footer />
     </>

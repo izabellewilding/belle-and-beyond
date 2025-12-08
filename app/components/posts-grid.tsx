@@ -10,6 +10,8 @@ interface Post {
   title: string;
   slug: string;
   mainImage: string;
+  description?: string;
+  categories?: string[];
 }
 
 interface PostsGridProps {
@@ -39,7 +41,7 @@ export const PostsGrid = ({ posts }: PostsGridProps) => {
           },
         },
       }}
-      className="grid gap-8 md:gap-12 lg:gap-16 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 justify-items-center"
+      className="grid gap-8 md:gap-10 lg:gap-12 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center"
     >
       {posts.map((post) => (
         <motion.div
@@ -60,27 +62,55 @@ export const PostsGrid = ({ posts }: PostsGridProps) => {
           <Link
             href={`/blog/${post.slug}`}
             onClick={() => trackBlogPostClick(post.title, post.slug)}
-            className="group flex flex-col h-full"
+            className="group flex flex-col h-full transition-all duration-300 hover:scale-[1.02]"
           >
-            {/* Image with square aspect ratio */}
+            {/* Image with slightly taller aspect ratio for more visual impact */}
             <div
-              className="relative w-full overflow-hidden rounded-none mb-4"
-              style={{ aspectRatio: "1/1" }}
+              className="relative w-full overflow-hidden rounded-none mb-4 shadow-md group-hover:shadow-xl transition-shadow duration-300"
+              style={{ aspectRatio: "4/3" }}
             >
               <Image
                 src={post.mainImage}
                 alt={post.title}
                 fill
-                className="object-cover transition-transform duration-500 group-hover:scale-105"
-                sizes="(min-width: 768px) 50vw, (min-width: 1024px) 25vw, 100vw"
+                className="object-cover transition-transform duration-500 group-hover:scale-110"
+                sizes="(min-width: 768px) 50vw, (min-width: 1024px) 33vw, 100vw"
                 priority={false}
                 quality={85}
                 loading="lazy"
               />
+              {/* Subtle overlay on hover */}
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-300" />
             </div>
-            <p className="text-base md:text-lg text-darkText font-sans leading-relaxed text-center">
-              {post.title}
-            </p>
+
+            {/* Content */}
+            <div className="flex-1 flex flex-col">
+              <h3 className="text-xl md:text-2xl leading-tight font-serif text-darkText mb-2 group-hover:text-darkText/70 transition-colors line-clamp-2">
+                {post.title}
+              </h3>
+              {post.description && (
+                <p className="text-sm md:text-base text-neutral-600 leading-relaxed flex-1 line-clamp-3 mb-3">
+                  {post.description}
+                </p>
+              )}
+              {/* Read more indicator */}
+              <div className="text-sm font-medium text-darkText opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center gap-1">
+                Read more
+                <svg
+                  className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </div>
+            </div>
           </Link>
         </motion.div>
       ))}
