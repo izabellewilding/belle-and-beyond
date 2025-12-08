@@ -2,6 +2,7 @@ import { Navigation } from "@/app/components/navigation";
 import { Footer } from "@/app/components/footer";
 import { getAllDestinations } from "@/sanity/lib/api";
 import { DestinationCard } from "@/app/components/destination-card";
+import Image from "next/image";
 
 interface Destination {
   _id: string;
@@ -50,9 +51,28 @@ export default async function DestinationsPage() {
     );
   });
 
+  // Banner image - you can change this path to any image you want
+  const bannerImage = "/images/la-de-rivas-view.JPG";
+
   return (
     <>
       <Navigation />
+
+      {/* Banner Section */}
+      <section className="relative w-full h-[250px] md:h-[300px] lg:h-[350px] overflow-hidden">
+        <Image
+          src={bannerImage}
+          alt="Travel Guides"
+          fill
+          className="object-cover"
+          priority
+          sizes="100vw"
+          quality={85}
+        />
+        {/* Optional overlay for better text readability if needed */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+      </section>
+
       <section className="bg-white py-24 md:py-20 px-4 md:px-10 lg:px-14 w-full">
         {/* Header: top rule + large serif heading */}
         <div className="mb-12 md:mb-16">

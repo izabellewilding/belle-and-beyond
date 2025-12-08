@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { usePathname, useRouter } from "next/navigation";
-import { RectangularButton } from "./rectangular-button";
+import { FaInstagram, FaPinterest, FaFacebook, FaLink } from "react-icons/fa";
 
 export const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -76,10 +76,10 @@ export const Navigation = () => {
   }, [pathname]);
 
   const navLinks = [
-    { href: "#news", label: "News" },
     { href: "/destinations", label: "Destinations", isPage: true },
-    { href: "#our-story", label: "Our Story" },
-    { href: "#social", label: "Social" },
+    { href: "/blog", label: "Blog", isPage: true },
+    { href: "#our-story", label: "About" },
+    { href: "/", label: "Home", isPage: true },
   ];
 
   const handleNavClick = (
@@ -117,8 +117,9 @@ export const Navigation = () => {
           {/* Brand */}
           <Link href="/" className="relative z-50" onClick={handleLogoClick}>
             <motion.div
-              initial={{ opacity: 0, x: -12 }}
+              initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.3, duration: 0.6, ease: "easeOut" }}
               className={`relative transition-all duration-300 ${
                 isScrolled ? "" : "brightness-0 invert"
               }`}
@@ -126,61 +127,92 @@ export const Navigation = () => {
               <Image
                 src="/logo.svg"
                 alt="The Portable Life"
-                width={120}
-                height={38}
-                className="h-10 md:h-9 w-auto"
+                width={240}
+                height={75}
+                className="h-16 md:h-16 lg:h-20 w-auto"
                 priority
               />
             </motion.div>
           </Link>
 
-          {/* Desktop Navigation Links (separate from button) */}
-          <div className="hidden md:flex items-center gap-8 ml-8 mr-auto">
-            {navLinks.map((link, index) => (
-              <motion.div
-                key={link.href}
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-              >
-                <Link
-                  href={link.href}
-                  onClick={(e) => {
-                    if (!link.isPage) {
-                      handleNavClick(e, link.href);
-                    }
-                  }}
-                  className={`transition-all duration-200 py-2 px-4 rounded-full ${
-                    (link.isPage && pathname === link.href) ||
-                    (!link.isPage &&
-                      pathname === "/" &&
-                      activeSection === link.href.slice(1))
-                      ? isScrolled
-                        ? "bg-neutral-200 text-neutral-900"
-                        : "bg-white/20 text-white backdrop-blur-sm"
-                      : isScrolled
-                        ? "text-neutral-800 hover:text-neutral-600 hover:bg-neutral-100"
-                        : "text-white hover:text-white/80 hover:bg-white/10"
-                  }`}
+          {/* Desktop Navigation Links and Social Icons */}
+          <div className="hidden md:flex items-center gap-6 md:gap-8">
+            {/* Navigation Links */}
+            <nav className="flex items-center gap-6">
+              {navLinks.map((link, index) => (
+                <motion.div
+                  key={link.href}
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.1 }}
                 >
-                  {link.label}
-                </Link>
-              </motion.div>
-            ))}
-          </div>
+                  <Link
+                    href={link.href}
+                    onClick={(e) => {
+                      if (!link.isPage) {
+                        handleNavClick(e, link.href);
+                      }
+                    }}
+                    className={`text-sm md:text-base font-sans transition-opacity ${
+                      (link.isPage && pathname === link.href) ||
+                      (!link.isPage &&
+                        pathname === "/" &&
+                        activeSection === link.href.slice(1))
+                        ? isScrolled
+                          ? "text-neutral-900 underline underline-offset-4"
+                          : "text-white underline underline-offset-4"
+                        : isScrolled
+                          ? "text-neutral-800 hover:opacity-80"
+                          : "text-white hover:opacity-80"
+                    }`}
+                  >
+                    {link.label}
+                  </Link>
+                </motion.div>
+              ))}
+            </nav>
 
-          {/* Desktop CTA Button on far right */}
-          <div className="hidden md:block">
-            <motion.div
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
+            {/* Social Media Icons */}
+            <div
+              className={`flex items-center gap-4 ${isScrolled ? "text-neutral-800" : "text-white"}`}
             >
-              <RectangularButton
-                href="mailto:izabellewilding@gmail.com"
-                text="Get In Touch"
-              />
-            </motion.div>
+              <a
+                href="https://www.instagram.com/theportablelife_"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:opacity-80 transition-opacity"
+                aria-label="Instagram"
+              >
+                <FaInstagram size={20} />
+              </a>
+              <a
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:opacity-80 transition-opacity"
+                aria-label="Pinterest"
+              >
+                <FaPinterest size={20} />
+              </a>
+              <a
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:opacity-80 transition-opacity"
+                aria-label="Facebook"
+              >
+                <FaFacebook size={20} />
+              </a>
+              <a
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:opacity-80 transition-opacity"
+                aria-label="Share"
+              >
+                <FaLink size={20} />
+              </a>
+            </div>
           </div>
 
           {/* Mobile Menu Button */}
@@ -243,17 +275,53 @@ export const Navigation = () => {
                       </Link>
                     </motion.div>
                   ))}
+                  {/* Social Media Icons in Mobile Menu */}
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.3 }}
-                    className="pt-4"
+                    className="pt-4 flex items-center gap-4 text-gray-800"
                   >
-                    <RectangularButton
-                      href="mailto:izabellewilding@gmail.com"
-                      text="Get In Touch"
+                    <a
+                      href="https://www.instagram.com/theportablelife_"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:opacity-80 transition-opacity"
+                      aria-label="Instagram"
                       onClick={() => setIsOpen(false)}
-                    />
+                    >
+                      <FaInstagram size={24} />
+                    </a>
+                    <a
+                      href="#"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:opacity-80 transition-opacity"
+                      aria-label="Pinterest"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      <FaPinterest size={24} />
+                    </a>
+                    <a
+                      href="#"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:opacity-80 transition-opacity"
+                      aria-label="Facebook"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      <FaFacebook size={24} />
+                    </a>
+                    <a
+                      href="#"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:opacity-80 transition-opacity"
+                      aria-label="Share"
+                      onClick={() => setIsOpen(false)}
+                    >
+                      <FaLink size={24} />
+                    </a>
                   </motion.div>
                 </div>
               </motion.div>

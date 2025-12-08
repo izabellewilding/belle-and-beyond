@@ -125,6 +125,7 @@ export default function Home() {
         }}
       />
 
+      <Navigation />
       <Hero />
       <About />
       {useAlternativeLayout ? <RecentPostsAlternative /> : <RecentPosts />}

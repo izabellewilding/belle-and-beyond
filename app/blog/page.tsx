@@ -3,6 +3,7 @@ import { Footer } from "@/app/components/footer";
 import { getAllPostsWithData } from "@/sanity/lib/api";
 import { ArticleCard } from "@/app/components/article-card";
 import { Metadata } from "next";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Travel Stories & Blog Posts | The Portable Life",
@@ -38,9 +39,28 @@ interface Post {
 export default async function BlogPage() {
   const posts = await getAllPostsWithData();
 
+  // Banner image - you can change this path to any image you want
+  const bannerImage = "/images/dominical-surfer.jpg";
+
   return (
     <>
       <Navigation />
+
+      {/* Banner Section */}
+      <section className="relative w-full h-[250px] md:h-[300px] lg:h-[350px] overflow-hidden">
+        <Image
+          src={bannerImage}
+          alt="Travel Stories"
+          fill
+          className="object-cover"
+          priority
+          sizes="100vw"
+          quality={85}
+        />
+        {/* Optional overlay for better text readability if needed */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+      </section>
+
       <section className="bg-white py-16 md:py-24 px-4 md:px-10 lg:px-14 w-full min-h-screen">
         {/* Header */}
         <div className="mb-12 md:mb-16">
