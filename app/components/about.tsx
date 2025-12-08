@@ -91,7 +91,7 @@ export const About = () => {
 
           {/* CTA Button */}
           <div className="pt-2 pb-4 inline-block">
-            <RectangularButton href="/blog" text="See our stories" />
+            <RectangularButton href="/blog" text="Read my stories" />
           </div>
         </motion.div>
       </div>
