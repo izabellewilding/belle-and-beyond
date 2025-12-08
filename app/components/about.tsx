@@ -3,7 +3,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import Image from "next/image";
-import Link from "next/link";
+import { RectangularButton } from "./rectangular-button";
 
 export const About = () => {
   const sectionRef = useRef<HTMLElement>(null);
@@ -19,7 +19,7 @@ export const About = () => {
     <section
       ref={sectionRef}
       id="our-story"
-      className="relative min-h-screen w-full flex flex-col lg:flex-row m-0 p-0 bg-[#EAC4C5] overflow-hidden z-30"
+      className="relative min-h-screen w-full flex flex-col lg:flex-row m-0 p-0 bg-[#EAC4C5] overflow-x-hidden overflow-y-visible z-30"
     >
       {/* Left Section - Tilted Photo */}
       <div className="relative w-full lg:w-[45%] h-[50vh] lg:h-screen flex items-center justify-center lg:justify-end px-6 pb-6 lg:px-0 lg:pb-0 lg:pr-4 overflow-visible z-20">
@@ -47,9 +47,7 @@ export const About = () => {
       </div>
 
       {/* Right Section - Text Content */}
-      <div className="relative w-full lg:w-[55%] h-[50vh] lg:h-screen flex items-center justify-center bg-[#EAC4C5] px-6 md:px-10 lg:pl-4 lg:-ml-8 lg:pr-20 xl:pl-8 xl:-ml-12 xl:pr-24 py-12 lg:py-0 pb-16 lg:pb-0">
-        {/* Transparent fade at top - only on text section */}
-        <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-transparent to-[#EAC4C5] z-10 pointer-events-none" />
+      <div className="relative w-full lg:w-[55%] h-auto lg:h-screen flex items-center justify-center bg-[#EAC4C5] px-6 md:px-10 lg:pl-4 lg:-ml-8 lg:pr-20 xl:pl-8 xl:-ml-12 xl:pr-24 py-12 lg:py-0 pb-20 lg:pb-0">
         <motion.div
           initial={{ opacity: 0, x: 50 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -99,13 +97,12 @@ export const About = () => {
           </p>
 
           {/* CTA Button */}
-          <div className="pt-2 w-full">
-            <Link
+          <div className="pt-2 pb-4 w-full">
+            <RectangularButton
               href="/blog"
-              className="inline-block w-full sm:w-auto bg-[#423636] text-white px-6 sm:px-8 py-4 rounded-none text-base md:text-lg font-sans hover:bg-[#352d2d] transition-colors text-center"
-            >
-              See our stories
-            </Link>
+              text="See our stories"
+              className="w-full sm:w-auto"
+            />
           </div>
         </motion.div>
       </div>

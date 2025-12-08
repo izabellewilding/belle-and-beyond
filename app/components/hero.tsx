@@ -37,7 +37,7 @@ export const Hero = () => {
         className="absolute inset-0 w-full h-full"
       >
         <Image
-          src="/images/dominical-surfer.JPG"
+          src="/images/dominical-surfer.jpg"
           alt="Tropical beach scene"
           fill
           priority

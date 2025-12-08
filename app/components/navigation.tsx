@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { usePathname, useRouter } from "next/navigation";
+import { RectangularButton } from "./rectangular-button";
 
 export const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -175,16 +176,10 @@ export const Navigation = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
             >
-              <a
+              <RectangularButton
                 href="mailto:izabellewilding@gmail.com"
-                className={`inline-flex items-center justify-center rounded-full px-12 py-3 text-base transition-colors ${
-                  isScrolled
-                    ? "bg-neutral-900 text-white hover:bg-neutral-800"
-                    : "bg-white/20 text-white backdrop-blur-sm hover:bg-white/30 border border-white/30"
-                }`}
-              >
-                Get In Touch
-              </a>
+                text="Get In Touch"
+              />
             </motion.div>
           </div>
 
@@ -254,13 +249,11 @@ export const Navigation = () => {
                     transition={{ delay: 0.3 }}
                     className="pt-4"
                   >
-                    <a
+                    <RectangularButton
                       href="mailto:izabellewilding@gmail.com"
-                      className="inline-flex items-center justify-center rounded-full bg-neutral-900 text-white px-8 py-4 text-base"
+                      text="Get In Touch"
                       onClick={() => setIsOpen(false)}
-                    >
-                      Get In Touch
-                    </a>
+                    />
                   </motion.div>
                 </div>
               </motion.div>

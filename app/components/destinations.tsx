@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Button } from "../components/button";
+import { RectangularButton } from "../components/rectangular-button";
 import { getAllDestinations } from "@/sanity/lib/api";
 
 interface DestinationCardProps {
@@ -20,7 +20,7 @@ const DestinationCard = ({ title, imageSrc, href }: DestinationCardProps) => {
       />
       <div className="absolute inset-0 flex flex-col items-center justify-center z-20 text-white">
         <h3 className="text-2xl font-bold mb-4">{title}</h3>
-        <Button href={href} text="explore" white />
+        <RectangularButton href={href} text="explore" white />
       </div>
     </div>
   );

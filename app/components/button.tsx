@@ -17,7 +17,7 @@ export const Button = ({
   className = "",
 }: ButtonProps) => {
   const baseStyles =
-    "relative inline-block text-center fit-content whitespace-nowrap px-12 py-3 text-md font-large transition-colors duration-200 overflow-hidden group rounded-full";
+    "relative inline-flex items-center justify-center text-center fit-content whitespace-nowrap px-12 py-3 text-md font-large transition-colors duration-200 overflow-hidden group rounded-full";
 
   const filledStyle = "bg-purple text-white hover:bg-[##8e58c1]";
   const outlineStyle =
