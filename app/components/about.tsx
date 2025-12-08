@@ -19,7 +19,7 @@ export const About = () => {
     <section
       ref={sectionRef}
       id="our-story"
-      className="relative min-h-screen w-full flex flex-col lg:flex-row m-0 p-0 bg-[#EAC4C5] overflow-x-hidden overflow-y-visible z-30"
+      className="relative min-h-screen w-full flex flex-col lg:flex-row m-0 p-0 bg-[#ffeced] overflow-x-hidden overflow-y-visible z-30"
     >
       {/* Left Section - Tilted Photo */}
       <div className="relative w-full lg:w-[45%] h-[50vh] lg:h-screen flex items-center justify-center lg:justify-end px-6 pb-6 lg:px-0 lg:pb-0 lg:pr-4 overflow-visible z-20">
@@ -47,7 +47,7 @@ export const About = () => {
       </div>
 
       {/* Right Section - Text Content */}
-      <div className="relative w-full lg:w-[55%] h-auto lg:h-screen flex items-center justify-center bg-[#EAC4C5] px-6 md:px-10 lg:pl-4 lg:-ml-8 lg:pr-20 xl:pl-8 xl:-ml-12 xl:pr-24 py-12 lg:py-0 pb-20 lg:pb-0">
+      <div className="relative w-full lg:w-[55%] h-auto lg:h-screen flex items-center justify-center bg-[#ffeced] px-6 md:px-10 lg:pl-4 lg:-ml-8 lg:pr-20 xl:pl-8 xl:-ml-12 xl:pr-24 py-12 lg:py-0 pb-20 lg:pb-0">
         <motion.div
           initial={{ opacity: 0, x: 50 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -88,12 +88,6 @@ export const About = () => {
           <p className="text-base md:text-lg text-darkText font-sans leading-relaxed">
             My goal is simple: to help you feel confident choosing your next
             adventure.
-          </p>
-
-          {/* Blog Status */}
-          <p className="text-base md:text-lg text-darkText font-sans leading-relaxed">
-            This blog is just getting started, but I'm excited to keep growing
-            and to bring you along.
           </p>
 
           {/* CTA Button */}

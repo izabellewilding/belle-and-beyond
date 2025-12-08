@@ -37,9 +37,9 @@ export const RectangularButton = ({
 
   // Filled style (default)
   const filledStyle = clsx(
-    "bg-[#423636] text-white",
-    "hover:bg-[#352d2d]",
-    "focus:ring-[#423636]/50"
+    "bg-[#463e43] text-white",
+    "hover:bg-[#3a3338]",
+    "focus:ring-[#463e43]/50"
   );
 
   // Outline style
