@@ -1,7 +1,7 @@
 import { Navigation } from "@/app/components/navigation";
 import { Footer } from "@/app/components/footer";
 import { getAllDestinations } from "@/sanity/lib/api";
-import { DestinationCard } from "@/app/components/destination-card";
+import { DestinationsGrid } from "@/app/components/destinations-grid";
 import Image from "next/image";
 
 interface Destination {
@@ -86,21 +86,7 @@ export default async function DestinationsPage() {
           </p>
         </div>
 
-        <div className="grid gap-8 md:gap-10 sm:grid-cols-1 md:grid-cols-3">
-          {destinations.map((destination: Destination) => (
-            <DestinationCard
-              key={destination._id}
-              destination={{
-                _id: destination._id,
-                title: destination.title,
-                slug: destination.slug,
-                coverImage: destination.coverImage,
-                mainImage: destination.mainImage,
-                description: destination.description,
-              }}
-            />
-          ))}
-        </div>
+        <DestinationsGrid destinations={destinations} />
       </section>
       <Footer />
     </>

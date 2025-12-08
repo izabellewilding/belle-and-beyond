@@ -1,7 +1,7 @@
 import { Navigation } from "@/app/components/navigation";
 import { Footer } from "@/app/components/footer";
 import { getAllPostsWithData } from "@/sanity/lib/api";
-import { ArticleCard } from "@/app/components/article-card";
+import { PostsGrid } from "@/app/components/posts-grid";
 import { Metadata } from "next";
 import Image from "next/image";
 
@@ -75,29 +75,7 @@ export default async function BlogPage() {
         </div>
 
         {/* Posts Grid */}
-        {posts.length > 0 ? (
-          <div className="grid gap-8 md:gap-10 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-            {posts.map((post: Post) => (
-              <ArticleCard
-                key={post._id}
-                post={{
-                  _id: post._id,
-                  title: post.title,
-                  slug: post.slug,
-                  mainImage: post.mainImage,
-                  description: post.description,
-                  categories: post.categories,
-                }}
-              />
-            ))}
-          </div>
-        ) : (
-          <div className="text-center py-12">
-            <p className="text-neutral-600 text-lg">
-              No blog posts available yet. Check back soon!
-            </p>
-          </div>
-        )}
+        <PostsGrid posts={posts} />
       </section>
       <Footer />
     </>

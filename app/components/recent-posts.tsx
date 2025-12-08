@@ -47,8 +47,8 @@ export const RecentPosts = () => {
         {/* Cards container with centered layout and desktop padding */}
         <div className="max-w-7xl mx-auto px-0 lg:px-8">
           {loading && (
-            <div className="grid gap-8 md:gap-12 lg:gap-16 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center">
-              {[1, 2, 3].map((index) => (
+            <div className="grid gap-8 md:gap-12 lg:gap-16 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 justify-items-center">
+              {[1, 2, 3, 4].map((index) => (
                 <PostSkeleton key={index} />
               ))}
             </div>
@@ -105,7 +105,7 @@ export const RecentPosts = () => {
                           alt={post.title}
                           fill
                           className="object-cover transition-transform duration-500 group-hover:scale-105"
-                          sizes="(min-width: 768px) 50vw, (min-width: 1024px) 33vw, 100vw"
+                          sizes="(min-width: 768px) 50vw, (min-width: 1024px) 25vw, 100vw"
                           priority={false}
                           quality={85}
                           loading="lazy"
