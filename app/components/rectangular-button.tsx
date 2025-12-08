@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Button } from "@material-tailwind/react";
+import clsx from "clsx";
 
 interface RectangularButtonProps {
   text?: string;
@@ -20,48 +20,74 @@ export const RectangularButton = ({
   onClick,
   disabled = false,
 }: RectangularButtonProps) => {
-  // Determine variant based on props
-  const variant = outline || white ? "outlined" : "filled";
-  
-  // Determine color - Material Tailwind uses gray for dark buttons
-  // We'll use a custom className to override with our specific colors
-  const color = "gray";
+  // Base styles with explicit height and line-height control
+  // Using sans-serif with adjustments for proper vertical alignment
+  const baseStyles = clsx(
+    "inline-flex items-center justify-center",
+    "text-center whitespace-nowrap",
+    "px-6 sm:px-8",
+    "h-[48px]",
+    "text-base md:text-lg",
+    "font-sans",
+    "rounded-none",
+    "transition-all duration-200 ease-in-out",
+    "focus:outline-none focus:ring-2 focus:ring-offset-2",
+    disabled && "opacity-50 cursor-not-allowed pointer-events-none"
+  );
 
-  // Custom styles to match your design
-  const customStyles = outline
-    ? "border-2 border-[#EAC4C5] text-[#423636] bg-transparent hover:bg-[#EAC4C5]/10"
-    : white
-    ? "border-2 border-white text-white bg-transparent hover:bg-white/10"
-    : "bg-[#423636] text-white hover:bg-[#352d2d]";
+  // Filled style (default)
+  const filledStyle = clsx(
+    "bg-[#423636] text-white",
+    "hover:bg-[#352d2d]",
+    "focus:ring-[#423636]/50"
+  );
+
+  // Outline style
+  const outlineStyle = clsx(
+    "border-2 border-[#EAC4C5] text-[#423636] bg-transparent",
+    "hover:bg-[#EAC4C5]/10",
+    "focus:ring-[#EAC4C5]/50"
+  );
+
+  // White outline style
+  const whiteOutlineStyle = clsx(
+    "border-2 border-white text-white bg-transparent",
+    "hover:bg-white/10",
+    "focus:ring-white/50"
+  );
+
+  const buttonClass = clsx(
+    baseStyles,
+    white ? whiteOutlineStyle : outline ? outlineStyle : filledStyle,
+    className
+  );
+
+  // Text wrapper with proper vertical alignment
+  // Adjusting for sans-serif baseline with transform - increased offset
+  const textWrapperClass = "inline-block leading-[1.2] translate-y-[3px]";
 
   // Use regular anchor tag for external links (mailto, http, etc.)
   if (href.startsWith("mailto:") || href.startsWith("http")) {
     return (
-      <Button
-        as="a"
+      <a
         href={href}
-        variant={variant}
-        color={color}
-        className={`rounded-none ${customStyles} ${className}`}
+        className={buttonClass}
         onClick={onClick}
-        disabled={disabled}
+        aria-disabled={disabled}
       >
-        {text}
-      </Button>
+        <span className={textWrapperClass}>{text}</span>
+      </a>
     );
   }
 
   return (
-    <Button
-      as={Link}
+    <Link
       href={href}
-      variant={variant}
-      color={color}
-      className={`rounded-none ${customStyles} ${className}`}
+      className={buttonClass}
       onClick={onClick}
-      disabled={disabled}
+      aria-disabled={disabled}
     >
-      {text}
-    </Button>
+      <span className={textWrapperClass}>{text}</span>
+    </Link>
   );
 };

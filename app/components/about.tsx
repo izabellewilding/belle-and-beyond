@@ -36,7 +36,7 @@ export const About = () => {
           {/* Image */}
           <div className="relative w-full h-full p-4 -rotate-2 lg:-rotate-3 transform origin-center">
             <Image
-              src="/images/izzy_zia.JPG"
+              src="/images/izzy.jpeg"
               alt="Izabelle and Zia, digital nomads"
               fill
               className="object-cover"
@@ -57,25 +57,25 @@ export const About = () => {
         >
           {/* Main Heading */}
           <h2 className="text-xl md:text-2xl lg:text-4xl font-playfair font-bold text-darkText leading-tight">
-            Welcome to our blog! — we're so happy you're here.
+            Welcome, I'm so happy you're here!
           </h2>
 
           {/* Introduction */}
           <p className="text-base md:text-lg text-darkText font-sans leading-relaxed">
-            We're Izabelle & Zia, two engineers-turned-digital-nomads who spend
-            our days working remotely and our weekends exploring new places.
+            I'm Izabelle, a software engineer-turned-digital-nomad. I spend my
+            days working remotely and weekends exploring.
           </p>
 
           {/* Problem Statement */}
           <p className="text-base md:text-lg text-darkText font-sans leading-relaxed">
-            After years of travelling, we realised how hard it can be to find
+            After years of travelling, I realised how hard it can be to find
             honest information — the kind that tells you what a destination is
             really like for remote workers.
           </p>
 
           {/* What We Share */}
           <div className="text-base md:text-lg text-darkText font-sans leading-relaxed">
-            <p className="mb-2">So we created this space to share:</p>
+            <p className="mb-2">So I created this space to share:</p>
             <ul className="list-disc list-inside space-y-1 ml-2">
               <li>genuine experiences (the good and the not-so-perfect)</li>
               <li>practical guides for aspiring digital nomads</li>
@@ -86,23 +86,19 @@ export const About = () => {
 
           {/* Goal */}
           <p className="text-base md:text-lg text-darkText font-sans leading-relaxed">
-            Our goal is simple: to help you feel confident choosing your next
+            My goal is simple: to help you feel confident choosing your next
             adventure.
           </p>
 
           {/* Blog Status */}
           <p className="text-base md:text-lg text-darkText font-sans leading-relaxed">
-            This blog is just getting started, but we're excited to keep growing
-            and to bring you along with us.
+            This blog is just getting started, but I'm excited to keep growing
+            and to bring you along.
           </p>
 
           {/* CTA Button */}
-          <div className="pt-2 pb-4 w-full">
-            <RectangularButton
-              href="/blog"
-              text="See our stories"
-              className="w-full sm:w-auto"
-            />
+          <div className="pt-2 pb-4 inline-block">
+            <RectangularButton href="/blog" text="See our stories" />
           </div>
         </motion.div>
       </div>
