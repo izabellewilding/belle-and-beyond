@@ -1,7 +1,7 @@
-import { getPostBySlug } from "@/sanity/lib/api";
+import { getPostBySlug, getPostByOldSlug } from "@/sanity/lib/api";
 import Image from "next/image";
 import { PortableText, PortableTextComponents } from "@portabletext/react";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { Navigation } from "@/app/components/navigation";
 import { Footer } from "@/app/components/footer";
 import { formatDate } from "@/lib/utils";
@@ -218,9 +218,18 @@ export default async function PostPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const post: Post = await getPostBySlug(slug);
 
+  // First try to get post by current slug
+  let post: Post = await getPostBySlug(slug);
+
+  // If not found, check if it's an old slug and redirect
   if (!post) {
+    const postWithOldSlug = await getPostByOldSlug(slug);
+    if (postWithOldSlug && postWithOldSlug.slug) {
+      // Redirect to the new slug (permanent redirect for SEO)
+      redirect(`/blog/${postWithOldSlug.slug}`);
+    }
+    // If still not found, show 404
     notFound();
   }
 

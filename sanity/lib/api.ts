@@ -7,6 +7,7 @@ import {
   getAllPostsWithDataQuery,
   getRecentPostsQuery,
   getPostBySlugQuery,
+  getPostByOldSlugQuery,
   getPostsByCountryQuery,
   getPostsByCategoryQuery,
   getPostsByCategoriesQuery,
@@ -56,6 +57,10 @@ export async function getRecentPosts() {
 
 export async function getPostBySlug(slug: string) {
   return await client.fetch(getPostBySlugQuery, { slug });
+}
+
+export async function getPostByOldSlug(oldSlug: string) {
+  return await client.fetch(getPostByOldSlugQuery, { oldSlug });
 }
 
 export async function getPostsByCountry(countryId: string) {

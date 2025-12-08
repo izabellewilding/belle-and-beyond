@@ -19,6 +19,17 @@ export const postType = defineType({
       },
     }),
     defineField({
+      name: "oldSlugs",
+      type: "array",
+      title: "Old Slugs (for redirects)",
+      description:
+        "Previous slugs/URLs for this post. Used to redirect old URLs to the current slug.",
+      of: [{ type: "string" }],
+      options: {
+        layout: "tags",
+      },
+    }),
+    defineField({
       name: "author",
       type: "reference",
       to: { type: "author" },

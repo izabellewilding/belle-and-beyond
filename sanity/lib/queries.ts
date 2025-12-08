@@ -96,6 +96,12 @@ export const getPostBySlugQuery = groq`*[_type == "post" && slug.current == $slu
   }
 }`;
 
+// Get a post by old slug (for redirects)
+export const getPostByOldSlugQuery = groq`*[_type == "post" && $oldSlug in oldSlugs][0] {
+  _id,
+  "slug": slug.current
+}`;
+
 // Get posts by country
 export const getPostsByCountryQuery = groq`*[_type == "post" && country._ref == $countryId] | order(publishedAt desc)[0...6] {
   _id,
