@@ -25,17 +25,6 @@ export const metadata: Metadata = {
   },
 };
 
-interface Post {
-  _id: string;
-  title: string;
-  slug: string;
-  mainImage: string;
-  publishedAt?: string;
-  author?: string;
-  description?: string;
-  categories?: string[];
-}
-
 export default async function BlogPage() {
   const posts = await getAllPostsWithData();
 

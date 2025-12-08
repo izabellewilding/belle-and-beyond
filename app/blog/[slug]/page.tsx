@@ -220,7 +220,7 @@ export default async function PostPage({
   const { slug } = await params;
 
   // First try to get post by current slug
-  let post: Post = await getPostBySlug(slug);
+  const post: Post = await getPostBySlug(slug);
 
   // If not found, check if it's an old slug and redirect
   if (!post) {

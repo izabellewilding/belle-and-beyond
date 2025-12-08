@@ -12,8 +12,8 @@ export const About = () => {
     offset: ["start end", "end start"],
   });
 
-  // Parallax effect - image moves slower than scroll
-  const imageY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+  // Parallax effect - image moves slower than scroll (currently unused)
+  // const imageY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
 
   return (
     <section
@@ -75,13 +75,12 @@ export const About = () => {
 
           {/* What We Share */}
           <div className="text-base md:text-lg text-darkText font-sans leading-relaxed">
-            <p className="mb-2">So I created this space to share:</p>
-            <ul className="list-disc list-inside space-y-1 ml-2">
-              <li>genuine experiences (the good and the not-so-perfect)</li>
-              <li>practical guides for aspiring digital nomads</li>
-              <li>tips on where to stay, work, eat, and explore</li>
-              <li>what life abroad is actually like</li>
-            </ul>
+            <p className="mb-2">
+              I created this space to share genuine experiences (the good and
+              the not-so-perfect), practical guides for aspiring digital nomads,
+              tips on where to stay, work, eat, and explore, and what life
+              abroad is actually like.
+            </p>
           </div>
 
           {/* Goal */}
