@@ -132,7 +132,7 @@ export const Navigation = () => {
       }`}
     >
       <div className="w-full px-3 md:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20 pt-1 md:pt-2 pb-1 md:pb-2">
+        <div className="flex justify-between items-center h-20">
           {/* Brand */}
           <Link href="/" className="relative z-50" onClick={handleLogoClick}>
             <motion.div
@@ -172,7 +172,7 @@ export const Navigation = () => {
                         handleNavClick(e, link.href);
                       }
                     }}
-                    className={`text-sm md:text-base font-sans transition-opacity ${
+                    className={`inline-flex items-center text-sm md:text-base font-sans transition-opacity leading-[1.2] ${
                       (link.isPage && pathname === link.href) ||
                       (!link.isPage &&
                         pathname === "/" &&
@@ -185,7 +185,9 @@ export const Navigation = () => {
                           : "text-white hover:opacity-80"
                     }`}
                   >
-                    {link.label}
+                    <span className="inline-block translate-y-[2px]">
+                      {link.label}
+                    </span>
                   </Link>
                 </motion.div>
               ))}
