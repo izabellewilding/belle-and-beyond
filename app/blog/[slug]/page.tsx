@@ -409,7 +409,7 @@ export default async function PostPage({
             className={`text-center md:text-left mb-8 ${post.bannerImage ? "-mt-[110px] md:-mt-[130px] lg:-mt-[150px] relative z-10" : "md:mt-12"}`}
           >
             <h1
-              className={`text-3xl md:text-4xl lg:text-5xl font-serif text-neutral-900 mb-2 ${post.bannerImage ? "bg-white px-6 md:px-10 py-4 md:py-6 shadow-lg inline-block" : "font-bold"}`}
+              className={`text-3xl md:text-4xl lg:text-5xl font-playfair text-neutral-900 mb-2 ${post.bannerImage ? "bg-white px-6 md:px-10 py-4 md:py-6 shadow-lg inline-block" : "font-bold"}`}
             >
               {post.title}
             </h1>

@@ -5,7 +5,14 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { usePathname, useRouter } from "next/navigation";
-import { FaInstagram, FaPinterest, FaFacebook, FaLink } from "react-icons/fa";
+import {
+  FaInstagram,
+  FaPinterest,
+  FaFacebook,
+  FaLink,
+  FaTimes,
+} from "react-icons/fa";
+import { RectangularButton } from "./rectangular-button";
 
 export const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -61,6 +68,18 @@ export const Navigation = () => {
     setIsOpen(false);
   }, [pathname]);
 
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isOpen]);
+
   // Handle hash navigation after route change
   useEffect(() => {
     if (pathname === "/" && window.location.hash) {
@@ -113,7 +132,7 @@ export const Navigation = () => {
       }`}
     >
       <div className="w-full px-3 md:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20 pt-1 md:pt-2">
+        <div className="flex justify-between items-center h-20 pt-1 md:pt-2 pb-1 md:pb-2">
           {/* Brand */}
           <Link href="/" className="relative z-50" onClick={handleLogoClick}>
             <motion.div
@@ -121,7 +140,7 @@ export const Navigation = () => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.3, duration: 0.6, ease: "easeOut" }}
               className={`relative transition-all duration-300 ${
-                isScrolled ? "" : "brightness-0 invert"
+                isScrolled ? "brightness-0" : "brightness-0 invert"
               }`}
             >
               <Image
@@ -239,92 +258,155 @@ export const Navigation = () => {
           {/* Mobile Menu */}
           <AnimatePresence>
             {isOpen && (
-              <motion.div
-                initial={{ opacity: 0, x: "100%" }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: "100%" }}
-                transition={{ type: "tween", duration: 0.3 }}
-                className="fixed inset-0 bg-white z-40 md:hidden"
-              >
-                <div className="flex flex-col items-center justify-center h-full space-y-8 text-2xl">
-                  {navLinks.map((link, index) => (
-                    <motion.div
-                      key={link.href}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: index * 0.1 }}
-                    >
-                      <Link
-                        href={link.href}
-                        className={`transition-all duration-200 py-2 px-4 rounded-full ${
-                          (link.isPage && pathname === link.href) ||
-                          (!link.isPage &&
-                            pathname === "/" &&
-                            activeSection === link.href.slice(1))
-                            ? "bg-neutral-200 text-neutral-900"
-                            : "text-gray-800 hover:text-gray-600 hover:bg-neutral-100"
-                        }`}
-                        onClick={(e) => {
-                          if (!link.isPage) {
-                            handleNavClick(e, link.href);
-                          }
-                          setIsOpen(false);
-                        }}
-                      >
-                        {link.label}
+              <>
+                {/* Backdrop */}
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                  className="fixed inset-0 bg-black/20 backdrop-blur-sm z-40 md:hidden"
+                  onClick={() => setIsOpen(false)}
+                />
+                {/* Menu Panel */}
+                <motion.div
+                  initial={{ x: "100%" }}
+                  animate={{ x: 0 }}
+                  exit={{ x: "100%" }}
+                  transition={{
+                    type: "tween",
+                    duration: 0.3,
+                    ease: "easeInOut",
+                  }}
+                  className="fixed top-0 right-0 h-full w-full max-w-sm bg-white shadow-2xl z-50 md:hidden overflow-y-auto"
+                >
+                  <div className="flex flex-col h-full">
+                    {/* Header with Logo and Close Button */}
+                    <div className="flex items-center justify-between px-6 py-6 border-b border-neutral-200">
+                      <Link href="/" onClick={() => setIsOpen(false)}>
+                        <div className="brightness-0">
+                          <Image
+                            src="/logo.svg"
+                            alt="The Portable Life"
+                            width={180}
+                            height={56}
+                            className="h-12 w-auto"
+                            priority
+                          />
+                        </div>
                       </Link>
-                    </motion.div>
-                  ))}
-                  {/* Social Media Icons in Mobile Menu */}
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.3 }}
-                    className="pt-4 flex items-center gap-4 text-gray-800"
-                  >
-                    <a
-                      href="https://www.instagram.com/theportablelife_"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="hover:opacity-80 transition-opacity"
-                      aria-label="Instagram"
-                      onClick={() => setIsOpen(false)}
-                    >
-                      <FaInstagram size={24} />
-                    </a>
-                    <a
-                      href="#"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="hover:opacity-80 transition-opacity"
-                      aria-label="Pinterest"
-                      onClick={() => setIsOpen(false)}
-                    >
-                      <FaPinterest size={24} />
-                    </a>
-                    <a
-                      href="#"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="hover:opacity-80 transition-opacity"
-                      aria-label="Facebook"
-                      onClick={() => setIsOpen(false)}
-                    >
-                      <FaFacebook size={24} />
-                    </a>
-                    <a
-                      href="#"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="hover:opacity-80 transition-opacity"
-                      aria-label="Share"
-                      onClick={() => setIsOpen(false)}
-                    >
-                      <FaLink size={24} />
-                    </a>
-                  </motion.div>
-                </div>
-              </motion.div>
+                      <button
+                        onClick={() => setIsOpen(false)}
+                        className="p-2 text-neutral-800 hover:bg-neutral-100 rounded-full transition-colors"
+                        aria-label="Close menu"
+                      >
+                        <FaTimes size={24} />
+                      </button>
+                    </div>
+
+                    {/* Navigation Links */}
+                    <nav className="flex-1 px-6 py-8">
+                      <div className="space-y-2">
+                        {navLinks.map((link, index) => (
+                          <motion.div
+                            key={link.href}
+                            initial={{ opacity: 0, x: 20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ delay: index * 0.05, duration: 0.3 }}
+                          >
+                            <Link
+                              href={link.href}
+                              className={`block py-4 px-4 text-lg font-sans transition-all duration-200 rounded-lg ${
+                                (link.isPage && pathname === link.href) ||
+                                (!link.isPage &&
+                                  pathname === "/" &&
+                                  activeSection === link.href.slice(1))
+                                  ? "bg-neutral-100 text-neutral-900 font-medium"
+                                  : "text-neutral-700 hover:bg-neutral-50 hover:text-neutral-900"
+                              }`}
+                              onClick={(e) => {
+                                if (!link.isPage) {
+                                  handleNavClick(e, link.href);
+                                }
+                                setIsOpen(false);
+                              }}
+                            >
+                              {link.label}
+                            </Link>
+                          </motion.div>
+                        ))}
+                      </div>
+                    </nav>
+
+                    {/* Get In Touch Button */}
+                    <div className="px-6 py-6 border-t border-neutral-200">
+                      <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.3, duration: 0.3 }}
+                      >
+                        <RectangularButton
+                          href="mailto:izabellewilding@gmail.com"
+                          text="Get In Touch"
+                          className="w-full"
+                          onClick={() => setIsOpen(false)}
+                        />
+                      </motion.div>
+                    </div>
+
+                    {/* Social Media Icons */}
+                    <div className="px-6 py-6 border-t border-neutral-200">
+                      <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.35, duration: 0.3 }}
+                        className="flex items-center justify-center gap-6"
+                      >
+                        <a
+                          href="https://www.instagram.com/theportablelife_"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-neutral-700 hover:text-neutral-900 transition-colors"
+                          aria-label="Instagram"
+                          onClick={() => setIsOpen(false)}
+                        >
+                          <FaInstagram size={22} />
+                        </a>
+                        <a
+                          href="#"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-neutral-700 hover:text-neutral-900 transition-colors"
+                          aria-label="Pinterest"
+                          onClick={() => setIsOpen(false)}
+                        >
+                          <FaPinterest size={22} />
+                        </a>
+                        <a
+                          href="#"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-neutral-700 hover:text-neutral-900 transition-colors"
+                          aria-label="Facebook"
+                          onClick={() => setIsOpen(false)}
+                        >
+                          <FaFacebook size={22} />
+                        </a>
+                        <a
+                          href="#"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-neutral-700 hover:text-neutral-900 transition-colors"
+                          aria-label="Share"
+                          onClick={() => setIsOpen(false)}
+                        >
+                          <FaLink size={22} />
+                        </a>
+                      </motion.div>
+                    </div>
+                  </div>
+                </motion.div>
+              </>
             )}
           </AnimatePresence>
         </div>

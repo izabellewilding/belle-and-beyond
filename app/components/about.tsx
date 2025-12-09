@@ -53,11 +53,11 @@ export const About = () => {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="max-w-xl space-y-6 md:space-y-10 w-full"
+          className="max-w-xl space-y-6 md:space-y-7 w-full"
         >
           {/* Main Heading */}
           <h2 className="text-xl md:text-2xl lg:text-4xl font-playfair font-bold text-darkText leading-tight">
-            Welcome, I'm so happy you're here!
+            Welcome ❤︎
           </h2>
 
           {/* Introduction */}

@@ -85,7 +85,7 @@ export const PostsGrid = ({ posts }: PostsGridProps) => {
 
             {/* Content */}
             <div className="flex-1 flex flex-col">
-              <h3 className="text-xl md:text-2xl leading-tight font-serif text-darkText mb-2 group-hover:text-darkText/70 transition-colors line-clamp-2">
+              <h3 className="text-xl md:text-2xl leading-tight font-playfair text-darkText mb-2 group-hover:text-darkText/70 transition-colors line-clamp-2">
                 {post.title}
               </h3>
               {post.description && (
