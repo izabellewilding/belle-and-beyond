@@ -6,6 +6,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { usePostsStore } from "../stores/usePostsStore";
 import { trackBlogPostClick } from "@/lib/gtag";
+import { RectangularButton } from "./rectangular-button";
 
 const PostSkeleton = () => {
   return (
@@ -117,6 +118,16 @@ export const RecentPosts = () => {
                     </Link>
                   </motion.div>
                 ))}
+              </motion.div>
+              {/* See All Posts Button */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, ease: "easeOut", delay: 0.3 }}
+                className="flex justify-center mt-12 md:mt-16"
+              >
+                <RectangularButton href="/blog" text="See all posts" />
               </motion.div>
             </>
           )}
