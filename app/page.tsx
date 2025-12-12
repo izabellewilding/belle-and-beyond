@@ -11,29 +11,34 @@ import { Metadata } from "next";
 import Script from "next/script";
 
 export const metadata: Metadata = {
-  title: "The Portable Life | Ecotourism Guides & Sustainable Travel Blog",
+  title:
+    "The Portable Life | Digital Nomad Travel Guides & Remote Work Adventures",
   description:
-    "The Portable Life shares ecotourism guides, sustainable travel tips, and remote-work friendly adventures for people who want to travel ethically.",
+    "The Portable Life shares honest travel guides, digital nomad tips, and remote-work friendly destinations for travelers who want to work and explore the world.",
   keywords: [
-    "ecotourism",
-    "sustainable travel",
-    "ecotourism guides",
-    "eco travel tips",
-    "responsible travel",
-    "green itineraries",
+    "digital nomad",
+    "remote work travel",
+    "travel guides",
+    "digital nomad destinations",
+    "remote work friendly",
+    "travel blog",
+    "work and travel",
+    "nomad lifestyle",
   ],
   openGraph: {
-    title: "The Portable Life | Ecotourism Guides & Sustainable Travel Blog",
+    title:
+      "The Portable Life | Digital Nomad Travel Guides & Remote Work Adventures",
     description:
-      "Practical ecotourism guides, slow travel inspiration, and sustainable travel stories documented by a remote-working duo.",
+      "Honest travel guides and digital nomad tips from a remote-working duo. Discover the best destinations for working and traveling around the world.",
     type: "website",
     siteName: "The Portable Life",
   },
   twitter: {
     card: "summary_large_image",
-    title: "The Portable Life | Ecotourism Guides & Sustainable Travel Blog",
+    title:
+      "The Portable Life | Digital Nomad Travel Guides & Remote Work Adventures",
     description:
-      "Ecotourism guides, sustainable travel tips, and responsible travel inspiration for your next mindful trip.",
+      "Honest travel guides and digital nomad tips for remote workers who want to explore the world while working.",
   },
 };
 

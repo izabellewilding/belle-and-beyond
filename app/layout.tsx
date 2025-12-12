@@ -73,16 +73,17 @@ export const metadata: Metadata = {
     template: "%s | The Portable Life",
   },
   description:
-    "The Portable Life - Your ultimate travel blog and travel guides. Discover inspiring destinations, travel tips, and photography from around the world. Expert travel guides to help you plan your next adventure.",
+    "The Portable Life - Digital nomad travel guides and remote work adventures. Discover the best destinations for working and traveling, with honest tips from a remote-working duo.",
   keywords: [
-    "travel blog",
+    "digital nomad",
+    "remote work travel",
     "travel guides",
+    "digital nomad destinations",
+    "remote work friendly",
+    "travel blog",
+    "work and travel",
+    "nomad lifestyle",
     "The Portable Life",
-    "travel photography",
-    "travel tips",
-    "destination guides",
-    "travel advice",
-    "adventure travel",
   ],
   authors: [{ name: "The Portable Life" }],
   creator: "The Portable Life",
@@ -93,17 +94,19 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: process.env.NEXT_PUBLIC_SITE_URL || "https://izziatravel.com",
+    url: process.env.NEXT_PUBLIC_SITE_URL || "https://theportablelife.blog",
     siteName: "The Portable Life",
-    title: "The Portable Life | Travel Blog & Travel Guides",
+    title:
+      "The Portable Life | Digital Nomad Travel Guides & Remote Work Adventures",
     description:
-      "Your ultimate travel blog and travel guides. Discover inspiring destinations, travel tips, and photography from around the world.",
+      "Honest travel guides and digital nomad tips from a remote-working duo. Discover the best destinations for working and traveling around the world.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "The Portable Life | Travel Blog & Travel Guides",
+    title:
+      "The Portable Life | Digital Nomad Travel Guides & Remote Work Adventures",
     description:
-      "Your ultimate travel blog and travel guides. Discover inspiring destinations, travel tips, and photography from around the world.",
+      "Honest travel guides and digital nomad tips from a remote-working duo. Discover the best destinations for working and traveling around the world.",
   },
   robots: {
     index: true,
