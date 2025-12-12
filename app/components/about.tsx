@@ -22,19 +22,19 @@ export const About = () => {
       className="relative min-h-screen w-full flex flex-col lg:flex-row m-0 p-0 bg-[#ffeced] overflow-x-hidden overflow-y-visible z-30"
     >
       {/* Left Section - Tilted Photo */}
-      <div className="relative w-full lg:w-[45%] h-[50vh] lg:h-screen flex items-center justify-center lg:justify-end px-6 pb-6 lg:px-0 lg:pb-0 lg:pr-4 overflow-visible z-20">
+      <div className="relative w-full lg:w-[45%] h-[50vh] lg:h-screen flex items-center justify-center lg:justify-end px-6 pt-6 pb-6 lg:px-0 lg:pt-0 lg:pb-0 lg:pr-4 overflow-visible z-20">
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="relative w-full max-w-md lg:max-w-lg h-[calc(80%-100px)] lg:h-[calc(85%-100px)]"
+          className="relative w-full max-w-sm aspect-square lg:max-w-lg lg:aspect-auto lg:h-[calc(85%-100px)]"
         >
           {/* Dark background layer */}
           <div className="absolute inset-0 bg-[#172531] rotate-2 lg:rotate-3 transform origin-center" />
 
           {/* Image */}
-          <div className="relative w-full h-full p-4 -rotate-2 lg:-rotate-3 transform origin-center">
+          <div className="relative w-full h-full p-3 lg:p-4 -rotate-2 lg:-rotate-3 transform origin-center">
             <Image
               src="/images/izzy.jpeg"
               alt="Izabelle and Zia, digital nomads"
@@ -47,7 +47,7 @@ export const About = () => {
       </div>
 
       {/* Right Section - Text Content */}
-      <div className="relative w-full lg:w-[55%] h-auto lg:h-screen flex items-center justify-center bg-[#ffeced] px-6 md:px-10 lg:pl-4 lg:-ml-8 lg:pr-20 xl:pl-8 xl:-ml-12 xl:pr-24 py-12 lg:py-0 pb-20 lg:pb-0">
+      <div className="relative w-full lg:w-[55%] h-auto lg:h-screen flex items-center justify-center bg-[#ffeced] px-8 md:px-10 lg:pl-4 lg:-ml-8 lg:pr-20 xl:pl-8 xl:-ml-12 xl:pr-24 lg:py-0 pb-20 lg:pb-0">
         <motion.div
           initial={{ opacity: 0, x: 50 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -56,7 +56,7 @@ export const About = () => {
           className="max-w-xl space-y-6 md:space-y-7 w-full"
         >
           {/* Main Heading */}
-          <h2 className="text-xl md:text-2xl lg:text-4xl font-playfair font-bold text-darkText leading-tight">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-playfair font-bold text-darkText leading-tight pb-8">
             Welcome ❤︎
           </h2>
 
@@ -84,7 +84,7 @@ export const About = () => {
           </div>
 
           {/* Goal */}
-          <p className="text-base md:text-lg text-darkText font-sans leading-relaxed">
+          <p className="text-base md:text-lg text-darkText pb-4 font-sans leading-relaxed">
             My goal is simple: to help you feel confident choosing your next
             adventure.
           </p>
