@@ -22,7 +22,7 @@ export const About = () => {
       className="relative min-h-screen w-full flex flex-col xl:flex-row m-0 p-0 bg-[#ffeced] overflow-x-hidden overflow-y-visible z-30"
     >
       {/* Left Section - Tilted Photo */}
-      <div className="relative w-full xl:w-[45%] h-[50vh] xl:h-screen flex items-center justify-center xl:justify-end px-6 pt-6 pb-6 xl:px-0 xl:pt-0 xl:pb-0 xl:pr-10 overflow-visible z-20">
+      <div className="relative w-full xl:w-[45%] h-[50vh] xl:h-screen flex items-center justify-center xl:justify-end px-6 pt-6 pb-12 xl:px-0 xl:pt-0 xl:pb-0 xl:pr-10 overflow-visible z-20">
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -47,7 +47,7 @@ export const About = () => {
       </div>
 
       {/* Right Section - Text Content */}
-      <div className="relative w-full max-w-[700px] xl:max-w-none xl:w-[55%] h-auto xl:h-screen flex items-center justify-center bg-[#ffeced] px-8 md:px-10 xl:pl-10 xl:-ml-6 xl:pr-24 xl:py-0 pb-20 xl:pb-0 xl:mx-0 mx-auto">
+      <div className="relative w-full max-w-[700px] xl:max-w-none xl:w-[55%] h-auto xl:h-screen flex items-center justify-center bg-[#ffeced] px-8 md:px-10 xl:pl-10 xl:-ml-6 xl:pr-24 pt-8 xl:pt-0 pb-20 xl:pb-0 xl:mx-0 mx-auto">
         <motion.div
           initial={{ opacity: 0, x: 50 }}
           whileInView={{ opacity: 1, x: 0 }}

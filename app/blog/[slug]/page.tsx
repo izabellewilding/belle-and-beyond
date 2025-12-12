@@ -247,63 +247,80 @@ export default async function PostPage({
         const imageUrl = urlFor(value).url();
 
         return (
-          <div className="mt-8 mb-16">
-            <Image
-              src={imageUrl}
-              alt={value.alt || ""} // Access alt directly from value
-              width={800} // Adjust as needed
-              height={600} // Adjust as needed
-              layout="responsive"
-              objectFit="contain"
-            />
+          <figure className="mt-10 mb-12">
+            <div className="rounded-lg overflow-hidden shadow-lg">
+              <Image
+                src={imageUrl}
+                alt={value.alt || ""} // Access alt directly from value
+                width={800} // Adjust as needed
+                height={600} // Adjust as needed
+                layout="responsive"
+                objectFit="contain"
+                className="w-full"
+              />
+            </div>
             {/* Display the image description if it exists */}
             {value.description && (
-              <p className="text-center text-gray-600 text-sm mt-2">
+              <figcaption className="text-center text-neutral-600 text-sm mt-3 italic">
                 {value.description}
-              </p>
+              </figcaption>
             )}
-          </div>
+          </figure>
         );
       },
     },
     block: {
       // Customize block types
       h1: ({ children }) => (
-        <h1 className="text-4xl font-bold mt-12 mb-4">{children}</h1>
+        <h1 className="text-4xl md:text-5xl font-bold mt-16 mb-6 leading-tight">
+          {children}
+        </h1>
       ),
       h2: ({ children }) => (
-        <h2 className="text-4xl font-extrabold mt-10 mb-8">{children}</h2>
+        <h2 className="text-3xl md:text-4xl font-extrabold mt-12 mb-6 leading-tight">
+          {children}
+        </h2>
       ),
       h3: ({ children }) => (
-        <h3 className="text-2xl font-bold mt-8 mb-2">{children}</h3>
+        <h3 className="text-2xl md:text-3xl font-bold mt-10 mb-4 leading-tight">
+          {children}
+        </h3>
       ),
       h4: ({ children }) => (
-        <h4 className="text-xl font-bold mt-6 mb-2">{children}</h4>
+        <h4 className="text-xl md:text-2xl font-bold mt-8 mb-3 leading-tight">
+          {children}
+        </h4>
       ),
       blockquote: ({ children }) => (
-        <blockquote className="border-l-4 border-gray-300 pl-4 italic my-4 text-lg md:text-xl leading-relaxed">
+        <blockquote className="border-l-4 border-neutral-300 pl-6 py-2 my-8 italic text-lg md:text-xl leading-relaxed text-neutral-700 bg-neutral-50 rounded-r">
           {children}
         </blockquote>
       ),
       // Add custom component for normal text (paragraphs)
       normal: ({ children }) => (
-        <p className="mb-4 text-lg md:text-xl leading-relaxed">{children}</p>
+        <p className="mb-6 text-lg md:text-xl leading-[1.75] text-neutral-800">
+          {children}
+        </p>
       ),
     },
     list: {
       bullet: ({ children }) => (
-        <ul className="list-disc pl-5 my-4">{children}</ul>
+        <ul className="list-disc pl-6 md:pl-8 my-6 space-y-3">{children}</ul>
       ),
       number: ({ children }) => (
-        <ol className="list-decimal pl-5 my-4">{children}</ol>
+        <ol className="list-decimal pl-6 md:pl-8 my-6 space-y-3">{children}</ol>
       ),
     },
     listItem: {
       bullet: ({ children }) => (
-        <li className="mb-2 text-lg md:text-xl leading-relaxed">{children}</li>
+        <li className="text-lg md:text-xl leading-[1.75] text-neutral-800 pl-2">
+          {children}
+        </li>
       ),
       number: ({ children }) => (
-        <li className="mb-2 text-lg md:text-xl leading-relaxed">{children}</li>
+        <li className="text-lg md:text-xl leading-[1.75] text-neutral-800 pl-2">
+          {children}
+        </li>
       ),
     },
     marks: {
@@ -320,7 +337,7 @@ export default async function PostPage({
           <a
             href={value.href}
             rel={rel}
-            className="text-blue-600 hover:underline"
+            className="text-blue-600 hover:text-blue-800 font-medium underline decoration-2 underline-offset-2 transition-colors"
           >
             {children}
           </a>
@@ -431,7 +448,7 @@ export default async function PostPage({
           <hr className="border-gray-300 my-8" />
 
           {/* Post Body */}
-          <div className="prose prose-lg md:prose-xl max-w-none">
+          <div className="prose prose-lg md:prose-xl max-w-none prose-headings:font-bold prose-p:mb-6 prose-p:leading-[1.75] prose-a:text-blue-600 prose-a:no-underline hover:prose-a:underline">
             <PortableText value={post.body} components={components} />
           </div>
         </article>
