@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { usePathname, useRouter } from "next/navigation";
 import {
@@ -18,8 +19,14 @@ export const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("");
+  const [mounted, setMounted] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
+
+  // Ensure component is mounted before rendering portal
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // Handle scroll effect and active section detection
   useEffect(() => {
@@ -257,160 +264,167 @@ export const Navigation = () => {
             </div>
           </button>
 
-          {/* Mobile Menu */}
-          <AnimatePresence>
-            {isOpen && (
-              <>
-                {/* Backdrop */}
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.2 }}
-                  className="fixed inset-0 bg-black/20 backdrop-blur-sm z-40 md:hidden"
-                  onClick={() => setIsOpen(false)}
-                />
-                {/* Menu Panel */}
-                <motion.div
-                  initial={{ x: "100%" }}
-                  animate={{ x: 0 }}
-                  exit={{ x: "100%" }}
-                  transition={{
-                    type: "tween",
-                    duration: 0.3,
-                    ease: "easeInOut",
-                  }}
-                  className="fixed top-0 right-0 h-full w-full max-w-sm bg-white shadow-2xl z-50 md:hidden overflow-y-auto"
-                >
-                  <div className="flex flex-col h-full">
-                    {/* Header with Logo and Close Button */}
-                    <div className="flex items-center justify-between px-6 py-6 border-b border-neutral-200">
-                      <Link href="/" onClick={() => setIsOpen(false)}>
-                        <div className="brightness-0">
-                          <Image
-                            src="/logo.svg"
-                            alt="The Portable Life"
-                            width={180}
-                            height={56}
-                            className="h-12 w-auto"
-                            priority
-                          />
-                        </div>
-                      </Link>
-                      <button
-                        onClick={() => setIsOpen(false)}
-                        className="p-2 text-neutral-800 hover:bg-neutral-100 rounded-full transition-colors"
-                        aria-label="Close menu"
-                      >
-                        <FaTimes size={24} />
-                      </button>
-                    </div>
-
-                    {/* Navigation Links */}
-                    <nav className="flex-1 px-6 py-8">
-                      <div className="space-y-2">
-                        {navLinks.map((link, index) => (
-                          <motion.div
-                            key={link.href}
-                            initial={{ opacity: 0, x: 20 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ delay: index * 0.05, duration: 0.3 }}
+          {/* Mobile Menu - rendered via portal to avoid z-index issues */}
+          {mounted &&
+            createPortal(
+              <AnimatePresence>
+                {isOpen && (
+                  <>
+                    {/* Backdrop */}
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.2 }}
+                      className="fixed inset-0 bg-black/20 backdrop-blur-sm z-[9998] md:hidden"
+                      onClick={() => setIsOpen(false)}
+                    />
+                    {/* Menu Panel */}
+                    <motion.div
+                      initial={{ x: "100%" }}
+                      animate={{ x: 0 }}
+                      exit={{ x: "100%" }}
+                      transition={{
+                        type: "tween",
+                        duration: 0.3,
+                        ease: "easeInOut",
+                      }}
+                      className="fixed top-0 right-0 h-full w-full max-w-sm bg-white shadow-2xl z-[9999] md:hidden overflow-y-auto"
+                    >
+                      <div className="flex flex-col h-full">
+                        {/* Header with Logo and Close Button */}
+                        <div className="flex items-center justify-between px-6 py-6 border-b border-neutral-200">
+                          <Link href="/" onClick={() => setIsOpen(false)}>
+                            <div className="brightness-0">
+                              <Image
+                                src="/logo.svg"
+                                alt="The Portable Life"
+                                width={180}
+                                height={56}
+                                className="h-12 w-auto"
+                                priority
+                              />
+                            </div>
+                          </Link>
+                          <button
+                            onClick={() => setIsOpen(false)}
+                            className="p-2 text-neutral-800 hover:bg-neutral-100 rounded-full transition-colors"
+                            aria-label="Close menu"
                           >
-                            <Link
-                              href={link.href}
-                              className={`block py-4 px-4 text-lg font-sans transition-all duration-200 rounded-lg ${
-                                (link.isPage && pathname === link.href) ||
-                                (!link.isPage &&
-                                  pathname === "/" &&
-                                  activeSection === link.href.slice(1))
-                                  ? "bg-neutral-100 text-neutral-900 font-medium"
-                                  : "text-neutral-700 hover:bg-neutral-50 hover:text-neutral-900"
-                              }`}
-                              onClick={(e) => {
-                                if (!link.isPage) {
-                                  handleNavClick(e, link.href);
-                                }
-                                setIsOpen(false);
-                              }}
-                            >
-                              {link.label}
-                            </Link>
+                            <FaTimes size={24} />
+                          </button>
+                        </div>
+
+                        {/* Navigation Links */}
+                        <nav className="flex-1 px-6 py-8">
+                          <div className="space-y-2">
+                            {navLinks.map((link, index) => (
+                              <motion.div
+                                key={link.href}
+                                initial={{ opacity: 0, x: 20 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                transition={{
+                                  delay: index * 0.05,
+                                  duration: 0.3,
+                                }}
+                              >
+                                <Link
+                                  href={link.href}
+                                  className={`block py-4 px-4 text-lg font-sans transition-all duration-200 rounded-lg ${
+                                    (link.isPage && pathname === link.href) ||
+                                    (!link.isPage &&
+                                      pathname === "/" &&
+                                      activeSection === link.href.slice(1))
+                                      ? "bg-neutral-100 text-neutral-900 font-medium"
+                                      : "text-neutral-700 hover:bg-neutral-50 hover:text-neutral-900"
+                                  }`}
+                                  onClick={(e) => {
+                                    if (!link.isPage) {
+                                      handleNavClick(e, link.href);
+                                    }
+                                    setIsOpen(false);
+                                  }}
+                                >
+                                  {link.label}
+                                </Link>
+                              </motion.div>
+                            ))}
+                          </div>
+                        </nav>
+
+                        {/* Get In Touch Button */}
+                        <div className="px-6 py-6 border-t border-neutral-200">
+                          <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.3, duration: 0.3 }}
+                          >
+                            <RectangularButton
+                              href="mailto:izabellewilding@gmail.com"
+                              text="Get In Touch"
+                              className="w-full"
+                              onClick={() => setIsOpen(false)}
+                            />
                           </motion.div>
-                        ))}
+                        </div>
+
+                        {/* Social Media Icons */}
+                        <div className="px-6 py-6 border-t border-neutral-200">
+                          <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.35, duration: 0.3 }}
+                            className="flex items-center justify-center gap-6"
+                          >
+                            <a
+                              href="https://www.instagram.com/theportablelife_"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-neutral-700 hover:text-neutral-900 transition-colors"
+                              aria-label="Instagram"
+                              onClick={() => setIsOpen(false)}
+                            >
+                              <FaInstagram size={22} />
+                            </a>
+                            <a
+                              href="#"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-neutral-700 hover:text-neutral-900 transition-colors"
+                              aria-label="Pinterest"
+                              onClick={() => setIsOpen(false)}
+                            >
+                              <FaPinterest size={22} />
+                            </a>
+                            <a
+                              href="#"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-neutral-700 hover:text-neutral-900 transition-colors"
+                              aria-label="Facebook"
+                              onClick={() => setIsOpen(false)}
+                            >
+                              <FaFacebook size={22} />
+                            </a>
+                            <a
+                              href="#"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-neutral-700 hover:text-neutral-900 transition-colors"
+                              aria-label="Share"
+                              onClick={() => setIsOpen(false)}
+                            >
+                              <FaLink size={22} />
+                            </a>
+                          </motion.div>
+                        </div>
                       </div>
-                    </nav>
-
-                    {/* Get In Touch Button */}
-                    <div className="px-6 py-6 border-t border-neutral-200">
-                      <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.3, duration: 0.3 }}
-                      >
-                        <RectangularButton
-                          href="mailto:izabellewilding@gmail.com"
-                          text="Get In Touch"
-                          className="w-full"
-                          onClick={() => setIsOpen(false)}
-                        />
-                      </motion.div>
-                    </div>
-
-                    {/* Social Media Icons */}
-                    <div className="px-6 py-6 border-t border-neutral-200">
-                      <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.35, duration: 0.3 }}
-                        className="flex items-center justify-center gap-6"
-                      >
-                        <a
-                          href="https://www.instagram.com/theportablelife_"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-neutral-700 hover:text-neutral-900 transition-colors"
-                          aria-label="Instagram"
-                          onClick={() => setIsOpen(false)}
-                        >
-                          <FaInstagram size={22} />
-                        </a>
-                        <a
-                          href="#"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-neutral-700 hover:text-neutral-900 transition-colors"
-                          aria-label="Pinterest"
-                          onClick={() => setIsOpen(false)}
-                        >
-                          <FaPinterest size={22} />
-                        </a>
-                        <a
-                          href="#"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-neutral-700 hover:text-neutral-900 transition-colors"
-                          aria-label="Facebook"
-                          onClick={() => setIsOpen(false)}
-                        >
-                          <FaFacebook size={22} />
-                        </a>
-                        <a
-                          href="#"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-neutral-700 hover:text-neutral-900 transition-colors"
-                          aria-label="Share"
-                          onClick={() => setIsOpen(false)}
-                        >
-                          <FaLink size={22} />
-                        </a>
-                      </motion.div>
-                    </div>
-                  </div>
-                </motion.div>
-              </>
+                    </motion.div>
+                  </>
+                )}
+              </AnimatePresence>,
+              document.body
             )}
-          </AnimatePresence>
         </div>
       </div>
     </nav>
