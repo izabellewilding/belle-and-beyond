@@ -38,7 +38,17 @@ export async function getAllPosts() {
 
 export async function getAllPostsWithData() {
   try {
-    return await client.fetch(getAllPostsWithDataQuery);
+    const posts = await client.fetch(getAllPostsWithDataQuery);
+    // Sort posts by publishedAt descending (newest first) as a safety measure
+    const sortedPosts = [...posts].sort((a, b) => {
+      if (!a.publishedAt && !b.publishedAt) return 0;
+      if (!a.publishedAt) return 1;
+      if (!b.publishedAt) return -1;
+      return (
+        new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
+      );
+    });
+    return sortedPosts;
   } catch (error) {
     console.error("Sanity fetch error:", error);
     return [];

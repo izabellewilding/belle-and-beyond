@@ -42,7 +42,7 @@ export const getAllPostsQuery = groq`*[_type == "post"] | order(publishedAt desc
 }`;
 
 // Get all posts with full data (for blog listing page)
-export const getAllPostsWithDataQuery = groq`*[_type == "post"] | order(publishedAt desc) {
+export const getAllPostsWithDataQuery = groq`*[_type == "post"] | order(publishedAt desc, _createdAt desc) {
   _id,
   title,
   "slug": slug.current,
