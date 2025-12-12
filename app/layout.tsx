@@ -88,7 +88,7 @@ export const metadata: Metadata = {
   creator: "The Portable Life",
   publisher: "The Portable Life",
   metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL || "https://izziatravel.com"
+    process.env.NEXT_PUBLIC_SITE_URL || "https://theportablelife.blog"
   ),
   openGraph: {
     type: "website",

@@ -38,7 +38,8 @@ export const metadata: Metadata = {
 };
 
 export default function Home() {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://izziatravel.com";
+  const baseUrl =
+    process.env.NEXT_PUBLIC_SITE_URL || "https://theportablelife.blog";
 
   // Structured data for Organization and Blog
   const organizationStructuredData = {

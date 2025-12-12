@@ -3,9 +3,8 @@ import { MetadataRoute } from "next";
 // Lazy import to avoid build failures if Sanity env vars are missing
 async function getSanityData() {
   try {
-    const { getAllPosts, getAllDestinations, getAllGalleries } = await import(
-      "@/sanity/lib/api"
-    );
+    const { getAllPosts, getAllDestinations, getAllGalleries } =
+      await import("@/sanity/lib/api");
     const results = await Promise.allSettled([
       getAllPosts().catch(() => []),
       getAllDestinations().catch(() => []),
@@ -46,7 +45,8 @@ interface SitemapGallery {
 }
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://izziatravel.com";
+  const baseUrl =
+    process.env.NEXT_PUBLIC_SITE_URL || "https://theportablelife.blog";
 
   // Get all dynamic routes with better error handling
   const { posts, destinations, galleries } = await getSanityData();

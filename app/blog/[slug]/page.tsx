@@ -81,7 +81,8 @@ export async function generateMetadata({
     };
   }
 
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://izziatravel.com";
+  const baseUrl =
+    process.env.NEXT_PUBLIC_SITE_URL || "https://theportablelife.blog";
   const pageUrl = `${baseUrl}/blog/${slug}`;
   const imageUrl = post.mainImage
     ? urlFor(post.mainImage).width(1200).height(630).url()
@@ -362,7 +363,8 @@ export default async function PostPage({
     },
   };
 
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://izziatravel.com";
+  const baseUrl =
+    process.env.NEXT_PUBLIC_SITE_URL || "https://theportablelife.blog";
   const pageUrl = `${baseUrl}/blog/${slug}`;
   const imageUrl = post.mainImage
     ? urlFor(post.mainImage).width(1200).height(630).url()

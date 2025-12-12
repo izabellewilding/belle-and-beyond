@@ -58,7 +58,8 @@ export async function generateMetadata({
     };
   }
 
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://izziatravel.com";
+  const baseUrl =
+    process.env.NEXT_PUBLIC_SITE_URL || "https://theportablelife.blog";
   const pageUrl = `${baseUrl}/destinations/${slug}`;
 
   return {
@@ -117,7 +118,8 @@ export default async function DestinationPage({
     console.error("Error fetching recent posts:", error);
   }
 
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://izziatravel.com";
+  const baseUrl =
+    process.env.NEXT_PUBLIC_SITE_URL || "https://theportablelife.blog";
   const pageUrl = `${baseUrl}/destinations/${slug}`;
 
   // Structured data for Travel Guide

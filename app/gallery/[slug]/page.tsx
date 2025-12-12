@@ -42,7 +42,8 @@ export async function generateMetadata({ params }: GalleryPageProps) {
     };
   }
 
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://izziatravel.com";
+  const baseUrl =
+    process.env.NEXT_PUBLIC_SITE_URL || "https://theportablelife.blog";
   const pageUrl = `${baseUrl}/gallery/${slug}`;
   const firstImage = gallery.images?.[0]?.src;
   const ogImage = firstImage ? `${baseUrl}${firstImage}` : undefined;
