@@ -39,7 +39,7 @@ export const RecentPosts = () => {
             transition={{ duration: 0.6, ease: "easeOut" }}
             className="text-center"
           >
-            <h2 className="text-xl md:text-2xl lg:text-3xl font-playfair text-darkText leading-tight">
+            <h2 className="text-xl md:text-2xl lg:text-3xl font-playfair font-bold text-darkText leading-tight">
               Latest Stories
             </h2>
           </motion.div>

@@ -28,7 +28,16 @@ export const usePostsStore = create<PostsState>((set) => ({
     set({ loading: true, error: null });
     try {
       const posts = await getRecentPosts();
-      set({ posts });
+      // Sort posts by publishedAt descending (newest first) as a safety measure
+      const sortedPosts = [...posts].sort((a, b) => {
+        if (!a.publishedAt && !b.publishedAt) return 0;
+        if (!a.publishedAt) return 1;
+        if (!b.publishedAt) return -1;
+        return (
+          new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
+        );
+      });
+      set({ posts: sortedPosts });
     } catch (err) {
       console.error("Error fetching posts:", err);
       // If it's a Sanity connection error, show a more helpful message
