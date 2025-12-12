@@ -308,6 +308,10 @@ export default async function PostPage({
     },
     marks: {
       // Customize marks (bold, italic, etc.)
+      strong: ({ children }) => (
+        <strong className="font-extrabold">{children}</strong>
+      ),
+      em: ({ children }) => <em className="italic">{children}</em>,
       link: ({ children, value }) => {
         const rel = value.href.startsWith("/")
           ? undefined

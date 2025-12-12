@@ -59,9 +59,9 @@ const playfairDisplay = Playfair_Display({
   display: "swap",
 });
 
-// ✅ Load Hind Mysuru font for body text (light weight)
+// ✅ Load Hind Mysuru font for body text (multiple weights)
 const hindMysuru = Hind_Mysuru({
-  weight: "300",
+  weight: ["300", "400", "500", "600", "700"],
   subsets: ["latin"],
   variable: "--font-hind-mysuru",
   display: "swap",
