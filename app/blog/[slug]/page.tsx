@@ -244,19 +244,35 @@ export default async function PostPage({
         if (!value?.asset?._ref) {
           return null;
         }
-        const imageUrl = urlFor(value).url();
+
+        // Get image dimensions from metadata if available
+        const metadata = (value.asset as any)?.metadata?.dimensions;
+        const imageWidth = metadata?.width || 1200;
+        const imageHeight = metadata?.height || 800;
+
+        // Use max width of 1200px, maintain aspect ratio
+        const maxWidth = 1200;
+        const aspectRatio = imageWidth / imageHeight;
+        const calculatedHeight = Math.round(maxWidth / aspectRatio);
+
+        const imageUrl = urlFor(value)
+          .width(maxWidth)
+          .quality(75)
+          .auto("format")
+          .url();
 
         return (
           <figure className="mt-10 mb-12">
             <div className="rounded-lg overflow-hidden shadow-lg">
               <Image
                 src={imageUrl}
-                alt={value.alt || ""} // Access alt directly from value
-                width={800} // Adjust as needed
-                height={600} // Adjust as needed
-                layout="responsive"
-                objectFit="contain"
-                className="w-full"
+                alt={value.alt || ""}
+                width={imageWidth}
+                height={imageHeight}
+                className="w-full h-auto"
+                quality={75}
+                loading="lazy"
+                style={{ maxWidth: `${maxWidth}px` }}
               />
             </div>
             {/* Display the image description if it exists */}
@@ -410,14 +426,15 @@ export default async function PostPage({
             src={urlFor(post.bannerImage)
               .width(1400)
               .height(600)
-              .quality(85)
+              .quality(75)
+              .auto("format")
               .url()}
             alt={post.bannerImage.alt || post.title}
             fill
             className="object-cover"
             priority
             sizes="100vw"
-            quality={85}
+            quality={75}
           />
         </section>
       ) : null}
