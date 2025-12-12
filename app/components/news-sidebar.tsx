@@ -11,7 +11,10 @@ interface NewsItemProps {
 
 const NewsItem = ({ post }: NewsItemProps) => {
   return (
-    <div className="flex gap-4">
+    <Link
+      href={`/blog/${post.slug}`}
+      className="flex gap-4 hover:opacity-80 transition-opacity cursor-pointer"
+    >
       <div className="w-16 h-16 relative flex-shrink-0 rounded-lg overflow-hidden">
         <Image
           src={post.mainImage}
@@ -29,14 +32,11 @@ const NewsItem = ({ post }: NewsItemProps) => {
             {post.description}
           </p>
         )}
-        <Link
-          href={`/blog/${post.slug}`}
-          className="text-blue-600 text-sm font-medium hover:underline inline-block mt-1"
-        >
+        <span className="text-blue-600 text-sm font-medium hover:underline inline-block mt-1">
           Read more
-        </Link>
+        </span>
       </div>
-    </div>
+    </Link>
   );
 };
 
@@ -101,8 +101,10 @@ export const NewsSidebar = ({
   if (displayPosts.length === 0) {
     return (
       <div className={`space-y-6 md:pt-24 md:pb-24 ${className}`}>
-      <h3 className="text-gray-400 text-sm pb-5 font-serif">LATEST ARTICLES</h3>
-      <div className="text-gray-500 text-sm">No recent articles found.</div>
+        <h3 className="text-gray-400 text-sm pb-5 font-serif">
+          LATEST ARTICLES
+        </h3>
+        <div className="text-gray-500 text-sm">No recent articles found.</div>
       </div>
     );
   }
