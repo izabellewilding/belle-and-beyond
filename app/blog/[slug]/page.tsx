@@ -401,7 +401,7 @@ export default async function PostPage({
         </section>
       ) : null}
 
-      <section className="flex flex-col md:flex-row px-4 py-24 px-8 md:py-32 max-w-7xl mx-auto">
+      <section className="flex flex-col md:flex-row px-4 py-24 px-8 md:py-32 max-w-[90rem] mx-auto">
         {/* Main Content Area */}
         <article className="w-full md:w-2/3 md:pr-8">
           {/* Title section - overlaps banner if banner exists */}
