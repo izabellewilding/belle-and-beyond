@@ -247,7 +247,7 @@ export default async function PostPage({
         const imageUrl = urlFor(value).url();
 
         return (
-          <div className="my-8">
+          <div className="mt-8 mb-16">
             <Image
               src={imageUrl}
               alt={value.alt || ""} // Access alt directly from value
@@ -272,7 +272,7 @@ export default async function PostPage({
         <h1 className="text-4xl font-bold mt-12 mb-4">{children}</h1>
       ),
       h2: ({ children }) => (
-        <h2 className="text-3xl font-bold mt-10 mb-3">{children}</h2>
+        <h2 className="text-4xl font-extrabold mt-10 mb-8">{children}</h2>
       ),
       h3: ({ children }) => (
         <h3 className="text-2xl font-bold mt-8 mb-2">{children}</h3>
