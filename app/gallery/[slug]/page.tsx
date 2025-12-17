@@ -96,7 +96,7 @@ export default async function GalleryPage({ params }: GalleryPageProps) {
     description: gallery.description,
     image: (gallery.images || []).map((img) => ({
       "@type": "ImageObject",
-      contentUrl: `${process.env.NEXT_PUBLIC_SITE_URL || "https://izziatravel.com"}${img.src}`,
+      contentUrl: `${process.env.NEXT_PUBLIC_SITE_URL || "https://theportablelife.blog"}${img.src}`,
       description: img.alt,
       name: img.title || img.alt,
       creator: img.photographer

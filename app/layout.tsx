@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import { Playfair_Display, Hind_Mysuru } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
+import { PageViewTracker } from "./components/PageViewTracker";
 
 // ✅ Load local fonts
 const cabinetGrotesk = localFont({
@@ -148,7 +149,7 @@ export default function RootLayout({
             gtag('config', '${GA_MEASUREMENT_ID}', {
               page_title: document.title,
               page_location: window.location.href,
-              send_page_view: true,
+              send_page_view: false,
               anonymize_ip: true,
               allow_google_signals: false,
               allow_ad_personalization_signals: false
@@ -157,6 +158,7 @@ export default function RootLayout({
         </Script>
       </head>
       <body className="font-sans font-light text-darkText m-0 p-0 overflow-x-hidden">
+        <PageViewTracker />
         {children}
       </body>
     </html>

@@ -4,8 +4,15 @@ export const GA_MEASUREMENT_ID =
 // https://developers.google.com/analytics/devguides/collection/gtagjs/pages
 export const pageview = (url: string) => {
   if (typeof window !== "undefined" && window.gtag) {
+    // Ensure we have a full URL
+    const fullUrl = url.startsWith("http")
+      ? url
+      : `${window.location.origin}${url}`;
+
     window.gtag("config", GA_MEASUREMENT_ID, {
-      page_location: url,
+      page_path: url,
+      page_location: fullUrl,
+      page_title: document.title,
     });
   }
 };
