@@ -53,11 +53,15 @@ const cabinetGrotesk = localFont({
   display: "swap",
 });
 
-// ✅ Load Playfair Display font
+// ✅ Load Playfair Display font - optimized for LCP
+// Only load weights actually used: 400 (regular), 700 (bold), 800 (extrabold for hero)
 const playfairDisplay = Playfair_Display({
   subsets: ["latin"],
+  weight: ["400", "700", "800"], // Only load weights we actually use
   variable: "--font-playfair",
-  display: "swap",
+  display: "optional", // Use optional for faster rendering - shows fallback immediately
+  preload: true, // Preload the font
+  adjustFontFallback: true, // Better fallback metrics
 });
 
 // ✅ Load Hind Mysuru font for body text (multiple weights)

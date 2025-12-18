@@ -9,7 +9,7 @@
   --font-sans:
     var(--font-hind-mysuru), ui-sans-serif, system-ui, -apple-system, Segoe UI,
     Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-  --font-playfair: var(--font-playfair), serif;
+  --font-playfair: var(--font-playfair), Georgia, "Times New Roman", serif;
 }
 
 :root {

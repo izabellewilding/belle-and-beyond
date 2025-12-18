@@ -61,7 +61,7 @@ export const Footer = () => {
             {/* Social Links */}
             <div>
               <h3 className="text-lg md:text-xl font-playfair font-bold text-darkText mb-6">
-                Follow Us
+                Follow The Portable Life
               </h3>
               <ul className="space-y-3">
                 <li>
