@@ -55,11 +55,11 @@ export const Hero = () => {
             <br />
             Belong Everywhere
           </h1>
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.6 }}
-            className="text-lg md:text-xl lg:text-2xl text-[#F2E9F1] font-sans"
+            className="text-lg md:text-xl lg:text-2xl text-[#F2E9F1] font-sans max-w-[300px] sm:max-w-none"
           >
             Your Guide to Places, Practical Tips, and Nomad Liftstyle
           </motion.p>

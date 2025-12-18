@@ -15,6 +15,8 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  // Compress responses for better performance
+  compress: true,
 };
 
 export default nextConfig;

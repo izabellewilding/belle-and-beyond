@@ -140,6 +140,9 @@ export default function RootLayout({
       className={`${hindMysuru.variable} ${playfairDisplay.variable}`}
     >
       <head>
+        {/* Resource hints for same-origin to reduce request chain latency */}
+        <link rel="dns-prefetch" href="https://www.theportablelife.blog" />
+        <link rel="preconnect" href="https://www.theportablelife.blog" crossOrigin="anonymous" />
         {/* Google Analytics */}
         <Script
           src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
