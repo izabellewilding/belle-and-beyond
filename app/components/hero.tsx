@@ -50,13 +50,11 @@ export const Hero = () => {
       {/* Centered Hero Text */}
       <div className="absolute inset-0 flex items-center justify-center z-20 pointer-events-none">
         <div className="text-center px-6 md:px-8">
-          {/* LCP element - render immediately without animation delay */}
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-playfair font-extrabold text-[#F2E9F1] mb-4 md:mb-6 leading-tight">
             Work Anywhere,
             <br />
             Belong Everywhere
           </h1>
-          {/* Subtitle can have subtle animation since it's not the LCP element */}
           <motion.p 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
