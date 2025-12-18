@@ -1,7 +1,7 @@
 import { getPostBySlug, getPostByOldSlug } from "@/sanity/lib/api";
 import Image from "next/image";
 import { PortableText, PortableTextComponents } from "@portabletext/react";
-import { notFound, redirect } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import { Navigation } from "@/app/components/navigation";
 import { Footer } from "@/app/components/footer";
 import { formatDate } from "@/lib/utils";
@@ -227,8 +227,8 @@ export default async function PostPage({
   if (!post) {
     const postWithOldSlug = await getPostByOldSlug(slug);
     if (postWithOldSlug && postWithOldSlug.slug) {
-      // Redirect to the new slug (permanent redirect for SEO)
-      redirect(`/blog/${postWithOldSlug.slug}`);
+      // Permanent redirect (308) for SEO - tells Google the old URL is permanently moved
+      permanentRedirect(`/blog/${postWithOldSlug.slug}`);
     }
     // If still not found, show 404
     notFound();

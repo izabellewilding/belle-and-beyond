@@ -25,6 +25,10 @@ export const metadata: Metadata = {
     "work and travel",
     "nomad lifestyle",
   ],
+  alternates: {
+    canonical:
+      process.env.NEXT_PUBLIC_SITE_URL || "https://theportablelife.blog",
+  },
   openGraph: {
     title:
       "The Portable Life | Digital Nomad Travel Guides & Remote Work Adventures",
@@ -32,6 +36,7 @@ export const metadata: Metadata = {
       "Honest travel guides and digital nomad tips from a remote-working duo. Discover the best destinations for working and traveling around the world.",
     type: "website",
     siteName: "The Portable Life",
+    url: process.env.NEXT_PUBLIC_SITE_URL || "https://theportablelife.blog",
   },
   twitter: {
     card: "summary_large_image",

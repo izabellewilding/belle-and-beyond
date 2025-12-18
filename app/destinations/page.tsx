@@ -27,11 +27,19 @@ export const metadata: Metadata = {
     "travel blog",
     "where to travel",
   ],
+  alternates: {
+    canonical: `${
+      process.env.NEXT_PUBLIC_SITE_URL || "https://theportablelife.blog"
+    }/destinations`,
+  },
   openGraph: {
     title: "Travel Guides | Destinations | The Portable Life",
     description:
       "Explore comprehensive travel guides for destinations around the world. Expert travel guides to help you plan your perfect trip.",
     type: "website",
+    url: `${
+      process.env.NEXT_PUBLIC_SITE_URL || "https://theportablelife.blog"
+    }/destinations`,
   },
 };
 

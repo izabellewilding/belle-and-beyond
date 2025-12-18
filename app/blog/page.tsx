@@ -18,11 +18,19 @@ export const metadata: Metadata = {
     "travel adventures",
     "travel inspiration",
   ],
+  alternates: {
+    canonical: `${
+      process.env.NEXT_PUBLIC_SITE_URL || "https://theportablelife.blog"
+    }/blog`,
+  },
   openGraph: {
     title: "Travel Stories & Blog Posts | The Portable Life",
     description:
       "Read our travel stories, adventures, and experiences from around the world. Get inspired for your next journey.",
     type: "website",
+    url: `${
+      process.env.NEXT_PUBLIC_SITE_URL || "https://theportablelife.blog"
+    }/blog`,
   },
 };
 
