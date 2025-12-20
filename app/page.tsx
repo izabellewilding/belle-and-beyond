@@ -138,7 +138,7 @@ export default function Home() {
 
       <Navigation />
       <Hero />
-      <About />
+
       {useAlternativeLayout ? <RecentPostsAlternative /> : <RecentPosts />}
       {/* <DominicalFeature /> */}
       <div className="w-full flex justify-end">
@@ -147,6 +147,7 @@ export default function Home() {
       {/* <DestinationsCarouselWrapper /> */}
 
       {/* <Contact /> */}
+      <About />
 
       <Footer />
     </div>

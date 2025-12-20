@@ -17,21 +17,23 @@ export const AuthorWidget = () => {
         </div>
       </Link>
       {/* Round Image */}
-      {/* <div className="relative w-[168px] h-[168px] rounded-full overflow-hidden">
+      <div className="relative w-[168px] h-[168px] rounded-full overflow-hidden">
         <Image
-          src="/images/izzy_zia.jpg"
-          alt="Author Face"
+          src="/images/izzy.jpeg"
+          alt="Izabelle, digital nomad and travel blogger"
           width={168}
           height={168}
           className="object-cover w-full h-full"
         />
       </div>
 
-      Bullet Point Description
+      {/* Author Description */}
       <div className="text-gray-700 space-y-2 text-md">
         <h3 className="text-gray-300 text-sm pb-2">ABOUT ME</h3>
-        We are Izzia. 
-      </div> */}
+        <p className="text-sm leading-relaxed">
+          I'm Izabelle, a software engineer-turned-digital-nomad sharing honest travel guides and remote work adventures.
+        </p>
+      </div>
     </div>
   );
 };

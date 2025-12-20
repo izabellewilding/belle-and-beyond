@@ -1,5 +1,5 @@
 import { defineType, defineArrayMember } from "sanity";
-import { ImageIcon } from "@sanity/icons";
+import { ImageIcon, InfoOutlineIcon } from "@sanity/icons";
 
 /**
  * This is the schema type for block content used in the post document type
@@ -77,6 +77,54 @@ export const blockContentType = defineType({
           rows: 2,
         },
       ],
+    }),
+    // Callout/Info Box
+    defineArrayMember({
+      type: "object",
+      name: "callout",
+      title: "Callout Box",
+      icon: InfoOutlineIcon,
+      fields: [
+        {
+          name: "style",
+          type: "string",
+          title: "Style",
+          options: {
+            list: [
+              { title: "Info (Blue)", value: "info" },
+              { title: "Tip (Green)", value: "tip" },
+              { title: "Warning (Orange)", value: "warning" },
+              { title: "Note (Purple)", value: "note" },
+            ],
+            layout: "radio",
+          },
+          initialValue: "info",
+        },
+        {
+          name: "title",
+          type: "string",
+          title: "Title (Optional)",
+        },
+        {
+          name: "content",
+          type: "text",
+          title: "Content",
+          rows: 4,
+        },
+      ],
+      preview: {
+        select: {
+          title: "title",
+          content: "content",
+          style: "style",
+        },
+        prepare({ title, content, style }) {
+          return {
+            title: title || `${style.charAt(0).toUpperCase() + style.slice(1)} Callout`,
+            subtitle: content?.substring(0, 60) + (content?.length > 60 ? "..." : ""),
+          };
+        },
+      },
     }),
   ],
 });

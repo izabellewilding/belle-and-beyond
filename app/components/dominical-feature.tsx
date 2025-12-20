@@ -15,7 +15,7 @@ export const DominicalFeature = () => {
       </div>
 
       {/* Left Section - Text Content */}
-      <div className="relative w-full md:w-1/2 bg-[#33454D] flex items-end justify-center pb-8 md:pb-12 lg:pb-16 px-8 md:px-12 lg:px-16 min-h-screen">
+      <div className="relative w-full md:w-1/2 bg-[#33454D] flex items-end justify-center pb-8 md:pb-12 lg:pb-16 px-6 md:px-12 lg:px-16 min-h-screen">
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           whileInView={{ opacity: 1, x: 0 }}

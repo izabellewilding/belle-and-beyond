@@ -48,8 +48,8 @@ body {
   max-width: 1280px;
   margin-left: auto;
   margin-right: auto;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
 }
 
 @media (min-width: 640px) {
@@ -70,6 +70,13 @@ body {
   .container-content {
     padding-left: 6rem;
     padding-right: 6rem;
+  }
+}
+
+/* Override px-8 to px-6 on mobile for global mobile gutter */
+@media (max-width: 639px) {
+  .px-8 {
+    padding-inline: 1.5rem !important; /* 24px instead of 32px on mobile */
   }
 }
 
