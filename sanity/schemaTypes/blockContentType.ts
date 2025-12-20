@@ -91,14 +91,13 @@ export const blockContentType = defineType({
           title: "Style",
           options: {
             list: [
-              { title: "Info (Blue)", value: "info" },
-              { title: "Tip (Green)", value: "tip" },
-              { title: "Warning (Orange)", value: "warning" },
-              { title: "Note (Purple)", value: "note" },
+              { title: "Default (Navy)", value: "default" },
+              { title: "Olive", value: "olive" },
+              { title: "Minimal Light", value: "light" },
             ],
             layout: "radio",
           },
-          initialValue: "info",
+          initialValue: "default",
         },
         {
           name: "title",
