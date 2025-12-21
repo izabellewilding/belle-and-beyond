@@ -5,14 +5,14 @@ import Link from "next/link";
 export const AuthorWidget = () => {
   return (
     <div className="bg-white text-center shadow-md rounded-lg p-6 flex flex-col items-center space-y-6">
-      <Link href="/" className="">
-        <div className="relative w-[160px] h-[40px]">
+      <Link href="/#our-story" className="">
+        <div className="relative w-[240px] h-[75px]">
           <Image
             src="/logo.svg"
             alt="The Portable Life Logo"
             fill
             priority
-            className="object-contain"
+            className="object-contain brightness-0"
           />
         </div>
       </Link>
@@ -29,9 +29,11 @@ export const AuthorWidget = () => {
 
       {/* Author Description */}
       <div className="text-gray-700 space-y-2 text-md">
-        <h3 className="text-gray-300 text-sm pb-2">ABOUT ME</h3>
-        <p className="text-sm leading-relaxed">
-          I'm Izabelle, a software engineer-turned-digital-nomad sharing honest travel guides and remote work adventures.
+        {/* <h3 className="text-gray-300 text-sm pb-2">ABOUT ME</h3> */}
+        <p className="text-md leading-relaxed max-w-[300px]">
+          Hello! Welcome to The Portable Life. I'm Izabelle, a software
+          engineer-turned-digital-nomad sharing honest travel guides and remote
+          work adventures.
         </p>
       </div>
     </div>

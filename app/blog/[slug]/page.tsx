@@ -1,5 +1,6 @@
 import { getPostBySlug, getPostByOldSlug } from "@/sanity/lib/api";
 import Image from "next/image";
+import Link from "next/link";
 import { PortableText, PortableTextComponents } from "@portabletext/react";
 import { notFound, permanentRedirect } from "next/navigation";
 import { Navigation } from "@/app/components/navigation";
@@ -245,6 +246,8 @@ export default async function PostPage({
           style: "default" | "olive" | "light";
           title?: string;
           content: string;
+          linkText?: string;
+          linkUrl?: string;
         };
       }) => {
         const styles = {
@@ -253,18 +256,21 @@ export default async function PostPage({
             border: "border-l-[6px] border-navy",
             text: "text-neutral-800",
             title: "text-navy",
+            link: "text-navy hover:text-navy/80",
           },
           olive: {
             bg: "bg-neutral-50",
             border: "border-l-[6px] border-olive",
             text: "text-neutral-800",
             title: "text-olive",
+            link: "text-olive hover:text-olive/80",
           },
           light: {
             bg: "bg-neutral-100/50",
             border: "border-l-[6px] border-neutral-400",
             text: "text-neutral-800",
             title: "text-neutral-900",
+            link: "text-neutral-700 hover:text-neutral-900",
           },
         };
 
@@ -280,6 +286,27 @@ export default async function PostPage({
             <div className={`text-base md:text-lg leading-relaxed ${style.text} whitespace-pre-wrap`}>
               {value.content}
             </div>
+            {value.linkText && value.linkUrl && (
+              <Link
+                href={value.linkUrl}
+                className={`inline-flex items-center gap-2 mt-4 font-medium underline underline-offset-2 transition-colors ${style.link}`}
+              >
+                {value.linkText}
+                <svg
+                  className="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </Link>
+            )}
           </div>
         );
       },

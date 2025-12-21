@@ -110,6 +110,18 @@ export const blockContentType = defineType({
           title: "Content",
           rows: 4,
         },
+        {
+          name: "linkText",
+          type: "string",
+          title: "Link Text (Optional)",
+          description: "e.g., 'Check out this post' or 'Read more'",
+        },
+        {
+          name: "linkUrl",
+          type: "string",
+          title: "Link URL (Optional)",
+          description: "e.g., '/blog/costa-rica-packing-list' or full URL",
+        },
       ],
       preview: {
         select: {

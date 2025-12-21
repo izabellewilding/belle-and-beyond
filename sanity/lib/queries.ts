@@ -54,7 +54,7 @@ export const getAllPostsWithDataQuery = groq`*[_type == "post"] | order(publishe
 }`;
 
 // Get recent posts
-export const getRecentPostsQuery = groq`*[_type == "post"] | order(publishedAt desc, _createdAt desc)[0...4] {
+export const getRecentPostsQuery = groq`*[_type == "post"] | order(publishedAt desc, _createdAt desc)[0...3] {
   _id,
   title,
   "slug": slug.current,
