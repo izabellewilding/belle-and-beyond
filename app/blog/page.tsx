@@ -6,6 +6,9 @@ import { PageHeader } from "@/app/components/page-header";
 import { Metadata } from "next";
 import Image from "next/image";
 
+// Revalidate page every hour
+export const revalidate = 3600;
+
 export const metadata: Metadata = {
   title: "Travel Stories & Blog Posts | The Portable Life",
   description:

@@ -17,6 +17,9 @@ import { AuthorWidget } from "@/app/components/author-widget";
 import { Metadata } from "next";
 import Script from "next/script";
 
+// Revalidate page every hour (3600 seconds)
+export const revalidate = 3600;
+
 // Define a basic type for Portable Text blocks
 interface PortableTextBlock {
   _key: string;

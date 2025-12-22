@@ -13,6 +13,9 @@ import { PortableTextBlock } from "@portabletext/types";
 import { DestinationTracker } from "@/app/components/DestinationTracker";
 import Script from "next/script";
 
+// Revalidate page every hour
+export const revalidate = 3600;
+
 interface Post {
   _id: string;
   title: string;

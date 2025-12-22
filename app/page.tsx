@@ -10,6 +10,9 @@ import { DominicalFeature } from "./components/dominical-feature";
 import { Metadata } from "next";
 import Script from "next/script";
 
+// Revalidate page every hour to show new blog posts
+export const revalidate = 3600;
+
 export const metadata: Metadata = {
   title:
     "The Portable Life | Digital Nomad Travel Guides & Remote Work Adventures",
