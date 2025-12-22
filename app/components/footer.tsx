@@ -49,7 +49,7 @@ export const Footer = () => {
                 </li>
                 <li>
                   <a
-                    href="mailto:izabellewilding@gmail.com"
+                    href="mailto:theportablelife@proton.me"
                     className="text-darkText font-sans hover:opacity-70 transition-opacity"
                   >
                     Contact
@@ -110,10 +110,10 @@ export const Footer = () => {
                 reviews, guides, and experiences from our life on the road.
               </p>
               <a
-                href="mailto:izabellewilding@gmail.com"
+                href="mailto:theportablelife@proton.me"
                 className="text-darkText font-sans hover:opacity-70 transition-opacity"
               >
-                izabellewilding@gmail.com
+                theportablelife@proton.me
               </a>
             </div>
           </div>

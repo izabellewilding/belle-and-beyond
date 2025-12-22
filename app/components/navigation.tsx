@@ -360,7 +360,7 @@ export const Navigation = () => {
                             transition={{ delay: 0.3, duration: 0.3 }}
                           >
                             <RectangularButton
-                              href="mailto:izabellewilding@gmail.com"
+                              href="mailto:theportablelife@proton.me"
                               text="Get In Touch"
                               className="w-full"
                               onClick={() => setIsOpen(false)}

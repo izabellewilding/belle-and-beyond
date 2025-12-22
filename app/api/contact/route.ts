@@ -44,7 +44,7 @@ export async function POST(request: Request) {
 
         await resend.emails.send({
           from: "contact@izziatravel.com", // You'll need to verify this domain
-          to: ["izabellewilding@gmail.com"], // Your email address
+          to: ["theportablelife@proton.me"], // Your email address
           replyTo: email, // This allows you to reply directly to the user
           subject: `Contact Form: ${subject}`,
           html: `

@@ -27,7 +27,7 @@ export const Icons = () => {
           <FaGithub size={20} />
         </a>
         <a
-          href="mailto:izabellewilding@gmail.com"
+          href="mailto:theportablelife@proton.me"
           className="hover:text-green-400"
         >
           <FaEnvelope size={20} />
