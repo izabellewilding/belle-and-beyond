@@ -86,7 +86,7 @@ export async function generateMetadata({
   const baseUrl =
     process.env.NEXT_PUBLIC_SITE_URL || "https://theportablelife.blog";
   const pageUrl = `${baseUrl}/blog/${slug}`;
-  const imageUrl = post.mainImage
+  const imageUrl = post.mainImage?.asset?._ref
     ? urlFor(post.mainImage).width(1200).height(630).url()
     : undefined;
 
@@ -439,7 +439,7 @@ export default async function PostPage({
   const baseUrl =
     process.env.NEXT_PUBLIC_SITE_URL || "https://theportablelife.blog";
   const pageUrl = `${baseUrl}/blog/${slug}`;
-  const imageUrl = post.mainImage
+  const imageUrl = post.mainImage?.asset?._ref
     ? urlFor(post.mainImage).width(1200).height(630).url()
     : undefined;
 
