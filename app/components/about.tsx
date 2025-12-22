@@ -37,7 +37,7 @@ export const About = () => {
           <div className="relative w-full h-full p-3 xl:p-4 -rotate-2 xl:-rotate-3 transform origin-center">
             <Image
               src="/images/izzy.jpeg"
-              alt="Izabelle and Zia, digital nomads"
+              alt="Izzie and Zia, digital nomads"
               fill
               className="object-cover"
               sizes="(min-width: 1280px) 45vw, 100vw"
@@ -62,7 +62,7 @@ export const About = () => {
 
           {/* Introduction */}
           <p className="text-base md:text-lg text-darkText font-sans leading-relaxed">
-            I'm Izabelle, a software engineer-turned-digital-nomad. I spend my
+            I'm Izzie, a software engineer-turned-digital-nomad. I spend my
             days working remotely and weekends exploring.
           </p>
 

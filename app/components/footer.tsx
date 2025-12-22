@@ -106,7 +106,7 @@ export const Footer = () => {
                 About
               </h3>
               <p className="text-darkText font-sans leading-relaxed mb-6">
-                I'm Izabelle, a digital nomad from the UK sharing honest travel
+                I'm Izzie, a digital nomad from the UK sharing honest travel
                 reviews, guides, and experiences from our life on the road.
               </p>
               <a

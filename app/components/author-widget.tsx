@@ -20,7 +20,7 @@ export const AuthorWidget = () => {
       <div className="relative w-[168px] h-[168px] rounded-full overflow-hidden">
         <Image
           src="/images/izzy.jpeg"
-          alt="Izabelle, digital nomad and travel blogger"
+          alt="Izzie, digital nomad and travel blogger"
           width={168}
           height={168}
           className="object-cover w-full h-full"
@@ -31,7 +31,7 @@ export const AuthorWidget = () => {
       <div className="text-gray-700 space-y-2 text-md">
         {/* <h3 className="text-gray-300 text-sm pb-2">ABOUT ME</h3> */}
         <p className="text-md leading-relaxed max-w-[300px]">
-          Hello! Welcome to The Portable Life. I'm Izabelle, a software
+          Hello! Welcome to The Portable Life. I'm Izzie, a software
           engineer-turned-digital-nomad sharing honest travel guides and remote
           work adventures.
         </p>
