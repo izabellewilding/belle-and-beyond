@@ -14,11 +14,32 @@ import { urlFor } from "@/sanity/lib/image";
 import { Icons } from "@/app/components/icons";
 import { NewsSidebar } from "../../components/news-sidebar";
 import { AuthorWidget } from "@/app/components/author-widget";
+import { TableOfContents } from "@/app/components/table-of-contents";
 import { Metadata } from "next";
 import Script from "next/script";
 
 // Revalidate page every hour (3600 seconds)
 export const revalidate = 3600;
+
+// Helper function to convert text to a URL-friendly slug
+function slugify(text: string): string {
+  return text
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "");
+}
+
+// Extract text from Portable Text children
+function extractTextFromChildren(children: any[]): string {
+  if (!children) return "";
+  return children
+    .map((child: any) => {
+      if (typeof child === "string") return child;
+      if (child.text) return child.text;
+      return "";
+    })
+    .join("");
+}
 
 // Define a basic type for Portable Text blocks
 interface PortableTextBlock {
@@ -364,26 +385,42 @@ export default async function PostPage({
     },
     block: {
       // Customize block types
-      h1: ({ children }) => (
-        <h1 className="text-4xl md:text-5xl font-bold mt-16 mb-6 leading-tight">
-          {children}
-        </h1>
-      ),
-      h2: ({ children }) => (
-        <h2 className="text-3xl md:text-4xl font-extrabold mt-12 mb-6 leading-tight">
-          {children}
-        </h2>
-      ),
-      h3: ({ children }) => (
-        <h3 className="text-2xl md:text-3xl font-bold mt-10 mb-4 leading-tight">
-          {children}
-        </h3>
-      ),
-      h4: ({ children }) => (
-        <h4 className="text-xl md:text-2xl font-bold mt-8 mb-3 leading-tight">
-          {children}
-        </h4>
-      ),
+      h1: ({ children }) => {
+        const text = extractTextFromChildren(Array.isArray(children) ? children : [children]);
+        const id = slugify(text);
+        return (
+          <h1 id={id} className="text-4xl md:text-5xl font-bold mt-16 mb-6 leading-tight scroll-mt-24">
+            {children}
+          </h1>
+        );
+      },
+      h2: ({ children }) => {
+        const text = extractTextFromChildren(Array.isArray(children) ? children : [children]);
+        const id = slugify(text);
+        return (
+          <h2 id={id} className="text-3xl md:text-4xl font-extrabold mt-12 mb-6 leading-tight scroll-mt-24">
+            {children}
+          </h2>
+        );
+      },
+      h3: ({ children }) => {
+        const text = extractTextFromChildren(Array.isArray(children) ? children : [children]);
+        const id = slugify(text);
+        return (
+          <h3 id={id} className="text-2xl md:text-3xl font-bold mt-10 mb-4 leading-tight scroll-mt-24">
+            {children}
+          </h3>
+        );
+      },
+      h4: ({ children }) => {
+        const text = extractTextFromChildren(Array.isArray(children) ? children : [children]);
+        const id = slugify(text);
+        return (
+          <h4 id={id} className="text-xl md:text-2xl font-bold mt-8 mb-3 leading-tight scroll-mt-24">
+            {children}
+          </h4>
+        );
+      },
       blockquote: ({ children }) => (
         <blockquote className="border-l-4 border-neutral-300 pl-6 py-2 my-8 italic text-lg md:text-xl leading-relaxed text-neutral-700 bg-neutral-50 rounded-r">
           {children}
@@ -541,6 +578,9 @@ export default async function PostPage({
 
           {/* Horizontal Rule */}
           <hr className="border-gray-300 my-8" />
+
+          {/* Table of Contents */}
+          <TableOfContents body={post.body} />
 
           {/* Post Body */}
           <div className="prose prose-lg md:prose-xl max-w-none prose-headings:font-bold prose-p:mb-6 prose-p:leading-[1.75] prose-a:text-blue-600 prose-a:no-underline hover:prose-a:underline">

@@ -11,11 +11,14 @@ import { RectangularButton } from "./rectangular-button";
 const PostSkeleton = () => {
   return (
     <div className="flex flex-col h-full w-full">
-      <div
-        className="relative w-full bg-gray-200 rounded-none mb-4"
-        style={{ aspectRatio: "1/1" }}
-      />
-      <div className="h-4 bg-gray-200 rounded w-full" />
+      <div className="relative w-full aspect-[4/3] bg-gray-200 rounded-2xl mb-4 shadow-md" />
+      <div className="flex-1 flex flex-col">
+        <div className="h-6 bg-gray-200 rounded w-full mb-2" />
+        <div className="h-6 bg-gray-200 rounded w-3/4 mb-3" />
+        <div className="h-4 bg-gray-200 rounded w-full mb-2" />
+        <div className="h-4 bg-gray-200 rounded w-full mb-2" />
+        <div className="h-4 bg-gray-200 rounded w-2/3" />
+      </div>
     </div>
   );
 };
@@ -46,9 +49,9 @@ export const RecentPosts = () => {
         </div>
 
         {/* Cards container with centered layout and desktop padding */}
-        <div className="max-w-7xl mx-auto px-0 lg:px-8">
+        <div className="max-w-[1600px] mx-auto px-4 md:px-6 lg:px-8">
           {loading && (
-            <div className="grid gap-8 md:gap-12 lg:gap-16 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 justify-items-center">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 lg:gap-16">
               {[1, 2, 3, 4].map((index) => (
                 <PostSkeleton key={index} />
               ))}
@@ -73,7 +76,7 @@ export const RecentPosts = () => {
                     },
                   },
                 }}
-                className="grid gap-8 md:gap-12 lg:gap-16 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center"
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 lg:gap-16"
               >
                 {posts.map((post) => (
                   <motion.div
@@ -94,27 +97,48 @@ export const RecentPosts = () => {
                     <Link
                       href={`/blog/${post.slug}`}
                       onClick={() => trackBlogPostClick(post.title, post.slug)}
-                      className="group flex flex-col h-full"
+                      className="group flex flex-col h-full transition-all duration-300 hover:scale-[1.02]"
                     >
-                      {/* Image with square aspect ratio */}
-                      <div
-                        className="relative w-full overflow-hidden rounded-none mb-4"
-                        style={{ aspectRatio: "1/1" }}
-                      >
+                      <div className="relative w-full aspect-[4/3] overflow-hidden rounded-2xl mb-4 shadow-md group-hover:shadow-xl transition-shadow duration-300">
                         <Image
                           src={post.mainImage}
                           alt={post.title}
                           fill
-                          className="object-cover transition-transform duration-500 group-hover:scale-105"
-                          sizes="(min-width: 768px) 50vw, (min-width: 1024px) 25vw, 100vw"
+                          className="object-cover transition-transform duration-500 group-hover:scale-110"
+                          sizes="(min-width: 1024px) 33vw, 100vw"
                           priority={false}
                           quality={85}
                           loading="lazy"
                         />
+                        {/* Subtle overlay on hover */}
+                        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-300" />
                       </div>
-                      <p className="text-base md:text-lg text-darkText font-sans leading-relaxed text-center">
-                        {post.title}
-                      </p>
+                      <div className="flex-1 flex flex-col">
+                        <h3 className="text-xl md:text-2xl leading-tight font-playfair text-darkText mb-2 group-hover:text-darkText/70 transition-colors line-clamp-2">
+                          {post.title}
+                        </h3>
+                        {post.description && (
+                          <p className="text-sm md:text-base text-neutral-600 leading-relaxed flex-1 line-clamp-3">
+                            {post.description}
+                          </p>
+                        )}
+                        <div className="mt-3 text-sm font-medium text-darkText opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center gap-1">
+                          Read more
+                          <svg
+                            className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M9 5l7 7-7 7"
+                            />
+                          </svg>
+                        </div>
+                      </div>
                     </Link>
                   </motion.div>
                 ))}
@@ -125,7 +149,7 @@ export const RecentPosts = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, ease: "easeOut", delay: 0.3 }}
-                className="flex justify-center mt-12 md:mt-16"
+                className="flex justify-center mt-12 md:mt-8"
               >
                 <RectangularButton href="/blog" text="See all posts" />
               </motion.div>

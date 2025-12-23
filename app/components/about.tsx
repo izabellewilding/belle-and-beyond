@@ -62,8 +62,8 @@ export const About = () => {
 
           {/* Introduction */}
           <p className="text-base md:text-lg text-darkText font-sans leading-relaxed">
-            I'm Izzie, a software engineer-turned-digital-nomad. I spend my
-            days working remotely and weekends exploring.
+            I'm Izzie, a software engineer-turned-digital-nomad. I spend my days
+            working remotely and weekends exploring.
           </p>
 
           {/* Problem Statement */}
