@@ -585,12 +585,22 @@ export default async function PostPage({
           {/* Horizontal Rule */}
           <hr className="border-gray-300 my-8" />
 
+          {/* Post Body */}
+          <div className="prose prose-lg md:prose-xl max-w-none prose-headings:font-bold prose-p:mb-6 prose-p:leading-[1.75] prose-a:text-blue-600 prose-a:no-underline hover:prose-a:underline">
+            {/* Opening paragraph */}
+            {post.body && post.body[0] && (
+              <PortableText value={[post.body[0]]} components={components} />
+            )}
+          </div>
+
           {/* Table of Contents */}
           <TableOfContents body={post.body} chapterIcons={post.chapterIcons} />
 
-          {/* Post Body */}
+          {/* Rest of Post Body */}
           <div className="prose prose-lg md:prose-xl max-w-none prose-headings:font-bold prose-p:mb-6 prose-p:leading-[1.75] prose-a:text-blue-600 prose-a:no-underline hover:prose-a:underline">
-            <PortableText value={post.body} components={components} />
+            {post.body && post.body.length > 1 && (
+              <PortableText value={post.body.slice(1)} components={components} />
+            )}
           </div>
         </article>
 

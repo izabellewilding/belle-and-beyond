@@ -11,13 +11,13 @@ import { RectangularButton } from "./rectangular-button";
 const PostSkeleton = () => {
   return (
     <div className="flex flex-col h-full w-full">
-      <div className="relative w-full aspect-[4/3] bg-gray-200 rounded-2xl mb-4 shadow-md" />
+      <div className="relative w-full aspect-[4/3] bg-gray-200 rounded-2xl mb-6 shadow-md" />
       <div className="flex-1 flex flex-col">
-        <div className="h-6 bg-gray-200 rounded w-full mb-2" />
-        <div className="h-6 bg-gray-200 rounded w-3/4 mb-3" />
-        <div className="h-4 bg-gray-200 rounded w-full mb-2" />
-        <div className="h-4 bg-gray-200 rounded w-full mb-2" />
-        <div className="h-4 bg-gray-200 rounded w-2/3" />
+        <div className="h-7 bg-gray-200 rounded w-full mb-2" />
+        <div className="h-7 bg-gray-200 rounded w-3/4 mb-3" />
+        <div className="h-5 bg-gray-200 rounded w-full mb-2" />
+        <div className="h-5 bg-gray-200 rounded w-full mb-2" />
+        <div className="h-5 bg-gray-200 rounded w-2/3" />
       </div>
     </div>
   );
@@ -49,9 +49,9 @@ export const RecentPosts = () => {
         </div>
 
         {/* Cards container with centered layout and desktop padding */}
-        <div className="max-w-[1600px] mx-auto px-4 md:px-6 lg:px-8">
+        <div className="w-full mx-auto px-8 md:px-12 lg:px-16 xl:px-20">
           {loading && (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 lg:gap-16">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 lg:gap-12">
               {[1, 2, 3, 4].map((index) => (
                 <PostSkeleton key={index} />
               ))}
@@ -76,7 +76,7 @@ export const RecentPosts = () => {
                     },
                   },
                 }}
-                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 lg:gap-16"
+                className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 lg:gap-12"
               >
                 {posts.map((post) => (
                   <motion.div
@@ -99,13 +99,13 @@ export const RecentPosts = () => {
                       onClick={() => trackBlogPostClick(post.title, post.slug)}
                       className="group flex flex-col h-full transition-all duration-300 hover:scale-[1.02]"
                     >
-                      <div className="relative w-full aspect-[4/3] overflow-hidden rounded-2xl mb-4 shadow-md group-hover:shadow-xl transition-shadow duration-300">
+                      <div className="relative w-full aspect-[4/3] overflow-hidden rounded-2xl mb-6 shadow-md group-hover:shadow-xl transition-shadow duration-300">
                         <Image
                           src={post.mainImage}
                           alt={post.title}
                           fill
                           className="object-cover transition-transform duration-500 group-hover:scale-110"
-                          sizes="(min-width: 1024px) 33vw, 100vw"
+                          sizes="(min-width: 768px) 50vw, 100vw"
                           priority={false}
                           quality={85}
                           loading="lazy"
@@ -114,18 +114,18 @@ export const RecentPosts = () => {
                         <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-300" />
                       </div>
                       <div className="flex-1 flex flex-col">
-                        <h3 className="text-xl md:text-2xl leading-tight font-playfair text-darkText mb-2 group-hover:text-darkText/70 transition-colors line-clamp-2">
+                        <h3 className="text-xl md:text-2xl lg:text-3xl leading-tight font-playfair text-darkText mb-3 group-hover:text-darkText/70 transition-colors line-clamp-2">
                           {post.title}
                         </h3>
                         {post.description && (
-                          <p className="text-sm md:text-base text-neutral-600 leading-relaxed flex-1 line-clamp-3">
+                          <p className="text-base md:text-lg text-neutral-600 leading-relaxed flex-1 line-clamp-3">
                             {post.description}
                           </p>
                         )}
-                        <div className="mt-3 text-sm font-medium text-darkText opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center gap-1">
+                        <div className="mt-3 text-sm md:text-base font-medium text-darkText opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center gap-1">
                           Read more
                           <svg
-                            className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
+                            className="w-4 h-4 md:w-5 md:h-5 transition-transform duration-300 group-hover:translate-x-1"
                             fill="none"
                             stroke="currentColor"
                             viewBox="0 0 24 24"
@@ -149,7 +149,7 @@ export const RecentPosts = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, ease: "easeOut", delay: 0.3 }}
-                className="flex justify-center mt-12 md:mt-8"
+                className="flex justify-center mt-12 md:mt-16"
               >
                 <RectangularButton href="/blog" text="See all posts" />
               </motion.div>

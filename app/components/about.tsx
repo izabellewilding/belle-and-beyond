@@ -36,7 +36,7 @@ export const About = () => {
           {/* Image */}
           <div className="relative w-full h-full p-3 xl:p-4 -rotate-2 xl:-rotate-3 transform origin-center">
             <Image
-              src="/images/izzy.jpeg"
+              src="/images/jungle_izzie.jpeg"
               alt="Izzie and Zia, digital nomads"
               fill
               className="object-cover"

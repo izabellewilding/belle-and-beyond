@@ -31,13 +31,11 @@ export function ChapterIconInput(props: ObjectInputProps) {
   }, [body]);
 
   const iconOptions = [
-    { value: "lightbulb", label: "💡 Lightbulb (Tips/Guides)" },
-    { value: "car", label: "🚗 Car (Transport/Getting There)" },
-    { value: "utensils", label: "🍴 Utensils (Food/Restaurants)" },
-    { value: "bed", label: "🏠 Bed (Accommodation/Stay)" },
-    { value: "binoculars", label: "🔭 Binoculars (Activities/See)" },
-    { value: "cloud", label: "☁️ Cloud (Weather/Time)" },
-    { value: "default", label: "📄 Document (Default)" },
+    { value: "plane", label: "✈️ Plane (Travel)" },
+    { value: "planet", label: "🌍 Planet" },
+    { value: "map", label: "🗺️ Map" },
+    { value: "drinks", label: "🍹 Drinks" },
+    { value: "default", label: "📄 Default" },
   ];
 
   const currentHeading = (value as any)?.headingText || "";
