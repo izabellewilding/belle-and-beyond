@@ -49,10 +49,10 @@ export const RecentPosts = () => {
         </div>
 
         {/* Cards container with centered layout and desktop padding */}
-        <div className="w-full mx-auto px-8 md:px-12 lg:px-16 xl:px-20">
+        <div className="w-full max-w-[2000px] mx-auto px-4 md:px-6 lg:px-8 xl:px-12">
           {loading && (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 lg:gap-12">
-              {[1, 2, 3, 4].map((index) => (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 lg:gap-12">
+              {[1, 2, 3, 4, 5, 6].map((index) => (
                 <PostSkeleton key={index} />
               ))}
             </div>
@@ -76,7 +76,7 @@ export const RecentPosts = () => {
                     },
                   },
                 }}
-                className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 lg:gap-12"
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 lg:gap-12"
               >
                 {posts.map((post) => (
                   <motion.div
@@ -105,7 +105,7 @@ export const RecentPosts = () => {
                           alt={post.title}
                           fill
                           className="object-cover transition-transform duration-500 group-hover:scale-110"
-                          sizes="(min-width: 768px) 50vw, 100vw"
+                          sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
                           priority={false}
                           quality={85}
                           loading="lazy"

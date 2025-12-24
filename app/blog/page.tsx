@@ -71,7 +71,7 @@ export default async function BlogPage() {
           />
 
           {/* Posts Grid */}
-          <div className="w-full mx-auto px-8 md:px-12 lg:px-16 xl:px-20 pb-16 md:pb-24">
+          <div className="w-full max-w-[2000px] mx-auto px-4 md:px-6 lg:px-8 xl:px-12 pb-16 md:pb-24">
             <PostsGrid posts={posts} />
           </div>
         </div>

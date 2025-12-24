@@ -41,7 +41,7 @@ export const PostsGrid = ({ posts }: PostsGridProps) => {
           },
         },
       }}
-      className="grid gap-8 md:gap-10 lg:gap-12 sm:grid-cols-1 md:grid-cols-2 justify-items-center"
+      className="grid gap-8 md:gap-10 lg:gap-12 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center"
     >
       {posts.map((post) => (
         <motion.div
@@ -74,7 +74,7 @@ export const PostsGrid = ({ posts }: PostsGridProps) => {
                 alt={post.title}
                 fill
                 className="object-cover transition-transform duration-500 group-hover:scale-110"
-                sizes="(min-width: 768px) 50vw, 100vw"
+                sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
                 priority={false}
                 quality={85}
                 loading="lazy"

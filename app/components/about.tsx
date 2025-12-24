@@ -57,7 +57,8 @@ export const About = () => {
         >
           {/* Main Heading */}
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-playfair font-bold text-darkText leading-tight pb-8">
-            Welcome ❤︎
+            Welcome to The Portable Life
+            {/* ❤︎ */}
           </h2>
 
           {/* Introduction */}
