@@ -8,8 +8,14 @@ interface Heading {
   level: number;
 }
 
+interface ChapterIcon {
+  headingText: string;
+  icon: keyof typeof IconComponents;
+}
+
 interface TableOfContentsProps {
   body: any[];
+  chapterIcons?: ChapterIcon[];
 }
 
 // Helper function to convert text to a URL-friendly slug
@@ -84,8 +90,16 @@ function getIconForHeading(text: string): keyof typeof IconComponents {
   return "default";
 }
 
-export const TableOfContents = ({ body }: TableOfContentsProps) => {
+export const TableOfContents = ({ body, chapterIcons = [] }: TableOfContentsProps) => {
   const [expandedItems, setExpandedItems] = useState<{ [key: string]: boolean }>({});
+  
+  // Helper to get custom icon for a heading
+  const getCustomIcon = (headingText: string): keyof typeof IconComponents | null => {
+    const match = chapterIcons.find(
+      (item) => item.headingText.toLowerCase().trim() === headingText.toLowerCase().trim()
+    );
+    return match ? match.icon : null;
+  };
 
   // Extract H2 headings and their H3 children
   const headings: { heading: Heading; subheadings: Heading[] }[] = [];
@@ -149,16 +163,19 @@ export const TableOfContents = ({ body }: TableOfContentsProps) => {
       <h2 className="text-2xl md:text-3xl font-bold text-neutral-800 mb-6">
         Chapters
       </h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-start">
         {headings.map(({ heading, subheadings }) => {
-          const Icon = IconComponents[getIconForHeading(heading.text)];
+          // Check custom icons first, then fall back to auto-detection
+          const customIcon = getCustomIcon(heading.text);
+          const iconName = customIcon || getIconForHeading(heading.text);
+          const Icon = IconComponents[iconName];
           const isExpanded = expandedItems[heading.id];
           const hasSubheadings = subheadings.length > 0;
 
           return (
             <div
               key={heading.id}
-              className="bg-white rounded-xl border border-gray-200 overflow-hidden"
+              className="bg-white rounded-xl border border-gray-200 overflow-hidden self-start"
             >
               <button
                 onClick={() => {

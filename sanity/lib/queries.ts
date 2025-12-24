@@ -81,6 +81,7 @@ export const getPostBySlugQuery = groq`*[_type == "post" && slug.current == $slu
   publishedAt,
   "author": author->name,
   body,
+  chapterIcons,
   seo {
     metaTitle,
     metaDescription,

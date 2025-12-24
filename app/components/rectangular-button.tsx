@@ -1,93 +1,47 @@
 import Link from "next/link";
-import clsx from "clsx";
 
 interface RectangularButtonProps {
-  text?: string;
+  text: string;
   href: string;
-  outline?: boolean;
-  white?: boolean;
+  icon?: boolean;
+  variant?: "dark" | "pink";
   className?: string;
-  onClick?: () => void;
-  disabled?: boolean;
 }
 
 export const RectangularButton = ({
-  text = "Click Me",
+  text,
   href,
-  outline = false,
-  white = false,
+  icon = true,
+  variant = "dark",
   className = "",
-  onClick,
-  disabled = false,
 }: RectangularButtonProps) => {
-  // Base styles with explicit height and line-height control
-  // Using sans-serif with adjustments for proper vertical alignment
-  const baseStyles = clsx(
-    "inline-flex items-center justify-center",
-    "text-center whitespace-nowrap",
-    "px-6 sm:px-8",
-    "h-[48px]",
-    "text-base md:text-lg",
-    "font-sans",
-    "rounded-none",
-    "transition-all duration-200 ease-in-out",
-    "focus:outline-none focus:ring-2 focus:ring-offset-2",
-    disabled && "opacity-50 cursor-not-allowed pointer-events-none"
-  );
-
-  // Filled style (default)
-  const filledStyle = clsx(
-    "bg-[#463e43] text-white",
-    "hover:bg-[#3a3338]",
-    "focus:ring-[#463e43]/50"
-  );
-
-  // Outline style
-  const outlineStyle = clsx(
-    "border-2 border-[#EAC4C5] text-[#423636] bg-transparent",
-    "hover:bg-[#EAC4C5]/10",
-    "focus:ring-[#EAC4C5]/50"
-  );
-
-  // White outline style
-  const whiteOutlineStyle = clsx(
-    "border-2 border-white text-white bg-transparent",
-    "hover:bg-white/10",
-    "focus:ring-white/50"
-  );
-
-  const buttonClass = clsx(
-    baseStyles,
-    white ? whiteOutlineStyle : outline ? outlineStyle : filledStyle,
-    className
-  );
-
-  // Text wrapper with proper vertical alignment
-  // Adjusting for sans-serif baseline with transform - increased offset
-  const textWrapperClass = "inline-block leading-[1.2] translate-y-[3px]";
-
-  // Use regular anchor tag for external links (mailto, http, etc.)
-  if (href.startsWith("mailto:") || href.startsWith("http")) {
-    return (
-      <a
-        href={href}
-        className={buttonClass}
-        onClick={onClick}
-        aria-disabled={disabled}
-      >
-        <span className={textWrapperClass}>{text}</span>
-      </a>
-    );
-  }
+  const variantStyles = {
+    dark: "bg-neutral-900 text-white hover:bg-neutral-800",
+    pink: "bg-[#E8B4D9] text-[#2a1f1f] hover:bg-[#DF9FCF] shadow-lg hover:shadow-xl",
+  };
 
   return (
     <Link
       href={href}
-      className={buttonClass}
-      onClick={onClick}
-      aria-disabled={disabled}
+      className={`inline-flex items-center justify-center gap-2 rounded-full px-6 md:px-8 text-base md:text-lg font-normal transition-all duration-200 ${variantStyles[variant]} ${className}`}
+      style={{ paddingTop: "18px", paddingBottom: "12px" }}
     >
-      <span className={textWrapperClass}>{text}</span>
+      <span className="tracking-wide">{text}</span>
+      {icon && (
+        <svg
+          className="w-5 h-5 md:w-6 md:h-6 flex-shrink-0 -translate-y-[2.5px]"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          strokeWidth={2.5}
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M17 8l4 4m0 0l-4 4m4-4H3"
+          />
+        </svg>
+      )}
     </Link>
   );
 };

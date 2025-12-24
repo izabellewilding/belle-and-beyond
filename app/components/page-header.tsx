@@ -16,7 +16,7 @@ export const PageHeader = ({ title, description }: PageHeaderProps) => {
         transition={{ duration: 0.6, ease: "easeOut" }}
         className="text-center"
       >
-        <h1 className="text-xl md:text-2xl lg:text-3xl font-playfair text-darkText leading-tight mb-4">
+        <h1 className="text-3xl md:text-4xl lg:text-5xl font-playfair font-bold text-darkText leading-tight mb-4">
           {title}
         </h1>
         {description && (

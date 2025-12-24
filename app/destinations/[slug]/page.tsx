@@ -4,13 +4,13 @@ import {
   getPostsByCountry,
 } from "@/sanity/lib/api";
 import Image from "next/image";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Navigation } from "@/app/components/navigation";
 import { Footer } from "@/app/components/footer";
 import { ArticleCard } from "@/app/components/article-card";
 import { PortableTextBlock } from "@portabletext/types";
 import { DestinationTracker } from "@/app/components/DestinationTracker";
+import { RectangularButton } from "@/app/components/rectangular-button";
 import Script from "next/script";
 
 // Revalidate page every hour
@@ -182,25 +182,10 @@ export default async function DestinationPage({
                     {destination.description}
                   </p>
                   {recentPosts.length > 0 && (
-                    <Link
+                    <RectangularButton
+                      text="Explore Articles"
                       href="#articles"
-                      className="inline-flex items-center gap-2 rounded-full bg-neutral-900 text-white px-6 py-3 md:px-8 md:py-4 text-base md:text-lg font-medium hover:bg-neutral-800 transition-colors duration-200 shadow-md hover:shadow-lg"
-                    >
-                      Explore Articles
-                      <svg
-                        className="w-5 h-5"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M17 8l4 4m0 0l-4 4m4-4H3"
-                        />
-                      </svg>
-                    </Link>
+                    />
                   )}
                 </div>
               )}

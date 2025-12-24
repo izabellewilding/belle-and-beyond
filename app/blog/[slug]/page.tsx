@@ -71,6 +71,11 @@ interface PostSEO {
   noindex?: boolean;
 }
 
+interface ChapterIcon {
+  headingText: string;
+  icon: string;
+}
+
 interface Post extends SanityDocument {
   _id: string;
   title: string;
@@ -80,6 +85,7 @@ interface Post extends SanityDocument {
   publishedAt: string | null;
   author: string;
   body: PortableTextBlock[]; // Use the defined Portable Text type
+  chapterIcons?: ChapterIcon[];
   seo?: PostSEO;
 }
 
@@ -580,7 +586,7 @@ export default async function PostPage({
           <hr className="border-gray-300 my-8" />
 
           {/* Table of Contents */}
-          <TableOfContents body={post.body} />
+          <TableOfContents body={post.body} chapterIcons={post.chapterIcons} />
 
           {/* Post Body */}
           <div className="prose prose-lg md:prose-xl max-w-none prose-headings:font-bold prose-p:mb-6 prose-p:leading-[1.75] prose-a:text-blue-600 prose-a:no-underline hover:prose-a:underline">
