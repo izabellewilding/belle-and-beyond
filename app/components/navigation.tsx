@@ -214,7 +214,7 @@ export const Navigation = () => {
                 <FaInstagram size={20} />
               </a>
               <a
-                href="#"
+                href="https://pin.it/1SxbfE8C8"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:opacity-80 transition-opacity"
@@ -387,7 +387,7 @@ export const Navigation = () => {
                               <FaInstagram size={22} />
                             </a>
                             <a
-                              href="#"
+                              href="https://pin.it/1SxbfE8C8"
                               target="_blank"
                               rel="noopener noreferrer"
                               className="text-neutral-700 hover:text-neutral-900 transition-colors"

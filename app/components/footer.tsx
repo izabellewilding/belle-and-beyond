@@ -77,7 +77,7 @@ export const Footer = () => {
                 </li>
                 <li>
                   <a
-                    href="#"
+                    href="https://pin.it/1SxbfE8C8"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-darkText font-sans hover:opacity-70 transition-opacity flex items-center gap-2"

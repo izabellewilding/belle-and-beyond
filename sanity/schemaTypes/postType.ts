@@ -1,6 +1,7 @@
 import { DocumentTextIcon } from "@sanity/icons";
 import { defineArrayMember, defineField, defineType } from "sanity";
 import React from "react";
+import { ChapterIconInput } from "../components/ChapterIconInput";
 
 export const postType = defineType({
   name: "post",
@@ -113,11 +114,7 @@ export const postType = defineType({
             }),
           ],
           components: {
-            input: (props: any) => {
-              // Dynamically import the custom input component
-              const ChapterIconInput = require("../components/ChapterIconInput").ChapterIconInput;
-              return <ChapterIconInput {...props} />;
-            },
+            input: ChapterIconInput,
           },
           preview: {
             select: {
