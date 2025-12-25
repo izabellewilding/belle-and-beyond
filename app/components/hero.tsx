@@ -25,7 +25,7 @@ export const Hero = () => {
   return (
     <section
       ref={heroRef}
-      className="relative min-h-screen w-full m-0 p-0 overflow-hidden block"
+      className="relative min-h-screen w-full m-0 p-0 overflow-hidden block z-0"
     >
       {/* Full width and height image container */}
       <motion.div

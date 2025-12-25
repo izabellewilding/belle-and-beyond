@@ -31,25 +31,11 @@ export const RecentPosts = () => {
   }, [fetchPosts]);
 
   return (
-    <section id="news" className="bg-[#faf7fa] w-full">
+    <section id="news" className="w-full relative -mt-32 z-20">
       <div className="container-content">
-        {/* Header: centered title */}
-        <div className="pt-16 md:pt-24 pb-12 md:pb-16">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            className="text-center"
-          >
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-playfair font-bold text-darkText leading-tight">
-              Latest Stories
-            </h2>
-          </motion.div>
-        </div>
-
-        {/* Cards container with centered layout and desktop padding */}
+        {/* White box container that covers just the cards */}
         <div className="w-full max-w-[2000px] mx-auto px-4 md:px-6 lg:px-8 xl:px-12">
+          <div className="bg-[#faf7fa] rounded-3xl shadow-2xl px-6 md:px-10 lg:px-12 py-12 md:py-16">
           {loading && (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 lg:gap-12">
               {[1, 2, 3, 4, 5, 6].map((index) => (
@@ -155,10 +141,11 @@ export const RecentPosts = () => {
               </motion.div>
             </>
           )}
+          </div>
         </div>
-        {/* Bottom spacing */}
-        <div className="pb-16 md:pb-24" />
       </div>
+      {/* Bottom spacing for the section */}
+      <div className="pb-16 md:pb-24" />
     </section>
   );
 };
