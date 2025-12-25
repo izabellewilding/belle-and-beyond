@@ -586,7 +586,7 @@ export default async function PostPage({
           <hr className="border-gray-300 my-8" />
 
           {/* Post Body */}
-          <div className="prose prose-lg md:prose-xl max-w-none prose-headings:font-bold prose-p:mb-6 prose-p:leading-[1.75] prose-a:text-blue-600 prose-a:no-underline hover:prose-a:underline">
+          <div className="prose prose-lg md:prose-xl max-w-none prose-headings:font-bold prose-headings:mt-16 prose-headings:mb-8 prose-h2:mt-24 prose-h2:pt-12 prose-h2:text-4xl md:prose-h2:text-5xl prose-h3:mt-16 prose-h3:text-3xl md:prose-h3:text-4xl prose-h4:mt-12 prose-h4:text-2xl md:prose-h4:text-3xl prose-p:mb-6 prose-p:leading-[1.75] prose-a:text-blue-600 prose-a:no-underline hover:prose-a:underline">
             {/* Opening paragraph */}
             {post.body && post.body[0] && (
               <PortableText value={[post.body[0]]} components={components} />
@@ -597,7 +597,7 @@ export default async function PostPage({
           <TableOfContents body={post.body} chapterIcons={post.chapterIcons} />
 
           {/* Rest of Post Body */}
-          <div className="prose prose-lg md:prose-xl max-w-none prose-headings:font-bold prose-p:mb-6 prose-p:leading-[1.75] prose-a:text-blue-600 prose-a:no-underline hover:prose-a:underline">
+          <div className="prose prose-lg md:prose-xl max-w-none prose-headings:font-bold prose-headings:mt-16 prose-headings:mb-8 prose-h2:mt-24 prose-h2:pt-12 prose-h2:text-4xl md:prose-h2:text-5xl prose-h3:mt-16 prose-h3:text-3xl md:prose-h3:text-4xl prose-h4:mt-12 prose-h4:text-2xl md:prose-h4:text-3xl prose-p:mb-6 prose-p:leading-[1.75] prose-a:text-blue-600 prose-a:no-underline hover:prose-a:underline">
             {post.body && post.body.length > 1 && (
               <PortableText value={post.body.slice(1)} components={components} />
             )}
