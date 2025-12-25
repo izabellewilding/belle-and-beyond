@@ -40,7 +40,7 @@ export const DestinationsGrid = ({ destinations }: DestinationsGridProps) => {
           },
         },
       }}
-      className="grid gap-8 md:gap-12 lg:gap-16 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 justify-items-center"
+      className="grid gap-8 md:gap-10 lg:gap-12 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center"
     >
       {destinations.map((destination) => {
         const imageUrl =
@@ -67,26 +67,26 @@ export const DestinationsGrid = ({ destinations }: DestinationsGridProps) => {
             <Link
               href={`/destinations/${destination.slug}`}
               onClick={() => trackDestinationView(destination.title)}
-              className="group flex flex-col h-full"
+              className="group flex flex-col h-full transition-all duration-300 hover:scale-[1.02]"
             >
-              {/* Image with square aspect ratio and text overlay */}
+              {/* Image with 4:3 aspect ratio and text overlay */}
               <div
-                className="relative w-full overflow-hidden rounded-none mb-4"
-                style={{ aspectRatio: "1/1" }}
+                className="relative w-full overflow-hidden rounded-2xl mb-4 shadow-md group-hover:shadow-xl transition-shadow duration-300"
+                style={{ aspectRatio: "4/3" }}
               >
                 <Image
                   src={imageUrl}
                   alt={destination.title}
                   fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  sizes="(min-width: 768px) 50vw, (min-width: 1024px) 25vw, 100vw"
+                  className="object-cover transition-transform duration-500 group-hover:scale-110"
+                  sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
                   priority={false}
                   quality={85}
                   loading="lazy"
                 />
                 {/* Text overlay centered on image */}
                 <div className="absolute inset-0 flex items-center justify-center z-10 bg-black/20 group-hover:bg-black/30 transition-colors duration-300">
-                  <h3 className="text-xl md:text-2xl leading-snug font-serif text-white text-center px-4">
+                  <h3 className="text-2xl md:text-3xl lg:text-4xl leading-snug font-playfair font-bold text-white text-center px-4">
                     {destination.title}
                   </h3>
                 </div>

@@ -81,20 +81,24 @@ export default async function DestinationsPage() {
         <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
       </section>
 
-      <section className="bg-white py-24 md:py-20 px-4 md:px-10 lg:px-14 w-full">
-        {/* Header: top rule + large serif heading */}
-        <div className="mb-12 md:mb-16">
-          <div className="border-t border-neutral-400/70" />
-          <h1 className="mt-8 text-4xl md:text-5xl font-serif text-neutral-900">
-            Travel Guides
-          </h1>
-          <p className="mt-4 text-lg md:text-xl text-neutral-700">
-            Discover comprehensive travel guides for destinations around the
-            world. Expert guides to help you plan your perfect adventure.
-          </p>
-        </div>
+      <section className="bg-[#faf7fa] w-full py-16 md:py-24">
+        <div className="container-content">
+          {/* Header */}
+          <div className="mb-12 md:mb-16 text-center">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-playfair font-bold text-darkText leading-tight mb-4">
+              Travel Guides
+            </h1>
+            <p className="text-lg md:text-xl text-neutral-600 max-w-3xl mx-auto">
+              Discover comprehensive travel guides for destinations around the
+              world. Expert guides to help you plan your perfect adventure.
+            </p>
+          </div>
 
-        <DestinationsGrid destinations={destinations} />
+          {/* Destinations Grid with wider container */}
+          <div className="w-full max-w-[2000px] mx-auto px-4 md:px-6 lg:px-8 xl:px-12">
+            <DestinationsGrid destinations={destinations} />
+          </div>
+        </div>
       </section>
       <Footer />
     </>
