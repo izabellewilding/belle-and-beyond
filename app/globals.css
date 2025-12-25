@@ -126,3 +126,9 @@ a[class*="inline-flex"].items-center[class*="font-sans"] span {
     font-size: 1.875rem !important; /* 30px */
   }
 }
+
+/* Reset blockquote/alert box spacing to default */
+.prose blockquote {
+  margin-top: 1.5rem !important;
+  margin-bottom: 1.5rem !important;
+}
