@@ -51,7 +51,7 @@ export default async function BlogPage() {
       <section className="relative w-full h-[250px] md:h-[300px] lg:h-[350px] overflow-hidden">
         <Image
           src={bannerImage}
-          alt="Travel Stories"
+          alt="Travel Guides"
           fill
           className="object-cover"
           priority
@@ -66,8 +66,8 @@ export default async function BlogPage() {
         <div className="container-content">
           {/* Header: centered title matching homepage style */}
           <PageHeader
-            title="Travel Stories"
-            description="Read about our adventures, experiences, and insights from traveling around the world. Get inspired for your next journey."
+            title="Travel Guides"
+            description="Read about my adventures, experiences, and insights from traveling around the world. Get inspired for your next journey."
           />
 
           {/* Posts Grid */}

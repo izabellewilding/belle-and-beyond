@@ -56,7 +56,7 @@ export const About = () => {
           className="max-w-xl space-y-6 md:space-y-7 w-full"
         >
           {/* Main Heading */}
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-playfair font-bold text-darkText leading-tight pb-8">
+          <h2 className="pt-10 md:pt-0 text-2xl md:text-3xl lg:text-4xl font-playfair font-bold text-darkText leading-tight pb-4 md:pb-8">
             Welcome to The Portable Life
             {/* ❤︎ */}
           </h2>
