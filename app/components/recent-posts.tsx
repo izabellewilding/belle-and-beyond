@@ -34,8 +34,8 @@ export const RecentPosts = () => {
     <section id="news" className="w-full relative -mt-32 z-20">
       <div className="container-content">
         {/* White box container that covers just the cards */}
-        <div className="w-full max-w-[2000px] mx-auto px-4 md:px-6 lg:px-8 xl:px-12">
-          <div className="bg-[#faf7fa] rounded-3xl shadow-2xl px-6 md:px-10 lg:px-12 py-12 md:py-16">
+        <div className="w-full max-w-[2000px] mx-auto px-2 md:px-6 lg:px-8 xl:px-12">
+          <div className="bg-[#faf7fa] rounded-3xl shadow-2xl px-4 md:px-10 lg:px-12 py-5 md:py-16">
             {loading && (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 lg:gap-12">
                 {[1, 2, 3, 4, 5, 6].map((index) => (
@@ -137,7 +137,7 @@ export const RecentPosts = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, ease: "easeOut", delay: 0.3 }}
-                  className="flex justify-center mt-12 md:mt-16"
+                  className="flex justify-center mt-8 md:mt-12"
                 >
                   <RectangularButton href="/blog" text="See all posts" />
                 </motion.div>
