@@ -132,3 +132,32 @@ a[class*="inline-flex"].items-center[class*="font-sans"] span {
   margin-top: 1.5rem !important;
   margin-bottom: 1.5rem !important;
 }
+
+/* Remove extra spacing from headings at the top of callout boxes */
+.prose blockquote h2:first-child,
+.prose blockquote h3:first-child,
+.prose blockquote h4:first-child {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+/* Remove extra spacing from h4 titles in custom callout boxes */
+div[class*="rounded-r-md"] h4:first-child {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+/* Add spacing between callout boxes and following headings */
+div[class*="rounded-r-md"] + h2,
+div[class*="rounded-r-md"] + h3,
+div[class*="rounded-r-md"] + h4 {
+  margin-top: 3.5rem !important; /* 56px */
+}
+
+@media (min-width: 768px) {
+  div[class*="rounded-r-md"] + h2,
+  div[class*="rounded-r-md"] + h3,
+  div[class*="rounded-r-md"] + h4 {
+    margin-top: 4.5rem !important; /* 72px */
+  }
+}

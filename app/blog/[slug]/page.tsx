@@ -307,7 +307,7 @@ export default async function PostPage({
         const style = styles[value.style] || styles.default;
 
         return (
-          <div className={`${style.bg} ${style.border} rounded-r-md p-6 md:p-8 my-8`}>
+          <div className={`${style.bg} ${style.border} rounded-r-md p-6 md:p-8 mt-8 mb-12 md:mb-16`}>
             {value.title && (
               <h4 className={`text-lg md:text-xl font-bold mb-3 ${style.title} font-playfair`}>
                 {value.title}
