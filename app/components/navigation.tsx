@@ -102,10 +102,10 @@ export const Navigation = () => {
   }, [pathname]);
 
   const navLinks = [
-    { href: "/destinations", label: "Destinations", isPage: true },
-    { href: "/blog", label: "Blog", isPage: true },
-    { href: "#our-story", label: "About" },
     { href: "/", label: "Home", isPage: true },
+    { href: "/blog", label: "Blog", isPage: true },
+    { href: "/destinations", label: "Destinations", isPage: true },
+    { href: "#our-story", label: "About" },
   ];
 
   const handleNavClick = (
@@ -138,7 +138,7 @@ export const Navigation = () => {
         isScrolled ? "bg-white/80 backdrop-blur-md shadow-md" : "bg-transparent"
       }`}
     >
-      <div className="w-full px-3 md:px-6 lg:px-8">
+      <div className="w-full md:px-6 lg:px-8 pr-4">
         <div className="flex justify-between items-center h-20">
           {/* Brand */}
           <Link href="/" className="relative z-50" onClick={handleLogoClick}>
@@ -155,7 +155,7 @@ export const Navigation = () => {
                 alt="The Portable Life"
                 width={240}
                 height={75}
-                className="h-16 md:h-16 lg:h-20 w-auto"
+                className="h-18 md:h-16 lg:h-20 w-auto"
                 priority
               />
             </motion.div>
@@ -180,7 +180,12 @@ export const Navigation = () => {
                       }
                     }}
                     className={`inline-flex items-center text-sm md:text-base font-sans transition-opacity leading-[1.2] ${
-                      (link.isPage && pathname === link.href) ||
+                      (link.href === "/" &&
+                        pathname === "/" &&
+                        !activeSection) ||
+                      (link.isPage &&
+                        link.href !== "/" &&
+                        pathname === link.href) ||
                       (!link.isPage &&
                         pathname === "/" &&
                         activeSection === link.href.slice(1))
@@ -331,7 +336,12 @@ export const Navigation = () => {
                                 <Link
                                   href={link.href}
                                   className={`block py-4 px-4 text-lg font-sans transition-all duration-200 rounded-lg ${
-                                    (link.isPage && pathname === link.href) ||
+                                    (link.href === "/" &&
+                                      pathname === "/" &&
+                                      !activeSection) ||
+                                    (link.isPage &&
+                                      link.href !== "/" &&
+                                      pathname === link.href) ||
                                     (!link.isPage &&
                                       pathname === "/" &&
                                       activeSection === link.href.slice(1))
