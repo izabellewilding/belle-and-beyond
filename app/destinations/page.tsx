@@ -85,7 +85,7 @@ export default async function DestinationsPage() {
         <div className="container-content">
           {/* Header */}
           <div className="mb-12 md:mb-16 text-center">
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-playfair font-bold text-darkText leading-tight mb-4">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-sans font-bold text-darkText leading-tight mb-4">
               Destinations
             </h1>
             <p className="text-lg md:text-xl text-neutral-600 max-w-3xl mx-auto">

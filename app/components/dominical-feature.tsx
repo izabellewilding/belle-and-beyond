@@ -23,7 +23,7 @@ export const DominicalFeature = () => {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="max-w-lg space-y-6 z-10 w-full"
         >
-          <h3 className="text-2xl md:text-3xl lg:text-4xl font-playfair font-bold text-[#A2CADC] leading-tight">
+          <h3 className="text-2xl md:text-3xl lg:text-4xl font-sans font-bold text-[#A2CADC] leading-tight">
             Check out our latest trip to the surf town of Dominical
           </h3>
           <p className="text-base md:text-lg text-[#A2CADC] font-sans leading-relaxed">

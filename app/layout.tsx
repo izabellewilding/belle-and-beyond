@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import { Playfair_Display, Hind_Mysuru } from "next/font/google";
+import { Playfair_Display, Josefin_Sans } from "next/font/google";
 import "./globals.css";
 import Script from "next/script";
 import { PageViewTracker } from "./components/PageViewTracker";
@@ -64,11 +64,11 @@ const playfairDisplay = Playfair_Display({
   adjustFontFallback: true, // Better fallback metrics
 });
 
-// ✅ Load Hind Mysuru font for body text (multiple weights)
-const hindMysuru = Hind_Mysuru({
+// ✅ Load Josefin Sans font for body text (multiple weights)
+const josefinSans = Josefin_Sans({
   weight: ["300", "400", "500", "600", "700"],
   subsets: ["latin"],
-  variable: "--font-hind-mysuru",
+  variable: "--font-josefin-sans",
   display: "swap",
 });
 
@@ -137,7 +137,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${hindMysuru.variable} ${playfairDisplay.variable}`}
+      className={`${josefinSans.variable} ${playfairDisplay.variable}`}
     >
       <head>
         {/* Resource hints for same-origin to reduce request chain latency */}

@@ -62,13 +62,13 @@ export default async function BlogPage() {
         <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
       </section>
 
-      <section className="bg-[#faf7fa] w-full">
+      <section className="bg-[#faf7fa] w-full pt-18">
         <div className="container-content">
           {/* Header: centered title matching homepage style */}
-          <PageHeader
-            title="Travel Guides"
-            description="Read about my adventures, experiences, and insights from traveling around the world. Get inspired for your next journey."
-          />
+          {/* <PageHeader
+            title="Find your next adventure here"
+            // description="Read about my adventures, experiences, and insights from traveling around the world. Get inspired for your next journey."
+          /> */}
 
           {/* Posts Grid */}
           <div className="w-full max-w-[2000px] mx-auto px-4 md:px-6 lg:px-8 xl:px-12 pb-16 md:pb-24">

@@ -309,7 +309,7 @@ export default async function PostPage({
         return (
           <div className={`${style.bg} ${style.border} rounded-r-md p-6 md:p-8 mt-8 mb-12 md:mb-16`}>
             {value.title && (
-              <h4 className={`text-lg md:text-xl font-bold mb-3 ${style.title} font-playfair`}>
+              <h4 className={`text-lg md:text-xl font-bold mb-3 ${style.title} font-sans`}>
                 {value.title}
               </h4>
             )}
@@ -568,7 +568,7 @@ export default async function PostPage({
             className={`text-center md:text-left mb-8 ${post.bannerImage ? "-mt-[110px] md:-mt-[130px] lg:-mt-[150px] relative z-10" : "md:mt-12"}`}
           >
             <h1
-              className={`text-3xl md:text-4xl lg:text-5xl font-playfair text-neutral-900 mb-2 ${post.bannerImage ? "bg-white px-6 md:px-10 py-4 md:py-6 shadow-lg inline-block" : "font-bold"}`}
+              className={`text-3xl md:text-4xl lg:text-5xl font-sans text-neutral-900 mb-2 ${post.bannerImage ? "bg-white px-6 md:px-10 py-4 md:py-6 shadow-lg inline-block" : "font-bold"}`}
             >
               {post.title}
             </h1>

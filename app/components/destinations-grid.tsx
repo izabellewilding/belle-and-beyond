@@ -86,7 +86,7 @@ export const DestinationsGrid = ({ destinations }: DestinationsGridProps) => {
                 />
                 {/* Text overlay centered on image */}
                 <div className="absolute inset-0 flex items-center justify-center z-10 bg-black/20 group-hover:bg-black/30 transition-colors duration-300">
-                  <h3 className="text-2xl md:text-3xl lg:text-4xl leading-snug font-playfair font-bold text-white text-center px-4">
+                  <h3 className="text-2xl md:text-3xl lg:text-4xl leading-snug font-sans font-bold text-white text-center px-4">
                     {destination.title}
                   </h3>
                 </div>
